@@ -7014,21 +7014,25 @@ var TForm1 = {
       TW3Label.SetCaption$1(Self.fDenomHdr,"DENOM");
       TW3MovableControl.SetWidth$(Self.fDenomHdr,76);
       TW3MovableControl.SetHeight$(Self.fDenomHdr,25);
+      TW3CustomControl.SetStyleClass(Self.fDenomHdr,"TW3HeaderLabel");
       Self.fFaceHdr = TW3Component.Create$19$($New(TW3Label),Self);
       TW3Label.SetTextAlign$1(Self.fFaceHdr,1);
       TW3Label.SetCaption$1(Self.fFaceHdr,"FACE");
       TW3MovableControl.SetWidth$(Self.fFaceHdr,50);
       TW3MovableControl.SetHeight$(Self.fFaceHdr,25);
+      TW3CustomControl.SetStyleClass(Self.fFaceHdr,"TW3HeaderLabel");
       Self.fQtyHdr = TW3Component.Create$19$($New(TW3Label),Self);
       TW3Label.SetTextAlign$1(Self.fQtyHdr,1);
       TW3Label.SetCaption$1(Self.fQtyHdr,"QTY");
       TW3MovableControl.SetWidth$(Self.fQtyHdr,50);
       TW3MovableControl.SetHeight$(Self.fQtyHdr,25);
+      TW3CustomControl.SetStyleClass(Self.fQtyHdr,"TW3HeaderLabel");
       Self.fTotalHdr = TW3Component.Create$19$($New(TW3Label),Self);
       TW3Label.SetTextAlign$1(Self.fTotalHdr,2);
       TW3Label.SetCaption$1(Self.fTotalHdr,"TOTAL");
       TW3MovableControl.SetWidth$(Self.fTotalHdr,52);
       TW3MovableControl.SetHeight$(Self.fTotalHdr,25);
+      TW3CustomControl.SetStyleClass(Self.fTotalHdr,"TW3HeaderLabel");
       Self.fSpacer1 = TW3Component.Create$19$($New(TW3Panel),Self);
       TW3MovableControl.SetHeight$(Self.fSpacer1,5);
       Self.fPennyDenom = TW3Component.Create$19$($New(TW3Label),Self);
@@ -7185,13 +7189,14 @@ var TForm1 = {
       Self.fSpacer2 = TW3Component.Create$19$($New(TW3Panel),Self);
       TW3MovableControl.SetHeight$(Self.fSpacer2,5);
       Self.fGrandTotal = TW3Component.Create$19$($New(TW3Label),Self);
-      TW3Label.SetTextAlign$1(Self.fGrandTotal,2);
+      TW3Label.SetTextAlign$1(Self.fGrandTotal,1);
       TW3Label.SetCaption$1(Self.fGrandTotal,"GRAND TOTAL: $0.00");
       TW3MovableControl.SetHeight$(Self.fGrandTotal,25);
+      TW3CustomControl.SetStyleClass(Self.fGrandTotal,"TW3HeaderLabel");
       Self.fLayout = Layout.Client(Layout,TLayoutConfig.Spacing$(Layout.Margins$2(Layout,2),2),[Layout.Top$6(Layout,Layout.Height$9(Layout,50),Layout.Left$6(Layout,Layout.Spacing$1(Layout,10),[Self.fCentImg, Self.fDenomHdr, Self.fFaceHdr, Self.fQtyHdr, Self.fTotalHdr].slice())), Layout.Top$5(Layout,Layout.Height$9(Layout,5),[Self.fSpacer1].slice()), Layout.Top$6(Layout,Layout.Height$9(Layout,50),Layout.Left$6(Layout,Layout.Spacing$1(Layout,10),[Self.fPennyImg, Self.fPennyDenom, Self.fPennyFace, Self.fPennyEdit, Self.fPennyTotal].slice())), Layout.Top$6(Layout,Layout.Height$9(Layout,50),Layout.Left$6(Layout,Layout.Spacing$1(Layout,10),[Self.fNickelImg, Self.fNickelDenom, Self.fNickelFace, Self.fNickelEdit, Self.fNickelTotal].slice())), Layout.Top$6(Layout,Layout.Height$9(Layout,50),Layout.Left$6(Layout,Layout.Spacing$1(Layout,10),[Self.fDimeImg, Self.fDimeDenom, Self.fDimeFace, Self.fDimeEdit, Self.fDimeTotal].slice())), Layout.Top$6(Layout,Layout.Height$9(Layout,50),Layout.Left$6(Layout,Layout.Spacing$1(Layout,10),[Self.fQuarterImg, Self.fQuarterDenom, Self.fQuarterFace, Self.fQuarterEdit, Self.fQuarterTotal].slice())), Layout.Top$6(Layout,Layout.Height$9(Layout,50),Layout.Left$6(Layout,Layout.Spacing$1(Layout,10),[Self.fHalfImg, Self.fHalfDenom, Self.fHalfFace, Self.fHalfEdit, Self.fHalfTotal].slice())), Layout.Top$6(Layout,Layout.Height$9(Layout,50),Layout.Left$6(Layout,Layout.Spacing$1(Layout,10),[Self.fDollarImg, Self.fDollarDenom, Self.fDollarFace, Self.fDollarEdit, Self.fDollarTotal].slice())), Layout.Top$5(Layout,Layout.Height$9(Layout,5),[Self.fSpacer2].slice()), Layout.Top$5(Layout,Layout.Height$9(Layout,25),[Self.fGrandTotal].slice())].slice());
    }
    /// procedure TForm1.Resize()
-   ///  [line: 421, column: 18, file: Form1]
+   ///  [line: 426, column: 18, file: Form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       TLayout.Resize$6$(Self.fLayout,Self);

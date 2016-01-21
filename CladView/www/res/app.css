@@ -109,25 +109,14 @@ ul li:active {
 
 .TW3CustomForm, .TW3Form
 {
-  /* This forces the browsers that support it to
-     use the GPU rather than CPU for movement */
-	-webkit-transform: translateZ(0);
-	   -moz-transform: translateZ(0);
-	    -ms-transform: translateZ(0);
-	     -o-transform: translateZ(0);
 
-	background-color: #D5DCE1;
-	background-size: 5px 100%;
-	background-image: -webkit-gradient(linear, left top, right top,
-	  from(#c5ccd4),
-	  color-stop(0.75, #c5ccd4),
-	  color-stop(0.75, transparent),
-	  to(transparent));
-	background-image: -moz-linear-gradient(left,
-	  #c5ccd4,
-	  #c5ccd4 75%,
-	  transparent 75%,
-	  transparent);
+background-image: -ms-linear-gradient(top left, #FFFFFF 0%, #00A3EF 100%);
+  background-image: -moz-linear-gradient(top left, #FFFFFF 0%, #00A3EF 100%);
+  background-image: -o-linear-gradient(top left, #FFFFFF 0%, #00A3EF 100%);
+  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #FFFFFF), color-stop(1, #00A3EF));
+  background-image: -webkit-linear-gradient(top left, #FFFFFF 0%, #00A3EF 100%);
+  background-image: linear-gradient(to bottom right, #FFFFFF 0%, #00A3EF 100%);
+
 }
 
 /* =============================================
@@ -542,11 +531,15 @@ ul li:active {
  * ============================================= */
 
 .TW3Memo, .TW3EditBox, .TW3ComboBox {
-	border: 1px solid #acacac;
-	border-radius: 5px;
-	resize: none;
-	-webkit-user-select: auto;
-	user-select: auto;
+ border: 2px solid #333333;
+  resize: none;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+      -ie-border-radius: 5px;
+    font-family: "Helvetica Neue", Verdana, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 1px 1px -1px #cecece;
 }
 
 /* =============================================
@@ -589,6 +582,14 @@ ul li:active {
 	opacity: 0.5;
 }
 
+
+.TW3HeaderLabel
+{
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+	cursor: default;
+}
 
 /* =============================================
  * TW3SimpleButton
