@@ -1,0 +1,6 @@
+{
+	"name" : "TestDemo",
+	"short_name" : "TestDemo",
+	"start_url" : "index.html",
+	"icons" : [ ]
+}
