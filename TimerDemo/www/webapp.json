@@ -1,0 +1,6 @@
+{
+	"name" : "TimerDemo",
+	"short_name" : "TimerDemo",
+	"start_url" : "index.html",
+	"icons" : [ ]
+}
