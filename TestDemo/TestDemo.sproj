@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>TestDemo</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-01-29T19:57:30.434</Modified>
+    <Modified>2016-01-31T14:18:54.403</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -140,7 +140,7 @@ end.]]>
       <File type="form">
         <Name>Form1</Name>
         <Created>2016-01-29T18:48:52.069Z</Created>
-        <Modified>2016-01-29T19:51:35.993</Modified>
+        <Modified>2016-01-31T14:18:54.133</Modified>
         <Source>
           <![CDATA[unit Form1;
 
@@ -175,24 +175,25 @@ procedure TForm1.InitializeForm;
 begin
   inherited;
   // this is a good place to initialize components
+  fLayout:= Layout.Client(Layout.Margins(10),
+                          [Layout.Top(W3Label1),
+                          Layout.Bottom(Layout.Height(50),
+                                        Layout.Right(W3Button1)
+                                        )]
+                         );
 end;
 
 procedure TForm1.InitializeObject;
 begin
   inherited;
   {$I 'Form1:impl'}
-  fLayout:= Layout.Client(Layout.Margins(10),
-                          [Layout.Top(W3Label1),
-                          Layout.Bottom(Layout.Height(50),
-                                        Layout.Right(W3Button1)
-                                        )]
-                         )
 end;
  
 procedure TForm1.Resize;
 begin
   inherited;
-  fLayout.Resize(self);
+  if assigned(fLayout) then
+    fLayout.Resize(self);
 end;
  
 initialization
@@ -236,7 +237,7 @@ end.]]>
       <File type="form">
         <Name>Form2</Name>
         <Created>2016-01-29T19:14:57.908Z</Created>
-        <Modified>2016-01-29T19:57:30.429</Modified>
+        <Modified>2016-01-31T14:18:40.418</Modified>
         <Source>
           <![CDATA[unit Form2;
 
@@ -272,25 +273,25 @@ procedure TForm2.InitializeForm;
 begin
   inherited;
   // this is a good place to initialize components
-
+  fLayout:= Layout.Client(Layout.Margins(10),
+                          [Layout.Top(W3Label1),
+                          Layout.Bottom(Layout.Height(50),
+                                        Layout.Right(W3Button1)
+                                        )]
+                         );
 end;
 
 procedure TForm2.InitializeObject;
 begin
   inherited;
   {$I 'Form2:impl'}
-  fLayout:= Layout.Client(Layout.Margins(10),
-                          [Layout.Top(W3Label1),
-                          Layout.Bottom(Layout.Height(50),
-                                        Layout.Right(W3Button1)
-                                        )]
-                         )
 end;
  
 procedure TForm2.Resize;
 begin
   inherited;
-  fLayout.Resize(self);
+  if assigned(fLayout) then
+    fLayout.Resize(self);
 end;
  
 initialization
@@ -336,12 +337,12 @@ end.
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>326</BackgroundCompilations>
-      <EditTime>00:04:11.122</EditTime>
-      <CompileTime>00:00:06.904</CompileTime>
-      <TotalTime>01:00:44.789</TotalTime>
-      <DesigningTime>00:25:15.078</DesigningTime>
-      <RunningTime>00:01:01.520</RunningTime>
+      <BackgroundCompilations>367</BackgroundCompilations>
+      <EditTime>00:04:35.990</EditTime>
+      <CompileTime>00:00:08.086</CompileTime>
+      <TotalTime>01:02:16.873</TotalTime>
+      <DesigningTime>00:25:22.671</DesigningTime>
+      <RunningTime>00:01:16.751</RunningTime>
     </Statistics>
   </Project>
 </SMART>
