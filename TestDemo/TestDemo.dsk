@@ -1,20 +1,20 @@
 <SMART>
   <state>
     <editor>
-      <tab filename="Form1" topline="27" col="37" row="45" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Form1" topline="33" col="15" row="53" splitview="0" designview="0" splitter="0.444444447755814" />
       <tab filename="TestDemo" topline="1" col="1" row="1" />
-      <tab filename="Form2" topline="30" col="27" row="16" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Form2" topline="36" col="1" row="59" splitview="0" designview="0" splitter="0.444444447755814" />
       <tab filename="Unit1" topline="1" col="35" row="13" />
       <activetab>Form2</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>327</BackgroundCompilations>
-      <EditTime>00:04:14.185</EditTime>
-      <CompileTime>00:00:07.347</CompileTime>
-      <TotalTime>01:00:44.789</TotalTime>
-      <DesigningTime>00:25:15.078</DesigningTime>
-      <RunningTime>00:01:09.008</RunningTime>
+      <BackgroundCompilations>396</BackgroundCompilations>
+      <EditTime>00:05:08.441</EditTime>
+      <CompileTime>00:00:08.869</CompileTime>
+      <TotalTime>01:05:25.387</TotalTime>
+      <DesigningTime>00:26:01.521</DesigningTime>
+      <RunningTime>00:01:29.259</RunningTime>
     </Statistics>
   </state>
 </SMART>

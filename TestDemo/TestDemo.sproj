@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>TestDemo</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-01-29T19:57:30.434</Modified>
+    <Modified>2016-02-08T13:35:48.270</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -140,7 +140,7 @@ end.]]>
       <File type="form">
         <Name>Form1</Name>
         <Created>2016-01-29T18:48:52.069Z</Created>
-        <Modified>2016-01-29T19:51:35.993</Modified>
+        <Modified>2016-02-08T13:34:11.012</Modified>
         <Source>
           <![CDATA[unit Form1;
 
@@ -152,6 +152,7 @@ uses
 
 type
   TForm1 = class(TW3Form)
+    procedure Form1Deactivate(Sender: TObject);
     procedure W3Button1Click(Sender: TObject);
   private
     {$I 'Form1:intf'}
@@ -171,16 +172,15 @@ begin
  Application.GotoForm('Form2', feFromRight);
 end;
 
+procedure TForm1.Form1Deactivate(Sender: TObject);
+begin
+  fLayout:= nil;
+end;
+
 procedure TForm1.InitializeForm;
 begin
   inherited;
   // this is a good place to initialize components
-end;
-
-procedure TForm1.InitializeObject;
-begin
-  inherited;
-  {$I 'Form1:impl'}
   fLayout:= Layout.Client(Layout.Margins(10),
                           [Layout.Top(W3Label1),
                           Layout.Bottom(Layout.Height(50),
@@ -188,11 +188,18 @@ begin
                                         )]
                          )
 end;
+
+procedure TForm1.InitializeObject;
+begin
+  inherited;
+  {$I 'Form1:impl'}
+  end;
  
 procedure TForm1.Resize;
 begin
   inherited;
-  fLayout.Resize(self);
+  if Assigned(FLayout) then
+   fLayout.Resize(self);
 end;
  
 initialization
@@ -203,15 +210,16 @@ end.]]>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
 <Form version="2" subversion="2">
   <Created>2016-01-29T18:48:52.069</Created>
-  <Modified>2016-01-29T19:50:33.895</Modified>
+  <Modified>2016-02-08T13:34:03.665</Modified>
   <object type="TW3Form">
     <Caption>W3Form</Caption>
     <Name>Form1</Name>
+    <OnDeactivate>Form1Deactivate</OnDeactivate>
     <object type="TW3Button">
       <Caption>Form2</Caption>
       <Width>128</Width>
-      <Top>280</Top>
-      <Left>136</Left>
+      <Top>80</Top>
+      <Left>16</Left>
       <Height>32</Height>
       <Name>W3Button1</Name>
       <OnClick>W3Button1Click</OnClick>
@@ -220,7 +228,7 @@ end.]]>
       <Caption>Form1</Caption>
       <Width>128</Width>
       <Top>16</Top>
-      <Left>144</Left>
+      <Left>16</Left>
       <Height>32</Height>
       <Name>W3Label1</Name>
     </object>
@@ -236,7 +244,7 @@ end.]]>
       <File type="form">
         <Name>Form2</Name>
         <Created>2016-01-29T19:14:57.908Z</Created>
-        <Modified>2016-01-29T19:57:30.429</Modified>
+        <Modified>2016-02-08T13:33:20.809</Modified>
         <Source>
           <![CDATA[unit Form2;
 
@@ -249,6 +257,7 @@ uses
 
 type
   TForm2 = class(TW3Form)
+    procedure Form2Deactivate(Sender: TObject);
     procedure W3Button1Click(Sender: TObject);
   private
     {$I 'Form2:intf'}
@@ -268,17 +277,15 @@ begin
  Application.GotoForm('Form1', feToLeft);
 end;
 
+procedure TForm2.Form2Deactivate(Sender: TObject);
+begin
+  fLayout:= nil;
+end;
+
 procedure TForm2.InitializeForm;
 begin
   inherited;
   // this is a good place to initialize components
-
-end;
-
-procedure TForm2.InitializeObject;
-begin
-  inherited;
-  {$I 'Form2:impl'}
   fLayout:= Layout.Client(Layout.Margins(10),
                           [Layout.Top(W3Label1),
                           Layout.Bottom(Layout.Height(50),
@@ -286,11 +293,18 @@ begin
                                         )]
                          )
 end;
+
+procedure TForm2.InitializeObject;
+begin
+  inherited;
+  {$I 'Form2:impl'}
+end;
  
 procedure TForm2.Resize;
 begin
   inherited;
-  fLayout.Resize(self);
+  if Assigned(FLayout) then
+   fLayout.Resize(self);
 end;
  
 initialization
@@ -302,7 +316,7 @@ end.
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
 <Form version="2" subversion="2">
   <Created>2016-01-29T19:14:57.908</Created>
-  <Modified>2016-01-29T19:55:33.096</Modified>
+  <Modified>2016-02-08T13:31:52.367</Modified>
   <object type="TW3Form">
     <Caption>W3Form</Caption>
     <Name>Form2</Name>
@@ -336,12 +350,12 @@ end.
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>326</BackgroundCompilations>
-      <EditTime>00:04:11.122</EditTime>
-      <CompileTime>00:00:06.904</CompileTime>
-      <TotalTime>01:00:44.789</TotalTime>
-      <DesigningTime>00:25:15.078</DesigningTime>
-      <RunningTime>00:01:01.520</RunningTime>
+      <BackgroundCompilations>396</BackgroundCompilations>
+      <EditTime>00:05:08.441</EditTime>
+      <CompileTime>00:00:08.421</CompileTime>
+      <TotalTime>01:05:25.387</TotalTime>
+      <DesigningTime>00:26:01.521</DesigningTime>
+      <RunningTime>00:01:19.461</RunningTime>
     </Statistics>
   </Project>
 </SMART>

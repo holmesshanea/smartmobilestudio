@@ -6815,22 +6815,29 @@ var TForm1 = {
       TW3Form.$Init($);
       $.fLayout$1 = $.W3Button1$1 = $.W3Label1$1 = null;
    }
+   /// procedure TForm1.Form1Deactivate(Sender: TObject)
+   ///  [line: 31, column: 18, file: Form1]
+   ,Form1Deactivate:function(Self, Sender$10) {
+      Self.fLayout$1 = null;
+   }
    /// procedure TForm1.InitializeForm()
-   ///  [line: 30, column: 18, file: Form1]
+   ///  [line: 36, column: 18, file: Form1]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
+      Self.fLayout$1 = Layout.Client(Layout,Layout.Margins$2(Layout,10),[Layout.Top$8(Layout,Self.W3Label1$1), Layout.Bottom$4(Layout,Layout.Height$9(Layout,50),Layout.Right$6(Layout,Self.W3Button1$1))].slice());
    }
    /// procedure TForm1.InitializeObject()
-   ///  [line: 36, column: 18, file: Form1]
+   ///  [line: 48, column: 18, file: Form1]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
       TW3Component.SetName(Self,"Form1");
+      Self.FOnDeactivate = $Event1(Self,TForm1.Form1Deactivate);
       Self.W3Button1$1 = TW3Component.Create$28$($New(TW3Button),Self);
       TW3Button.SetCaption(Self.W3Button1$1,"Form2");
       TW3MovableControl.SetWidth$(Self.W3Button1$1,128);
-      TW3MovableControl.SetTop(Self.W3Button1$1,280);
-      TW3MovableControl.SetLeft(Self.W3Button1$1,136);
+      TW3MovableControl.SetTop(Self.W3Button1$1,80);
+      TW3MovableControl.SetLeft(Self.W3Button1$1,16);
       TW3MovableControl.SetHeight$(Self.W3Button1$1,32);
       TW3Component.SetName(Self.W3Button1$1,"W3Button1");
       TW3CustomControl._setMouseClick(Self.W3Button1$1,$Event1(Self,TForm1.W3Button1Click$1));
@@ -6838,20 +6845,21 @@ var TForm1 = {
       TW3Label.SetCaption$1(Self.W3Label1$1,"Form1");
       TW3MovableControl.SetWidth$(Self.W3Label1$1,128);
       TW3MovableControl.SetTop(Self.W3Label1$1,16);
-      TW3MovableControl.SetLeft(Self.W3Label1$1,144);
+      TW3MovableControl.SetLeft(Self.W3Label1$1,16);
       TW3MovableControl.SetHeight$(Self.W3Label1$1,32);
       TW3Component.SetName(Self.W3Label1$1,"W3Label1");
-      Self.fLayout$1 = Layout.Client(Layout,Layout.Margins$2(Layout,10),[Layout.Top$8(Layout,Self.W3Label1$1), Layout.Bottom$4(Layout,Layout.Height$9(Layout,50),Layout.Right$6(Layout,Self.W3Button1$1))].slice());
    }
    /// procedure TForm1.Resize()
-   ///  [line: 48, column: 18, file: Form1]
+   ///  [line: 54, column: 18, file: Form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
-      TLayout.Resize$6$(Self.fLayout$1,Self);
+      if (Self.fLayout$1) {
+         TLayout.Resize$6$(Self.fLayout$1,Self);
+      }
    }
    /// procedure TForm1.W3Button1Click(Sender: TObject)
-   ///  [line: 25, column: 18, file: Form1]
-   ,W3Button1Click$1:function(Self, Sender$10) {
+   ///  [line: 26, column: 18, file: Form1]
+   ,W3Button1Click$1:function(Self, Sender$11) {
       TW3CustomApplication.GotoForm(Application(),"Form2",1);
    }
    ,Destroy:TW3CustomForm.Destroy
@@ -6914,7 +6922,7 @@ var Layout = {
       TObject.$Init($);
    }
    /// function Layout.Bottom(config: TLayoutConfig; control: TObject) : TLayout
-   ///  [line: 1202, column: 23, file: SmartCL.Layout]
+   ///  [line: 1203, column: 23, file: SmartCL.Layout]
    ,Bottom$4:function(Self, config, control$2) {
       var Result = null;
       var objArr = [];
@@ -6924,7 +6932,7 @@ var Layout = {
       return Result
    }
    /// function Layout.Bottom(config: TLayoutConfig; controls: TObjectArr) : TLayout
-   ///  [line: 1187, column: 23, file: SmartCL.Layout]
+   ///  [line: 1188, column: 23, file: SmartCL.Layout]
    ,Bottom$3:function(Self, config$1, controls$1) {
       var Result = null;
       var iControl$1 = 0;
@@ -6942,28 +6950,28 @@ var Layout = {
       return Result
    }
    /// function Layout.Client(config: TLayoutConfig; controls: TObjectArr) : TLayout
-   ///  [line: 1225, column: 23, file: SmartCL.Layout]
+   ///  [line: 1226, column: 23, file: SmartCL.Layout]
    ,Client:function(Self, config$2, controls$2) {
       var Result = null;
       Result = TLayoutImpl.Create$62($New(TLayoutImpl),4,config$2,controls$2);
       return Result
    }
    /// function Layout.Height(aHeight: Integer) : TLayoutConfig
-   ///  [line: 1302, column: 23, file: SmartCL.Layout]
+   ///  [line: 1303, column: 23, file: SmartCL.Layout]
    ,Height$9:function(Self, aHeight$3) {
       var Result = null;
       Result = TLayoutConfig.Height$8$(TObject.Create($New(TLayoutConfigImpl)),aHeight$3);
       return Result
    }
    /// function Layout.Margins(value: Integer) : TLayoutConfig
-   ///  [line: 1267, column: 23, file: SmartCL.Layout]
+   ///  [line: 1268, column: 23, file: SmartCL.Layout]
    ,Margins$2:function(Self, value$8) {
       var Result = null;
       Result = TLayoutConfig.Margins$(TObject.Create($New(TLayoutConfigImpl)),value$8);
       return Result
    }
    /// function Layout.Right(control: TObject) : TLayout
-   ///  [line: 1140, column: 23, file: SmartCL.Layout]
+   ///  [line: 1141, column: 23, file: SmartCL.Layout]
    ,Right$6:function(Self, control$3) {
       var Result = null;
       var objArr$1 = [];
@@ -6973,7 +6981,7 @@ var Layout = {
       return Result
    }
    /// function Layout.Right(config: TLayoutConfig; controls: TObjectArr) : TLayout
-   ///  [line: 1111, column: 23, file: SmartCL.Layout]
+   ///  [line: 1112, column: 23, file: SmartCL.Layout]
    ,Right$3:function(Self, config$3, controls$3) {
       var Result = null;
       var iControl$2 = 0;
@@ -6991,7 +6999,7 @@ var Layout = {
       return Result
    }
    /// function Layout.Top(control: TObject) : TLayout
-   ///  [line: 1178, column: 23, file: SmartCL.Layout]
+   ///  [line: 1179, column: 23, file: SmartCL.Layout]
    ,Top$8:function(Self, control$4) {
       var Result = null;
       var objArr$2 = [];
@@ -7001,7 +7009,7 @@ var Layout = {
       return Result
    }
    /// function Layout.Top(config: TLayoutConfig; controls: TObjectArr) : TLayout
-   ///  [line: 1149, column: 23, file: SmartCL.Layout]
+   ///  [line: 1150, column: 23, file: SmartCL.Layout]
    ,Top$5:function(Self, config$4, controls$4) {
       var Result = null;
       var iControl$3 = 0;
@@ -7372,7 +7380,7 @@ var TLayoutImpl = {
       });
    }
    /// procedure TLayoutImpl.ResolveDimensionsFrom(control: TObject)
-   ///  [line: 948, column: 23, file: SmartCL.Layout]
+   ///  [line: 949, column: 23, file: SmartCL.Layout]
    ,ResolveDimensionsFrom:function(Self, control$8) {
       if ((!TLayoutRect$IsHorizontalSet(Self.FClientArea))&&Dimensions.HasWidth(Dimensions,control$8)&&(Self.FAlign==0||Self.FAlign==2||Self.FAlign==4||Self.FAlign==5)) {
          TLayoutImpl.SetHorizontal$1(Self,Dimensions.GetWidth$8(Dimensions,control$8));
@@ -7445,7 +7453,7 @@ var TLayoutImpl = {
       }
    }
    /// procedure TLayoutImpl.SetHorizontal(clientWidth: Variant)
-   ///  [line: 970, column: 23, file: SmartCL.Layout]
+   ///  [line: 971, column: 23, file: SmartCL.Layout]
    ,SetHorizontal$1:function(Self, clientWidth) {
       TLayoutRect$SetWidth$3(Self.FClientArea,parseInt(clientWidth,10));
       if (clientWidth!=null) {
@@ -7454,7 +7462,7 @@ var TLayoutImpl = {
       TLayoutRect$SetWidth$3(Self.FBounds,parseInt(clientWidth,10));
    }
    /// procedure TLayoutImpl.SetVertical(clientHeight: Variant)
-   ///  [line: 979, column: 23, file: SmartCL.Layout]
+   ///  [line: 980, column: 23, file: SmartCL.Layout]
    ,SetVertical$1:function(Self, clientHeight) {
       TLayoutRect$SetHeight$2(Self.FClientArea,parseInt(clientHeight,10));
       if (clientHeight!=null) {
@@ -7463,7 +7471,7 @@ var TLayoutImpl = {
       TLayoutRect$SetHeight$2(Self.FBounds,parseInt(clientHeight,10));
    }
    /// procedure TLayoutImpl.ShrinkClientArea(control: TObject)
-   ///  [line: 988, column: 23, file: SmartCL.Layout]
+   ///  [line: 989, column: 23, file: SmartCL.Layout]
    ,ShrinkClientArea:function(Self, control$10) {
       var align$3 = 0;
       var height$13,
@@ -7867,12 +7875,13 @@ var TForm2 = {
       $.fLayout = $.W3Button1 = $.W3Label1 = null;
    }
    /// procedure TForm2.InitializeForm()
-   ///  [line: 31, column: 18, file: Form2]
+   ///  [line: 37, column: 18, file: Form2]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
+      Self.fLayout = Layout.Client(Layout,Layout.Margins$2(Layout,10),[Layout.Top$8(Layout,Self.W3Label1), Layout.Bottom$4(Layout,Layout.Height$9(Layout,50),Layout.Right$6(Layout,Self.W3Button1))].slice());
    }
    /// procedure TForm2.InitializeObject()
-   ///  [line: 38, column: 18, file: Form2]
+   ///  [line: 49, column: 18, file: Form2]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
@@ -7892,17 +7901,18 @@ var TForm2 = {
       TW3MovableControl.SetHeight$(Self.W3Button1,32);
       TW3Component.SetName(Self.W3Button1,"W3Button1");
       TW3CustomControl._setMouseClick(Self.W3Button1,$Event1(Self,TForm2.W3Button1Click));
-      Self.fLayout = Layout.Client(Layout,Layout.Margins$2(Layout,10),[Layout.Top$8(Layout,Self.W3Label1), Layout.Bottom$4(Layout,Layout.Height$9(Layout,50),Layout.Right$6(Layout,Self.W3Button1))].slice());
    }
    /// procedure TForm2.Resize()
-   ///  [line: 50, column: 18, file: Form2]
+   ///  [line: 55, column: 18, file: Form2]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
-      TLayout.Resize$6$(Self.fLayout,Self);
+      if (Self.fLayout) {
+         TLayout.Resize$6$(Self.fLayout,Self);
+      }
    }
    /// procedure TForm2.W3Button1Click(Sender: TObject)
-   ///  [line: 26, column: 18, file: Form2]
-   ,W3Button1Click:function(Self, Sender$11) {
+   ///  [line: 27, column: 18, file: Form2]
+   ,W3Button1Click:function(Self, Sender$12) {
       TW3CustomApplication.GotoForm(Application(),"Form1",2);
    }
    ,Destroy:TW3CustomForm.Destroy
