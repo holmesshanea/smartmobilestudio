@@ -7,12 +7,12 @@
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>2145</BackgroundCompilations>
+      <BackgroundCompilations>2147</BackgroundCompilations>
       <EditTime>00:34:56.416</EditTime>
-      <CompileTime>00:00:41.048</CompileTime>
-      <TotalTime>02:13:23.278</TotalTime>
-      <DesigningTime>00:00:37.053</DesigningTime>
-      <RunningTime>00:14:56.575</RunningTime>
+      <CompileTime>00:00:41.632</CompileTime>
+      <TotalTime>02:14:42.505</TotalTime>
+      <DesigningTime>00:01:56.280</DesigningTime>
+      <RunningTime>00:15:09.991</RunningTime>
     </Statistics>
   </state>
 </SMART>

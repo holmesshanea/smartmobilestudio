@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>DataEntryForm</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-02-08T13:26:38.985</Modified>
+    <Modified>2016-02-08T13:27:58.212</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -331,12 +331,11 @@ end.]]>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
 <Form version="2" subversion="2">
   <Created>2016-02-03T08:15:37.164</Created>
-  <Modified>2016-02-08T13:25:30.010</Modified>
+  <Modified>2016-02-08T13:26:39.000</Modified>
   <object type="TW3Form">
     <Caption>W3Form</Caption>
     <Name>Form1</Name>
     <OnDeactivate>Form1Deactivate</OnDeactivate>
-    <OnClick>Form1Click</OnClick>
   </object>
 </Form>]]>
         </Design>
@@ -350,12 +349,12 @@ end.]]>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>2145</BackgroundCompilations>
+      <BackgroundCompilations>2147</BackgroundCompilations>
       <EditTime>00:34:56.416</EditTime>
-      <CompileTime>00:00:41.048</CompileTime>
-      <TotalTime>02:13:23.278</TotalTime>
-      <DesigningTime>00:00:37.053</DesigningTime>
-      <RunningTime>00:14:56.575</RunningTime>
+      <CompileTime>00:00:41.632</CompileTime>
+      <TotalTime>02:14:42.505</TotalTime>
+      <DesigningTime>00:01:56.280</DesigningTime>
+      <RunningTime>00:15:09.991</RunningTime>
     </Statistics>
   </Project>
 </SMART>

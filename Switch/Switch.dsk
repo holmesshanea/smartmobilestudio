@@ -1,16 +1,16 @@
 <SMART>
   <state>
     <editor>
-      <tab filename="Form1" topline="55" col="38" row="71" splitview="0" designview="1" splitter="0.444444447755814" />
+      <tab filename="Form1" topline="37" col="17" row="66" splitview="0" designview="0" splitter="0.444444447755814" />
       <activetab>Form1</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>1288</BackgroundCompilations>
-      <EditTime>00:22:02.998</EditTime>
-      <CompileTime>00:00:36.610</CompileTime>
-      <TotalTime>03:02:35.640</TotalTime>
-      <DesigningTime>00:12:47.894</DesigningTime>
+      <BackgroundCompilations>1316</BackgroundCompilations>
+      <EditTime>00:22:24.946</EditTime>
+      <CompileTime>00:00:37.301</CompileTime>
+      <TotalTime>03:04:11.446</TotalTime>
+      <DesigningTime>00:13:02.052</DesigningTime>
       <RunningTime>00:07:32.537</RunningTime>
     </Statistics>
   </state>
