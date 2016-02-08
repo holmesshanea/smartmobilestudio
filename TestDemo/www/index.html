@@ -6850,7 +6850,7 @@ var TForm1 = {
    ///  [line: 36, column: 18, file: Form1]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
-      Self.fLayout$1 = Layout.Client(Layout,Layout.Margins$2(Layout,10),[Layout.Top$8(Layout,Self.W3Label1$1), Layout.Bottom$4(Layout,Layout.Height$9(Layout,50),Layout.Right$6(Layout,Self.W3Button1$1))].slice());
+      Self.fLayout$1 = Layout.Client(Layout,Layout.Margins$2(Layout,10),[Layout.Top$6(Layout,Layout.Height$9(Layout,50),Self.W3Label1$1), Layout.Bottom$4(Layout,Layout.Height$9(Layout,50),Layout.Right$6(Layout,Self.W3Button1$1))].slice());
    }
    /// procedure TForm1.InitializeObject()
    ///  [line: 48, column: 18, file: Form1]
@@ -7024,31 +7024,31 @@ var Layout = {
       }
       return Result
    }
-   /// function Layout.Top(control: TObject) : TLayout
-   ///  [line: 1179, column: 23, file: SmartCL.Layout]
-   ,Top$8:function(Self, control$4) {
+   /// function Layout.Top(config: TLayoutConfig; control: TObject) : TLayout
+   ///  [line: 1165, column: 23, file: SmartCL.Layout]
+   ,Top$6:function(Self, config$4, control$4) {
       var Result = null;
       var objArr$2 = [];
       $ArraySetLenC(objArr$2,1,function (){return null});
       objArr$2[0]=control$4;
-      Result = Layout.Top$5(Self,NullConfig,objArr$2);
+      Result = Layout.Top$5(Self,config$4,objArr$2);
       return Result
    }
    /// function Layout.Top(config: TLayoutConfig; controls: TObjectArr) : TLayout
    ///  [line: 1150, column: 23, file: SmartCL.Layout]
-   ,Top$5:function(Self, config$4, controls$4) {
+   ,Top$5:function(Self, config$5, controls$4) {
       var Result = null;
       var iControl$3 = 0;
       var inner$2 = [];
       if (controls$4.length<=1||NotAllComponents(controls$4)) {
-         Result = TLayoutImpl.Create$62($New(TLayoutImpl),1,config$4,controls$4);
+         Result = TLayoutImpl.Create$62($New(TLayoutImpl),1,config$5,controls$4);
       } else {
          $ArraySetLenC(inner$2,controls$4.length,function (){return null});
          var $temp29;
          for(iControl$3=0,$temp29=controls$4.length;iControl$3<$temp29;iControl$3++) {
-            inner$2[iControl$3]=TLayoutImpl.Create$62($New(TLayoutImpl),1,config$4,[controls$4[iControl$3]].slice());
+            inner$2[iControl$3]=TLayoutImpl.Create$62($New(TLayoutImpl),1,config$5,[controls$4[iControl$3]].slice());
          }
-         Result = TLayoutImpl.Create$62($New(TLayoutImpl),1,config$4,inner$2);
+         Result = TLayoutImpl.Create$62($New(TLayoutImpl),1,config$5,inner$2);
       }
       return Result
    }
@@ -7254,9 +7254,9 @@ var TLayoutImpl = {
    }
    /// constructor TLayoutImpl.Create(align: TAlign; config: TLayoutConfig; controls: TObjectArr)
    ///  [line: 607, column: 25, file: SmartCL.Layout]
-   ,Create$62:function(Self, align$1, config$5, controls$5) {
+   ,Create$62:function(Self, align$1, config$6, controls$5) {
       Self.FAlign = align$1;
-      Self.FConfig = TLayoutConfigImpl.CreateFrom($New(TLayoutConfigImpl),$As(config$5,TLayoutConfigImpl));
+      Self.FConfig = TLayoutConfigImpl.CreateFrom($New(TLayoutConfigImpl),$As(config$6,TLayoutConfigImpl));
       Self.FControls = controls$5;
       ++LayoutCount;
       Self.FName$3 = ("Layout "+LayoutCount.toString()+" ("+AlignToString(align$1).toString()+")");
@@ -7904,7 +7904,7 @@ var TForm2 = {
    ///  [line: 37, column: 18, file: Form2]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
-      Self.fLayout = Layout.Client(Layout,Layout.Margins$2(Layout,10),[Layout.Top$8(Layout,Self.W3Label1), Layout.Bottom$4(Layout,Layout.Height$9(Layout,50),Layout.Right$6(Layout,Self.W3Button1))].slice());
+      Self.fLayout = Layout.Client(Layout,Layout.Margins$2(Layout,10),[Layout.Top$6(Layout,Layout.Height$9(Layout,50),Self.W3Label1), Layout.Bottom$4(Layout,Layout.Height$9(Layout,50),Layout.Right$6(Layout,Self.W3Button1))].slice());
    }
    /// procedure TForm2.InitializeObject()
    ///  [line: 49, column: 18, file: Form2]
