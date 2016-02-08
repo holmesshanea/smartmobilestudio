@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>CladView</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-01-21T07:41:51.652</Modified>
+    <Modified>2016-02-08T13:21:26.489</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -127,7 +127,7 @@ end.]]>
       <File type="form">
         <Name>Form1</Name>
         <Created>2016-01-16T19:43:55.360Z</Created>
-        <Modified>2016-01-21T07:41:21.522</Modified>
+        <Modified>2016-02-08T13:21:26.488</Modified>
         <Source>
           <![CDATA[unit Form1;
 
@@ -141,6 +141,7 @@ uses
 
 type
   TForm1 = class(TW3Form)
+    procedure Form1Deactivate(Sender: TObject);
   private
     {$I 'Form1:intf'}
     fOldValue: Variant;
@@ -248,10 +249,55 @@ implementation
         TW3EditBox(Sender).Value := foldValue;
     end;
 
+procedure TForm1.Form1Deactivate(Sender: TObject);
+begin
+    fLayout:= nil;
+
+end;
+
 procedure TForm1.InitializeForm;
 begin
   inherited;
   // this is a good place to initialize components
+  fLayout:= Layout.Client(Layout.Margins(2).Spacing(2),
+                          //header
+                          [Layout.Top(Layout.Height(50),
+                                     Layout.Left(Layout.Spacing(10),[fCentImg, fDenomHdr, fFaceHdr, fQtyHdr, fTotalHdr])
+                                     ),
+                          //spacer
+                          Layout.Top(Layout.Height(5),[fSpacer1]),
+                          //penny
+                          Layout.Top(Layout.Height(50),
+                                     Layout.Left(Layout.Spacing(10),[fPennyImg, fPennyDenom, fPennyFace, fPennyEdit, fPennyTotal])
+                                     ),
+                          //nickel
+                          Layout.Top(Layout.Height(50),
+                                     Layout.Left(Layout.Spacing(10),[fNickelImg, fNickelDenom, fNickelFace, fNickelEdit, fNickelTotal])
+                                     ),
+                          //dime
+                          Layout.Top(Layout.Height(50),
+                                     Layout.Left(Layout.Spacing(10),[fDimeImg, fDimeDenom, fDimeFace, fDimeEdit, fDimeTotal])
+                                     ),
+                          //quarter
+                          Layout.Top(Layout.Height(50),
+                                     Layout.Left(Layout.Spacing(10),[fQuarterImg, fQuarterDenom, fQuarterFace, fQuarterEdit, fQuarterTotal])
+                                     ),
+                          //half
+                          Layout.Top(Layout.Height(50),
+                                     Layout.Left(Layout.Spacing(10),[fHalfImg, fHalfDenom, fHalfFace, fHalfEdit, fHalfTotal])
+                                     ),
+                          //dollar
+                          Layout.Top(Layout.Height(50),
+                                     Layout.Left(Layout.Spacing(10),[fDollarImg, fDollarDenom, fDollarFace, fDollarEdit, fDollarTotal])
+                                     ),
+                          //spacer
+                          Layout.Top(Layout.Height(5),[fSpacer2]),
+
+                          //grandtotal
+                          Layout.Top(Layout.Height(25), [fGrandTotal])
+
+                          ]
+                          );
 
 end;
 
@@ -513,51 +559,13 @@ begin
   fGrandTotal.Height:= 25;
   fGrandTotal.StyleClass:= 'TW3HeaderLabel';
 
-  fLayout:= Layout.Client(Layout.Margins(2).Spacing(2),
-                          //header
-                          [Layout.Top(Layout.Height(50),
-                                     Layout.Left(Layout.Spacing(10),[fCentImg, fDenomHdr, fFaceHdr, fQtyHdr, fTotalHdr])
-                                     ),
-                          //spacer
-                          Layout.Top(Layout.Height(5),[fSpacer1]),
-                          //penny
-                          Layout.Top(Layout.Height(50),
-                                     Layout.Left(Layout.Spacing(10),[fPennyImg, fPennyDenom, fPennyFace, fPennyEdit, fPennyTotal])
-                                     ),
-                          //nickel
-                          Layout.Top(Layout.Height(50),
-                                     Layout.Left(Layout.Spacing(10),[fNickelImg, fNickelDenom, fNickelFace, fNickelEdit, fNickelTotal])
-                                     ),
-                          //dime
-                          Layout.Top(Layout.Height(50),
-                                     Layout.Left(Layout.Spacing(10),[fDimeImg, fDimeDenom, fDimeFace, fDimeEdit, fDimeTotal])
-                                     ),
-                          //quarter
-                          Layout.Top(Layout.Height(50),
-                                     Layout.Left(Layout.Spacing(10),[fQuarterImg, fQuarterDenom, fQuarterFace, fQuarterEdit, fQuarterTotal])
-                                     ),
-                          //half
-                          Layout.Top(Layout.Height(50),
-                                     Layout.Left(Layout.Spacing(10),[fHalfImg, fHalfDenom, fHalfFace, fHalfEdit, fHalfTotal])
-                                     ),
-                          //dollar
-                          Layout.Top(Layout.Height(50),
-                                     Layout.Left(Layout.Spacing(10),[fDollarImg, fDollarDenom, fDollarFace, fDollarEdit, fDollarTotal])
-                                     ),
-                          //spacer
-                          Layout.Top(Layout.Height(5),[fSpacer2]),
-
-                          //grandtotal
-                          Layout.Top(Layout.Height(25), [fGrandTotal])
-
-                          ]
-                          );
 end;
  
 procedure TForm1.Resize;
 begin
   inherited;
-  fLayout.Resize(self);
+  if assigned(FLayout) then
+   fLayout.Resize(self);
 end;
  
 initialization
@@ -568,10 +576,11 @@ end.]]>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
 <Form version="2" subversion="2">
   <Created>2016-01-16T19:43:55.360</Created>
-  <Modified>2016-01-16T21:25:49.020</Modified>
+  <Modified>2016-02-08T13:20:53.078</Modified>
   <object type="TW3Form">
     <Caption>W3Form</Caption>
     <Name>Form1</Name>
+    <OnDeactivate>Form1Deactivate</OnDeactivate>
   </object>
 </Form>]]>
         </Design>
@@ -1490,11 +1499,11 @@ background-image: -ms-linear-gradient(top left, #FFFFFF 0%, #00A3EF 100%);
     </Files>
     <Target>Browser</Target>
     <Statistics>
-      <BackgroundCompilations>3836</BackgroundCompilations>
-      <EditTime>01:06:17.523</EditTime>
-      <CompileTime>00:02:51.281</CompileTime>
-      <TotalTime>04:41:18.150</TotalTime>
-      <DesigningTime>00:01:01.241</DesigningTime>
+      <BackgroundCompilations>3853</BackgroundCompilations>
+      <EditTime>01:06:37.037</EditTime>
+      <CompileTime>00:02:52.590</CompileTime>
+      <TotalTime>04:44:11.316</TotalTime>
+      <DesigningTime>00:01:06.985</DesigningTime>
       <RunningTime>00:46:21.160</RunningTime>
     </Statistics>
   </Project>
