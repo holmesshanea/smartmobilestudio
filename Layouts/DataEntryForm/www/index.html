@@ -6823,12 +6823,16 @@ var TForm1 = {
       TW3Form.$Init($);
       $.fLayer1Footer = $.fLayer1Header = $.fLayer1Layout = $.fLayer1Main = $.fLayer2AddressLabel = $.fLayer2AddressMemo = $.fLayer2EmailEdit = $.fLayer2EmailLabel = $.fLayer2FirstEdit = $.fLayer2FirstLabel = $.fLayer2FooterLayout = $.fLayer2HeaderLayout = $.fLayer2LastEdit = $.fLayer2LastLabel = $.fLayer2MainLayout = $.fLayer2PhoneEdit = $.fLayer2PhoneLabel = null;
    }
-   /// procedure TForm1.Form1Click(Sender: TObject)
-   ///  [line: 54, column: 18, file: Form1]
-   ,Form1Click:function(Self, Sender$10) {
+   /// procedure TForm1.Form1Deactivate(Sender: TObject)
+   ///  [line: 56, column: 18, file: Form1]
+   ,Form1Deactivate:function(Self, Sender$10) {
+      Self.fLayer1Layout = null;
+      Self.fLayer2HeaderLayout = null;
+      Self.fLayer2MainLayout = null;
+      Self.fLayer2FooterLayout = null;
    }
    /// procedure TForm1.InitializeForm()
-   ///  [line: 59, column: 18, file: Form1]
+   ///  [line: 64, column: 18, file: Form1]
    ,InitializeForm:function(Self) {
       var H$1 = 0;
       TW3CustomForm.InitializeForm(Self);
@@ -6866,12 +6870,12 @@ var TForm1 = {
       Self.fLayer2MainLayout = Layout.Client(Layout,TLayoutConfig.Margins$(TLayoutConfig.Spacing$(Layout.Padding$4(Layout,5,0,0,0),5),5),[Layout.Top$8(Layout,Self.fLayer2AddressLabel), Layout.Client$3(Layout,Self.fLayer2AddressMemo)].slice());
    }
    /// procedure TForm1.InitializeObject()
-   ///  [line: 146, column: 18, file: Form1]
+   ///  [line: 151, column: 18, file: Form1]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
       TW3Component.SetName(Self,"Form1");
-      TW3CustomControl._setMouseClick(Self,$Event1(Self,TForm1.Form1Click));
+      Self.FOnDeactivate = $Event1(Self,TForm1.Form1Deactivate);
       Self.fLayer1Header = TW3Component.Create$28$($New(TW3Panel),Self);
       Self.fLayer1Main = TW3Component.Create$28$($New(TW3Panel),Self);
       Self.fLayer1Footer = TW3Component.Create$28$($New(TW3Panel),Self);
@@ -6887,7 +6891,7 @@ var TForm1 = {
       Self.fLayer2AddressMemo = TW3Component.Create$28$($New(TW3Memo),Self.fLayer1Main);
    }
    /// procedure TForm1.Resize()
-   ///  [line: 171, column: 18, file: Form1]
+   ///  [line: 176, column: 18, file: Form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayer1Layout) {

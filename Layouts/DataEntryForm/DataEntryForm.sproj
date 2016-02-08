@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>DataEntryForm</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-02-03T10:47:36.770</Modified>
+    <Modified>2016-02-08T13:26:38.985</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -127,7 +127,7 @@ end.]]>
       <File type="form">
         <Name>Form1</Name>
         <Created>2016-02-03T08:15:37.164Z</Created>
-        <Modified>2016-02-03T10:47:36.768</Modified>
+        <Modified>2016-02-08T13:26:22.080</Modified>
         <Source>
           <![CDATA[unit Form1;
 
@@ -141,6 +141,7 @@ uses
 
 type
   TForm1 = class(TW3Form)
+    procedure Form1Deactivate(Sender: TObject);
   private
     {$I 'Form1:intf'}
 
@@ -182,6 +183,14 @@ type
 implementation
 
 { TForm1 }
+
+procedure TForm1.Form1Deactivate(Sender: TObject);
+begin
+    fLayer1Layout:= Nil;
+    fLayer2HeaderLayout:= nil;
+    fLayer2MainLayout:= nil;
+    fLayer2FooterLayout:= nil;
+end;
 
 procedure TForm1.InitializeForm;
 var
@@ -322,10 +331,11 @@ end.]]>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
 <Form version="2" subversion="2">
   <Created>2016-02-03T08:15:37.164</Created>
-  <Modified>2016-02-03T08:15:54.847</Modified>
+  <Modified>2016-02-08T13:25:30.010</Modified>
   <object type="TW3Form">
     <Caption>W3Form</Caption>
     <Name>Form1</Name>
+    <OnDeactivate>Form1Deactivate</OnDeactivate>
     <OnClick>Form1Click</OnClick>
   </object>
 </Form>]]>
@@ -340,11 +350,11 @@ end.]]>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>2099</BackgroundCompilations>
-      <EditTime>00:34:12.932</EditTime>
-      <CompileTime>00:00:40.881</CompileTime>
-      <TotalTime>02:11:10.500</TotalTime>
-      <DesigningTime>00:00:17.676</DesigningTime>
+      <BackgroundCompilations>2145</BackgroundCompilations>
+      <EditTime>00:34:56.416</EditTime>
+      <CompileTime>00:00:41.048</CompileTime>
+      <TotalTime>02:13:23.278</TotalTime>
+      <DesigningTime>00:00:37.053</DesigningTime>
       <RunningTime>00:14:56.575</RunningTime>
     </Statistics>
   </Project>

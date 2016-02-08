@@ -1,17 +1,17 @@
 <SMART>
   <state>
     <editor>
-      <tab filename="Form1" topline="1" col="26" row="12" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Form1" topline="45" col="24" row="53" splitview="0" designview="1" splitter="0.444444447755814" />
       <tab filename="Unit1" topline="1" col="1" row="1" />
       <activetab>Form1</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>2099</BackgroundCompilations>
-      <EditTime>00:34:15.922</EditTime>
-      <CompileTime>00:00:40.947</CompileTime>
-      <TotalTime>02:11:10.500</TotalTime>
-      <DesigningTime>00:00:17.676</DesigningTime>
+      <BackgroundCompilations>2145</BackgroundCompilations>
+      <EditTime>00:34:56.416</EditTime>
+      <CompileTime>00:00:41.048</CompileTime>
+      <TotalTime>02:13:23.278</TotalTime>
+      <DesigningTime>00:00:37.053</DesigningTime>
       <RunningTime>00:14:56.575</RunningTime>
     </Statistics>
   </state>
