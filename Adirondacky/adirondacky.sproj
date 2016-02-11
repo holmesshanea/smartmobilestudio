@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>adirondacky</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-02-11T15:42:20.975</Modified>
+    <Modified>2016-02-11T18:48:30.827</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -129,7 +129,7 @@ end.
       <File type="form">
         <Name>frmMain</Name>
         <Created>2016-02-11T11:59:14.078Z</Created>
-        <Modified>2016-02-11T15:40:07.179</Modified>
+        <Modified>2016-02-11T18:39:08.266</Modified>
         <Source>
           <![CDATA[unit frmMain;
 
@@ -138,7 +138,8 @@ interface
 uses 
   SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, 
   SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Layout,
-  SmartCL.Controls.Panel, SmartCL.Controls.Image, SmartCL.Controls.Label;
+  SmartCL.Controls.Panel, SmartCL.Controls.Image, SmartCL.Controls.Label,
+  SmartCL.Controls.Button;
 
 type
   TfrmMain = class(TW3Form)
@@ -157,11 +158,13 @@ type
     fLayer2HeaderLayout: TLayout;
      //layer 2 - header controls
     fLayer2HeaderLogo: TW3Image;
+    fLayer2HeaderTitle: TW3Label;
 
     //layer 2 - menu layout
     fLayer2MenuLayout: TLayout;
     //layer 2 - menu controls
-
+    //memo
+    fLayer2MenuStart: TW3Button;
 
     //layer 2 - footer layout
     fLayer2FooterLayout: TLayout;
@@ -195,8 +198,8 @@ procedure TfrmMain.InitializeForm;
 begin
   inherited;
   //layer1 controls
-  fLayer1Header.Height:= ClientHeight DIV 6;
-  fLayer1Footer.Height:= ClientHeight DIV 6;
+  fLayer1Header.Height:= 50;
+  fLayer1Footer.Height:= 50;
  //layer 1 layout
  fLayer1Layout:= Layout.Client(Layout.Margins(5),
                          [
@@ -206,14 +209,23 @@ begin
                          ]
                         );
   //layer 2  header controls
-  fLayer2HeaderLogo.Width:= ClientWidth Div 6;
+  fLayer2HeaderLogo.Width:= 50;
   //layer 2 header layout
   fLayer2HeaderLayout:= Layout.Client(Layout.Margins(5),
-                                       Layout.Left(fLayer2HeaderLogo)
+                                       [
+                                        Layout.Left(fLayer2HeaderLogo),
+                                        Layout.Client(fLayer2HeaderTitle)
+                                       ]
                                      );
-
   //layer 2 menu controls here
+  //layer 2 menu layout
 
+  fLayer2MenuLayout:= Layout.Client(Layout.Margins(5),
+                                      [
+                                     // Layout.Top(Layout.Height(50), fLayer2MenuTitle), menu
+                                      Layout.Top(Layout.Height(50), Layout.Center(fLayer2MenuStart))
+                                      ]
+                                     );
 
   //layer 2  footer controls
    fLayer2FooterLogo.Width:= ClientWidth Div 6;
@@ -241,11 +253,25 @@ begin
   fLayer2HeaderLogo:= TW3Image.Create(fLayer1Header);
   fLayer2HeaderLogo.Width:= 50; fLayer2HeaderLogo.Height:= 50;
   fLayer2headerLogo.LoadFromURL('res\am-mainsite-logo.gif');
+  fLayer2HeaderTitle:= TW3Label.Create(fLayer1Header);
+  fLayer2HeaderTitle.StyleClass:= 'TW3Label1';
+  fLayer2HeaderTitle.Caption:= 'Are you feeling Adirondaky?';
+  fLayer2HeaderTitle.AlignText:= taCenter;
+
+  //layer 2 menu controls
+
+  //memo
+
+  fLayer2MenuStart:= TW3Button.Create(fLayer1Menu);
+  fLayer2MenuStart.Caption:= 'Start';
+  fLayer2MenuStart.Width:= 100; fLayer2MenuStart.Height:= 50;
+
   //layer 2 Footer controls
   fLayer2FooterLogo:= TW3Image.Create(fLayer1Footer);
   fLayer2FooterLogo.Width:= 50; fLayer2FooterLogo.Height:= 50;
   fLayer2FooterLogo.LoadFromURL('res\footer_logo.gif');
   fLayer2FooterCR:= TW3Label.Create(fLayer1Footer);
+  fLayer2FooterCR.StyleClass:= 'TW3Label2';
   fLayer2FooterCR.Caption:= 'Copyright © 2016 The Adirondack Museum. All rights reserved.';
   fLayer2FooterCR.AlignText:= taCenter;
 end;
@@ -293,7 +319,7 @@ end.
       <File type="css">
         <Name>iOS.css</Name>
         <Created>2016-02-11T12:00:31.906Z</Created>
-        <Modified>2016-02-11T12:58:52.600</Modified>
+        <Modified>2016-02-11T18:48:30.827</Modified>
         <Source>
           <![CDATA[/* Apply to all elements */
 * {
@@ -870,6 +896,34 @@ ul li:active {
  * TW3Label
  * ============================================= */
 
+ .TW3Label1{
+	opacity: 1.0;
+	cursor: default;
+  text-shadow:1px 1px 1px rgba(82,82,82,1);
+  font-weight:normal;
+  color:#FFFFFF;
+  letter-spacing:1pt;
+  word-spacing:2pt;
+  font-size:12px;
+  text-align:center;
+  font-family:arial black, sans-serif;
+  line-height:1;
+}
+
+.TW3Label2{
+	opacity: 1.0;
+	cursor: default;
+ text-shadow:1px 1px 1px rgba(82,82,82,1);
+  font-weight:normal;
+  color:#000000;
+  letter-spacing:1pt;
+  word-spacing:2pt;
+  font-size:8px;
+  text-align:center;
+  font-family:arial black, sans-serif;
+  line-height:1;
+}
+
 .TW3Label, TW3LabelText {
 	opacity: 1.0;
 	cursor: default;
@@ -1169,12 +1223,12 @@ ul li:active {
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>1330</BackgroundCompilations>
-      <EditTime>00:21:27.553</EditTime>
-      <CompileTime>00:00:36.685</CompileTime>
-      <TotalTime>03:07:37.218</TotalTime>
-      <DesigningTime>00:03:00.565</DesigningTime>
-      <RunningTime>00:16:37.822</RunningTime>
+      <BackgroundCompilations>1822</BackgroundCompilations>
+      <EditTime>00:29:26.505</EditTime>
+      <CompileTime>00:00:44.868</CompileTime>
+      <TotalTime>05:47:56.333</TotalTime>
+      <DesigningTime>00:03:00.572</DesigningTime>
+      <RunningTime>00:23:00.086</RunningTime>
     </Statistics>
   </Project>
 </SMART>

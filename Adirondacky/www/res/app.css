@@ -573,6 +573,34 @@ ul li:active {
  * TW3Label
  * ============================================= */
 
+ .TW3Label1{
+	opacity: 1.0;
+	cursor: default;
+  text-shadow:1px 1px 1px rgba(82,82,82,1);
+  font-weight:normal;
+  color:#FFFFFF;
+  letter-spacing:1pt;
+  word-spacing:2pt;
+  font-size:12px;
+  text-align:center;
+  font-family:arial black, sans-serif;
+  line-height:1;
+}
+
+.TW3Label2{
+	opacity: 1.0;
+	cursor: default;
+ text-shadow:1px 1px 1px rgba(82,82,82,1);
+  font-weight:normal;
+  color:#000000;
+  letter-spacing:1pt;
+  word-spacing:2pt;
+  font-size:8px;
+  text-align:center;
+  font-family:arial black, sans-serif;
+  line-height:1;
+}
+
 .TW3Label, TW3LabelText {
 	opacity: 1.0;
 	cursor: default;
