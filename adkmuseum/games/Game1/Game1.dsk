@@ -3,17 +3,17 @@
     <editor>
       <tab filename="UntMain" fullname="UntMain.pas" topline="1" col="31" row="16" />
       <tab filename="iOS.css" fullname="iOS.css" topline="1" col="29" row="37" />
-      <tab filename="frmMain" fullname="frmMain.pas" topline="1" col="61" row="71" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="frmMain" fullname="frmMain.pas" topline="63" col="16" row="92" splitview="0" designview="0" splitter="0.444444447755814" />
       <activetab>frmMain</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>992</BackgroundCompilations>
-      <EditTime>00:13:34.479</EditTime>
-      <CompileTime>00:00:43.136</CompileTime>
-      <TotalTime>02:31:02.186</TotalTime>
-      <DesigningTime>00:56:20.525</DesigningTime>
-      <RunningTime>00:18:27.519</RunningTime>
+      <BackgroundCompilations>1151</BackgroundCompilations>
+      <EditTime>00:16:25.921</EditTime>
+      <CompileTime>00:00:44.203</CompileTime>
+      <TotalTime>02:40:38.693</TotalTime>
+      <DesigningTime>00:56:20.535</DesigningTime>
+      <RunningTime>00:18:36.419</RunningTime>
     </Statistics>
   </state>
 </SMART>
