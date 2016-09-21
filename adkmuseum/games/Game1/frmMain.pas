@@ -18,16 +18,16 @@ type
     fLayer1LayoutContentPanel: TW3Panel;
     fLayer1LayoutFooterPanel: TW3Panel;
 
-    {//layer 2 - header layout
+    //layer 2 - header layout
     fLayer2HeaderLayout: TLayout;
     //layer 2 - header controls
-    fLayer2HeaderLogo: Tw3Image;
+    fLayer2HeaderLayoutLogo: Tw3Image;
     //layer 2 main layout
-    fLayer2MainLayout: TLayout;
+    fLayer2ContentLayout: TLayout;
     //layer 2 - footer layout
     fLayer2FooterLayout: TLayout;
     //layer 2 - footer controls
-    fLayer2FooterLogo: TW3Image;}
+    fLayer2FooterLayoutLogo: TW3Image;
   protected
     procedure InitializeForm; override;
     procedure InitializeObject; override;
@@ -42,24 +42,14 @@ implementation
 procedure TForm1.Form1Deactivate(Sender: TObject);
 begin
     fLayer1Layout:= Nil;
-    {fLayer2HeaderLayout:= nil;
-    fLayer2MainLayout:= nil;
-    fLayer2FooterLayout:= nil;}
+    fLayer2HeaderLayout:= nil;
+    fLayer2ContentLayout:= nil;
+    fLayer2FooterLayout:= nil;
 end;
 
 procedure TForm1.InitializeForm;
 begin
   inherited;
-
-  //initializw layer 1 controls
-  fLayer1LayoutHeaderPanel.Height:= 200;
-  fLayer1LayoutHeaderPanel.StyleClass:= 'pnlHeader';
-
-  fLayer1LayoutFooterPanel.Height:= 58;
-  fLayer1LayoutFooterPanel.StyleClass:= 'pnlFooter';
-
-  fLayer1LayoutContentPanel.StyleClass:= 'pnlMain';
-  //layout layer 1 controls
 
   fLayer1Layout:= Layout.Client(
                            [Layout.Top(Layout.Height(200), fLayer1LayoutHeaderPanel),
@@ -67,13 +57,16 @@ begin
                            Layout.Bottom(Layout.Height(58), fLayer1LayoutFooterPanel)]
                           );
 
+ {fLayer2HeaderLayout:= Layout.Client(
+                           Layout.Left(fLayer2HeaderLayoutLogo)
+                          );}
 
 
- { //initialize layer 2 controls for footer panel
+ //fLayer2ContentLayout:= Layout.Client();
 
   fLayer2FooterLayout:= Layout.Client(
-                           Layout.Center(fLayer2FooterLogo)
-                          );}
+                           Layout.Center(fLayer2FooterLayoutLogo)
+                          );
 end;
 
 procedure TForm1.InitializeObject;
@@ -85,22 +78,25 @@ begin
 
   fLayer1LayoutHeaderPanel:= TW3Panel.Create(self);
   fLayer1LayoutHeaderPanel.Height:= 200;
+  fLayer1LayoutHeaderPanel.StyleClass:= 'pnlHeader';
 
   fLayer1LayoutContentPanel:= TW3Panel.Create(self);
+  fLayer1LayoutContentPanel.StyleClass:= 'pnlMain';
 
   fLayer1LayoutFooterPanel:= TW3Panel.Create(self);
-  fLayer1LayoutFooterPanel.Height:= 38;
+  fLayer1LayoutFooterPanel.Height:= 58;
+  fLayer1LayoutFooterPanel.StyleClass:= 'pnlFooter';
 
-  {//create the second layer controls on the header panel
-  fLayer2HeaderLogo:= TW3Image.Create(fLayer1Header);
-  fLayer2HeaderLogo.Left:= 4; fLayer2HeaderLogo.Top:= 4;
-  fLayer2HeaderLogo.Width:= 142; fLayer2HeaderLogo.Height:= 191;
-  fLayer2HeaderLogo.LoadFromURL('res/nav_logo.gif');
+  //create the second layer controls on the header panel
+  fLayer2HeaderLayoutLogo:= TW3Image.Create(fLayer1LayoutHeaderPanel);
+  fLayer2HeaderLayoutLogo.Left:= 4; fLayer2HeaderLayoutLogo.Top:= 4;
+  fLayer2HeaderLayoutLogo.Width:= 142; fLayer2HeaderLayoutLogo.Height:= 191;
+  fLayer2HeaderLayoutLogo.LoadFromURL('res/nav_logo.gif');
 
   //create the second layer controls on the footer panel
-  fLayer2FooterLogo:= TW3Image.Create(fLayer1Footer);
-  fLayer2FooterLogo.Width:= 145; fLayer2FooterLogo.Height:= 50;
-  fLayer2FooterLogo.LoadFromURL('res/footer_logo.gif');}
+  fLayer2FooterLayoutLogo:= TW3Image.Create(fLayer1LayoutFooterPanel);
+  fLayer2FooterLayoutLogo.Width:= 145; fLayer2FooterLayoutLogo.Height:= 50;
+  fLayer2FooterLayoutLogo.LoadFromURL('res/footer_logo.gif');
 
 end;
  
@@ -111,15 +107,15 @@ begin
   begin
    //resize layer 1
    fLayer1Layout.Resize(self);
-   {//resize layer 2 header panel
+   //resize layer 2 header panel
    if Assigned(fLayer2HeaderLayout) then
-    fLayer2HeaderLayout.Resize(fLayer1Header);
+    fLayer2HeaderLayout.Resize(fLayer1LayoutHeaderPanel);
    //resize layer 2 footer panel
    if Assigned(fLayer2FooterLayout) then
-    fLayer2FooterLayout.Resize(fLayer1Footer);
+    fLayer2FooterLayout.Resize(fLayer1LayoutFooterPanel);
    //resize layer 2 conent panel
    if Assigned(fLayer2ContentLayout) then
-    fLayer2ContentLayout.Resize(fLayer1Content); }
+    fLayer2ContentLayout.Resize(fLayer1LayoutContentPanel);
   end;
 end;
  
