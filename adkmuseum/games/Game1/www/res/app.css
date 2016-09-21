@@ -1,0 +1,53 @@
+
+/* =============================================
+ * frmBackground
+ * ============================================= */
+
+.frmBackground
+{
+	background-color: #E2E5C3;
+	background-size: 5px 100%;
+}
+
+
+/* =============================================
+ * pnlHeader
+ * ============================================= */
+
+.pnlHeader {
+	cursor: inherited;
+	border: 5px solid #7c7a77;
+	resize: none;
+	font-size: 12px;
+	border-radius: 6px;
+  background-color: #616A2E;
+  background: url('nav_bg_leaves.gif') no-repeat 100% 100%;
+}
+
+/* =============================================
+ * pnlMain
+ * ============================================= */
+
+.pnlMain {
+	cursor: inherited;
+	border: 2px solid #7c7a77;
+	resize: none;
+	font-size: 12px;
+	border-radius: 6px;
+	background-color:  #E2E5C3;
+}
+
+
+/* =============================================
+ * pnlFooter
+ * ============================================= */
+
+.pnlFooter {
+	cursor: inherited;
+	border: 2px solid #7c7a77;
+	resize: none;
+	font-size: 12px;
+	border-radius: 6px;
+	background-color: #9DAC10;
+  background-image: url('res/footer_bg_leaves.gif') no-repeat 0 100%;
+}

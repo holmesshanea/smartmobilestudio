@@ -1,0 +1,12 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2016-09-21T08:42:39.056</Created>
+    <Modified>2016-09-21T13:22:00.368</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <StyleClass>frmBackground</StyleClass>
+      <Name>Form1</Name>
+      <OnDeactivate>Form1Deactivate</OnDeactivate>
+    </object>
+  </Form>
+</SMART>

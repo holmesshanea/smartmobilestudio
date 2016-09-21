@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>DataEntryForm</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-02-08T13:27:58.212</Modified>
+    <Modified>2016-09-21T12:53:37.970</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -349,11 +349,11 @@ end.]]>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>2147</BackgroundCompilations>
+      <BackgroundCompilations>2148</BackgroundCompilations>
       <EditTime>00:34:56.416</EditTime>
       <CompileTime>00:00:41.632</CompileTime>
-      <TotalTime>02:14:42.505</TotalTime>
-      <DesigningTime>00:01:56.280</DesigningTime>
+      <TotalTime>02:15:59.279</TotalTime>
+      <DesigningTime>00:02:00.194</DesigningTime>
       <RunningTime>00:15:09.991</RunningTime>
     </Statistics>
   </Project>
