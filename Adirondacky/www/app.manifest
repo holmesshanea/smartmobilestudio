@@ -1,10 +1,9 @@
 CACHE MANIFEST
 # Offline cache version 0.0.1
-# id:90831
+# id:95087
 
 CACHE:
 index.html
 res/app.css
-res/nav_bg_leaves.gif
-res/am-mainsite-logo.gif
-res/footer_logo.gif
+res/footer_bg_leaves.gif
+res/header_logo.gif

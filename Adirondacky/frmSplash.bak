@@ -1,0 +1,63 @@
+unit Form1;
+
+interface
+
+uses 
+  SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, 
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Controls.Header,
+  SmartCL.Controls.Label, SmartCL.Controls.Panel, SmartCL.Controls.Listbox,
+  SmartCL.Layout, SmartCL.Controls.Elements;
+
+type
+  TForm1 = class(TW3Form)
+    procedure Form1Click(Sender: TObject);
+  private
+    {$I 'Form1:intf'}
+    fLayout: TLayout;
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  end;
+
+implementation
+
+{ TForm1 }
+
+procedure TForm1.Form1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+  fLayout:= Layout.Client(Layout.Margins(10).spacing(5),
+              [Layout.Top(W3Label1), Layout.Bottom(W3HeaderControl1), Layout.Client(W3DIVHtmlElement1)]);
+end;
+
+procedure TForm1.InitializeObject;
+begin
+  inherited;
+  {$I 'Form1:impl'}
+  W3HeaderControl1.BackButton.Visible:= False;
+  W3HeaderControl1.BackButton.StyleClass:= 'btnStandard';
+  W3HeaderControl1.NextButton.Visible:= True;
+  W3HeaderControl1.NextButton.StyleClass:= 'btnStandard';
+   W3HeaderControl1.Title.AlignText:= taCenter;
+  W3HeaderControl1.Title.Caption:= 'Copyright (C) 2016 ADKlean.org';
+ // W3ListBox1.Add('Item 1');  //Listbox items color text - #BD6E30
+ // W3ListBox1.Add('Item 2');  //Listbox items color text - #BA6F2E
+end;
+ 
+procedure TForm1.Resize;
+begin
+  inherited;
+  if assigned(FLayout) then
+    FLayout.Resize(self);
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TForm1);
+end.

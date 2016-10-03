@@ -1,0 +1,30 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2016-10-01T19:32:45.736</Created>
+    <Modified>2016-10-01T20:40:59.004</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Width>50</Width>
+      <Height>50</Height>
+      <Name>frmListBoxItem</Name>
+      <object type="TW3Image">
+        <Width>50</Width>
+        <Top>32</Top>
+        <Left>16</Left>
+        <Height>50</Height>
+        <BorderRadius>0</BorderRadius>
+        <Name>itmImage</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption>W3Label</Caption>
+        <Width>360</Width>
+        <Top>32</Top>
+        <StyleClass>itmLabel</StyleClass>
+        <Left>72</Left>
+        <Height>50</Height>
+        <BorderRadius>0</BorderRadius>
+        <Name>itmLabel</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>

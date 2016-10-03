@@ -1,0 +1,79 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2016-09-27T10:15:25.107</Created>
+    <Modified>2016-10-02T10:16:46.168</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <StyleClass>frmBackground</StyleClass>
+      <Name>Form1</Name>
+      <object type="TW3Panel">
+        <Width>952</Width>
+        <Top>16</Top>
+        <StyleClass>pnlHeader</StyleClass>
+        <Left>16</Left>
+        <Height>100</Height>
+        <Name>pnlHeader</Name>
+        <object type="TW3Image">
+          <Url>\res\header_logo.gif</Url>
+          <Width>175</Width>
+          <Top>16</Top>
+          <Left>336</Left>
+          <Height>75</Height>
+          <Name>W3Image1</Name>
+        </object>
+      </object>
+      <object type="TW3Panel">
+        <Width>944</Width>
+        <Top>208</Top>
+        <StyleClass>pnlContent</StyleClass>
+        <Left>24</Left>
+        <Height>416</Height>
+        <BorderRadius>0</BorderRadius>
+        <Name>pnlContent</Name>
+      </object>
+      <object type="TW3Panel">
+        <Width>952</Width>
+        <Top>120</Top>
+        <StyleClass>pnlTitle</StyleClass>
+        <Left>16</Left>
+        <Height>50</Height>
+        <Name>pnlTitle</Name>
+        <object type="TW3Label">
+          <Caption>How Adirondacky are you?</Caption>
+          <Width>904</Width>
+          <Top>8</Top>
+          <StyleClass>lblTitle</StyleClass>
+          <Left>16</Left>
+          <Height>32</Height>
+          <BorderRadius>0</BorderRadius>
+          <Name>lblTitle</Name>
+        </object>
+      </object>
+      <object type="TW3Panel">
+        <Width>944</Width>
+        <Top>736</Top>
+        <StyleClass>pnlFooter</StyleClass>
+        <Left>24</Left>
+        <Height>50</Height>
+        <Name>pnlFooter</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption>Copyright (C) 2016 Adirondack Historical Association</Caption>
+        <Width>352</Width>
+        <Top>656</Top>
+        <StyleClass>lblFooter</StyleClass>
+        <Left>256</Left>
+        <Height>32</Height>
+        <Name>lblFooter</Name>
+      </object>
+      <object type="TW3ListBox">
+        <Width>150</Width>
+        <Top>240</Top>
+        <StyleClass>lbxMenu</StyleClass>
+        <Left>264</Left>
+        <Height>250</Height>
+        <Name>lbxMenu</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>

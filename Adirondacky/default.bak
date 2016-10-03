@@ -874,9 +874,6 @@ ul li:active {
   background-color: #616A2E;
   border: none;
   background: url('footer_bg_leaves.gif') no-repeat 100% 100%;
-  border-radius: 5px;
-  border: solid 1px #54617d;
-  border-color: #484e59 #54617d #4c5c7a #54617d;
 }
 
 /* =============================================
@@ -885,9 +882,7 @@ ul li:active {
 
 .pnlTitle {
   background-color: #616A2E;
-  border-radius: 5px;
-  border: solid 1px #54617d;
-  border-color: #484e59 #54617d #4c5c7a #54617d;
+  border: none;
 }
 
 /* =============================================
@@ -915,6 +910,8 @@ ul li:active {
 
 .pnlContent{
   color: #BA6F2E;
+  background-color: #E2E5C3;
+  border: none;
 }
 
 /* =============================================
@@ -923,9 +920,7 @@ ul li:active {
 
 .pnlFooter {
 	background-color: #9DAC10;
-  border-radius: 5px;
-  border: solid 1px #54617d;
-  border-color: #484e59 #54617d #4c5c7a #54617d;
+  border: none;
 }
 
 /* =============================================
