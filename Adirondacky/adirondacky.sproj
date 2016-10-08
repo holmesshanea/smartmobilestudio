@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>Adirondacky</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-10-02T19:55:21.666</Modified>
+    <Modified>2016-10-08T09:33:26.547</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -126,12 +126,12 @@
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>4483</BackgroundCompilations>
-      <EditTime>01:03:01.629</EditTime>
-      <CompileTime>00:03:57.690</CompileTime>
-      <TotalTime>18:02:16.982</TotalTime>
-      <DesigningTime>02:18:36.051</DesigningTime>
-      <RunningTime>05:47:47.723</RunningTime>
+      <BackgroundCompilations>4485</BackgroundCompilations>
+      <EditTime>01:03:06.490</EditTime>
+      <CompileTime>00:03:58.577</CompileTime>
+      <TotalTime>18:02:18.576</TotalTime>
+      <DesigningTime>02:18:36.071</DesigningTime>
+      <RunningTime>05:48:56.918</RunningTime>
     </Statistics>
   </Project>
 </SMART>
