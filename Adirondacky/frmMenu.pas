@@ -49,7 +49,7 @@ end;
  begin
    var lbItem := lbxMenu.Items[lbxMenu.Add] as TLBItem;
    lbItem.Caption := ACaption;
-   lbItem.StyleClass:= 'lbItem';
+   //lbItem.StyleClass:= 'lbItem';
  end;
 
 
@@ -76,10 +76,16 @@ begin
   lbxMenu.Enabled:= True;
   lbxMenu.ItemClass:= TLBItem;
   lbxMenu.ItemHeight := 50;
+
+  lbxMenu.Styles.Item:= 'lbItem';
+  lbxMenu.Styles.Selected:= 'lbItem';
+  lbxMenu.Styles.Highlighted:= 'lbItem';
+
   lbxMenu.Color:= TColor($616A2E);
   lbxMenu.Styles.ItemColor:= TColor($BA6F2E);
   lbxMenu.Styles.SelectedColor := TColor($9DAC10);
   lbxMenu.Styles.HighlightedColor:= TColor($BF7F30);
+
 end;
  
 procedure TfrmMenu.Resize;

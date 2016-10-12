@@ -1,20 +1,20 @@
 <SMART>
   <state>
     <editor>
-      <tab filename="Adirondacky" fullname="Adirondacky.spr" topline="1" col="1" row="1" />
-      <tab filename="frmMenu" fullname="frmMenu.pas" topline="49" col="106" row="59" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="default.css" fullname="default.css" topline="865" col="18" row="914" />
+      <tab filename="Adirondacky" fullname="Adirondacky.spr" topline="1" col="106" row="5" />
+      <tab filename="frmMenu" fullname="frmMenu.pas" topline="43" col="39" row="52" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="default.css" fullname="default.css" topline="913" col="8" row="942" />
       <tab filename="UntMain" fullname="UntMain.pas" topline="1" col="1" row="1" />
       <activetab>frmMenu</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>4485</BackgroundCompilations>
-      <EditTime>01:03:06.490</EditTime>
-      <CompileTime>00:03:58.577</CompileTime>
-      <TotalTime>18:02:18.576</TotalTime>
-      <DesigningTime>02:18:36.071</DesigningTime>
-      <RunningTime>05:48:56.918</RunningTime>
+      <BackgroundCompilations>4550</BackgroundCompilations>
+      <EditTime>01:04:12.952</EditTime>
+      <CompileTime>00:04:05.769</CompileTime>
+      <TotalTime>18:09:14.725</TotalTime>
+      <DesigningTime>02:18:36.108</DesigningTime>
+      <RunningTime>05:50:44.556</RunningTime>
     </Statistics>
   </state>
 </SMART>

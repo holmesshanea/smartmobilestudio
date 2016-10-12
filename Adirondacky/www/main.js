@@ -7286,7 +7286,6 @@ var TfrmMenu = {
       var lbItem = null;
       lbItem = $As(TW3ListBox.GetItem$6(Self.lbxMenu,TW3ListBox.Add$3(Self.lbxMenu)),TLBItem);
       TW3Label.SetCaption$1(lbItem,ACaption);
-      TW3CustomControl.SetStyleClass(lbItem,"lbItem");
    }
    /// procedure TfrmMenu.InitializeForm()
    ///  [line: 56, column: 20, file: frmMenu]
@@ -7374,13 +7373,16 @@ var TfrmMenu = {
       TW3CustomControl.SetEnabled$(Self.lbxMenu,true);
       Self.lbxMenu.FItemClass = TLBItem;
       Self.lbxMenu.FItemHeight = 50;
+      Self.lbxMenu.FStyles.FItem = "lbItem";
+      Self.lbxMenu.FStyles.FSelected = "lbItem";
+      Self.lbxMenu.FStyles.FHighlighted = "lbItem";
       TW3MovableControl.SetColor(Self.lbxMenu,6384174);
       Self.lbxMenu.FStyles.FItemColor = 12218158;
       Self.lbxMenu.FStyles.FSelectedColor = 10333200;
       Self.lbxMenu.FStyles.FHighlightedColor = 12549936;
    }
    /// procedure TfrmMenu.Resize()
-   ///  [line: 85, column: 20, file: frmMenu]
+   ///  [line: 91, column: 20, file: frmMenu]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayout) {

@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>Adirondacky</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-10-08T09:33:26.547</Modified>
+    <Modified>2016-10-12T13:22:12.939</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -96,7 +96,7 @@
       <File type="form">
         <Name>frmMenu</Name>
         <Created>2016-09-27T10:15:25.106Z</Created>
-        <Modified>2016-10-02T19:55:21.659</Modified>
+        <Modified>2016-10-12T13:21:41.799</Modified>
         <Filename>frmMenu.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -107,7 +107,7 @@
       <File type="css">
         <Name>default.css</Name>
         <Created>2016-09-27T10:16:24.044Z</Created>
-        <Modified>2016-10-02T19:53:32.575</Modified>
+        <Modified>2016-10-12T13:20:29.858</Modified>
         <Filename>default.css</Filename>
       </File>
       <File type="resource">
@@ -126,12 +126,12 @@
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>4485</BackgroundCompilations>
-      <EditTime>01:03:06.490</EditTime>
-      <CompileTime>00:03:58.577</CompileTime>
-      <TotalTime>18:02:18.576</TotalTime>
-      <DesigningTime>02:18:36.071</DesigningTime>
-      <RunningTime>05:48:56.918</RunningTime>
+      <BackgroundCompilations>4550</BackgroundCompilations>
+      <EditTime>01:04:12.952</EditTime>
+      <CompileTime>00:04:05.027</CompileTime>
+      <TotalTime>18:09:14.725</TotalTime>
+      <DesigningTime>02:18:36.108</DesigningTime>
+      <RunningTime>05:50:44.556</RunningTime>
     </Statistics>
   </Project>
 </SMART>
