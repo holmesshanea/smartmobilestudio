@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>preZidents</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-10-21T09:54:26.236</Modified>
+    <Modified>2016-10-21T10:13:01.500</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -174,12 +174,12 @@
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>1536</BackgroundCompilations>
+      <BackgroundCompilations>1537</BackgroundCompilations>
       <EditTime>00:24:36.094</EditTime>
-      <CompileTime>00:01:24.713</CompileTime>
-      <TotalTime>05:20:52.736</TotalTime>
-      <DesigningTime>00:01:34.731</DesigningTime>
-      <RunningTime>00:25:17.636</RunningTime>
+      <CompileTime>00:01:26.282</CompileTime>
+      <TotalTime>05:34:14.256</TotalTime>
+      <DesigningTime>00:01:34.740</DesigningTime>
+      <RunningTime>00:26:27.482</RunningTime>
     </Statistics>
   </Project>
 </SMART>
