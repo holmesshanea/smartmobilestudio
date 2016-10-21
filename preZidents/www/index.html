@@ -7443,7 +7443,7 @@ var TfrmNavigation = {
       $.fPresidents = undefined;
    }
    /// procedure TfrmNavigation.HandleHttpDataReady(Sender: TW3HttpRequest)
-   ///  [line: 86, column: 26, file: untNavigation]
+   ///  [line: 84, column: 26, file: untNavigation]
    ,HandleHttpDataReady:function(Self, Sender$10) {
       Self.fJSONStr = TW3HttpRequest.a$22(Sender$10);
       Self.fPresidents = JSON.parse(Self.fJSONStr);
@@ -7452,28 +7452,28 @@ var TfrmNavigation = {
       TfrmNavigation.UpdateBtns(Self);
    }
    /// procedure TfrmNavigation.HandleNextBtn(Sender: TObject)
-   ///  [line: 79, column: 26, file: untNavigation]
+   ///  [line: 77, column: 26, file: untNavigation]
    ,HandleNextBtn:function(Self, Sender$11) {
       ++Self.fIndex;
       TfrmNavigation.UpdateContent(Self);
       TfrmNavigation.UpdateBtns(Self);
    }
    /// procedure TfrmNavigation.HandlePrevBtn(Sender: TObject)
-   ///  [line: 72, column: 26, file: untNavigation]
+   ///  [line: 70, column: 26, file: untNavigation]
    ,HandlePrevBtn:function(Self, Sender$12) {
       --Self.fIndex;
       TfrmNavigation.UpdateContent(Self);
       TfrmNavigation.UpdateBtns(Self);
    }
    /// procedure TfrmNavigation.InitializeForm()
-   ///  [line: 97, column: 26, file: untNavigation]
+   ///  [line: 95, column: 26, file: untNavigation]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
       Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,TLayoutConfig.Height$4$(Layout.Margins$3(Layout,0,10,0,0),32),Self.fTitle), Layout.Bottom$3(Layout,TLayoutConfig.Height$4$(Layout.Margins$3(Layout,0,0,0,10),42),[Layout.Right$4(Layout,Layout.Margins$3(Layout,0,0,10,0),Self.fNext), Layout.Right$4(Layout,Layout.Margins$3(Layout,0,0,10,0),Self.fPrev)].slice()), Layout.Client$1(Layout,Layout.Margins$3(Layout,10,10,10,10),Self.fScrollbox)].slice());
       TW3HttpRequest.Get(Self.FHttp,"res\\presidents.json");
    }
    /// procedure TfrmNavigation.InitializeObject()
-   ///  [line: 109, column: 26, file: untNavigation]
+   ///  [line: 107, column: 26, file: untNavigation]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
@@ -7503,7 +7503,7 @@ TW3Button.SetCaption(Self.fNext,"Next");
       Self.FHttp.OnDataReady = $Event1(Self,TfrmNavigation.HandleHttpDataReady);
    }
    /// procedure TfrmNavigation.Resize()
-   ///  [line: 138, column: 26, file: untNavigation]
+   ///  [line: 136, column: 26, file: untNavigation]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayout) {
@@ -7512,21 +7512,21 @@ TW3Button.SetCaption(Self.fNext,"Next");
       }
    }
    /// procedure TfrmNavigation.ResizeContent()
-   ///  [line: 61, column: 26, file: untNavigation]
+   ///  [line: 59, column: 26, file: untNavigation]
    ,ResizeContent:function(Self) {
       TW3MovableControl.SetBounds(Self.fName,0,0,TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),32);
       TW3MovableControl.SetBounds(Self.fDates,0,TW3MovableControl.GetTop(Self.fName)+TW3MovableControl.GetHeight$(Self.fName),TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),TW3MovableControl.GetTop(Self.fName)+TW3MovableControl.GetHeight$(Self.fName)+32);
       TW3MovableControl.SetBounds(Self.fImage,($Div(TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),2))-75,TW3MovableControl.GetTop(Self.fDates)+TW3MovableControl.GetHeight$(Self.fDates),150,150);
-      TW3MovableControl.SetBounds(Self.fNotes,0,TW3MovableControl.GetTop(Self.fImage)+TW3MovableControl.GetHeight$(Self.fImage)+10,TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),100);
+      TW3MovableControl.SetBounds(Self.fNotes,0,TW3MovableControl.GetTop(Self.fImage)+TW3MovableControl.GetHeight$(Self.fImage)+10,TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),TW3MovableControl.ClientWidth(Self.fScrollbox.FContent));
    }
    /// procedure TfrmNavigation.UpdateBtns()
-   ///  [line: 47, column: 26, file: untNavigation]
+   ///  [line: 45, column: 26, file: untNavigation]
    ,UpdateBtns:function(Self) {
       TW3CustomControl.SetEnabled$(Self.fPrev,Self.fIndex>0);
       TW3CustomControl.SetEnabled$(Self.fNext,Self.fIndex<Self.fPresidents.presidents.length-1);
    }
    /// procedure TfrmNavigation.UpdateContent()
-   ///  [line: 53, column: 26, file: untNavigation]
+   ///  [line: 51, column: 26, file: untNavigation]
    ,UpdateContent:function(Self) {
       TW3Label.SetCaption$1(Self.fName,(String(Self.fPresidents.presidents[Self.fIndex].name)));
       TW3Label.SetCaption$1(Self.fDates,(String(Self.fPresidents.presidents[Self.fIndex].dates)));
@@ -10005,8 +10005,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
-   ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
+   IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
+   ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
 }
 function a$86(Self) {
    return ((!Self[0]())?true:false);
@@ -10670,8 +10670,8 @@ var TBinaryData = {
 };
 TBinaryData.$Intf={
    IBinaryData:[TBinaryData.Allocation,TBinaryData.getByte,TBinaryData.setByte,TBinaryData.OffsetInRange,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.CopyFrom$2,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray,TBinaryData.Write$6,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr,TBinaryData.ReadBytes,TBinaryData.Clone$1,TBinaryData.FromBase64,TBinaryData.ToBase64,TBinaryData.ToString$12,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.LoadFromFile,TBinaryData.setBit,TBinaryData.getBit]
-   ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
    ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
+   ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 122, column: 3, file: System.interop]

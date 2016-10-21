@@ -16,8 +16,6 @@ type
     fTitle: TW3Label;
     fPrev: TW3Button;
     fNext: TW3Button;
-
-
     fScrollbox: TW3ScrollBox;
     fName: TW3Label;
     fDates: TW3Label;
@@ -66,7 +64,7 @@ begin
                    fDates.Top + fDates.Height,
                   150,
                    150);
- fNotes.SetBounds(0, fImage.Top + fImage.Height + 10, fScrollBox.Content.clientWidth,100);
+ fNotes.SetBounds(0, fImage.Top + fImage.Height + 10, fScrollBox.Content.clientWidth,fScrollBox.Content.clientWidth);
 end;
 
 procedure TfrmNavigation.HandlePrevBtn(Sender: TObject);

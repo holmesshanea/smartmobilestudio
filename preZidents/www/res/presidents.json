@@ -1,55 +1,269 @@
 {
     "presidents": [
         {
-            "name": "George Washington",
+	    "rank": 1,
+            "name": "George Washington",		
             "dates": "1789-1797",
             "notes": "George Washington was the first President of the United States, the Commander-in-Chief of the Continental Army during the American Revolutionary War, and one of the Founding Fathers of the United States."
         },
         {
+	    "rank": 2,
             "name": "John Adams",
             "dates": "1797-1801",
             "notes": "John Adams was an American lawyer, author, statesman, and diplomat. He served as the second President of the United States and the first Vice President and, as a Founding Father, he was a leader of American independence from Great Britain."
         },
         {
+	    "rank": 3,
             "name": "Thomas Jefferson",
             "dates": "1801-1809",
             "notes": "Thomas Jefferson was an American Founding Father and the principal author of the Declaration of Independence. He was elected the second Vice President of the United States, serving under John Adams and was elected the third President in 1800."
         },
         {
+	    "rank": 4,
             "name": "James Madison Jr",
             "dates": "1809-1817",
             "notes": "James Madison Jr. was a political theorist, American statesman, and the fourth President of the United States."
         },
         {
+	    "rank": 5,
             "name": "James Monroe",
             "dates": "1817-1825",
             "notes": "James Monroe was the fifth President of the United States, serving between 1817 and 1825. Monroe was the last president who was a Founding Father of the United States and the last president from the Virginian dynasty and the Republican Generation."
         },
         {
+	    "rank": 6,
             "name": "John Quincy Adams",
             "dates": "1825-1829",
             "notes": "John Quincy Adams was an American statesman who served as the sixth President of the United States from 1825 to 1829. He also served as a diplomat, a Senator and member of the House of Representatives."
         },
         {
+	    "rank": 7,
             "name": "Andrew Jackson",
             "dates": "1829-1837",
             "notes": "Andrew Jackson was an American statesman who served as the seventh President of the United States from 1829 to 1837.."
         },
 
         {
+	    "rank": 8,
             "name": "Martin Van Buren",
             "dates": "1837-1841",
             "notes": "Martin Van Buren was an American politician who served as the eighth President of the United States.."
         },
         {
+	    "rank": 9,
             "name": "William Henry Harrison",
             "dates": "1841-1841",
             "notes": "William Henry Harrison, Sr. was the ninth President of the United States, an American military officer and politician, and the last president born as a British subject. He was also the first president to die in office."
         },
         {
+	    "rank": 10,
             "name": "Jon Tyler",
             "dates": "1841-1845",
             "notes": "John Tyler was the tenth President of the United States. He was also, briefly, the tenth Vice President, elected to that office on the 1840 Whig ticket with William Henry Harrison."
+        },
+        {
+	    "rank": 11,
+            "name": "James K. Polk",
+            "dates": "1845-1849",
+            "notes": "James Knox Polk was the 11th President of the United States. Polk was born in Mecklenburg County, North Carolina. He later lived in and represented Tennessee."
+        },
+        {
+	    "rank": 12,
+            "name": "Zachary Taylor",
+            "dates": "1949-1850",
+            "notes": "Zachary Taylor was the 12th President of the United States, serving from March 1849 until his death in July 1850. Before his presidency, Taylor was a career officer in the United States Army, rising to the rank of major general."
+        },
+        {
+	    "rank": 13,
+            "name": "Millard Fillmore",
+            "dates": "1850-1853",
+            "notes": "Millard Fillmore was an American statesman who served as the 13th President of the United States from 1850 to 1853. He was the last Whig president, and the last president not to be affiliated with either the Democratic or Republican parties."
+        },
+        {
+	    "rank": 14,
+            "name": "Franklin Pierce",
+            "dates": "1853-1857",
+            "notes": "Franklin Pierce was the 14th President of the United States. Pierce was a northern Democrat who saw the abolitionist movement as a fundamental threat to the unity of the nation."
+        },
+        {
+	    "rank": 15,
+            "name": "James Buchanan",
+            "dates": "1857-1861",
+            "notes": "James Buchanan, Jr. was the 15th President of the United States, serving immediately prior to the American Civil War."
+        },
+        {
+	    "rank": 16,
+            "name": "Abrahan Lincoln",
+            "dates": "1861-1865",
+            "notes": "Abraham Lincoln was an American politician and lawyer who served as the 16th President of the United States from March 1861 until his assassination in April 1865."
+        },
+        {
+	    "rank": 17,
+            "name": "Andrew Johnson",
+            "dates": "1865-1869",
+            "notes": "Andrew Johnson was the 17th President of the United States, serving from 1865 to 1869. Johnson became president as he was vice president at the time of the assassination of Abraham Lincoln."
+        },
+        {
+	    "rank": 18,
+            "name": "Ulysses S. Grant",
+            "dates": "1869-1877",
+            "notes": "Ulysses S. Grant was the 18th President of the United States. As Commanding General of the United States Army, Grant worked closely with President Abraham Lincoln to lead the Union Army to victory over the Confederacy in the American Civil War."
+        },
+        {
+	    "rank": 19,
+            "name": "Rutherford B. Hayes",
+            "dates": "1877-1881",
+            "notes": "Rutherford Birchard Hayes (October 4, 1822 – January 17, 1893) was the 19th President of the United States (1877–81). As president, he oversaw the end of Reconstruction, began the efforts that led to civil service reform, and attempted to reconcile the divisions left over from the Civil War and Reconstruction."
+        },
+        {
+	    "rank": 20,
+            "name": "James A. Garfield",
+            "dates": "1881-1881",
+            "notes": "James Abram Garfield was the 20th President of the United States, serving from March 4, 1881, until his assassination later that year."
+        },
+        {
+	    "rank": 21,
+            "name": "Chester Alan Arthur",
+            "dates": "1881-1885",
+            "notes": "Chester Alan Arthur was an American attorney and politician who served as the 21st President of the United States; he succeeded James A. Garfield upon the latter's assassination."
+        },
+        {
+	    "rank": 22,
+            "name": "Stephen Grover Cleveland",
+            "dates": "1885-1889",
+            "notes": "Stephen Grover Cleveland was an American politician and lawyer who served as the 22nd and 24th President of the United States."
+        },
+        {
+	    "rank": 23,
+            "name": "Benjamin Harrison",
+            "dates": "1889-1893",
+            "notes": "Benjamin Harrison was an American politician and lawyer who served as the 23rd President of the United States from 1889 to 1893; he was the grandson of the ninth president, William Henry Harrison."
+        },
+        {
+	    "rank": 24,
+            "name": "Stephen Grover Cleveland",
+            "dates": "1893-1897",
+            "notes": "Stephen Grover Cleveland was an American politician and lawyer who served as the 22nd and 24th President of the United States."
+        },
+        {
+	    "rank": 25,
+            "name": "William McKinley",
+            "dates": "1897-1901",
+            "notes": "William McKinley was an American politician and lawyer who served as the 25th President of the United States from March 4, 1897, until his assassination in September 1901, six months into his second term."
+        },
+        {
+	    "rank": 26,
+            "name": "Theodore Roosevelt Jr.",
+            "dates": "1901-1909",
+            "notes": "Theodore Roosevelt Jr. was an American statesman, author, explorer, soldier, naturalist, and reformer who served as the 26th President of the United States from 1901 to 1909."
+        },
+        {
+	    "rank": 27,
+            "name": "William Howard Taft",
+            "dates": "1909-1913",
+            "notes": "William Howard Taft served as the 27th President of the United States and as the 10th Chief Justice of the United States, the only person to have held both offices."
+        },
+        {
+	    "rank": 28,
+            "name": "Thomas Woodrow Wilson",
+            "dates": "1913-1921",
+            "notes": "Thomas Woodrow Wilson, better known as Woodrow Wilson, was an American politician and academic who served as the 28th President of the United States from 1913 to 1921."
+        },
+        {
+	    "rank": 29,
+            "name": "Warren Gamaliel Harding",
+            "dates": "1921-1923",
+            "notes": "Warren Gamaliel Harding was the 29th President of the United States, serving from March 4, 1921 until his death in 1923."
+        },
+        {
+	    "rank": 30,
+            "name": "John Calvin Coolidge Jr.",
+            "dates": "1923-1929",
+            "notes": "John Calvin Coolidge Jr. was the 30th President of the United States. A Republican lawyer from Vermont, Coolidge worked his way up the ladder of Massachusetts state politics, eventually becoming governor of that state"
+        },
+        {
+	    "rank": 31,
+            "name": "Herbert Clark Hoover",
+            "dates": "1929-1933",
+            "notes": "Herbert Clark Hoover was an American politician who served as the 31st President of the United States from 1929 to 1933."
+        },
+        {
+	    "rank": 32,
+            "name": "Franklin Delano Roosevelt",
+            "dates": "1933-1945",
+            "notes": "Franklin Delano Roosevelt, commonly known as FDR, was an American statesman and political leader who served as the 32nd President of the United States, from 1933 to 1945."
+        },
+        {
+	    "rank": 33,
+            "name": "Harry S. Truman",
+            "dates": "1945-1953",
+            "notes": "Harry S. Truman was an American politician who served as the 33rd President of the United States (1945–53). He served as a United States Senator from Missouri (1935–45) and briefly as Vice President (1945) before he succeeded to the presidency on April 12, 1945 upon the death of Franklin D. Roosevelt. He was president during the final months of World War II, and approved the plan to drop atomic bombs on Hiroshima and Nagasaki. Truman was elected in his own right in 1948. He presided over an uncertain domestic scene as America sought its path after the war and tensions with the Soviet Union increased, marking the start of the Cold War."
+        },
+        {
+	    "rank": 34,
+            "name": "Dwight David Eisenhower",
+            "dates": "1953-1961",
+            "notes": "Dwight David Eisenhower was an American politician and general who served as the 34th President of the United States from 1953 until 1961."
+        },
+        {
+	    "rank": 35,
+            "name": "John Fitzgerald Kennedy",
+            "dates": "1961-1963",
+            "notes": "John Fitzgerald Kennedy, commonly referred to by his initials JFK, was an American politician who served as the 35th President of the United States from January 1961 until his assassination in November 1963."
+        },
+        {
+	    "rank": 36,
+            "name": "Lyndon Baines Johnson",
+            "dates": "1963-1969",
+            "notes": "Lyndon Baines Johnson, often referred to as LBJ, was an American politician who served as the 36th President of the United States from 1963 to 1969, assuming the office after serving as the 37th Vice President of the United States under President John F. Kennedy, from 1961 to 1963. Johnson was a Democrat from Texas, who served as a United States Representative from 1937 to 1949 and as a United States Senator from 1949 to 1961. He spent six years as Senate Majority Leader, two as Senate Minority Leader, and two as Senate Majority Whip."
+        },
+        {
+	    "rank": 37,
+            "name": "Richard Milhous Nixon",
+            "dates": "1969-1974",
+            "notes": "Richard Milhous Nixon was the 37th President of the United States who served from 1969 to 1974, when he became the only U.S. president to resign the office."
+        },
+        {
+	    "rank": 38,
+            "name": "Gerald Rudolph Ford Jr.",
+            "dates": "1974-1977",
+            "notes": "Gerald Rudolph Ford Jr. was an American politician who served as the 38th President of the United States from 1974 to 1977."
+        },
+        {
+	    "rank": 39,
+            "name": "James Earl Carter Jr.",
+            "dates": "1977-1981",
+            "notes": "James Earl Carter Jr. is an American politician and author who served as the 39th President of the United States from 1977 to 1981. In 2002, he was awarded the Nobel Peace Prize for his work with the Carter Center."
+        },
+        {
+	    "rank": 40,
+            "name": "Ronald Wilson Reagan",
+            "dates": "1981-1989",
+            "notes": "Ronald Wilson Reagan was an American politician and actor who served as the 40th President of the United States from 1981 to 1989."
+        },
+        {
+	    "rank": 41,
+            "name": "George Herbert Walker Bush",
+            "dates": "1989-1993",
+            "notes": "George Herbert Walker Bush is an American politician who was the 41st President of the United States from 1989 to 1993 and the 43rd Vice President of the United States from 1981 to 1989."
+        },
+        {
+	    "rank": 42,
+            "name": "William Jefferson Clinton",
+            "dates": "1993-2001",
+            "notes": "William Jefferson Clinton is an American politician who served as the 42nd President of the United States from 1993 to 2001. Clinton was Governor of Arkansas from 1979 to 1981 and 1983 to 1992, and Arkansas Attorney General from 1977 to 1979."
+        },
+        {
+	    "rank": 43,
+            "name": "George Walker Bush",
+            "dates": "2001-2009",
+            "notes": "George Walker Bush is an American politician who was the 43rd President of the United States from 2001 to 2009 and 46th Governor of Texas from 1995 to 2000. The eldest son of Barbara and George H. W. Bush, he was born in New Haven, Connecticut."
+        },
+        {
+	    "rank": 44,
+            "name": "Barack Hussein Obama II",
+            "dates": "2009-2017",
+            "notes": "Barack Hussein Obama II is an American politician who is the 44th and current President of the United States. He is the first African American to hold the office and the first president born outside the continental United States."
         }
 
     ]

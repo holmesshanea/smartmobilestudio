@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>preZidents</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-10-21T12:57:46.605</Modified>
+    <Modified>2016-10-21T18:55:43.325</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -96,7 +96,7 @@
       <File type="form">
         <Name>untNavigation</Name>
         <Created>2016-10-20T14:47:31.465Z</Created>
-        <Modified>2016-10-21T12:57:00.644</Modified>
+        <Modified>2016-10-21T15:15:27.236</Modified>
         <Filename>untNavigation.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -165,21 +165,225 @@
         <Filename>www\res\10.jpg</Filename>
       </File>
       <File type="resource">
+        <Name>11.jpg</Name>
+        <Created>2016-10-21T15:23:48.385Z</Created>
+        <Modified>2016-10-21T15:23:48.386</Modified>
+        <Filename>www\res\11.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>12.jpg</Name>
+        <Created>2016-10-21T15:23:54.258Z</Created>
+        <Modified>2016-10-21T15:23:54.258</Modified>
+        <Filename>www\res\12.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>13.jpg</Name>
+        <Created>2016-10-21T15:23:59.156Z</Created>
+        <Modified>2016-10-21T15:23:59.156</Modified>
+        <Filename>www\res\13.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>14.jpg</Name>
+        <Created>2016-10-21T15:24:03.962Z</Created>
+        <Modified>2016-10-21T15:24:03.962</Modified>
+        <Filename>www\res\14.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>15.jpg</Name>
+        <Created>2016-10-21T15:24:09.404Z</Created>
+        <Modified>2016-10-21T15:24:09.404</Modified>
+        <Filename>www\res\15.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>16.jpg</Name>
+        <Created>2016-10-21T15:24:14.632Z</Created>
+        <Modified>2016-10-21T15:24:14.633</Modified>
+        <Filename>www\res\16.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>17.jpg</Name>
+        <Created>2016-10-21T15:24:19.819Z</Created>
+        <Modified>2016-10-21T15:24:19.819</Modified>
+        <Filename>www\res\17.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>18.jpg</Name>
+        <Created>2016-10-21T15:24:39.865Z</Created>
+        <Modified>2016-10-21T15:24:39.865</Modified>
+        <Filename>www\res\18.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>19.jpg</Name>
+        <Created>2016-10-21T15:24:46.953Z</Created>
+        <Modified>2016-10-21T15:24:46.953</Modified>
+        <Filename>www\res\19.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>20.jpg</Name>
+        <Created>2016-10-21T15:24:53.841Z</Created>
+        <Modified>2016-10-21T15:24:53.841</Modified>
+        <Filename>www\res\20.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>21.jpg</Name>
+        <Created>2016-10-21T18:14:27.138Z</Created>
+        <Modified>2016-10-21T18:14:27.138</Modified>
+        <Filename>www\res\21.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>22.jpg</Name>
+        <Created>2016-10-21T18:14:34.812Z</Created>
+        <Modified>2016-10-21T18:14:34.812</Modified>
+        <Filename>www\res\22.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>23.jpg</Name>
+        <Created>2016-10-21T18:14:42.229Z</Created>
+        <Modified>2016-10-21T18:14:42.229</Modified>
+        <Filename>www\res\23.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>24.jpg</Name>
+        <Created>2016-10-21T18:14:49.125Z</Created>
+        <Modified>2016-10-21T18:14:49.125</Modified>
+        <Filename>www\res\24.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>25.jpg</Name>
+        <Created>2016-10-21T18:14:55.822Z</Created>
+        <Modified>2016-10-21T18:14:55.822</Modified>
+        <Filename>www\res\25.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>26.jpg</Name>
+        <Created>2016-10-21T18:15:27.912Z</Created>
+        <Modified>2016-10-21T18:15:27.912</Modified>
+        <Filename>www\res\26.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>27.jpg</Name>
+        <Created>2016-10-21T18:15:27.914Z</Created>
+        <Modified>2016-10-21T18:15:27.914</Modified>
+        <Filename>www\res\27.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>28.jpg</Name>
+        <Created>2016-10-21T18:15:27.916Z</Created>
+        <Modified>2016-10-21T18:15:27.916</Modified>
+        <Filename>www\res\28.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>29.jpg</Name>
+        <Created>2016-10-21T18:15:27.919Z</Created>
+        <Modified>2016-10-21T18:15:27.919</Modified>
+        <Filename>www\res\29.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>30.jpg</Name>
+        <Created>2016-10-21T18:15:27.921Z</Created>
+        <Modified>2016-10-21T18:15:27.923</Modified>
+        <Filename>www\res\30.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>31.jpg</Name>
+        <Created>2016-10-21T18:15:27.924Z</Created>
+        <Modified>2016-10-21T18:15:27.924</Modified>
+        <Filename>www\res\31.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>32.jpg</Name>
+        <Created>2016-10-21T18:15:27.926Z</Created>
+        <Modified>2016-10-21T18:15:27.926</Modified>
+        <Filename>www\res\32.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>33.jpg</Name>
+        <Created>2016-10-21T18:15:27.927Z</Created>
+        <Modified>2016-10-21T18:15:27.929</Modified>
+        <Filename>www\res\33.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>34.jpg</Name>
+        <Created>2016-10-21T18:15:27.931Z</Created>
+        <Modified>2016-10-21T18:15:27.931</Modified>
+        <Filename>www\res\34.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>35.jpg</Name>
+        <Created>2016-10-21T18:15:27.933Z</Created>
+        <Modified>2016-10-21T18:15:27.933</Modified>
+        <Filename>www\res\35.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>36.jpg</Name>
+        <Created>2016-10-21T18:15:27.934Z</Created>
+        <Modified>2016-10-21T18:15:27.934</Modified>
+        <Filename>www\res\36.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>37.jpg</Name>
+        <Created>2016-10-21T18:15:27.936Z</Created>
+        <Modified>2016-10-21T18:15:27.936</Modified>
+        <Filename>www\res\37.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>38.jpg</Name>
+        <Created>2016-10-21T18:15:27.937Z</Created>
+        <Modified>2016-10-21T18:15:27.937</Modified>
+        <Filename>www\res\38.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>39.jpg</Name>
+        <Created>2016-10-21T18:15:27.939Z</Created>
+        <Modified>2016-10-21T18:15:27.939</Modified>
+        <Filename>www\res\39.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>40.jpg</Name>
+        <Created>2016-10-21T18:15:27.940Z</Created>
+        <Modified>2016-10-21T18:15:27.940</Modified>
+        <Filename>www\res\40.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>41.jpg</Name>
+        <Created>2016-10-21T18:15:27.942Z</Created>
+        <Modified>2016-10-21T18:15:27.942</Modified>
+        <Filename>www\res\41.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>42.jpg</Name>
+        <Created>2016-10-21T18:15:27.943Z</Created>
+        <Modified>2016-10-21T18:15:27.943</Modified>
+        <Filename>www\res\42.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>43.jpg</Name>
+        <Created>2016-10-21T18:15:27.945Z</Created>
+        <Modified>2016-10-21T18:15:27.945</Modified>
+        <Filename>www\res\43.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>44.jpg</Name>
+        <Created>2016-10-21T18:15:27.947Z</Created>
+        <Modified>2016-10-21T18:15:27.947</Modified>
+        <Filename>www\res\44.jpg</Filename>
+      </File>
+      <File type="resource">
         <Name>presidents.json</Name>
-        <Created>2016-10-21T09:51:56.516Z</Created>
-        <Modified>2016-10-21T09:51:56.516</Modified>
+        <Created>2016-10-21T18:55:41.000Z</Created>
+        <Modified>2016-10-21T18:55:41.000</Modified>
         <Filename>www\res\presidents.json</Filename>
       </File>
     </Files>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>1549</BackgroundCompilations>
-      <EditTime>00:24:43.957</EditTime>
-      <CompileTime>00:01:30.830</CompileTime>
-      <TotalTime>05:50:33.797</TotalTime>
-      <DesigningTime>00:01:34.758</DesigningTime>
-      <RunningTime>00:27:18.899</RunningTime>
+      <BackgroundCompilations>1606</BackgroundCompilations>
+      <EditTime>00:24:49.748</EditTime>
+      <CompileTime>00:01:45.429</CompileTime>
+      <TotalTime>09:42:27.018</TotalTime>
+      <DesigningTime>00:01:34.767</DesigningTime>
+      <RunningTime>00:29:19.586</RunningTime>
     </Statistics>
   </Project>
 </SMART>
