@@ -7516,8 +7516,8 @@ TW3Button.SetCaption(Self.fNext,"Next");
    ,ResizeContent:function(Self) {
       TW3MovableControl.SetBounds(Self.fName,0,0,TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),32);
       TW3MovableControl.SetBounds(Self.fDates,0,TW3MovableControl.GetTop(Self.fName)+TW3MovableControl.GetHeight$(Self.fName),TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),TW3MovableControl.GetTop(Self.fName)+TW3MovableControl.GetHeight$(Self.fName)+32);
-      TW3MovableControl.SetBounds(Self.fImage,($Div(TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),2))-75,TW3MovableControl.GetTop(Self.fDates)+TW3MovableControl.GetHeight$(Self.fDates),($Div(TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),2))+75,TW3MovableControl.GetTop(Self.fDates)+TW3MovableControl.GetHeight$(Self.fDates)+150);
-      TW3MovableControl.SetBounds(Self.fNotes,0,TW3MovableControl.GetTop(Self.fImage)+TW3MovableControl.GetHeight$(Self.fImage)+10,TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),TW3MovableControl.ClientHeight(Self.fScrollbox.FContent));
+      TW3MovableControl.SetBounds(Self.fImage,($Div(TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),2))-75,TW3MovableControl.GetTop(Self.fDates)+TW3MovableControl.GetHeight$(Self.fDates),150,150);
+      TW3MovableControl.SetBounds(Self.fNotes,0,TW3MovableControl.GetTop(Self.fImage)+TW3MovableControl.GetHeight$(Self.fImage)+10,TW3MovableControl.ClientWidth(Self.fScrollbox.FContent),100);
    }
    /// procedure TfrmNavigation.UpdateBtns()
    ///  [line: 47, column: 26, file: untNavigation]

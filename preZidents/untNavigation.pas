@@ -64,9 +64,9 @@ begin
  fDates.SetBounds(0,fName.Top + fName.Height,fScrollBox.Content.clientWidth,fName.Top + fName.Height + 32);
  fImage.SetBounds((fScrollBox.Content.clientWidth div 2)-75,
                    fDates.Top + fDates.Height,
-                  (fScrollBox.Content.clientWidth div 2)+75,
-                   fDates.Top + fDates.Height + 150);
- fNotes.SetBounds(0, fImage.Top + fImage.Height + 10, fScrollBox.Content.clientWidth,fScrollBox.Content.clientheight);
+                  150,
+                   150);
+ fNotes.SetBounds(0, fImage.Top + fImage.Height + 10, fScrollBox.Content.clientWidth,100);
 end;
 
 procedure TfrmNavigation.HandlePrevBtn(Sender: TObject);
