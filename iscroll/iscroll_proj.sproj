@@ -1,0 +1,274 @@
+<SMART>
+  <Project version="2" subversion="1">
+    <Name>iscroll_proj</Name>
+    <Created>T00:00:00.000</Created>
+    <Modified>2015-11-02T04:03:58.375</Modified>
+    <Version>
+      <Major>0</Major>
+      <Minor>0</Minor>
+      <Revision>0</Revision>
+    </Version>
+    <Apple>
+      <FormatDetection>1</FormatDetection>
+      <StatusBarStyle>default</StatusBarStyle>
+      <WebAppCapable>1</WebAppCapable>
+    </Apple>
+    <Options>
+      <Compiler>
+        <Assertions>1</Assertions>
+        <Optimize>1</Optimize>
+        <HintsLevel>1</HintsLevel>
+      </Compiler>
+      <Codegen>
+        <Obfuscation>1</Obfuscation>
+        <RangeChecking>0</RangeChecking>
+        <InstanceChecking>0</InstanceChecking>
+        <ConditionChecking>0</ConditionChecking>
+        <LoopChecking>0</LoopChecking>
+        <InlineMagics>1</InlineMagics>
+        <EmitSourceLocation>0</EmitSourceLocation>
+        <EmitRTTI>0</EmitRTTI>
+        <Devirtualize>1</Devirtualize>
+        <MainBody>1</MainBody>
+        <CodePacking>1</CodePacking>
+        <SmartLinking>1</SmartLinking>
+        <Verbosity>1</Verbosity>
+      </Codegen>
+      <ConditionalDefines>
+        <HandleExceptions>1</HandleExceptions>
+        <AutoRefresh>0</AutoRefresh>
+      </ConditionalDefines>
+      <Linker>
+        <SourceMap>0</SourceMap>
+        <CompressCSS>0</CompressCSS>
+        <GenerateMobileManifest>1</GenerateMobileManifest>
+        <GenerateChromeManifest>0</GenerateChromeManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
+        <ExternalCSS>1</ExternalCSS>
+        <Theme>iOS.css</Theme>
+        <CustomTheme>0</CustomTheme>
+        <EmbedJavaScript>1</EmbedJavaScript>
+      </Linker>
+      <Output>
+        <JavaScriptFileName>main.js</JavaScriptFileName>
+        <HtmlFileName>index.html</HtmlFileName>
+        <OutputFilePath>www\</OutputFilePath>
+      </Output>
+      <Import />
+      <Execute>
+        <ServeManifest>0</ServeManifest>
+        <Server>0</Server>
+        <PauseAfterExecution>0</PauseAfterExecution>
+        <ExecuteType>2</ExecuteType>
+        <ExecuteableName>chrome.exe</ExecuteableName>
+        <ExecuteableParams>%output%</ExecuteableParams>
+      </Execute>
+    </Options>
+    <Files>
+      <File type="main">
+        <Name>iscroll_proj</Name>
+        <Created>2015-11-02T04:01:11.421Z</Created>
+        <Modified>2015-11-02T04:01:34.937</Modified>
+        <Source>
+          <![CDATA[uses SmartCL.System, Unit1;
+
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+try
+{$ENDIF}
+  var Application := TApplication.Create;
+  Application.RunApp;
+{$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
+except
+  on e: Exception do
+    ShowMessage(e.Message);
+end;
+{$ENDIF}]]>
+        </Source>
+      </File>
+      <File type="unit">
+        <Name>Unit1</Name>
+        <Created>2015-11-02T04:01:11.421Z</Created>
+        <Modified>2015-11-02T04:01:11.421</Modified>
+        <Source>
+          <![CDATA[unit Unit1;
+
+interface
+
+uses
+  Pseudo.CreateForms, // auto-generated unit that creates forms during startup
+  System.Types, SmartCL.System, SmartCL.Components, SmartCL.Forms, 
+  SmartCL.Application, Form1;
+
+type
+  TApplication  = class(TW3CustomApplication)
+  end;
+
+implementation
+
+end.]]>
+        </Source>
+      </File>
+      <File type="form">
+        <Name>Form1</Name>
+        <Created>2015-11-02T04:01:11.421Z</Created>
+        <Modified>2015-11-02T04:02:03.781</Modified>
+        <Source>
+          <![CDATA[unit Form1;
+
+interface
+
+uses
+  SmartCL.System, System.Types, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Inet,w3c.dom,
+  //myList,
+  qtx.runtime, System.Colors,
+  qtx.visual.scroll,
+  SmartCL.Layout,
+  SmartCL.Application, SmartCL.Controls.ListMenu, SmartCL.Controls.Header,
+  SmartCL.Controls.ToolButton, SmartCL.Controls.ToolBar,
+  SmartCL.Controls.ScrollBox, SmartCL.Controls.Button;
+
+type
+  TMyBookList = Class(TQTXScrollWindow)
+  protected
+    procedure InitializeObject;Override;
+  End;
+
+type
+  TMyItem = class(TW3CustomControl)
+  End;
+
+type
+  TForm1 = class(TW3Form)
+  private
+    {$I 'Form1:intf'}
+    FLayout: TLayout;
+    FList:    TMyBookList;
+    fListMenu : TW3ListMenu;
+    fHeader : TW3HeaderControl;
+    fScrollBox: TW3Scrollbox;
+    Procedure PopulateMyScrollList;
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  end;
+
+implementation
+
+uses SmartCL.MouseTouch;
+
+
+//############################################################################
+// TMyBookList
+//############################################################################
+
+Procedure TMyBookList.InitializeObject;
+Begin
+  inherited;
+  TQTXRuntime.ExecuteDocumentReady(procedure ()
+  Begin
+    Resize;
+  end);
+end;
+
+{ TForm1 }
+
+procedure TForm1.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+    Handle.readyExecute( procedure ()
+    begin
+      TQTXRuntime.DelayedDispatch( procedure ()
+        Begin
+           PopulateMyScrollList;
+        end,
+        250);
+    end);
+end;
+
+procedure TForm1.InitializeObject;
+begin
+  inherited;
+  {$I 'Form1:impl'}
+   FList:=TMyBookList.Create(self);
+
+   fHeader:= TW3HeaderControl.Create(self);
+   fHeader.Height:= 50;
+   fHeader.Title.Caption := 'Mountains';
+   //fHeader.Title.AlignText:= taCenter;
+   fHeader.BackButton.Visible:= False;
+   fHeader.StyleClass:= 'TW3Header';
+
+   FLayout :=
+    Layout{1}.Client(Layout{2}.Margins(5).Spacing(5), [
+    Layout{3}.Top(fHeader),
+    Layout{4}.Client(FList)]);
+  //Layout{5}.Bottom(fBackButton)]);
+end;
+
+procedure TForm1.Resize;
+begin
+  inherited;
+  FLayout.Resize(Self);
+end;
+
+Procedure TForm1.PopulateMyScrollList;
+var
+  x,dy: Integer;
+  mItem : TMyItem;
+
+  procedure AddMenuItem(caption: string);
+  var
+    li: TW3ListItem;
+  begin
+    li := fListMenu.Items.Add;
+    li.Width := mItem.Width;
+    li.Text := 'MyScrollList'+caption;
+    li.OnClick := procedure(Sender: TObject)
+    begin
+      ShowMessage('You clicked: ' + (Sender as TW3ListItem).Text);
+    end;
+    inc(dy, mItem.Height);
+  end;
+
+Begin
+  dy := 1;
+  for x:=1 to 100 do
+  Begin
+    mItem := TMyItem.Create(FList.Content);
+    mItem.setBounds(0, dy, FList.Content.ClientWidth - 4, 45);
+    fListMenu := TW3ListMenu.Create(mItem);
+    AddMenuItem(IntToStr(x));
+  end;
+  FList.Content.Height:=dy; //Size content to all lists
+  FList.ScrollAPI.Refresh; //Update IScroll
+end;
+
+initialization
+  Forms.RegisterForm({$I %FILE%}, TForm1);
+end.]]>
+        </Source>
+        <Design>
+          <![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Form version="2" subversion="1">
+  <Created>2015-11-02T04:01:11.421</Created>
+  <Modified>2015-11-02T04:01:11.421</Modified>
+  <object type="TW3Form">
+    <Caption>W3Form</Caption>
+    <Name>Form1</Name>
+  </object>
+</Form>]]>
+        </Design>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>1</IsMainForm>
+          <Order>1</Order>
+        </AutoCreate>
+      </File>
+    </Files>
+    <Target>Browser</Target>
+  </Project>
+</SMART>

@@ -1,0 +1,36 @@
+<SMART>
+  <Package version="2" subversion="2">
+    <Name>tabBar</Name>
+    <Vendor></Vendor>
+    <Created>2015-05-16T22:47:07.275</Created>
+    <Modified>2015-05-16T22:47:31.564</Modified>
+    <Version>
+      <Major>0</Major>
+      <Minor>0</Minor>
+      <Revision>1</Revision>
+    </Version>
+    <SmartVersion />
+    <Code>
+      <Encryption>None</Encryption>
+      <Password></Password>
+      <Files>
+        <File>
+          <Name>tabBar</Name>
+          <MediaType>text/pascal</MediaType>
+          <External>tabBar.pas</External>
+        </File>
+      </Files>
+    </Code>
+    <Components>
+      <Component>
+        <Name>TtabBar</Name>
+        <Category>3rdParty</Category>
+        <Glyph>
+          <Name></Name>
+		  <MediaType>image/png</MediaType>
+          <External>Glyphs\TtabBar.png</External>
+        </Glyph>
+      </Component>
+    </Components>
+  </Package>
+</SMART>

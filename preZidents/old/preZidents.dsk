@@ -1,0 +1,19 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="untmenu" fullname="untmenu.pas" topline="1" col="1" row="1" />
+      <tab filename="preZidents" fullname="preZidents.spr" topline="1" col="29" row="11" />
+      <tab filename="untmenu" fullname="untmenu.pas" topline="1" col="1" row="1" splitview="0" designview="0" splitter="0.444444447755814" />
+      <activetab>untmenu</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>1470</BackgroundCompilations>
+      <EditTime>00:21:56.150</EditTime>
+      <CompileTime>00:01:07.386</CompileTime>
+      <TotalTime>12:49:18.410</TotalTime>
+      <DesigningTime>00:02:44.056</DesigningTime>
+      <RunningTime>01:04:38.361</RunningTime>
+    </Statistics>
+  </state>
+</SMART>

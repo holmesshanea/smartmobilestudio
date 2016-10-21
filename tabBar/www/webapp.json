@@ -1,0 +1,6 @@
+{
+	"name" : "TesttabBar",
+	"short_name" : "TesttabBar",
+	"start_url" : "index.html",
+	"icons" : [ ]
+}
