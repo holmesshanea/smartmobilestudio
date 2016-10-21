@@ -1,0 +1,19 @@
+{
+    "presidents": [
+        {
+            "name": "George Washington",
+            "dates": "1789-1797",
+            "notes": "George Washington was the first President of the United States, the Commander-in-Chief of the Continental Army during the American Revolutionary War, and one of the Founding Fathers of the United States."
+        },
+        {
+            "name": "John Adams",
+            "dates": "1797-1805",
+            "notes": "John Adams was an American lawyer, author, statesman, and diplomat. He served as the second President of the United States and the first Vice President and, as a Founding Father, he was a leader of American independence from Great Britain."
+        },
+        {
+            "name": "Thomas Jefferson",
+            "dates": "1805-1812",
+            "notes": "Thomas Jefferson was an American Founding Father and the principal author of the Declaration of Independence. He was elected the second Vice President of the United States, serving under John Adams and was elected the third President in 1800."
+        }
+    ]
+}

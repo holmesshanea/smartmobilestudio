@@ -13,17 +13,15 @@ type
     {$I 'untNavigation:intf'}
     FHttp: TW3HttpRequest;
     fLayout: TLayout;
+    fLayout2: TLayout;
     fTitle: TW3Label;
     fPrev: TW3Button;
     fNext: TW3Button;
-
-
-    fScrollbox: TW3ScrollBox;
+    fContent: TW3Panel;
+    fImage: TW3Image;
     fName: TW3Label;
     fDates: TW3Label;
-    fImage: TW3Image;
     fNotes: TW3Label;
-
     fPresidents: Variant;
     fJSONStr: String;
     fIndex: integer;
@@ -35,7 +33,6 @@ type
     procedure InitializeObject; override;
     procedure Resize; override;
   public
-    procedure ResizeContent;
     procedure UpdateContent;
     procedure UpdateBtns;
   end;
@@ -56,17 +53,6 @@ begin
  fDates.Caption:= fPresidents.presidents[fIndex].dates;
  fNotes.InnerText:= fPresidents.presidents[fIndex].notes;
  fImage.Url:= 'res\' + intToStr(fIndex + 1) + '.jpg';
-end;
-
-procedure TfrmNavigation.ResizeContent;
-begin
- fName.SetBounds(0,0,fScrollBox.Content.clientWidth,32);
- fDates.SetBounds(0,fName.Top + fName.Height,fScrollBox.Content.clientWidth,fName.Top + fName.Height + 32);
- fImage.SetBounds((fScrollBox.Content.clientWidth div 2)-75,
-                   fDates.Top + fDates.Height,
-                  (fScrollBox.Content.clientWidth div 2)+75,
-                   fDates.Top + fDates.Height + 150);
- fNotes.SetBounds(0, fImage.Top + fImage.Height + 10, fScrollBox.Content.clientWidth,fScrollBox.Content.clientheight);
 end;
 
 procedure TfrmNavigation.HandlePrevBtn(Sender: TObject);
@@ -101,8 +87,18 @@ begin
    FLayout:= Layout.Client([
                            Layout.Top(Layout.Margins(0,10,0,0).Height(32), fTitle),
                            Layout.Bottom(layout.margins(0,0,0,10).height(42),[Layout.Right(layout.margins(0,0,10,0), fNext), Layout.Right(layout.margins(0,0,10,0),fPrev)]),
-                           Layout.Client(Layout.Margins(10,10,10,10),fScrollBox)
+                           Layout.Client(Layout.Margins(10,10,10,10),fcontent)
                           ]);
+
+   fLayout2:= Layout.Client(
+                           [
+                             Layout.Top(Layout.height(50).Margins(10,10,10,0), fName),
+                             Layout.Top(Layout.height(50).Margins(10,0,10,0), fDates),
+                             Layout.Top(Layout.height(150), Layout.center(fImage)),
+                             Layout.Client(Layout.Margins(10,10,10,10), fNotes)
+                           ]
+                           );
+
   FHttp.Get('res\presidents.json');
 end;
 
@@ -120,17 +116,18 @@ begin
   fNext:= TW3Button.Create(self);;
   fNext.Caption:= 'Next';
   fNext.Onclick:= HandleNextBtn;
+  fContent:= TW3Panel.create(self);
 
-  fScrollbox:= TW3ScrollBox.Create(self);
-  fImage:= TW3Image.Create(fScrollbox.content);
-  fName:= TW3Label.Create(fScrollbox.content);
+  fImage:= TW3Image.Create(self);
+  fImage.Width:= 150; fImage.Height:= 150;
+  fName:= TW3Label.Create(Self);
   fName.AlignText:= taCenter;
   fName.Caption:= 'Unknown';
-  fDates:= TW3Label.Create(fScrollbox.content);
+  fDates:= TW3Label.Create(Self);
   fDates.AlignText:= taCenter;
   fDates.Caption:= 'Dates';
-  fNotes:= TW3Label.create(fScrollbox.content);
 
+  fNotes:= TW3Label.create(self);
   FHttp := TW3HttpRequest.Create;
   FHttp.OnDataReady:= HandleHttpDataReady;
 end;
@@ -141,7 +138,7 @@ begin
   if assigned(FLayout) then
   begin
     FLayout.Resize(self);
-    ResizeContent;
+    FLayout2.Resize(fContent);
   end;
 end;
  

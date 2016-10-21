@@ -7,13 +7,50 @@
         },
         {
             "name": "John Adams",
-            "dates": "1797-1805",
+            "dates": "1797-1801",
             "notes": "John Adams was an American lawyer, author, statesman, and diplomat. He served as the second President of the United States and the first Vice President and, as a Founding Father, he was a leader of American independence from Great Britain."
         },
         {
             "name": "Thomas Jefferson",
-            "dates": "1805-1812",
+            "dates": "1801-1809",
             "notes": "Thomas Jefferson was an American Founding Father and the principal author of the Declaration of Independence. He was elected the second Vice President of the United States, serving under John Adams and was elected the third President in 1800."
+        },
+        {
+            "name": "James Madison Jr",
+            "dates": "1809-1817",
+            "notes": "James Madison Jr. was a political theorist, American statesman, and the fourth President of the United States."
+        },
+        {
+            "name": "James Monroe",
+            "dates": "1817-1825",
+            "notes": "James Monroe was the fifth President of the United States, serving between 1817 and 1825. Monroe was the last president who was a Founding Father of the United States and the last president from the Virginian dynasty and the Republican Generation."
+        },
+        {
+            "name": "John Quincy Adams",
+            "dates": "1825-1829",
+            "notes": "John Quincy Adams was an American statesman who served as the sixth President of the United States from 1825 to 1829. He also served as a diplomat, a Senator and member of the House of Representatives."
+        },
+        {
+            "name": "Andrew Jackson",
+            "dates": "1829-1837",
+            "notes": "Andrew Jackson was an American statesman who served as the seventh President of the United States from 1829 to 1837.."
+        },
+
+        {
+            "name": "Martin Van Buren",
+            "dates": "1837-1841",
+            "notes": "Martin Van Buren was an American politician who served as the eighth President of the United States.."
+        },
+        {
+            "name": "William Henry Harrison",
+            "dates": "1841-1841",
+            "notes": "William Henry Harrison, Sr. was the ninth President of the United States, an American military officer and politician, and the last president born as a British subject. He was also the first president to die in office."
+        },
+        {
+            "name": "Jon Tyler",
+            "dates": "1841-1845",
+            "notes": "John Tyler was the tenth President of the United States. He was also, briefly, the tenth Vice President, elected to that office on the 1840 Whig ticket with William Henry Harrison."
         }
+
     ]
 }
