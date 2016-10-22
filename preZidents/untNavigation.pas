@@ -50,7 +50,7 @@ end;
 
 procedure TfrmNavigation.UpdateContent;
 begin
- fName.Caption:= fPresidents.presidents[fIndex].name;
+ fName.Caption:= fPresidents.presidents[fIndex].rank + ' - ' + fPresidents.presidents[fIndex].name;
  fDates.Caption:= fPresidents.presidents[fIndex].dates;
  fNotes.InnerText:= fPresidents.presidents[fIndex].notes;
  fImage.Url:= 'res\' + intToStr(fIndex + 1) + '.jpg';

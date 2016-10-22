@@ -7528,7 +7528,7 @@ TW3Button.SetCaption(Self.fNext,"Next");
    /// procedure TfrmNavigation.UpdateContent()
    ///  [line: 51, column: 26, file: untNavigation]
    ,UpdateContent:function(Self) {
-      TW3Label.SetCaption$1(Self.fName,(String(Self.fPresidents.presidents[Self.fIndex].name)));
+      TW3Label.SetCaption$1(Self.fName,(Self.fPresidents.presidents[Self.fIndex].rank+" - "+Self.fPresidents.presidents[Self.fIndex].name));
       TW3Label.SetCaption$1(Self.fDates,(String(Self.fPresidents.presidents[Self.fIndex].dates)));
       TW3TagObj.SetInnerText(Self.fNotes,String(Self.fPresidents.presidents[Self.fIndex].notes));
       TW3Image.setSrc(Self.fImage,"res\\"+(Self.fIndex+1).toString()+".jpg");
@@ -10005,8 +10005,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
-   ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
+   IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
+   ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
 }
 function a$86(Self) {
    return ((!Self[0]())?true:false);
@@ -10670,8 +10670,8 @@ var TBinaryData = {
 };
 TBinaryData.$Intf={
    IBinaryData:[TBinaryData.Allocation,TBinaryData.getByte,TBinaryData.setByte,TBinaryData.OffsetInRange,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.CopyFrom$2,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray,TBinaryData.Write$6,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr,TBinaryData.ReadBytes,TBinaryData.Clone$1,TBinaryData.FromBase64,TBinaryData.ToBase64,TBinaryData.ToString$12,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.LoadFromFile,TBinaryData.setBit,TBinaryData.getBit]
-   ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
    ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
+   ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 122, column: 3, file: System.interop]
