@@ -1,10 +1,13 @@
 <SMART>
   <Form version="2" subversion="2">
     <Created>2016-10-20T14:47:31.465</Created>
-    <Modified>2016-10-20T16:24:00.672</Modified>
+    <Modified>2016-10-22T15:37:16.065</Modified>
     <object type="TW3Form">
       <Caption>W3Form</Caption>
+      <StyleClass>none</StyleClass>
+      <Color>16777215</Color>
       <Name>frmNavigation</Name>
+      <OnActivate>frmNavigationActivate</OnActivate>
     </object>
   </Form>
 </SMART>
