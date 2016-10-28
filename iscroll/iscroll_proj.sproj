@@ -1,18 +1,29 @@
 <SMART>
-  <Project version="2" subversion="1">
+  <Project version="2" subversion="2">
     <Name>iscroll_proj</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2015-11-02T04:03:58.375</Modified>
+    <Modified>2016-10-27T21:36:55.529</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
       <Revision>0</Revision>
     </Version>
-    <Apple>
-      <FormatDetection>1</FormatDetection>
-      <StatusBarStyle>default</StatusBarStyle>
-      <WebAppCapable>1</WebAppCapable>
-    </Apple>
+    <VendorSpecific>
+      <Apple>
+        <FormatDetection>1</FormatDetection>
+        <StatusBarStyle>default</StatusBarStyle>
+        <WebAppCapable>1</WebAppCapable>
+      </Apple>
+      <ChromeApp>
+        <Kiosk>0</Kiosk>
+        <KioskOnly>1</KioskOnly>
+        <OfflineEnabled>1</OfflineEnabled>
+      </ChromeApp>
+      <Cordova>
+        <WidgetID></WidgetID>
+        <AllowIntent>http://*/*&#13;&#10;https://*/*&#13;&#10;tel:*&#13;&#10;sms:*&#13;&#10;mailto:*&#13;&#10;geo:*&#13;&#10;</AllowIntent>
+      </Cordova>
+    </VendorSpecific>
     <Options>
       <Compiler>
         <Assertions>1</Assertions>
@@ -26,6 +37,7 @@
         <ConditionChecking>0</ConditionChecking>
         <LoopChecking>0</LoopChecking>
         <InlineMagics>1</InlineMagics>
+        <IgnorePublishedInImplementation>0</IgnorePublishedInImplementation>
         <EmitSourceLocation>0</EmitSourceLocation>
         <EmitRTTI>0</EmitRTTI>
         <Devirtualize>1</Devirtualize>
@@ -37,14 +49,17 @@
       <ConditionalDefines>
         <HandleExceptions>1</HandleExceptions>
         <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
       </ConditionalDefines>
       <Linker>
         <SourceMap>0</SourceMap>
         <CompressCSS>0</CompressCSS>
-        <GenerateMobileManifest>1</GenerateMobileManifest>
-        <GenerateChromeManifest>0</GenerateChromeManifest>
+        <GenerateAppCacheManifest>1</GenerateAppCacheManifest>
+        <GenerateChromeAppManifest>0</GenerateChromeAppManifest>
         <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWebAppManifest>1</GenerateWebAppManifest>
         <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
+        <GenerateCordovaConfigXML>0</GenerateCordovaConfigXML>
         <ExternalCSS>1</ExternalCSS>
         <Theme>iOS.css</Theme>
         <CustomTheme>0</CustomTheme>
@@ -59,6 +74,8 @@
       <Execute>
         <ServeManifest>0</ServeManifest>
         <Server>0</Server>
+        <CustomFile></CustomFile>
+        <LoadCustomFile>0</LoadCustomFile>
         <PauseAfterExecution>0</PauseAfterExecution>
         <ExecuteType>2</ExecuteType>
         <ExecuteableName>chrome.exe</ExecuteableName>
@@ -253,7 +270,7 @@ end.]]>
         </Source>
         <Design>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
-<Form version="2" subversion="1">
+<Form version="2" subversion="2">
   <Created>2015-11-02T04:01:11.421</Created>
   <Modified>2015-11-02T04:01:11.421</Modified>
   <object type="TW3Form">
@@ -270,5 +287,13 @@ end.]]>
       </File>
     </Files>
     <Target>Browser</Target>
+    <Statistics>
+      <BackgroundCompilations>1</BackgroundCompilations>
+      <EditTime>00:00:00.000</EditTime>
+      <CompileTime>00:00:00.000</CompileTime>
+      <TotalTime>00:00:02.222</TotalTime>
+      <DesigningTime>00:00:00.000</DesigningTime>
+      <RunningTime>00:00:00.000</RunningTime>
+    </Statistics>
   </Project>
 </SMART>

@@ -1,0 +1,6 @@
+{
+	"name" : "SplashScreen",
+	"short_name" : "SplashScreen",
+	"start_url" : "index.html",
+	"icons" : [ ]
+}
