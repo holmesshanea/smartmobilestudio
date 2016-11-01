@@ -7525,7 +7525,7 @@ TW3Button.SetCaption(Self.fNext,"Next");
       TW3Label.SetCaption$1(Self.fDates,"Dates");
       Self.fImage = TW3Component.Create$4$($New(TW3Image),Self.fScrollBox.FContent);
       Self.fNotes = TW3Component.Create$4$($New(TW3DIVHtmlElement),Self.fScrollBox.FContent);
-      Self.fNotes.FHandle.style.setProperty("overflow","auto");
+      Self.fNotes.FHandle.style.setProperty("overflow","auto:hidden");
       Self.fNotes.FHandle.style.setProperty("background-color","Red");
       Self.FHttp = TW3HttpRequest.Create$79($New(TW3HttpRequest));
       Self.FHttp.OnDataReady = $Event1(Self,TfrmNavigation.HandleHttpDataReady);

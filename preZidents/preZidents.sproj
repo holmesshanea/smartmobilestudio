@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>preZidents</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-11-01T16:56:08.806</Modified>
+    <Modified>2016-11-01T17:12:11.798</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -96,7 +96,7 @@
       <File type="form">
         <Name>untNavigation</Name>
         <Created>2016-10-20T14:47:31.465Z</Created>
-        <Modified>2016-11-01T16:56:08.805</Modified>
+        <Modified>2016-11-01T17:12:02.995</Modified>
         <Filename>untNavigation.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -378,10 +378,10 @@
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>2616</BackgroundCompilations>
-      <EditTime>00:39:34.088</EditTime>
-      <CompileTime>00:02:49.596</CompileTime>
-      <TotalTime>15:42:14.097</TotalTime>
+      <BackgroundCompilations>2624</BackgroundCompilations>
+      <EditTime>00:39:41.829</EditTime>
+      <CompileTime>00:02:50.646</CompileTime>
+      <TotalTime>15:58:17.062</TotalTime>
       <DesigningTime>00:02:49.497</DesigningTime>
       <RunningTime>01:37:18.071</RunningTime>
     </Statistics>

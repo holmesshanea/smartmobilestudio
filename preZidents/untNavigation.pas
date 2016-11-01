@@ -144,7 +144,7 @@ begin
   fDates.Caption:= 'Dates';
   fImage:= TW3Image.Create(fScrollbox.content);
   fNotes:= TW3DIVHtmlElement.create(fScrollbox.content);
-  fNotes.Handle.style.setProperty('overflow', 'auto');
+  fNotes.Handle.style.setProperty('overflow', 'auto:hidden');
   fNotes.Handle.style.setProperty('background-color', 'Red');
   //create HTTP request control for getting image from resources folder
   FHttp := TW3HttpRequest.Create;
