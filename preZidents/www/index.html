@@ -7542,7 +7542,7 @@ TW3Button.SetCaption(Self.fPrev,"Prev");
 TW3Button.SetCaption(Self.fNext,"Next");
       TW3CustomControl._setMouseClick(Self.fNext,$Event1(Self,TfrmNavigation.HandleNextBtn));
       Self.fScrollBox = TW3Component.Create$4$($New(TW3ScrollControl),Self);
-      Self.fScrollBox.FHandle.style.setProperty("background-color","Blue");
+      Self.fScrollBox.FHandle.style.setProperty("background-color","white");
       Self.fName = TW3Component.Create$4$($New(TW3Label),Self.fScrollBox.FContent);
       TW3Label.SetTextAlign$1(Self.fName,1);
       TW3Label.SetCaption$1(Self.fName,"Unknown");
@@ -7551,13 +7551,13 @@ TW3Button.SetCaption(Self.fNext,"Next");
       TW3Label.SetCaption$1(Self.fDates,"Dates");
       Self.fImage = TW3Component.Create$4$($New(TW3Image),Self.fScrollBox.FContent);
       Self.fNotes = TW3Component.Create$4$($New(TW3DIVHtmlElement),Self.fScrollBox.FContent);
-      Self.fNotes.FHandle.style.setProperty("overflow","auto:hidden");
-      Self.fNotes.FHandle.style.setProperty("background-color","Red");
+      Self.fNotes.FHandle.style.setProperty("overflow","scroll");
+      Self.fNotes.FHandle.style.setProperty("background-color","white");
       Self.FHttp = TW3HttpRequest.Create$79($New(TW3HttpRequest));
       Self.FHttp.OnDataReady = $Event1(Self,TfrmNavigation.HandleHttpDataReady);
    }
    /// procedure TfrmNavigation.Resize()
-   ///  [line: 154, column: 26, file: untNavigation]
+   ///  [line: 155, column: 26, file: untNavigation]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayout) {
@@ -7572,7 +7572,7 @@ TW3Button.SetCaption(Self.fNext,"Next");
       TW3MovableControl.SetBounds(Self.fName,0,0,TW3MovableControl.ClientWidth(Self.fScrollBox.FContent),32);
       TW3MovableControl.SetBounds(Self.fDates,0,TW3MovableControl.GetTop(Self.fName)+TW3MovableControl.GetHeight$(Self.fName),TW3MovableControl.ClientWidth(Self.fScrollBox.FContent),TW3MovableControl.GetTop(Self.fName)+TW3MovableControl.GetHeight$(Self.fName)+32);
       TW3MovableControl.SetBounds(Self.fImage,($Div(TW3MovableControl.ClientWidth(Self.fScrollBox.FContent),2))-75,TW3MovableControl.GetTop(Self.fDates)+TW3MovableControl.GetHeight$(Self.fDates),150,150);
-      TW3MovableControl.SetBounds(Self.fNotes,0,TW3MovableControl.GetTop(Self.fImage)+TW3MovableControl.GetHeight$(Self.fImage)+10,TW3MovableControl.ClientWidth(Self.fScrollBox),TW3MovableControl.ClientHeight(Self.fScrollBox));
+      TW3MovableControl.SetBounds(Self.fNotes,0,TW3MovableControl.GetTop(Self.fImage)+TW3MovableControl.GetHeight$(Self.fImage)+10,TW3MovableControl.ClientWidth(Self.fScrollBox),TW3MovableControl.ClientHeight(Self.fScrollBox)-TW3MovableControl.GetHeight$(Self.fName)-TW3MovableControl.GetHeight$(Self.fDates)-TW3MovableControl.GetHeight$(Self.fImage));
    }
    /// procedure TfrmNavigation.UpdateBtns()
    ///  [line: 49, column: 26, file: untNavigation]

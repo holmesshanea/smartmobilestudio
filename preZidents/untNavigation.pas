@@ -69,7 +69,7 @@ begin
                    fDates.Top + fDates.Height,
                   150,
                    150);
- fNotes.setBounds(0,fImage.top + fImage.Height + 10, fScrollBox.clientWidth, fScrollBox.ClientHeight);
+ fNotes.setBounds(0,fImage.top + fImage.Height + 10, fScrollBox.clientWidth, fScrollBox.ClientHeight-(fName.Height)-(fDates.Height)-(fImage.Height));
 end;
 
 procedure TfrmNavigation.HandlePrevBtn(Sender: TObject);
@@ -134,7 +134,7 @@ begin
   fNext.Onclick:= HandleNextBtn;
   //create the scrolling area for the president data controls
   fScrollbox:= TW3ScrollControl.Create(self);
-  fScrollbox.Handle.style.setProperty('background-color', 'Blue');
+  fScrollbox.Handle.style.setProperty('background-color', 'white');
   //create the president data controls on scrolling area
   fName:= TW3Label.Create(fScrollbox.content);
   fName.AlignText:= taCenter;
@@ -144,8 +144,9 @@ begin
   fDates.Caption:= 'Dates';
   fImage:= TW3Image.Create(fScrollbox.content);
   fNotes:= TW3DIVHtmlElement.create(fScrollbox.content);
-  fNotes.Handle.style.setProperty('overflow', 'auto:hidden');
-  fNotes.Handle.style.setProperty('background-color', 'Red');
+  fNotes.Handle.style.setProperty('overflow', 'scroll');
+  //fNotes.Handle.style.setProperty('overflow', 'auto:hidden');
+  fNotes.Handle.style.setProperty('background-color', 'white');
   //create HTTP request control for getting image from resources folder
   FHttp := TW3HttpRequest.Create;
   FHttp.OnDataReady:= HandleHttpDataReady;
