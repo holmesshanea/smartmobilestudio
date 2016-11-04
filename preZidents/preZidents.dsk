@@ -2,17 +2,17 @@
   <state>
     <editor>
       <tab filename="untMain" fullname="untMain.pas" topline="1" col="1" row="1" />
-      <tab filename="untNavigation" fullname="untNavigation.pas" topline="35" col="14" row="62" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="untNavigation" fullname="untNavigation.pas" topline="1" col="79" row="103" splitview="0" designview="0" splitter="0.444444447755814" />
       <activetab>untNavigation</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>3542</BackgroundCompilations>
-      <EditTime>00:54:06.980</EditTime>
-      <CompileTime>00:04:17.427</CompileTime>
-      <TotalTime>20:07:04.123</TotalTime>
-      <DesigningTime>00:02:57.635</DesigningTime>
-      <RunningTime>01:55:59.839</RunningTime>
+      <BackgroundCompilations>3633</BackgroundCompilations>
+      <EditTime>00:55:27.285</EditTime>
+      <CompileTime>00:04:27.852</CompileTime>
+      <TotalTime>20:14:00.948</TotalTime>
+      <DesigningTime>00:03:09.332</DesigningTime>
+      <RunningTime>01:57:54.170</RunningTime>
     </Statistics>
   </state>
 </SMART>

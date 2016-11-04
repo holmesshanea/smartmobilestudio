@@ -7,6 +7,7 @@ uses
   SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, 
   SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Layout,
   SmartCL.Controls, SmartCL.Scroll, SmartCL.Controls.Elements, SmartCL.Inet,
+  SmartCL.Scroll,
   ECMA.JSON;
 
 type
@@ -20,12 +21,7 @@ type
     fTitle: TW3Label;
     fPrev: TW3Button;
     fNext: TW3Button;
-    //fName: TW3Label;
-    //fDates: TW3Label;
-    //fImage: TW3Image;
-    //fNotes: TW3DIVHtmlElement;
-    fData: TW3DIVHtmlElement;
-    fScrollBox: TW3ScrollControl;
+    fScroll: TW3ScrollControl;
     fPresidents: Variant;
     fJSONStr: String;
     fIndex: integer;
@@ -54,7 +50,7 @@ end;
 
 procedure TfrmNavigation.UpdateContent;
 begin
- fData.InnerHTML:= '<div>' +
+ fScroll.Content.InnerHTML:= '<div>' +
   '<h2><center>' + fPresidents.presidents[fIndex].rank + '</center></h2><br>' +
   '<h2><center>' + fPresidents.presidents[fIndex].name + '</center></h2><br>' +
   '<h3><center>' + fPresidents.presidents[fIndex].dates + '</center></h3><br>' +
@@ -101,9 +97,11 @@ begin
    FLayout:= Layout.Client([
                            Layout.Top(Layout.Margins(0,10,0,0).Height(32), fTitle),
                            Layout.Bottom(layout.margins(0,0,0,10).height(42),[Layout.Right(layout.margins(0,0,10,0), fNext), Layout.Right(layout.margins(0,0,10,0),fPrev)]),
-                           Layout.Client(Layout.Margins(10,10,10,10),fData)
+                           Layout.Client(Layout.Margins(10,10,10,10),fScroll)
                           ]);
   FHttp.Get('res\presidents.json');
+  fScroll.Content.SetBounds(0,0, fScroll.clientWidth, fScroll.clientHeight + 2000);
+
 end;
 
 procedure TfrmNavigation.InitializeObject;
@@ -128,9 +126,9 @@ begin
   fNext.Caption:= 'Next';
   fNext.Onclick:= HandleNextBtn;
   //create a div for displaying data
-  fData:= TW3DIVHtmlElement.Create(self);
-  fData.Handle.style.setProperty('background-color', 'white');
-  fData.Handle.style.setProperty('overflow', 'scroll');
+  fScroll:= TW3ScrollControl.Create(self);
+  fScroll.Handle.style.setProperty('background-color', 'white');
+  //fData.Handle.style.setProperty('overflow', 'scroll');
   FHttp := TW3HttpRequest.Create;
   FHttp.OnDataReady:= HandleHttpDataReady;
 end;

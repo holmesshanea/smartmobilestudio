@@ -7456,22 +7456,22 @@ var PerformanceTimer = {
    ,Destroy:TObject.Destroy
 };
 /// TfrmNavigation = class (TW3Form)
-///  [line: 14, column: 3, file: untNavigation]
+///  [line: 15, column: 3, file: untNavigation]
 var TfrmNavigation = {
    $ClassName:"TfrmNavigation",$Parent:TW3Form
    ,$Init:function ($) {
       TW3Form.$Init($);
-      $.fData = $.FHttp = $.fLayout = $.fNext = $.fPrev = $.fTitle = $.W3DIVHtmlElement1 = null;
+      $.FHttp = $.fLayout = $.fNext = $.fPrev = $.fScroll = $.fTitle = null;
       $.fIndex = 0;
       $.fJSONStr = "";
       $.fPresidents = undefined;
    }
    /// procedure TfrmNavigation.frmNavigationActivate(Sender: TObject)
-   ///  [line: 81, column: 26, file: untNavigation]
+   ///  [line: 77, column: 26, file: untNavigation]
    ,frmNavigationActivate:function(Self, Sender$10) {
    }
    /// procedure TfrmNavigation.HandleHttpDataReady(Sender: TW3HttpRequest)
-   ///  [line: 86, column: 26, file: untNavigation]
+   ///  [line: 82, column: 26, file: untNavigation]
    ,HandleHttpDataReady:function(Self, Sender$11) {
       Self.fJSONStr = TW3HttpRequest.a$24(Sender$11);
       Self.fPresidents = JSON.parse(Self.fJSONStr);
@@ -7480,28 +7480,29 @@ var TfrmNavigation = {
       TfrmNavigation.UpdateBtns(Self);
    }
    /// procedure TfrmNavigation.HandleNextBtn(Sender: TObject)
-   ///  [line: 74, column: 26, file: untNavigation]
+   ///  [line: 70, column: 26, file: untNavigation]
    ,HandleNextBtn:function(Self, Sender$12) {
       ++Self.fIndex;
       TfrmNavigation.UpdateContent(Self);
       TfrmNavigation.UpdateBtns(Self);
    }
    /// procedure TfrmNavigation.HandlePrevBtn(Sender: TObject)
-   ///  [line: 67, column: 26, file: untNavigation]
+   ///  [line: 63, column: 26, file: untNavigation]
    ,HandlePrevBtn:function(Self, Sender$13) {
       --Self.fIndex;
       TfrmNavigation.UpdateContent(Self);
       TfrmNavigation.UpdateBtns(Self);
    }
    /// procedure TfrmNavigation.InitializeForm()
-   ///  [line: 97, column: 26, file: untNavigation]
+   ///  [line: 93, column: 26, file: untNavigation]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
-      Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,TLayoutConfig.Height$7$(Layout.Margins$3(Layout,0,10,0,0),32),Self.fTitle), Layout.Bottom$3(Layout,TLayoutConfig.Height$7$(Layout.Margins$3(Layout,0,0,0,10),42),[Layout.Right$4(Layout,Layout.Margins$3(Layout,0,0,10,0),Self.fNext), Layout.Right$4(Layout,Layout.Margins$3(Layout,0,0,10,0),Self.fPrev)].slice()), Layout.Client$1(Layout,Layout.Margins$3(Layout,10,10,10,10),Self.fData)].slice());
+      Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,TLayoutConfig.Height$7$(Layout.Margins$3(Layout,0,10,0,0),32),Self.fTitle), Layout.Bottom$3(Layout,TLayoutConfig.Height$7$(Layout.Margins$3(Layout,0,0,0,10),42),[Layout.Right$4(Layout,Layout.Margins$3(Layout,0,0,10,0),Self.fNext), Layout.Right$4(Layout,Layout.Margins$3(Layout,0,0,10,0),Self.fPrev)].slice()), Layout.Client$1(Layout,Layout.Margins$3(Layout,10,10,10,10),Self.fScroll)].slice());
       TW3HttpRequest.Get(Self.FHttp,"res\\presidents.json");
+      TW3MovableControl.SetBounds(Self.fScroll.FContent,0,0,TW3MovableControl.ClientWidth(Self.fScroll),TW3MovableControl.ClientHeight(Self.fScroll)+2000);
    }
    /// procedure TfrmNavigation.InitializeObject()
-   ///  [line: 109, column: 26, file: untNavigation]
+   ///  [line: 107, column: 26, file: untNavigation]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
@@ -7509,12 +7510,6 @@ var TfrmNavigation = {
       TW3MovableControl.SetColor(Self,16777215);
       TW3Component.SetName(Self,"frmNavigation");
       Self.FOnActivate = $Event1(Self,TfrmNavigation.frmNavigationActivate);
-      Self.W3DIVHtmlElement1 = TW3Component.Create$4$($New(TW3DIVHtmlElement),Self);
-      TW3MovableControl.SetWidth$(Self.W3DIVHtmlElement1,128);
-      TW3MovableControl.SetTop(Self.W3DIVHtmlElement1,80);
-      TW3MovableControl.SetLeft(Self.W3DIVHtmlElement1,352);
-      TW3MovableControl.SetHeight$(Self.W3DIVHtmlElement1,32);
-      TW3Component.SetName(Self.W3DIVHtmlElement1,"W3DIVHtmlElement1");
       TW3CustomControl.SetStyleClass(Self,"none");
       TW3MovableControl.SetColor(Self,16777215);
       Self.fIndex = 0;
@@ -7532,14 +7527,13 @@ TW3Button.SetCaption(Self.fPrev,"Prev");
       /* null */
 TW3Button.SetCaption(Self.fNext,"Next");
       TW3CustomControl._setMouseClick(Self.fNext,$Event1(Self,TfrmNavigation.HandleNextBtn));
-      Self.fData = TW3Component.Create$4$($New(TW3DIVHtmlElement),Self);
-      Self.fData.FHandle.style.setProperty("background-color","white");
-      Self.fData.FHandle.style.setProperty("overflow","scroll");
+      Self.fScroll = TW3Component.Create$4$($New(TW3ScrollControl),Self);
+      Self.fScroll.FHandle.style.setProperty("background-color","white");
       Self.FHttp = TW3HttpRequest.Create$79($New(TW3HttpRequest));
       Self.FHttp.OnDataReady = $Event1(Self,TfrmNavigation.HandleHttpDataReady);
    }
    /// procedure TfrmNavigation.Resize()
-   ///  [line: 138, column: 26, file: untNavigation]
+   ///  [line: 136, column: 26, file: untNavigation]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayout) {
@@ -7547,15 +7541,15 @@ TW3Button.SetCaption(Self.fNext,"Next");
       }
    }
    /// procedure TfrmNavigation.UpdateBtns()
-   ///  [line: 49, column: 26, file: untNavigation]
+   ///  [line: 45, column: 26, file: untNavigation]
    ,UpdateBtns:function(Self) {
       TW3CustomControl.SetEnabled$(Self.fPrev,Self.fIndex>0);
       TW3CustomControl.SetEnabled$(Self.fNext,Self.fIndex<Self.fPresidents.presidents.length-1);
    }
    /// procedure TfrmNavigation.UpdateContent()
-   ///  [line: 55, column: 26, file: untNavigation]
+   ///  [line: 51, column: 26, file: untNavigation]
    ,UpdateContent:function(Self) {
-      TW3TagObj.SetInnerHTML(Self.fData,"<div>"+"<h2><center>"+Self.fPresidents.presidents[Self.fIndex].rank+"<\/center><\/h2><br>"+"<h2><center>"+Self.fPresidents.presidents[Self.fIndex].name+"<\/center><\/h2><br>"+"<h3><center>"+Self.fPresidents.presidents[Self.fIndex].dates+"<\/center><\/h3><br>"+"<center> <img src=\""+"res\\"+(Self.fIndex+1).toString()+".jpg"+"\" alt=\"image\" height=\"150\" width=\"150\" style=\"border:5px solid red\"> <\/center><br>"+"<p>"+Self.fPresidents.presidents[Self.fIndex].notes+"<\/p>"+"<\/div>");
+      TW3TagObj.SetInnerHTML(Self.fScroll.FContent,"<div>"+"<h2><center>"+Self.fPresidents.presidents[Self.fIndex].rank+"<\/center><\/h2><br>"+"<h2><center>"+Self.fPresidents.presidents[Self.fIndex].name+"<\/center><\/h2><br>"+"<h3><center>"+Self.fPresidents.presidents[Self.fIndex].dates+"<\/center><\/h3><br>"+"<center> <img src=\""+"res\\"+(Self.fIndex+1).toString()+".jpg"+"\" alt=\"image\" height=\"150\" width=\"150\" style=\"border:5px solid red\"> <\/center><br>"+"<p>"+Self.fPresidents.presidents[Self.fIndex].notes+"<\/p>"+"<\/div>");
    }
    ,Destroy:TW3CustomForm.Destroy
    ,AfterUpdate:TW3CustomControl.AfterUpdate
@@ -10044,8 +10038,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
-   ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
+   IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
+   ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
 }
 function a$86(Self) {
    return ((!Self[0]())?true:false);
@@ -10709,8 +10703,8 @@ var TBinaryData = {
 };
 TBinaryData.$Intf={
    IBinaryData:[TBinaryData.Allocation,TBinaryData.getByte,TBinaryData.setByte,TBinaryData.OffsetInRange,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.CopyFrom$2,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray,TBinaryData.Write$6,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr,TBinaryData.ReadBytes,TBinaryData.Clone$1,TBinaryData.FromBase64,TBinaryData.ToBase64,TBinaryData.ToString$12,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.LoadFromFile,TBinaryData.setBit,TBinaryData.getBit]
-   ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
    ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$2,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
+   ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 122, column: 3, file: System.interop]
@@ -12199,87 +12193,6 @@ var TW3ScrollContent = {
    ,CMTouchBegins$:function($){return $.ClassType.CMTouchBegins.apply($.ClassType, arguments)}
    ,CMTouchEnds$:function($){return $.ClassType.CMTouchEnds.apply($.ClassType, arguments)}
    ,CMTouchMove$:function($){return $.ClassType.CMTouchMove.apply($.ClassType, arguments)}
-   ,GetEnabled:TW3CustomControl.GetEnabled
-   ,Invalidate:TW3CustomControl.Invalidate
-   ,SetBorderRadius:TW3CustomControl.SetBorderRadius
-   ,SetEnabled:TW3CustomControl.SetEnabled
-};
-/// TW3CustomHTMLElement = class (TW3CustomControl)
-///  [line: 17, column: 3, file: SmartCL.Controls.Elements]
-var TW3CustomHTMLElement = {
-   $ClassName:"TW3CustomHTMLElement",$Parent:TW3CustomControl
-   ,$Init:function ($) {
-      TW3CustomControl.$Init($);
-   }
-   ,Destroy:TW3TagObj.Destroy
-   ,AfterUpdate:TW3CustomControl.AfterUpdate
-   ,FinalizeObject:TW3CustomControl.FinalizeObject
-   ,InitializeObject:TW3CustomControl.InitializeObject
-   ,MakeElementTagId:TW3TagObj.MakeElementTagId
-   ,MakeElementTagObj:TW3TagObj.MakeElementTagObj
-   ,Showing:TW3MovableControl.Showing
-   ,StyleTagObject:TW3CustomControl.StyleTagObject
-   ,ChildAdded:TW3Component.ChildAdded
-   ,Create$4:TW3CustomControl.Create$4
-   ,GetHeight:TW3MovableControl.GetHeight
-   ,GetWidth:TW3MovableControl.GetWidth
-   ,Resize:TW3MovableControl.Resize
-   ,SetHeight:TW3MovableControl.SetHeight
-   ,SetWidth:TW3MovableControl.SetWidth
-   ,supportAdjustment:TW3MovableControl.supportAdjustment
-   ,CBClick:TW3CustomControl.CBClick
-   ,CBKeyDown:TW3CustomControl.CBKeyDown
-   ,CBKeyUp:TW3CustomControl.CBKeyUp
-   ,CBMouseDown:TW3CustomControl.CBMouseDown
-   ,CBMouseMove:TW3CustomControl.CBMouseMove
-   ,CBMouseUp:TW3CustomControl.CBMouseUp
-   ,CMTouchBegins:TW3CustomControl.CMTouchBegins
-   ,CMTouchEnds:TW3CustomControl.CMTouchEnds
-   ,CMTouchMove:TW3CustomControl.CMTouchMove
-   ,GetEnabled:TW3CustomControl.GetEnabled
-   ,Invalidate:TW3CustomControl.Invalidate
-   ,SetBorderRadius:TW3CustomControl.SetBorderRadius
-   ,SetEnabled:TW3CustomControl.SetEnabled
-};
-/// TW3DIVHtmlElement = class (TW3CustomHTMLElement)
-///  [line: 41, column: 3, file: SmartCL.Controls.Elements]
-var TW3DIVHtmlElement = {
-   $ClassName:"TW3DIVHtmlElement",$Parent:TW3CustomHTMLElement
-   ,$Init:function ($) {
-      TW3CustomHTMLElement.$Init($);
-   }
-   /// function TW3DIVHtmlElement.makeElementTagObj() : THandle
-   ///  [line: 68, column: 28, file: SmartCL.Controls.Elements]
-   ,MakeElementTagObj:function(Self) {
-      var Result = undefined;
-      Result = w3_createHtmlElement("div");
-      return Result
-   }
-   ,Destroy:TW3TagObj.Destroy
-   ,AfterUpdate:TW3CustomControl.AfterUpdate
-   ,FinalizeObject:TW3CustomControl.FinalizeObject
-   ,InitializeObject:TW3CustomControl.InitializeObject
-   ,MakeElementTagId:TW3TagObj.MakeElementTagId
-   ,MakeElementTagObj$:function($){return $.ClassType.MakeElementTagObj($)}
-   ,Showing:TW3MovableControl.Showing
-   ,StyleTagObject:TW3CustomControl.StyleTagObject
-   ,ChildAdded:TW3Component.ChildAdded
-   ,Create$4:TW3CustomControl.Create$4
-   ,GetHeight:TW3MovableControl.GetHeight
-   ,GetWidth:TW3MovableControl.GetWidth
-   ,Resize:TW3MovableControl.Resize
-   ,SetHeight:TW3MovableControl.SetHeight
-   ,SetWidth:TW3MovableControl.SetWidth
-   ,supportAdjustment:TW3MovableControl.supportAdjustment
-   ,CBClick:TW3CustomControl.CBClick
-   ,CBKeyDown:TW3CustomControl.CBKeyDown
-   ,CBKeyUp:TW3CustomControl.CBKeyUp
-   ,CBMouseDown:TW3CustomControl.CBMouseDown
-   ,CBMouseMove:TW3CustomControl.CBMouseMove
-   ,CBMouseUp:TW3CustomControl.CBMouseUp
-   ,CMTouchBegins:TW3CustomControl.CMTouchBegins
-   ,CMTouchEnds:TW3CustomControl.CMTouchEnds
-   ,CMTouchMove:TW3CustomControl.CMTouchMove
    ,GetEnabled:TW3CustomControl.GetEnabled
    ,Invalidate:TW3CustomControl.Invalidate
    ,SetBorderRadius:TW3CustomControl.SetBorderRadius
