@@ -55,8 +55,16 @@ end;
 procedure TfrmNavigation.UpdateContent;
 begin
  fName.Caption:= fPresidents.presidents[fIndex].rank + ' - ' + fPresidents.presidents[fIndex].name;
+ fName.Handle.style.setProperty('font-weight', 'bold');
  fDates.Caption:= fPresidents.presidents[fIndex].dates;
+ fDates.Handle.style.setProperty('font-style', 'italic');
+
  fImage.Url:= 'res\' + intToStr(fIndex + 1) + '.jpg';
+
+  w3_setStyle(FiMAGE.Handle, 'border-style', 'solid');
+  w3_setStyle(FiMAGE.Handle, 'border-width', '5px');
+  w3_setStyle(FiMAGE.Handle, 'border-color', 'red');
+
  fNotes.InnerText:= fPresidents.presidents[fIndex].notes;
 end;
 
@@ -123,8 +131,16 @@ begin
   fIndex:= 0;
   //create label for title
   fTitle:= TW3Label.Create(self);
-  fTitle.Caption:= 'PreZidents';
+  fTitle.Caption:= 'United States Presidents';
   fTitle.AlignText:= taCenter;
+  fTitle.Handle.style.setProperty('font-family', 'Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif"');
+  fTitle.Handle.style.setProperty('font-size', '22px');
+  fTitle.Handle.style.setProperty('color', 'blue');
+  {font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 19.8px;}
+
   //create buttons for navigation
   fPrev:= TW3Button.Create(self);;
   fPrev.Caption:= 'Prev';
@@ -134,7 +150,9 @@ begin
   fNext.Onclick:= HandleNextBtn;
   //create the scrolling area for the president data controls
   fScrollbox:= TW3ScrollControl.Create(self);
-  fScrollbox.Handle.style.setProperty('background-color', 'white');
+  fScrollbox.Handle.style.setProperty('opacity', '0.7');
+
+
   //create the president data controls on scrolling area
   fName:= TW3Label.Create(fScrollbox.content);
   fName.AlignText:= taCenter;

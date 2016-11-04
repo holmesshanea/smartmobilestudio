@@ -7453,11 +7453,11 @@ var TfrmNavigation = {
       $.fPresidents = undefined;
    }
    /// procedure TfrmNavigation.frmNavigationActivate(Sender: TObject)
-   ///  [line: 89, column: 26, file: untNavigation]
+   ///  [line: 97, column: 26, file: untNavigation]
    ,frmNavigationActivate:function(Self, Sender$10) {
    }
    /// procedure TfrmNavigation.HandleHttpDataReady(Sender: TW3HttpRequest)
-   ///  [line: 94, column: 26, file: untNavigation]
+   ///  [line: 102, column: 26, file: untNavigation]
    ,HandleHttpDataReady:function(Self, Sender$11) {
       Self.fJSONStr = TW3HttpRequest.a$24(Sender$11);
       Self.fPresidents = JSON.parse(Self.fJSONStr);
@@ -7466,28 +7466,28 @@ var TfrmNavigation = {
       TfrmNavigation.UpdateBtns(Self);
    }
    /// procedure TfrmNavigation.HandleNextBtn(Sender: TObject)
-   ///  [line: 82, column: 26, file: untNavigation]
+   ///  [line: 90, column: 26, file: untNavigation]
    ,HandleNextBtn:function(Self, Sender$12) {
       ++Self.fIndex;
       TfrmNavigation.UpdateContent(Self);
       TfrmNavigation.UpdateBtns(Self);
    }
    /// procedure TfrmNavigation.HandlePrevBtn(Sender: TObject)
-   ///  [line: 75, column: 26, file: untNavigation]
+   ///  [line: 83, column: 26, file: untNavigation]
    ,HandlePrevBtn:function(Self, Sender$13) {
       --Self.fIndex;
       TfrmNavigation.UpdateContent(Self);
       TfrmNavigation.UpdateBtns(Self);
    }
    /// procedure TfrmNavigation.InitializeForm()
-   ///  [line: 105, column: 26, file: untNavigation]
+   ///  [line: 113, column: 26, file: untNavigation]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
       Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,TLayoutConfig.Height$7$(Layout.Margins$3(Layout,0,10,0,0),32),Self.fTitle), Layout.Bottom$3(Layout,TLayoutConfig.Height$7$(Layout.Margins$3(Layout,0,0,0,10),42),[Layout.Right$4(Layout,Layout.Margins$3(Layout,0,0,10,0),Self.fNext), Layout.Right$4(Layout,Layout.Margins$3(Layout,0,0,10,0),Self.fPrev)].slice()), Layout.Client$1(Layout,Layout.Margins$3(Layout,10,10,10,10),Self.fScrollBox)].slice());
       TW3HttpRequest.Get(Self.FHttp,"res\\presidents.json");
    }
    /// procedure TfrmNavigation.InitializeObject()
-   ///  [line: 117, column: 26, file: untNavigation]
+   ///  [line: 125, column: 26, file: untNavigation]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
@@ -7505,8 +7505,11 @@ var TfrmNavigation = {
       TW3MovableControl.SetColor(Self,16777215);
       Self.fIndex = 0;
       Self.fTitle = TW3Component.Create$4$($New(TW3Label),Self);
-      TW3Label.SetCaption$1(Self.fTitle,"PreZidents");
+      TW3Label.SetCaption$1(Self.fTitle,"United States Presidents");
       TW3Label.SetTextAlign$1(Self.fTitle,1);
+      Self.fTitle.FHandle.style.setProperty("font-family","Impact, Haettenschweiler, \"Franklin Gothic Bold\", Charcoal, \"Helvetica Inserat\", \"Bitstream Vera Sans Bold\", \"Arial Black\", \"sans serif\"");
+      Self.fTitle.FHandle.style.setProperty("font-size","22px");
+      Self.fTitle.FHandle.style.setProperty("color","blue");
       Self.fPrev = TW3Component.Create$4$($New(TW3Button),Self);
       /* null */
 TW3Button.SetCaption(Self.fPrev,"Prev");
@@ -7516,7 +7519,7 @@ TW3Button.SetCaption(Self.fPrev,"Prev");
 TW3Button.SetCaption(Self.fNext,"Next");
       TW3CustomControl._setMouseClick(Self.fNext,$Event1(Self,TfrmNavigation.HandleNextBtn));
       Self.fScrollBox = TW3Component.Create$4$($New(TW3ScrollControl),Self);
-      Self.fScrollBox.FHandle.style.setProperty("background-color","white");
+      Self.fScrollBox.FHandle.style.setProperty("opacity","0.7");
       Self.fName = TW3Component.Create$4$($New(TW3Label),Self.fScrollBox.FContent);
       TW3Label.SetTextAlign$1(Self.fName,1);
       TW3Label.SetCaption$1(Self.fName,"Unknown");
@@ -7531,7 +7534,7 @@ TW3Button.SetCaption(Self.fNext,"Next");
       Self.FHttp.OnDataReady = $Event1(Self,TfrmNavigation.HandleHttpDataReady);
    }
    /// procedure TfrmNavigation.Resize()
-   ///  [line: 155, column: 26, file: untNavigation]
+   ///  [line: 173, column: 26, file: untNavigation]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayout) {
@@ -7540,7 +7543,7 @@ TW3Button.SetCaption(Self.fNext,"Next");
       }
    }
    /// procedure TfrmNavigation.ResizeContent()
-   ///  [line: 63, column: 26, file: untNavigation]
+   ///  [line: 71, column: 26, file: untNavigation]
    ,ResizeContent:function(Self) {
       TW3MovableControl.SetBounds(Self.fScrollBox.FContent,0,0,TW3MovableControl.ClientWidth(Self.fScrollBox),TW3MovableControl.ClientHeight(Self.fScrollBox));
       TW3MovableControl.SetBounds(Self.fName,0,0,TW3MovableControl.ClientWidth(Self.fScrollBox.FContent),32);
@@ -7558,8 +7561,13 @@ TW3Button.SetCaption(Self.fNext,"Next");
    ///  [line: 55, column: 26, file: untNavigation]
    ,UpdateContent:function(Self) {
       TW3Label.SetCaption$1(Self.fName,(Self.fPresidents.presidents[Self.fIndex].rank+" - "+Self.fPresidents.presidents[Self.fIndex].name));
+      Self.fName.FHandle.style.setProperty("font-weight","bold");
       TW3Label.SetCaption$1(Self.fDates,(String(Self.fPresidents.presidents[Self.fIndex].dates)));
+      Self.fDates.FHandle.style.setProperty("font-style","italic");
       TW3Image.setSrc(Self.fImage,"res\\"+(Self.fIndex+1).toString()+".jpg");
+      w3_setStyle(Self.fImage.FHandle,"border-style","solid");
+      w3_setStyle(Self.fImage.FHandle,"border-width","5px");
+      w3_setStyle(Self.fImage.FHandle,"border-color","red");
       TW3TagObj.SetInnerText(Self.fNotes,String(Self.fPresidents.presidents[Self.fIndex].notes));
    }
    ,Destroy:TW3CustomForm.Destroy
