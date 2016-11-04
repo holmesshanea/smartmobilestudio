@@ -20,10 +20,11 @@ type
     fTitle: TW3Label;
     fPrev: TW3Button;
     fNext: TW3Button;
-    fName: TW3Label;
-    fDates: TW3Label;
-    fImage: TW3Image;
-    fNotes: TW3DIVHtmlElement;
+    //fName: TW3Label;
+    //fDates: TW3Label;
+    //fImage: TW3Image;
+    //fNotes: TW3DIVHtmlElement;
+    fData: TW3DIVHtmlElement;
     fScrollBox: TW3ScrollControl;
     fPresidents: Variant;
     fJSONStr: String;
@@ -36,7 +37,6 @@ type
     procedure InitializeObject; override;
     procedure Resize; override;
   public
-    procedure ResizeContent;
     procedure UpdateContent;
     procedure UpdateBtns;
   end;
@@ -54,30 +54,14 @@ end;
 
 procedure TfrmNavigation.UpdateContent;
 begin
- fName.Caption:= fPresidents.presidents[fIndex].rank + ' - ' + fPresidents.presidents[fIndex].name;
- fName.Handle.style.setProperty('font-weight', 'bold');
- fDates.Caption:= fPresidents.presidents[fIndex].dates;
- fDates.Handle.style.setProperty('font-style', 'italic');
-
- fImage.Url:= 'res\' + intToStr(fIndex + 1) + '.jpg';
-
-  w3_setStyle(FiMAGE.Handle, 'border-style', 'solid');
-  w3_setStyle(FiMAGE.Handle, 'border-width', '5px');
-  w3_setStyle(FiMAGE.Handle, 'border-color', 'red');
-
- fNotes.InnerText:= fPresidents.presidents[fIndex].notes;
-end;
-
-procedure TfrmNavigation.ResizeContent;
-begin
- fScrollBox.Content.SetBounds(0, 0, fScrollBox.clientWidth, fScrollBox.clientHeight);
- fName.SetBounds(0,0,fScrollBox.Content.clientWidth,32);
- fDates.SetBounds(0,fName.Top + fName.Height,fScrollBox.Content.clientWidth,fName.Top + fName.Height + 32);
- fImage.SetBounds((fScrollBox.Content.clientWidth div 2)-75,
-                   fDates.Top + fDates.Height,
-                  150,
-                   150);
- fNotes.setBounds(0,fImage.top + fImage.Height + 10, fScrollBox.clientWidth, fScrollBox.ClientHeight-(fName.Height)-(fDates.Height)-(fImage.Height));
+ fData.InnerHTML:= '<div>' +
+  '<h2><center>' + fPresidents.presidents[fIndex].rank + '</center></h2><br>' +
+  '<h2><center>' + fPresidents.presidents[fIndex].name + '</center></h2><br>' +
+  '<h3><center>' + fPresidents.presidents[fIndex].dates + '</center></h3><br>' +
+  '<center> <img src="' + 'res\' + intToStr(fIndex + 1) + '.jpg' +
+             '" alt="image" height="150" width="150" style="border:5px solid red"> </center><br>' +
+  '<p>' + fPresidents.presidents[fIndex].notes + '</p>' +
+  '</div>';
 end;
 
 procedure TfrmNavigation.HandlePrevBtn(Sender: TObject);
@@ -117,7 +101,7 @@ begin
    FLayout:= Layout.Client([
                            Layout.Top(Layout.Margins(0,10,0,0).Height(32), fTitle),
                            Layout.Bottom(layout.margins(0,0,0,10).height(42),[Layout.Right(layout.margins(0,0,10,0), fNext), Layout.Right(layout.margins(0,0,10,0),fPrev)]),
-                           Layout.Client(Layout.Margins(10,10,10,10),fScrollBox)
+                           Layout.Client(Layout.Margins(10,10,10,10),fData)
                           ]);
   FHttp.Get('res\presidents.json');
 end;
@@ -136,36 +120,17 @@ begin
   fTitle.Handle.style.setProperty('font-family', 'Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif"');
   fTitle.Handle.style.setProperty('font-size', '22px');
   fTitle.Handle.style.setProperty('color', 'blue');
-  {font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 19.8px;}
-
-  //create buttons for navigation
+   //create buttons for navigation
   fPrev:= TW3Button.Create(self);;
   fPrev.Caption:= 'Prev';
   fPrev.OnClick:= HandlePrevBtn;
   fNext:= TW3Button.Create(self);;
   fNext.Caption:= 'Next';
   fNext.Onclick:= HandleNextBtn;
-  //create the scrolling area for the president data controls
-  fScrollbox:= TW3ScrollControl.Create(self);
-  fScrollbox.Handle.style.setProperty('opacity', '0.7');
-
-
-  //create the president data controls on scrolling area
-  fName:= TW3Label.Create(fScrollbox.content);
-  fName.AlignText:= taCenter;
-  fName.Caption:= 'Unknown';
-  fDates:= TW3Label.Create(fScrollbox.content);
-  fDates.AlignText:= taCenter;
-  fDates.Caption:= 'Dates';
-  fImage:= TW3Image.Create(fScrollbox.content);
-  fNotes:= TW3DIVHtmlElement.create(fScrollbox.content);
-  fNotes.Handle.style.setProperty('overflow', 'scroll');
-  //fNotes.Handle.style.setProperty('overflow', 'auto:hidden');
-  fNotes.Handle.style.setProperty('background-color', 'white');
-  //create HTTP request control for getting image from resources folder
+  //create a div for displaying data
+  fData:= TW3DIVHtmlElement.Create(self);
+  fData.Handle.style.setProperty('background-color', 'white');
+  fData.Handle.style.setProperty('overflow', 'scroll');
   FHttp := TW3HttpRequest.Create;
   FHttp.OnDataReady:= HandleHttpDataReady;
 end;
@@ -176,7 +141,6 @@ begin
   if assigned(FLayout) then
   begin
     FLayout.Resize(self);
-    ResizeContent;
   end;
 end;
  
