@@ -1,4 +1,4 @@
-uses SmartCL.System, untMain;
+uses SmartCL.System, untApplication, Splash;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
 try

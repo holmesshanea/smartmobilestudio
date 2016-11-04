@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>preZidents</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-11-04T09:37:37.115</Modified>
+    <Modified>2016-11-04T14:43:53.958</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -59,7 +59,7 @@
         <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
         <GenerateWebAppManifest>1</GenerateWebAppManifest>
         <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
-        <GenerateCordovaConfigXML>0</GenerateCordovaConfigXML>
+        <GenerateCordovaConfigXML>1</GenerateCordovaConfigXML>
         <ExternalCSS>1</ExternalCSS>
         <Theme>iOS.css</Theme>
         <CustomTheme>0</CustomTheme>
@@ -84,20 +84,20 @@
       <File type="main">
         <Name>preZidents</Name>
         <Created>2016-10-20T14:47:31.465Z</Created>
-        <Modified>2016-10-20T14:48:19.937</Modified>
+        <Modified>2016-11-04T12:46:43.302</Modified>
         <Filename>preZidents.spr</Filename>
       </File>
       <File type="unit">
-        <Name>untMain</Name>
+        <Name>untApplication</Name>
         <Created>2016-10-20T14:47:31.465Z</Created>
-        <Modified>2016-10-20T14:52:05.255</Modified>
-        <Filename>untMain.pas</Filename>
+        <Modified>2016-11-04T14:40:51.861</Modified>
+        <Filename>untApplication.pas</Filename>
       </File>
       <File type="form">
-        <Name>untNavigation</Name>
+        <Name>Navigation</Name>
         <Created>2016-10-20T14:47:31.465Z</Created>
-        <Modified>2016-11-04T09:36:51.251</Modified>
-        <Filename>untNavigation.pas</Filename>
+        <Modified>2016-11-04T12:46:43.302</Modified>
+        <Filename>Navigation.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
           <IsMainForm>1</IsMainForm>
@@ -380,16 +380,39 @@
         <Modified>2016-11-03T19:32:35.518</Modified>
         <Filename>www\res\background.jpg</Filename>
       </File>
+      <File type="form">
+        <Name>Splash</Name>
+        <Created>2016-11-04T12:46:01.984Z</Created>
+        <Modified>2016-11-04T14:43:04.590</Modified>
+        <Filename>Splash.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>2</Order>
+        </AutoCreate>
+      </File>
+      <File type="resource">
+        <Name>splash_vert.png</Name>
+        <Created>2016-11-04T14:24:54.357Z</Created>
+        <Modified>2016-11-04T14:24:54.357</Modified>
+        <Filename>www\res\splash_vert.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>splash_horz.png</Name>
+        <Created>2016-11-04T14:25:01.095Z</Created>
+        <Modified>2016-11-04T14:25:01.095</Modified>
+        <Filename>www\res\splash_horz.png</Filename>
+      </File>
     </Files>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>3633</BackgroundCompilations>
-      <EditTime>00:55:27.285</EditTime>
-      <CompileTime>00:04:26.999</CompileTime>
-      <TotalTime>20:14:00.948</TotalTime>
-      <DesigningTime>00:03:09.332</DesigningTime>
-      <RunningTime>01:57:54.170</RunningTime>
+      <BackgroundCompilations>4469</BackgroundCompilations>
+      <EditTime>01:07:04.235</EditTime>
+      <CompileTime>00:05:04.571</CompileTime>
+      <TotalTime>23:09:43.517</TotalTime>
+      <DesigningTime>00:04:04.434</DesigningTime>
+      <RunningTime>02:00:01.604</RunningTime>
     </Statistics>
   </Project>
 </SMART>

@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # Offline cache version 0.0.1
-# id:57144
+# id:71267
 
 CACHE:
 index.html
@@ -51,3 +51,5 @@ res/43.jpg
 res/44.jpg
 res/presidents.json
 res/background.jpg
+res/splash_vert.png
+res/splash_horz.png
