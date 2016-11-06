@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>SIM</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-11-06T18:31:38.916</Modified>
+    <Modified>2016-11-06T18:37:02.060</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -198,12 +198,12 @@
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>5764</BackgroundCompilations>
+      <BackgroundCompilations>5765</BackgroundCompilations>
       <EditTime>01:25:21.685</EditTime>
-      <CompileTime>00:04:08.809</CompileTime>
-      <TotalTime>03:09:08.539</TotalTime>
-      <DesigningTime>00:10:40.427</DesigningTime>
-      <RunningTime>00:47:41.646</RunningTime>
+      <CompileTime>00:04:10.386</CompileTime>
+      <TotalTime>03:11:05.155</TotalTime>
+      <DesigningTime>00:10:40.436</DesigningTime>
+      <RunningTime>00:49:01.821</RunningTime>
     </Statistics>
   </Project>
 </SMART>
