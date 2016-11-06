@@ -48,7 +48,7 @@ begin
   inherited;
   {$I 'Main:impl'}
    fMenu:= TsahMenu.Create(self);
-   fMenu.Columns:= 2;
+   fMenu.Columns:= 3;
    fMenu.OnMenuItemClick:= HandleMenuItemClick;
 
    fMenu.Add('res\facebook.png');
