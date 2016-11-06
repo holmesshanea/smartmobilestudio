@@ -1,0 +1,18 @@
+unit untMenuX;
+
+interface
+
+uses 
+  SmartCL.System;
+
+type
+
+TMenuX = class(TW3CustomControl)
+end;
+
+
+implementation
+
+
+
+end.

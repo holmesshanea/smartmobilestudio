@@ -1,0 +1,26 @@
+unit untMenuX;
+
+interface
+
+uses 
+  System.Lists,
+  SmartCL.System,  SmartCL.Components;
+
+type
+
+
+
+TsahMenu = class(TW3CustomControl)
+private
+ fItems: TsahMenuItems;
+protected
+public
+ property Items: TsahMenuItems read fItems write fItems;
+end;
+
+
+implementation
+
+
+
+end.
