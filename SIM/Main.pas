@@ -6,7 +6,7 @@ uses
   SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, 
   SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Controls.Button,
   SmartCL.Controls.Panel, SmartCL.Controls.Label, SmartCl.Layout,
-  sahMenu;
+  sahMenu, SmartCL.Controls.Header;
 
 type
   TfrmMain = class(TW3Form)
@@ -14,6 +14,8 @@ type
     {$I 'Main:intf'}
      fLayout: TLayout;
      fMenu: TsahMenu;
+     fHeader: TW3HeaderControl;
+     fFooter: TW3Panel;
      procedure HandleMenuItemClick(Sender: TObject);
   protected
     procedure InitializeForm; override;
@@ -40,35 +42,45 @@ procedure TfrmMain.InitializeForm;
 begin
   inherited;
   // this is a good place to initialize components
-  FLayout:= Layout.Client(fMenu);
+  FLayout:= Layout.Client([Layout.Top(fHeader), Layout.Bottom(fFooter), Layout.Client(fMenu)]);
 end;
 
 procedure TfrmMain.InitializeObject;
 begin
   inherited;
   {$I 'Main:impl'}
+
+   fHeader:= TW3HeaderControl.Create(self);
+   fHeader.Height:= 50;
+   fHeader.BackButton.Visible:= False;
+   fHeader.Title.AlignText:= taCenter;
+   fHeader.Title.Caption:= 'sahMenu Demo';
+
+   fFooter:= TW3Panel.Create(self);
+   fFooter.Height:= 50;
+
    fMenu:= TsahMenu.Create(self);
-   fMenu.Columns:= 3;
+   fMenu.Columns:= 4;
    fMenu.OnMenuItemClick:= HandleMenuItemClick;
 
-   fMenu.Add('res\facebook.png');
-   fMenu.Add('res\instagram.png');
-   fMenu.Add('res\twitter.png');
+   fMenu.Add('res\facebook.png', 'Facebook');
+   fMenu.Add('res\instagram.png', 'Instagram');
+   fMenu.Add('res\twitter.png', 'Twitter');
 
-   fMenu.Add('res\youtube.png');
-   fMenu.Add('res\google-plus.png');
-   fMenu.Add('res\myspace.png');
+   fMenu.Add('res\youtube.png', 'Youtube');
+   fMenu.Add('res\google-plus.png', 'Google+');
+   fMenu.Add('res\myspace.png', 'MySpace');
 
-   fMenu.Add('res\pinterest.png');
-   fMenu.Add('res\reddit.png');
-   fMenu.Add('res\skype.png');
+   fMenu.Add('res\pinterest.png', 'Pinterest');
+   fMenu.Add('res\reddit.png', 'Reddit');
+   fMenu.Add('res\skype.png', 'Skype');
 
-   fMenu.Add('res\snapchat.png');
-   fMenu.Add('res\tumblr.png');
-   fMenu.Add('res\vimeo.png');
+   fMenu.Add('res\snapchat.png', 'Snapchat');
+   fMenu.Add('res\tumblr.png', 'Tumblr');
+   fMenu.Add('res\vimeo.png', 'Vimeo');
 
-   fMenu.Add('res\vine.png');
-   fMenu.Add('res\whatsapp.png');
+   fMenu.Add('res\vine.png', 'Vine');
+   fMenu.Add('res\whatsapp.png', 'WhatsApp');
 
 
 end;

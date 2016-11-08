@@ -19,6 +19,7 @@ TsahMenu = class;
 TsahMenuItem = class(TW3CustomControl)
 private
  fImage: TW3Image;
+ fLabel: TW3Label;
 protected
  procedure StyleTagObject; override;
  procedure InitializeObject; override;
@@ -27,11 +28,11 @@ protected
 public
  constructor Create(AOwner: TW3Component); override;
  property Image: TW3Image read fImage write fImage;
+ property Label: TW3Label read fLabel write fLabel;
 end;
 
 TsahMenuItems = class(TObjectList)
 private
- fOwner: TsahMenu;
  function getItem(Index: Integer): TsahMenuItem;
  procedure setItem(Index: Integer; MenuItem: TsahMenuItem);
 protected
@@ -39,7 +40,6 @@ public
  function Add(MenuItem: TsahMenuItem): integer;
  procedure Remove(Index: Integer);
  property Items [Index: Integer]: TsahMenuItem read getItem write SetItem; default;
- property Owner: TsahMenu read fOwner write fOwner;
 end;
 
 
@@ -57,7 +57,7 @@ protected
  procedure FinalizeObject; override;
  procedure Resize; override;
 public
- function Add(ImageUrl: String): integer;
+ function Add(ImageUrl, Caption: String): integer;
  procedure Delete(Index: Integer);
  procedure Clear;
  constructor Create(AOwner: TW3Component); override;
@@ -86,11 +86,15 @@ procedure TsahMenuItem.InitializeObject;
 begin
   inherited;
   fImage:= TW3Image.Create(Self);
+  fLabel:= TW3Label.Create(Self);
+  fLabel.AlignText:= taCenter;
+  fLabel.Handle.style.setProperty('font-size', 'small');
 end;
 
 procedure TsahMenuItem.FinalizeObject;
 begin
   fImage.Free;
+  fLabel.Free;
   inherited;
 end;
 
@@ -98,6 +102,7 @@ procedure TsahMenuItem.Resize;
 begin
   inherited;
   fImage.SetBounds(IMAGEMARGIN, IMAGEMARGIN, clientWidth - IMAGEMARGIN * 2, clientHeight - IMAGEMARGIN * 2);
+  fLabel.SetBounds(0, fImage.Top + fImage.Height - (fImage.Height DIV 2),  clientWidth,  fImage.Height);
 end;
 
 constructor TsahMenuItem.Create(AOwner: TW3Component);
@@ -198,13 +203,14 @@ begin
   ResizeMenuItems;
 end;
 
-function  TsahMenu.Add(ImageUrl: String): integer;
+function  TsahMenu.Add(ImageUrl, Caption: String): integer;
 var
  MenuItem: TsahMenuItem;
 begin
  MenuItem:= TsahMenuItem.Create(self.Content);
  MenuItem.OnClick:= OnMenuItemClick;
  MenuItem.Image.Url:= ImageUrl;
+ MenuItem.Label.Caption:= Caption;
  result:= fMenuItems.Add(MenuItem);
  MenuItem.TagValue:= fMenuItems.Count;
 end;
