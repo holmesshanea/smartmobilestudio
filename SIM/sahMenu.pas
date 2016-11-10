@@ -11,6 +11,7 @@ const
 
  IMAGEMARGIN = 10;
  ITEMSMARGIN = 10;
+ LABELHEIGHT = 32; // ****** HERE *****
 
 type
 
@@ -20,6 +21,7 @@ TsahMenuItem = class(TW3CustomControl)
 private
  fImage: TW3Image;
  fLabel: TW3Label;
+ fLayout: TLayout;
 protected
  procedure StyleTagObject; override;
  procedure InitializeObject; override;
@@ -45,7 +47,9 @@ end;
 
 TsahMenu = class(TW3ScrollControl)
 private
- fMenuItemSize: Integer;
+ fShowLabels: Boolean;
+ fMenuItemWidth: Integer;
+ fMenuItemHeight: Integer;
  fColumns: Integer;
  fOnMenuItemClick: TMouseClickEvent;
  fMenuItems: TsahMenuItems;
@@ -65,6 +69,7 @@ public
  property Count: integer read getCount;
  property OnMenuItemClick: TMouseClickEvent read fOnMenuItemClick write fOnMenuItemClick;
  property Columns: Integer read fColumns write fColumns;
+ property ShowLabels: Boolean read fShowLabels write fShowLabels;
 end;
 
 implementation
@@ -76,10 +81,10 @@ procedure  TsahMenuItem.StyleTagObject;
 begin
   inherited;
   Handle.style.setProperty('background-color', 'white');
-  Handle.style.setProperty('border-color', 'black');
-  Handle.style.setProperty('border-style', 'solid');
-  Handle.style.setProperty('border-width', '1px');
-  Handle.style.setProperty('border-radius', '5px');
+  //Handle.style.setProperty('border-color', 'black');
+  //Handle.style.setProperty('border-style', 'solid');
+  //Handle.style.setProperty('border-width', '1px');
+  //Handle.style.setProperty('border-radius', '5px');
 end;
 
 procedure TsahMenuItem.InitializeObject;
@@ -88,7 +93,8 @@ begin
   fImage:= TW3Image.Create(Self);
   fLabel:= TW3Label.Create(Self);
   fLabel.AlignText:= taCenter;
-  fLabel.Handle.style.setProperty('font-size', 'small');
+  fLabel.Handle.style.setProperty('font-size', '3.5vw'); // ****** HERE *****
+  fLayout:= Layout.Client([Layout.Bottom(Layout.Client(Layout.Height(LABELHEIGHT), fLabel)), Layout.Client(fImage)]);
 end;
 
 procedure TsahMenuItem.FinalizeObject;
@@ -101,8 +107,10 @@ end;
 procedure TsahMenuItem.Resize;
 begin
   inherited;
-  fImage.SetBounds(IMAGEMARGIN, IMAGEMARGIN, clientWidth - IMAGEMARGIN * 2, clientHeight - IMAGEMARGIN * 2);
-  fLabel.SetBounds(0, fImage.Top + fImage.Height - (fImage.Height DIV 2),  clientWidth,  fImage.Height);
+  if assigned(fLayout) then
+  begin
+   fLayout.Resize(self);
+  end;
 end;
 
 constructor TsahMenuItem.Create(AOwner: TW3Component);
@@ -150,20 +158,20 @@ begin
   xPos:= ITEMSMARGIN;
   yPos:= ITEMSMARGIN;
 
-  fmenuItemSize:= ((clientWidth DIV Columns) - (Columns + 1 * ITEMSMARGIN));
-
+  fmenuItemWidth:= ((clientWidth DIV Columns) - (Columns + 1 * ITEMSMARGIN));
+  fmenuItemHeight:= fmenuItemWidth + LABELHEIGHT;
  for I:= 0 to MenuItems.Count-1 do
  begin
-  TsahMenuItem(MenuItems[I]).SetBounds(xPos, yPos, fMenuItemSize, fMenuItemSize);
+  TsahMenuItem(MenuItems[I]).SetBounds(xPos, yPos, fMenuItemWidth, fMenuItemHeight);
   if Idx = Columns-1 then
   begin
-   yPos:= yPos + fMenuItemSize + ITEMSMARGIN;
+   yPos:= yPos + fMenuItemHeight + ITEMSMARGIN;
    xPos:= ITEMSMARGIN;
    Idx:= 0;
   end
   else
   begin
-   xPos:= xPos + fMenuItemSize + ITEMSMARGIN;
+   xPos:= xPos + fMenuItemWidth + ITEMSMARGIN;
    inc(Idx);
   end;
  end;
@@ -173,10 +181,9 @@ procedure TsahMenu.StyleTagObject;
 begin
   inherited;
   Handle.style.setProperty('background-color', 'white');
-  Handle.style.setProperty('border-color', 'black');
-  Handle.style.setProperty('border-style', 'solid');
-  Handle.style.setProperty('border-width', '1px');
-
+  //Handle.style.setProperty('border-color', 'black');
+  //Handle.style.setProperty('border-style', 'solid');
+  //Handle.style.setProperty('border-width', '1px');
 end;
 
 procedure TsahMenu.InitializeObject;
@@ -199,7 +206,7 @@ begin
   inherited;
   Rows:= (fMenuItems.Count Div Columns);
   if (fMenuItems.Count Mod Columns) > 0 then Rows:= Rows + 1;
-  Content.SetBounds(0,0, clientWidth, (Rows * fMenuItemSize) + (((Rows + 1) * ITEMSMARGIN)) );
+  Content.SetBounds(0,0, clientWidth, (Rows * fMenuItemHeight) + (((Rows + 1) * ITEMSMARGIN)) );
   ResizeMenuItems;
 end;
 

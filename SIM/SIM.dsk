@@ -4,17 +4,17 @@
       <tab filename="Main" fullname="Main.pas" topline="54" col="21" row="63" splitview="0" designview="0" splitter="0.444444447755814" />
       <tab filename="SIM" fullname="SIM.spr" topline="1" col="1" row="1" />
       <tab filename="untApplication" fullname="untApplication.pas" topline="1" col="39" row="24" />
-      <tab filename="sahMenu" fullname="sahMenu.pas" topline="1" col="54" row="91" />
+      <tab filename="sahMenu" fullname="sahMenu.pas" topline="1" col="78" row="96" />
       <activetab>sahMenu</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>6610</BackgroundCompilations>
-      <EditTime>01:37:50.467</EditTime>
-      <CompileTime>00:05:02.246</CompileTime>
-      <TotalTime>06:16:43.055</TotalTime>
-      <DesigningTime>00:12:35.610</DesigningTime>
-      <RunningTime>01:02:30.749</RunningTime>
+      <BackgroundCompilations>7420</BackgroundCompilations>
+      <EditTime>01:49:41.632</EditTime>
+      <CompileTime>00:06:02.892</CompileTime>
+      <TotalTime>10:45:04.588</TotalTime>
+      <DesigningTime>00:12:35.657</DesigningTime>
+      <RunningTime>01:18:57.484</RunningTime>
     </Statistics>
   </state>
 </SMART>
