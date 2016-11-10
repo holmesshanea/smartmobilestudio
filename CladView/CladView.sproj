@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>CladView</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-02-08T13:21:26.489</Modified>
+    <Modified>2016-11-05T13:09:42.826</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -1499,12 +1499,12 @@ background-image: -ms-linear-gradient(top left, #FFFFFF 0%, #00A3EF 100%);
     </Files>
     <Target>Browser</Target>
     <Statistics>
-      <BackgroundCompilations>3853</BackgroundCompilations>
+      <BackgroundCompilations>3855</BackgroundCompilations>
       <EditTime>01:06:37.037</EditTime>
-      <CompileTime>00:02:52.590</CompileTime>
-      <TotalTime>04:44:11.316</TotalTime>
-      <DesigningTime>00:01:06.985</DesigningTime>
-      <RunningTime>00:46:21.160</RunningTime>
+      <CompileTime>00:02:53.262</CompileTime>
+      <TotalTime>04:44:13.354</TotalTime>
+      <DesigningTime>00:01:06.996</DesigningTime>
+      <RunningTime>00:46:40.893</RunningTime>
     </Statistics>
   </Project>
 </SMART>
