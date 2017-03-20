@@ -20,8 +20,6 @@ type
    property Url: String read  (fImage.Url) write (fImage.Url);
   end;
 
-  function window: variant; external 'window' property;
-
 implementation
 
 { TListBoxItem }
@@ -30,15 +28,17 @@ implementation
 procedure TListBoxItem.InitializeObject;
 begin
   inherited;
-   window.addEventListener('devicemotion', @Resize, false);
   fImage:= TW3Image.create(self);
-  fLabel:= TW3Label.create(self);
-  fLabel.Color:= clRed;
-  fLabel.AlignText:= taCenter;
   fImage.Width:= 32;
-  fLabel.Width:= 32;
-  fLabel.Font.Color:= clYellow;
-  Layout.Client(Layout.Padding(3),[layout.Left(fImage), Layout.Client(fLabel)]);
+  fLabel:= TW3Label.create(self);
+  fLabel.AlignText:= taCenter;
+
+  FLayout:= Layout.Client([
+                           Layout.Left(Layout.Width(32), fImage),
+                           Layout.Client(fLabel)
+                          ]);
+
+
 end;
  
 procedure TListBoxItem.Resize;

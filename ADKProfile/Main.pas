@@ -40,10 +40,17 @@ procedure TMain.AddItem(Caption: String);
 
 
 procedure TMain.HandleHttpDataReady(Sender:TW3HttpRequest);
+var
+ I: integer;
 begin
   fJSONStr:= Sender.ResponseText;
   asm
    @fChallenges = JSON.parse(@fJSONStr);
+  end;
+
+  for I:= 0 to fChallenges.challenges.length-1 do
+  begin
+   AddItem(fChallenges.challenges[I].name);
   end;
 end;
 
@@ -55,8 +62,6 @@ begin
 end;
 
 procedure TMain.InitializeObject;
-var
- I: integer;
 begin
   inherited;
   {$I 'Main:impl'}
@@ -68,10 +73,6 @@ begin
   lbxChallenges.ItemClass := TListBoxItem;
   lbxChallenges.ItemHeight := 32;
   lbxChallenges.Styles.SelectedColor := clSilver;
-
-  AddItem('One');
-  AddItem('Two');
-  AddItem('Three');
 end;
  
 procedure TMain.Resize;

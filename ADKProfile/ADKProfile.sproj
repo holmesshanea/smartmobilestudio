@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>ADKProfile</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2017-03-19T19:53:47.045</Modified>
+    <Modified>2017-03-20T19:18:35.072</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -96,7 +96,7 @@
       <File type="form">
         <Name>Main</Name>
         <Created>2017-01-15T20:35:31.624Z</Created>
-        <Modified>2017-03-19T19:53:18.148</Modified>
+        <Modified>2017-03-20T19:18:19.119</Modified>
         <Filename>Main.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -124,19 +124,19 @@
       <File type="unit">
         <Name>ListBoxItem</Name>
         <Created>2017-03-19T19:05:16.863Z</Created>
-        <Modified>2017-03-19T19:45:03.429</Modified>
+        <Modified>2017-03-20T19:06:51.302</Modified>
         <Filename>ListBoxItem.pas</Filename>
       </File>
     </Files>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>2479</BackgroundCompilations>
-      <EditTime>00:35:31.355</EditTime>
-      <CompileTime>00:01:35.963</CompileTime>
-      <TotalTime>06:04:42.487</TotalTime>
-      <DesigningTime>01:27:58.265</DesigningTime>
-      <RunningTime>00:14:44.156</RunningTime>
+      <BackgroundCompilations>2742</BackgroundCompilations>
+      <EditTime>00:39:32.400</EditTime>
+      <CompileTime>00:01:52.564</CompileTime>
+      <TotalTime>06:23:57.021</TotalTime>
+      <DesigningTime>01:27:58.335</DesigningTime>
+      <RunningTime>00:17:16.130</RunningTime>
     </Statistics>
   </Project>
 </SMART>
