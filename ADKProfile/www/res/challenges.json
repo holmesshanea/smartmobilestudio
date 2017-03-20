@@ -1,0 +1,517 @@
+{
+ "challenges":[
+
+               {
+		"name": "Tupper Lake Triad",
+                "email": "unknown",
+                "website": "http://www.tupperlaketriad.com/",
+                "facebook": "https://www.facebook.com/groups/439814939683499/",
+                "address": "PO Box 795;Tupper Lake NY 12986",
+                "phone": "unknown",
+		"mountains": [
+                              {
+			       "rank": "1",
+                               "name": "Arab",
+                               "elevation": "2545",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "2",
+                               "name": "Coney",
+                               "elevation": "2280",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "3",
+                               "name": "Goodman",
+                               "elevation": "2178",
+                               "summit": "",
+			       "dates": []
+		              }
+                            ]
+	       },
+               {
+		"name": "Saranac Lake 6er",
+                "email": "info@saranaclake6er.com", 
+                "website": "http://saranaclake6er.com/",
+                "facebook": "https://www.facebook.com/SaranacLake6er/",
+                "address": "39 Main St; Saranac Lake, NY 12983",
+                "phone": "518-891-4150",
+		"mountains": [
+                              {
+			       "rank": "1",
+                               "name": "McKenzie",
+                               "elevation": "3822",
+                               "summit": "", 
+			       "dates": []
+                              },
+                              {
+			       "rank": "2",
+                               "name": "Ampersand",
+                               "elevation": "3353",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "3",
+                               "name": "Scarface",
+                               "elevation": "3054",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "4",
+                               "name": "St. Regis",
+			       "elevation": "2874",
+                               "summit": "",
+                               "dates": []
+		              },
+                              {
+			       "rank": "5",
+                               "name": "Haystack",
+                               "elevation": "2864",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "6",
+                               "name": "Baker",
+                               "elevation": "2452",
+                               "summit": "",
+			       "dates": []
+		              }
+
+                            ]
+
+	       },
+
+              {
+		"name": "Lake George 12ster",
+                "email": "lakegeorge12ster@gmail.com", 
+                "website": "http://www.lakegeorge12ster.com/",
+                "facebook": "https://www.facebook.com/lakegeorge12ster/",
+                "address": "unknown",
+                "phone" : "518-504-0188", 
+		"mountains": [
+                              {
+			       "rank": "1",
+                               "name": "Black",
+                               "elevation": "2665",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "2",
+                               "name": "Erebus",
+                               "elevation": "2527",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "3",
+                               "name": "Sleeping Beauty",
+                               "elevation": "2347",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "4",
+                               "name": "Buck",
+                               "elevation": "2334",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "5",
+                               "name": "Five Mile",
+                               "elevation": "2256",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "6",
+                               "name": "Huckleberry",
+                               "elevation": "2232",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "7",
+                               "name": "Thomas",
+                               "elevation": "2031",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "8",
+                               "name": "Brown",
+                               "elevation": "1966",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "9",
+                               "name": "Cat",
+                               "elevation": "1956",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "10",
+                               "name": "Fifth",
+                               "elevation": "1813",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "11",
+                               "name": "French Point",
+                               "elevation": "1756",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "12",
+                               "name": "First",
+                               "elevation": "1586",
+                               "summit": "",
+			       "dates": []
+		              }
+                            ]
+	       },               
+               {
+		"name": "ADK 46er",
+                "email": "46rfinisher@gmail.com",
+                "website": "http://adk46er.org/",
+                "facebook": "https://www.facebook.com/official.Adirondack.46ers/",
+                "address": "P.O. Box 46; Fort Edward, NY 12828",
+                "phone": "unknown",
+		"mountains": [
+                              {
+			       "rank": "1",
+                               "name": "Marcy",
+                               "elevation": "5344",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "2",
+                               "name": "Algonquin",
+                               "elevation": "5114",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "3",
+                               "name": "Haystack",
+                               "elevation": "4960",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "4",
+                               "name": "Skylight",
+                               "elevation": "4926",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "5",
+                               "name": "Whiteface",
+                               "elevation": "4867",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "6",
+                               "name": "Dix",
+                               "elevation": "4857",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "7",
+                               "name": "Gray",
+                               "elevation": "4840",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "8",
+                               "name": "Iroquois",
+                               "elevation": "4840",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "9",
+                               "name": "Basin",
+                               "elevation": "4827",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "10",
+                               "name": "Gothics",
+                               "elevation": "4736",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "11",
+                               "name": "Colden",
+                               "elevation": "4714",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "12",
+                               "name": "Giant",
+                               "elevation": "4627",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "13",
+                               "name": "Nippletop",
+                               "elevation": "4620",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "14",
+                               "name": "Santanoni",
+                               "elevation": "4607",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "15",
+                               "name": "Redfield",
+                               "elevation": "4606",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "16",
+                               "name": "Wright",
+                               "elevation": "4580",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "17",
+                               "name": "Saddleback",
+                               "elevation": "4515",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "18",
+                               "name": "Panther",
+                               "elevation": "4442",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "19",
+                               "name": "TableTop",
+                               "elevation": "4427",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "20",
+                               "name": "Rocky Peak",
+                               "elevation": "4420",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "21",
+                               "name": "Macomb",
+                               "elevation": "4405",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "22",
+                               "name": "Armstrong",
+                               "elevation": "4400",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "23",
+                               "name": "Hough",
+                               "elevation": "4400",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "24",
+                               "name": "Seward",
+                               "elevation": "4361",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "25",
+                               "name": "Marshall",
+                               "elevation": "4360",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "26",
+                               "name": "Allen",
+                               "elevation": "4340",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "27",
+                               "name": "Big Slide",
+                               "elevation": "4240",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "28",
+                               "name": "Esther",
+                               "elevation": "4240",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "29",
+                               "name": "Upper Wolf Jaw",
+                               "elevation": "4285",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "30",
+                               "name": "Lower Wolf Jaw",
+                               "elevation": "4175",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "31",
+                               "name": "Street",
+                               "elevation": "4166",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "32",
+                               "name": "Phelps",
+                               "elevation": "4161",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "33",
+                               "name": "Donaldson",
+                               "elevation": "4140",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "34",
+                               "name": "Seymour",
+                               "elevation": "4120",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "35",
+                               "name": "Sawteeth",
+                               "elevation": "4100",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "36",
+                               "name": "Cascade",
+                               "elevation": "4098",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "37",
+                               "name": "South Dix",
+                               "elevation": "4060",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "38",
+                               "name": "Porter",
+                               "elevation": "4059",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "39",
+                               "name": "Colvin",
+                               "elevation": "4057",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "40",
+                               "name": "Emmons",
+                               "elevation": "4040",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "41",
+                               "name": "Dial",
+                               "elevation": "4020",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "42",
+                               "name": "Grace",
+                               "elevation": "4012",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "43",
+                               "name": "Blake",
+                               "elevation": "3960",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "44",
+                               "name": "Cliff",
+                               "elevation": "3960",
+                               "summit": "",
+			       "dates": []
+                              },
+                              {
+			       "rank": "45",
+                               "name": "Nye",
+                               "elevation": "3895",
+                               "summit": "",
+			       "dates": []
+		              },
+                              {
+			       "rank": "46",
+                               "name": "Couchsachraga",
+                               "elevation": "3820",
+                               "summit": "",
+			       "dates": []
+		              }
+                            ]
+	       }             
+             ]
+}

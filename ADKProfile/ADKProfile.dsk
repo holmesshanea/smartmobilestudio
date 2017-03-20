@@ -1,0 +1,22 @@
+<SMART>
+  <state>
+    <editor>
+      <tab filename="Application" fullname="Application.pas" topline="1" col="3" row="8" />
+      <tab filename="ADKProfile" fullname="ADKProfile.spr" topline="1" col="1" row="1" />
+      <tab filename="Splash" fullname="Splash.pas" topline="28" col="27" row="36" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="iOS.css" fullname="iOS.css" topline="116" col="1" row="111" />
+      <tab filename="ListBoxItem" fullname="ListBoxItem.pas" topline="9" col="70" row="41" />
+      <tab filename="Main" fullname="Main.pas" topline="1" col="1" row="62" splitview="0" designview="0" splitter="0.444444447755814" />
+      <activetab>Main</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>2479</BackgroundCompilations>
+      <EditTime>00:35:31.355</EditTime>
+      <CompileTime>00:01:36.688</CompileTime>
+      <TotalTime>06:04:42.487</TotalTime>
+      <DesigningTime>01:27:58.265</DesigningTime>
+      <RunningTime>00:14:44.156</RunningTime>
+    </Statistics>
+  </state>
+</SMART>

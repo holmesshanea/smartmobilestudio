@@ -1,0 +1,11 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2017-03-19T09:29:46.275</Created>
+    <Modified>2017-03-19T10:54:06.431</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <StyleClass>TListboxItem</StyleClass>
+      <Name>ListBoxItem</Name>
+    </object>
+  </Form>
+</SMART>

@@ -1,0 +1,42 @@
+unit Splash;
+
+interface
+
+uses 
+  System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application;
+
+type
+  TSplash = class(TW3Form)
+  private
+    {$I 'Splash:intf'}
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  end;
+
+implementation
+
+{ TSplash }
+
+procedure TSplash.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+end;
+
+procedure TSplash.InitializeObject;
+begin
+  inherited;
+  {$I 'Splash:impl'}
+end;
+ 
+procedure TSplash.Resize;
+begin
+  inherited;
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TSplash);
+end.

@@ -1,0 +1,50 @@
+unit ListBoxItem;
+
+interface
+
+uses 
+  System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Layout;
+
+type
+  TListBoxItem = class(TW3Form)
+  private
+    {$I 'ListBoxItem:intf'}
+    fLayout: TLayout;
+    fBody: TW3Panel;
+    fText: TW3Label;
+    fImage: TW3Image;
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  public
+  end;
+
+implementation
+
+{ TListBoxItem }
+
+procedure TListBoxItem.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+end;
+
+procedure TListBoxItem.InitializeObject;
+begin
+  inherited;
+  {$I 'ListBoxItem:impl'}
+  fBody:= TW3Panel.create(self);
+  fText: TW3Label.create(fBody);
+  fImage: TW3Image.create(fBody);
+end;
+ 
+procedure TListBoxItem.Resize;
+begin
+  inherited;
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TListBoxItem);
+end.

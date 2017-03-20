@@ -1,0 +1,20 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2017-03-18T18:40:58.900</Created>
+    <Modified>2017-03-18T20:30:48.209</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Color>16777215</Color>
+      <Name>Splash</Name>
+      <object type="TW3Label">
+        <Caption>ADK Profile by Cold River Labs</Caption>
+        <Width>248</Width>
+        <Top>120</Top>
+        <Left>96</Left>
+        <Height>80</Height>
+        <Name>lblADKProfile</Name>
+        <OnClick>lblADKProfileClick</OnClick>
+      </object>
+    </object>
+  </Form>
+</SMART>
