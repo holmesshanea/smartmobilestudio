@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>ADKProfile</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2017-03-21T13:53:52.045</Modified>
+    <Modified>2017-03-21T14:30:50.722</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -96,7 +96,7 @@
       <File type="form">
         <Name>Main</Name>
         <Created>2017-01-15T20:35:31.624Z</Created>
-        <Modified>2017-03-21T13:25:44.292</Modified>
+        <Modified>2017-03-21T14:02:57.370</Modified>
         <Filename>Main.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -130,7 +130,7 @@
       <File type="form">
         <Name>Challenge</Name>
         <Created>2017-03-20T19:52:51.922Z</Created>
-        <Modified>2017-03-21T13:53:22.194</Modified>
+        <Modified>2017-03-21T14:30:13.839</Modified>
         <Filename>Challenge.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -203,16 +203,22 @@
         <Modified>2017-03-21T13:53:12.019</Modified>
         <Filename>www\res\mtn64.png</Filename>
       </File>
+      <File type="unit">
+        <Name>Common</Name>
+        <Created>2017-03-21T13:59:52.634Z</Created>
+        <Modified>2017-03-21T14:01:01.671</Modified>
+        <Filename>Common.pas</Filename>
+      </File>
     </Files>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>4417</BackgroundCompilations>
-      <EditTime>01:02:30.413</EditTime>
-      <CompileTime>00:02:56.126</CompileTime>
-      <TotalTime>09:57:36.460</TotalTime>
+      <BackgroundCompilations>4570</BackgroundCompilations>
+      <EditTime>01:04:23.464</EditTime>
+      <CompileTime>00:03:02.073</CompileTime>
+      <TotalTime>10:34:35.137</TotalTime>
       <DesigningTime>02:48:28.758</DesigningTime>
-      <RunningTime>00:44:46.954</RunningTime>
+      <RunningTime>00:50:09.898</RunningTime>
     </Statistics>
   </Project>
 </SMART>

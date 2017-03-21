@@ -7337,7 +7337,6 @@ var TMain = {
    $ClassName:"TMain",$Parent:TW3Form
    ,$Init:function ($) {
       TW3Form.$Init($);
-      $.fChallenges = undefined;
       $.fHttp = $.fLayout$4 = $.lbxChallenges = null;
       $.fJSONStr = "";
    }
@@ -7354,10 +7353,10 @@ var TMain = {
    ,HandleHttpDataReady:function(Self, Sender$10) {
       var I = 0;
       Self.fJSONStr = TW3HttpRequest.a$52(Sender$10);
-      Self.fChallenges = JSON.parse(Self.fJSONStr);
+      gChallenges = JSON.parse(Self.fJSONStr);
       var $temp30;
-      for(I=0,$temp30=Self.fChallenges.challenges.length-1;I<=$temp30;I++) {
-         TMain.AddItem$1(Self,String(Self.fChallenges.challenges[I].name));
+      for(I=0,$temp30=gChallenges.challenges.length-1;I<=$temp30;I++) {
+         TMain.AddItem$1(Self,String(gChallenges.challenges[I].name));
       }
    }
    /// procedure TMain.InitializeForm()
@@ -7390,16 +7389,17 @@ var TMain = {
       Self.fLayout$4 = Layout.Client$3(Layout,Layout.Client$3(Layout,Self.lbxChallenges));
    }
    /// procedure TMain.LBItemSelected(Sender: TObject; itemIndex: Integer)
-   ///  [line: 37, column: 17, file: Main]
+   ///  [line: 36, column: 17, file: Main]
    ,LBItemSelected$1:function(Self, Sender$11, itemIndex) {
       var I$1 = 0;
       if (itemIndex>=0) {
+         gChallengeIdx = itemIndex;
          TChallenge.a$76($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),"res\\challenge64.png");
-         TChallenge.a$74($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),(String(Self.fChallenges.challenges[itemIndex].name)));
+         TChallenge.a$74($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),(String(gChallenges.challenges[itemIndex].name)));
          TChallenge.ClearItems($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge));
          var $temp31;
-         for(I$1=0,$temp31=Self.fChallenges.challenges[itemIndex].mountains.length-1;I$1<=$temp31;I$1++) {
-            TChallenge.AddItem($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),String(Self.fChallenges.challenges[itemIndex].mountains[I$1].name));
+         for(I$1=0,$temp31=gChallenges.challenges[itemIndex].mountains.length-1;I$1<=$temp31;I$1++) {
+            TChallenge.AddItem($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),String(gChallenges.challenges[itemIndex].mountains[I$1].name));
          }
          TW3CustomApplication.GotoForm(Application(),"Challenge",1);
       }
@@ -11552,7 +11552,7 @@ var TChallenge = {
       return Self.W3Label1$1.FCaption$1;
    }
    /// procedure TChallenge.AddItem(Caption: String)
-   ///  [line: 57, column: 22, file: Challenge]
+   ///  [line: 56, column: 22, file: Challenge]
    ,AddItem:function(Self, Caption$5) {
       var lbItem$1 = null;
       lbItem$1 = $As(TW3ListBox.GetItem$6(Self.lbxMountains,TW3ListBox.Add$5(Self.lbxMountains)),TListBoxItem);
@@ -11560,31 +11560,31 @@ var TChallenge = {
       TListBoxItem.a$72(lbItem$1,"res\\mtn.png");
    }
    /// procedure TChallenge.ChallengeActivate(Sender: TObject)
-   ///  [line: 64, column: 22, file: Challenge]
+   ///  [line: 63, column: 22, file: Challenge]
    ,ChallengeActivate:function(Self, Sender$30) {
    }
    /// procedure TChallenge.ChallengeDeactivate(Sender: TObject)
-   ///  [line: 74, column: 22, file: Challenge]
+   ///  [line: 73, column: 22, file: Challenge]
    ,ChallengeDeactivate:function(Self, Sender$31) {
       Self.fLayout$3 = null;
    }
    /// procedure TChallenge.ClearItems()
-   ///  [line: 52, column: 22, file: Challenge]
+   ///  [line: 51, column: 22, file: Challenge]
    ,ClearItems:function(Self) {
       TW3ListBox.Clear$6(Self.lbxMountains);
    }
    /// procedure TChallenge.HandleBackButton(Sender: TObject)
-   ///  [line: 79, column: 22, file: Challenge]
+   ///  [line: 78, column: 22, file: Challenge]
    ,HandleBackButton$1:function(Self, Sender$32) {
       TW3CustomApplication.GotoForm(Application(),"Main",2);
    }
    /// procedure TChallenge.InitializeForm()
-   ///  [line: 84, column: 22, file: Challenge]
+   ///  [line: 83, column: 22, file: Challenge]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
    }
    /// procedure TChallenge.InitializeObject()
-   ///  [line: 90, column: 22, file: Challenge]
+   ///  [line: 89, column: 22, file: Challenge]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
@@ -11628,15 +11628,16 @@ var TChallenge = {
       Self.fLayout$3 = Layout.Client(Layout,Layout.Margins$2(Layout,5),[Layout.Top$6(Layout,Layout.Height$8(Layout,64),Layout.Center$1(Layout,Self.W3Image1$1)), Layout.Top$6(Layout,Layout.Height$8(Layout,32),Layout.Client$3(Layout,Self.W3Label1$1)), Layout.Client$3(Layout,Self.lbxMountains), Layout.Bottom$4(Layout,Layout.Height$8(Layout,32),Self.W3HeaderControl1$1)].slice());
    }
    /// procedure TChallenge.LBItemSelected(Sender: TObject; itemIndex: Integer)
-   ///  [line: 40, column: 22, file: Challenge]
+   ///  [line: 39, column: 22, file: Challenge]
    ,LBItemSelected:function(Self, Sender$33, itemIndex$3) {
       if (itemIndex$3>=0) {
          TMountain.a$41($As(TW3CustomApplication.FormByName(Application(),"Mountain"),TMountain),"res\\mtn64.png");
+         TMountain.a$39($As(TW3CustomApplication.FormByName(Application(),"Mountain"),TMountain),(String(gChallenges.challenges[gChallengeIdx].mountains[itemIndex$3].name)));
          TW3CustomApplication.GotoForm(Application(),"Mountain",1);
       }
    }
    /// procedure TChallenge.Resize()
-   ///  [line: 113, column: 22, file: Challenge]
+   ///  [line: 112, column: 22, file: Challenge]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayout$3) {
@@ -11951,6 +11952,16 @@ var TMountain = {
    ,a$40:function(Self) {
       return TW3Image.getSrc(Self.W3Image1);
    }
+   /// anonymous TSourceMethodSymbol
+   ///  [line: 22, column: 58, file: Mountain]
+   ,a$39:function(Self, Value$21) {
+      TW3Label.SetCaption$1(Self.W3Label1,Value$21);
+   }
+   /// anonymous TSourceMethodSymbol
+   ///  [line: 22, column: 33, file: Mountain]
+   ,a$38:function(Self) {
+      return Self.W3Label1.FCaption$1;
+   }
    /// procedure TMountain.HandleBackButton(Sender: TObject)
    ///  [line: 32, column: 21, file: Mountain]
    ,HandleBackButton:function(Self, Sender$34) {
@@ -12044,8 +12055,8 @@ var TListBoxItem = {
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 20, column: 50, file: ListBoxItem]
-   ,a$72:function(Self, Value$21) {
-      TW3Image.setSrc(Self.fImage,Value$21);
+   ,a$72:function(Self, Value$22) {
+      TW3Image.setSrc(Self.fImage,Value$22);
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 20, column: 31, file: ListBoxItem]
@@ -12054,8 +12065,8 @@ var TListBoxItem = {
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 19, column: 54, file: ListBoxItem]
-   ,a$70:function(Self, Value$22) {
-      TW3Label.SetCaption$1(Self.fLabel,Value$22);
+   ,a$70:function(Self, Value$23) {
+      TW3Label.SetCaption$1(Self.fLabel,Value$23);
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 19, column: 31, file: ListBoxItem]
@@ -12269,7 +12280,10 @@ var LittleEndian = false,
    LittleEndian = false;
 var a$44 = null;
 var vJSON_ID = 0;
-var Application$1 = null;
+var Application$1 = null,
+   gChallenges,
+   gChallengeIdx = 0;
+var gMountainIdx = 0;
 var __CONV_BUFFER = null;
 var __CONV_VIEW = null;
 var __CONV_ARRAY = null;

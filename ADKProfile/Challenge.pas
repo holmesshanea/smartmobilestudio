@@ -26,14 +26,13 @@ type
    procedure ClearItems;
    property Title: String read (W3Label1.Caption) write (W3Label1.Caption);
    property Url: String read (W3Image1.Url) write (W3Image1.Url);
-   //property Listox: TW3ListBox read (lbxMountains) write (lbxMountains);
   end;
 
   function window: variant; external 'window' property;
 
 implementation
 
-uses ListBoxItem, Mountain;
+uses ListBoxItem, Mountain, Common;
 
 { TChallenge }
 
@@ -44,7 +43,7 @@ begin
  if itemIndex >= 0 then
  begin
   TMountain(Application.FormByName('Mountain')).Url:= 'res\mtn64.png';
-  //TMountain(Application.FormByName('Mountain')).Title:= fChallenges.challenges[itemIndex].name;
+  TMountain(Application.FormByName('Mountain')).Title:= gChallenges.challenges[gChallengeIdx].mountains[itemIndex].name;
   Application.GotoForm('Mountain', feFromRight);
  end;
 end;

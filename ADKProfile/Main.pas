@@ -16,7 +16,6 @@ type
     fLayout: TLayout;
     fHttp: TW3HttpRequest;
     fJSONStr: String;
-    fChallenges: Variant;
     procedure AddItem(Caption: String);
     procedure LBItemSelected (Sender: TObject; itemIndex: integer);
   protected
@@ -30,7 +29,7 @@ type
 
 implementation
 
-uses ListBoxItem, Challenge;
+uses ListBoxItem, Challenge, Common;
 
 { TForm1 }
 
@@ -40,12 +39,13 @@ var
 begin
  if itemIndex >= 0 then
  begin
+  gChallengeIdx:= itemIndex;
   TChallenge(Application.FormByName('Challenge')).Url:= 'res\challenge64.png';
-  TChallenge(Application.FormByName('Challenge')).Title:= fChallenges.challenges[itemIndex].name;
+  TChallenge(Application.FormByName('Challenge')).Title:= gChallenges.challenges[itemIndex].name;
    TChallenge(Application.FormByName('Challenge')).ClearItems;
-  for I:= 0 to fChallenges.challenges[itemIndex].mountains.length-1 do
+  for I:= 0 to gChallenges.challenges[itemIndex].mountains.length-1 do
   begin
-   TChallenge(Application.FormByName('Challenge')).AddItem(fChallenges.challenges[itemIndex].mountains[I].name);
+   TChallenge(Application.FormByName('Challenge')).AddItem(gChallenges.challenges[itemIndex].mountains[I].name);
   end;
   Application.GotoForm('Challenge', feFromRight);
  end;
@@ -65,12 +65,12 @@ var
 begin
   fJSONStr:= Sender.ResponseText;
   asm
-   @fChallenges = JSON.parse(@fJSONStr);
+   @gChallenges = JSON.parse(@fJSONStr);
   end;
 
-  for I:= 0 to fChallenges.challenges.length-1 do
+  for I:= 0 to gChallenges.challenges.length-1 do
   begin
-   AddItem(fChallenges.challenges[I].name);
+   AddItem(gChallenges.challenges[I].name);
   end;
 end;
 

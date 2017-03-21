@@ -5,19 +5,20 @@
       <tab filename="ADKProfile" fullname="ADKProfile.spr" topline="1" col="1" row="1" />
       <tab filename="Splash" fullname="Splash.pas" topline="38" col="58" row="63" splitview="0" designview="0" splitter="0.444444447755814" />
       <tab filename="ListBoxItem" fullname="ListBoxItem.pas" topline="1" col="22" row="14" />
-      <tab filename="Main" fullname="Main.pas" topline="11" col="68" row="21" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Challenge" fullname="Challenge.pas" topline="29" col="65" row="46" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Main" fullname="Main.pas" topline="19" col="68" row="81" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Challenge" fullname="Challenge.pas" topline="1" col="23" row="17" splitview="0" designview="0" splitter="0.444444447755814" />
       <tab filename="Mountain" fullname="Mountain.pas" topline="8" col="7" row="21" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Common" fullname="Common.pas" topline="1" col="26" row="11" />
       <activetab>Challenge</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>4417</BackgroundCompilations>
-      <EditTime>01:02:30.413</EditTime>
-      <CompileTime>00:02:56.126</CompileTime>
-      <TotalTime>09:57:36.460</TotalTime>
+      <BackgroundCompilations>4570</BackgroundCompilations>
+      <EditTime>01:04:23.464</EditTime>
+      <CompileTime>00:03:02.073</CompileTime>
+      <TotalTime>10:34:35.137</TotalTime>
       <DesigningTime>02:48:28.758</DesigningTime>
-      <RunningTime>00:44:46.954</RunningTime>
+      <RunningTime>00:50:09.898</RunningTime>
     </Statistics>
   </state>
 </SMART>
