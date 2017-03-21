@@ -21,6 +21,7 @@ type
     procedure InitializeObject; override;
     procedure Resize; override;
     procedure HandleBackButton(Sender: TObject);
+    procedure HandleNextButton(Sender: TObject);
   public
    procedure AddItem(Caption: String);
    procedure ClearItems;
@@ -42,8 +43,9 @@ procedure TChallenge.LBItemSelected (Sender: TObject; itemIndex: integer);
 begin
  if itemIndex >= 0 then
  begin
+  gMountainIdx:= itemIndex;
   TMountain(Application.FormByName('Mountain')).Url:= 'res\mtn64.png';
-  TMountain(Application.FormByName('Mountain')).Title:= gChallenges.challenges[gChallengeIdx].mountains[itemIndex].name;
+  TMountain(Application.FormByName('Mountain')).UpdateContent;
   Application.GotoForm('Mountain', feFromRight);
  end;
 end;
@@ -62,10 +64,10 @@ procedure TChallenge.AddItem(Caption: String);
 
 procedure TChallenge.ChallengeActivate(Sender: TObject);
 begin
-     {FLayout:= Layout.Client(Layout.Margins(5), [
+      {FLayout:= Layout.Client(Layout.Margins(5), [
                                 Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
                                 Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
-                                Layout.Client((W3ListBox1)),
+                                Layout.Client((lbxMountains)),
                                 Layout.Bottom(Layout.Height(32), W3HeaderControl1)
                               ] );}
 end;
@@ -80,6 +82,11 @@ begin
  Application.GotoForm('Main', feToLeft);
 end;
 
+procedure TChallenge.HandleNextButton(Sender: TObject);
+begin
+//
+end;
+
 procedure TChallenge.InitializeForm;
 begin
   inherited;
@@ -92,20 +99,33 @@ begin
   {$I 'Challenge:impl'}
   window.addEventListener('devicemotion', @Resize, false);
   W3Label1.AlignText:= taCenter;
+
   W3HeaderControl1.StyleClass:= 'TW3HeaderControl2';
-  W3HeaderControl1.BackButton.StyleClass:= 'TW3ButtonBack';
-  W3HeaderControl1.BackButton.OnClick:= HandleBackButton;
+  W3HeaderControl1.BackButton.Visible:= False;
+  W3HeaderControl1.NextButton.Visible:= False;
+  W3HeaderControl1.Title.StyleClass:= 'TW3Label2';
+  W3HeaderControl1.Title.Caption:='Mountains';
+  W3HeaderControl1.Title.AlignText:= taCenter;
 
   lbxMountains.ItemClass := TListBoxItem;
   lbxMountains.ItemHeight := 32;
   lbxMountains.Styles.SelectedColor := clSilver;
   lbxMountains.OnSelected := LBItemSelected;
 
-       FLayout:= Layout.Client(Layout.Margins(5), [
-                                Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
-                                Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
-                                Layout.Client((lbxMountains)),
-                                Layout.Bottom(Layout.Height(32), W3HeaderControl1)
+  W3HeaderControl2.StyleClass:= 'TW3HeaderControl2';
+  W3HeaderControl2.BackButton.StyleClass:= 'TW3ButtonBack';
+  W3HeaderControl2.BackButton.OnClick:= HandleBackButton;
+  W3HeaderControl2.NextButton.Visible:= True;
+  W3HeaderControl2.NextButton.StyleClass:= 'TW3ButtonBack';
+  W3HeaderControl2.NextButton.Caption:= 'Info';
+  W3HeaderControl2.NextButton.OnClick:= HandleNextButton;
+
+  FLayout:= Layout.Client(Layout.Margins(5), [
+                          Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
+                          Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
+                          Layout.Top(Layout.Height(32), W3HeaderControl1),
+                          Layout.Client((lbxMountains)),
+                          Layout.Bottom(Layout.Height(32), W3HeaderControl2)
                               ] );
 end;
  

@@ -14,6 +14,7 @@ type
     fImage: TW3Image;
   protected
     procedure InitializeObject; override;
+    procedure FinalizeObject; override;
     procedure Resize; override;
   public
    property Text: string read (fLabel.Caption) write (fLabel.Caption);
@@ -24,6 +25,10 @@ implementation
 
 { TListBoxItem }
 
+procedure TListBoxItem.FinalizeObject;
+begin
+ fLayout:= nil;
+end;
 
 procedure TListBoxItem.InitializeObject;
 begin

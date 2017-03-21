@@ -1,7 +1,7 @@
 <SMART>
   <Form version="2" subversion="2">
     <Created>2017-01-15T20:35:31.625</Created>
-    <Modified>2017-03-21T13:02:42.039</Modified>
+    <Modified>2017-03-21T18:12:41.643</Modified>
     <object type="TW3Form">
       <Caption>W3Form</Caption>
       <Name>Main</Name>
@@ -9,10 +9,24 @@
       <OnActivate>MainActivate</OnActivate>
       <object type="TW3ListBox">
         <Width>160</Width>
-        <Top>40</Top>
-        <Left>40</Left>
+        <Top>64</Top>
+        <Left>16</Left>
         <Height>328</Height>
         <Name>lbxChallenges</Name>
+      </object>
+      <object type="TW3HeaderControl">
+        <Width>152</Width>
+        <Top>16</Top>
+        <Left>8</Left>
+        <Height>32</Height>
+        <Name>W3HeaderControl1</Name>
+      </object>
+      <object type="TW3HeaderControl">
+        <Width>160</Width>
+        <Top>400</Top>
+        <Left>16</Left>
+        <Height>32</Height>
+        <Name>W3HeaderControl2</Name>
       </object>
     </object>
   </Form>

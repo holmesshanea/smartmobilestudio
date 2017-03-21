@@ -12,18 +12,30 @@
 		"mountains": [
                               {
 			       "rank": "1",
-                               "name": "Arab",
-                               "elevation": "2545"
+                               "name": "Mt. Arab",
+                               "elevation": "2545'",
+                               "ascent": "764'",
+                               "distance": "1.1 miles",
+                               "description": "Mt. Arab has a restored fire tower & observer's cabin at it's summit. There is a small museum located in the observer's cabin. The trail and tower are closed during big game season in the Fall. The trail is an excellent snowshoe trail",
+                               "trailhead": "Take Rt3 from Tupper Lake toward Piercefield. Around 7.25 miles turn Left on to Conifer Road. Follow Conifer Road for about 2 miles and turn Left on to Mt Arab Road. After 1 mile, trailhead  is on left- parking on the Right."
 		              },
                               {
 			       "rank": "2",
-                               "name": "Coney",
-                               "elevation": "2280"
+                               "name": "Coney Mtn",
+                               "elevation": "2280'",
+                               "ascent": "548'",
+                               "distance": "1.1 miles",
+                               "description": "Gradual looping trail leading to an open rock summit. Excellent view of Coney Mt in the distance. An excellent Snowshoe trail,",
+                               "trailhead": "Take Rt#30 South from Tupper Lake. Parking area is on left side just before snowplow turnaround on the right."
                               },
                               {
 			       "rank": "3",
-                               "name": "Goodman",
-                               "elevation": "2178"
+                               "name": "Goodman Mtn",
+                               "elevation": "2178'",
+                               "ascent": "581",
+                               "distance": "1.6 miles",
+                               "description": "Trail begins at Lumberjack Spring. The first quarter mile is wheelchair accessible. Turning sharply left the trail steepens and ascends to the open summit. Coney Mt is visible in the distance. This is also a fine Snowshoe trail.",
+                               "trailhead": "Take Rt#30 South from Tupper Lake. Parking is on the Left at Lumberjack Spring just before Coney Mt parking."                               
 		              }
                             ]
 	       },

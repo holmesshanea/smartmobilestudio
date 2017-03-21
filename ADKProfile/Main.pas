@@ -5,7 +5,7 @@ interface
 uses 
   SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, 
   SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Layout,
-  SmartCL.Controls.Listbox, SmartCL.Inet, ECMA.JSON, System.Colors;
+  SmartCL.Controls, SmartCL.Inet, ECMA.JSON, System.Colors;
 
 type
   TMain = class(TW3Form)
@@ -41,11 +41,11 @@ begin
  begin
   gChallengeIdx:= itemIndex;
   TChallenge(Application.FormByName('Challenge')).Url:= 'res\challenge64.png';
-  TChallenge(Application.FormByName('Challenge')).Title:= gChallenges.challenges[itemIndex].name;
-   TChallenge(Application.FormByName('Challenge')).ClearItems;
-  for I:= 0 to gChallenges.challenges[itemIndex].mountains.length-1 do
+  TChallenge(Application.FormByName('Challenge')).Title:= gChallenges.challenges[gChallengeIdx].name;
+  TChallenge(Application.FormByName('Challenge')).ClearItems;
+  for I:= 0 to gChallenges.challenges[gChallengeIdx].mountains.length-1 do
   begin
-   TChallenge(Application.FormByName('Challenge')).AddItem(gChallenges.challenges[itemIndex].mountains[I].name);
+   TChallenge(Application.FormByName('Challenge')).AddItem(gChallenges.challenges[gChallengeIdx].mountains[I].name);
   end;
   Application.GotoForm('Challenge', feFromRight);
  end;
@@ -85,18 +85,38 @@ procedure TMain.InitializeObject;
 begin
   inherited;
   {$I 'Main:impl'}
-   window.addEventListener('devicemotion', @Resize, false);
+  window.addEventListener('devicemotion', @Resize, false);
 
-   fHttp := TW3HttpRequest.Create;
-   fHttp.OnDataReady:= HandleHttpDataReady;
+  fHttp := TW3HttpRequest.Create;
+  fHttp.OnDataReady:= HandleHttpDataReady;
+  W3HeaderControl1.StyleClass:= 'TW3HeaderControl2';
+  W3HeaderControl1.BackButton.Visible:= False;
+  W3HeaderControl1.NextButton.Visible:= False;
+  W3HeaderControl1.Title.StyleClass:= 'TW3Label2';
+  W3HeaderControl1.Title.Caption:='Challenges';
+  W3HeaderControl1.Title.AlignText:= taCenter;
+
 
   lbxChallenges.ItemClass := TListBoxItem;
   lbxChallenges.ItemHeight := 32;
   lbxChallenges.Styles.SelectedColor := clSilver;
+  lbxChallenges.OnSelected := LBItemSelected;
 
-   lbxChallenges.OnSelected := LBItemSelected;
+  W3HeaderControl2.StyleClass:= 'TW3HeaderControl2';
+  W3HeaderControl2.BackButton.StyleClass:= 'TW3ButtonBack';
+  //W3HeaderControl2.BackButton.OnClick:= HandleBackButton;
+  W3HeaderControl2.BackButton.Visible:= True;
+  W3HeaderControl2.BackButton.Caption:= 'About';
 
-   FLayout:= Layout.Client(Layout.Client(lbxChallenges));
+  W3HeaderControl2.NextButton.StyleClass:= 'TW3ButtonBack';
+  //W3HeaderControl2.NextButton.OnClick:= HandleNextButton;
+  W3HeaderControl2.NextButton.Visible:= True;
+  W3HeaderControl2.NextButton.Caption:= 'Help';
+
+   FLayout:= Layout.Client([Layout.Top(Layout.Height(32), W3HeaderControl1),
+                            Layout.Client(lbxChallenges),
+                            Layout.Bottom(Layout.Height(32), W3HeaderControl2)
+                            ]);
 
 end;
 

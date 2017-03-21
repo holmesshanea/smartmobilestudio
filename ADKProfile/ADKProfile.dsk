@@ -1,24 +1,20 @@
 <SMART>
   <state>
     <editor>
-      <tab filename="Application" fullname="Application.pas" topline="1" col="57" row="8" />
-      <tab filename="ADKProfile" fullname="ADKProfile.spr" topline="1" col="1" row="1" />
-      <tab filename="Splash" fullname="Splash.pas" topline="38" col="58" row="63" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="ListBoxItem" fullname="ListBoxItem.pas" topline="1" col="22" row="14" />
-      <tab filename="Main" fullname="Main.pas" topline="19" col="68" row="81" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Challenge" fullname="Challenge.pas" topline="1" col="23" row="17" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Mountain" fullname="Mountain.pas" topline="8" col="7" row="21" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Common" fullname="Common.pas" topline="1" col="26" row="11" />
+      <tab filename="Main" fullname="Main.pas" topline="74" col="51" row="97" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Challenge" fullname="Challenge.pas" topline="89" col="37" row="126" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Mountain" fullname="Mountain.pas" topline="55" col="53" row="75" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="iOS.css" fullname="iOS.css" topline="589" col="18" row="598" />
       <activetab>Challenge</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>4570</BackgroundCompilations>
-      <EditTime>01:04:23.464</EditTime>
-      <CompileTime>00:03:02.073</CompileTime>
-      <TotalTime>10:34:35.137</TotalTime>
-      <DesigningTime>02:48:28.758</DesigningTime>
-      <RunningTime>00:50:09.898</RunningTime>
+      <BackgroundCompilations>5413</BackgroundCompilations>
+      <EditTime>01:17:06.914</EditTime>
+      <CompileTime>00:03:56.916</CompileTime>
+      <TotalTime>14:30:46.556</TotalTime>
+      <DesigningTime>02:50:20.510</DesigningTime>
+      <RunningTime>01:35:57.133</RunningTime>
     </Statistics>
   </state>
 </SMART>

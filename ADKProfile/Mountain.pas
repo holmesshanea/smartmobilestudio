@@ -4,22 +4,25 @@ interface
 
 uses 
   System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
-  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Controls.Image,
-  SmartCL.Controls.Label, SmartCL.Controls.Header, SmartCL.Layout, System.Colors;
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Controls,
+  SmartCL.Controls.Header, SmartCL.Layout, SmartCL.Scroll, System.Colors;
 
 type
   TMountain = class(TW3Form)
+    procedure MountainActivate(Sender: TObject);
     procedure MountainDeactivate(Sender: TObject);
   private
     {$I 'Mountain:intf'}
     fLayout: TLayout;
+    fScroll: TW3ScrollControl;
   protected
     procedure InitializeForm; override;
     procedure InitializeObject; override;
     procedure Resize; override;
     procedure HandleBackButton(Sender: TObject);
+    procedure HandleNextButton(Sender: TObject);
   public
-    property Title: String read (W3Label1.Caption) write (W3Label1.Caption);
+    procedure UpdateContent;
     property Url: String read (W3Image1.Url) write (W3Image1.Url);
   end;
 
@@ -27,11 +30,30 @@ type
 
 implementation
 
+uses common;
+
 { TMountain }
+
+procedure TMountain.UpdateContent;
+begin
+ fScroll.Content.InnerHTML:= '<div>' +
+  '<h3><center>' + gChallenges.challenges[gChallengeIdx].mountains[gMountainIdx].rank + '</center></h3>' +
+  '<h2><center>' + gChallenges.challenges[gChallengeIdx].mountains[gMountainIdx].name + '</center></h2>' +
+  '<h4><center>' + gChallenges.challenges[gChallengeIdx].mountains[gMountainIdx].elevation + '</center></h4>' +
+  '<h4><center>' + gChallenges.challenges[gChallengeIdx].mountains[gMountainIdx].ascent + '</center></h4><br>' +
+  '<p>' + gChallenges.challenges[gChallengeIdx].mountains[gMountainIdx].description + '</p><br>' +
+  '<p>' + gChallenges.challenges[gChallengeIdx].mountains[gMountainIdx].trailhead + '</p>' +
+  '</div>';
+end;
 
 procedure TMountain.HandleBackButton(Sender: TObject);
 begin
  Application.GotoForm('Challenge', feToLeft);
+end;
+
+procedure TMountain.HandleNextButton(Sender: TObject);
+begin
+//
 end;
 
 procedure TMountain.InitializeForm;
@@ -47,17 +69,32 @@ begin
 
   window.addEventListener('devicemotion', @Resize, false);
 
-  W3Label1.AlignText:= taCenter;
+  fScroll:= TW3ScrollControl.Create(self);
+  fScroll.Handle.style.setProperty('background-color', 'white');
+
   W3HeaderControl1.StyleClass:= 'TW3HeaderControl2';
   W3HeaderControl1.BackButton.StyleClass:= 'TW3ButtonBack';
   W3HeaderControl1.BackButton.OnClick:= HandleBackButton;
+  W3HeaderControl1.NextButton.Visible:= True;
+  W3HeaderControl1.NextButton.StyleClass:= 'TW3ButtonBack';
+  W3HeaderControl1.NextButton.Caption:= 'Log';
+  W3HeaderControl1.NextButton.OnClick:= HandleNextButton;
 
   FLayout:= Layout.Client(Layout.Margins(5), [
                           Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
-                          Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
+                          Layout.Client(fScroll),
                           Layout.Bottom(Layout.Height(32), W3HeaderControl1)
                               ] );
 
+end;
+
+procedure TMountain.MountainActivate(Sender: TObject);
+begin
+   {FLayout:= Layout.Client(Layout.Margins(5), [
+                          Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
+                          Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
+                          Layout.Bottom(Layout.Height(32), W3HeaderControl1)
+                              ] );}
 end;
 
 procedure TMountain.MountainDeactivate(Sender: TObject);

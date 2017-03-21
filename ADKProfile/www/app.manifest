@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # Offline cache version 0.0.1
-# id:55172
+# id:43974
 
 CACHE:
 index.html
@@ -14,3 +14,4 @@ res/challenge32.png
 res/challenge128.png
 res/challenge64.png
 res/mtn64.png
+res/challenges.json
