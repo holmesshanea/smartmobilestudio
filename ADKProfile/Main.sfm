@@ -1,10 +1,12 @@
 <SMART>
   <Form version="2" subversion="2">
     <Created>2017-01-15T20:35:31.625</Created>
-    <Modified>2017-03-18T20:35:06.988</Modified>
+    <Modified>2017-03-21T13:02:42.039</Modified>
     <object type="TW3Form">
       <Caption>W3Form</Caption>
       <Name>Main</Name>
+      <OnDeactivate>MainDeactivate</OnDeactivate>
+      <OnActivate>MainActivate</OnActivate>
       <object type="TW3ListBox">
         <Width>160</Width>
         <Top>40</Top>

@@ -1,0 +1,42 @@
+unit Challenge;
+
+interface
+
+uses 
+  System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application;
+
+type
+  TChallenge = class(TW3Form)
+  private
+    {$I 'Challenge:intf'}
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  end;
+
+implementation
+
+{ TChallenge }
+
+procedure TChallenge.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+end;
+
+procedure TChallenge.InitializeObject;
+begin
+  inherited;
+  {$I 'Challenge:impl'}
+end;
+ 
+procedure TChallenge.Resize;
+begin
+  inherited;
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TChallenge);
+end.

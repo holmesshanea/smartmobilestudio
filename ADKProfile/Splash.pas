@@ -9,6 +9,8 @@ uses
 
 type
   TSplash = class(TW3Form)
+    procedure SplashActivate(Sender: TObject);
+    procedure SplashDeactivate(Sender: TObject);
     procedure lblADKProfileClick(Sender: TObject);
   private
     {$I 'Splash:intf'}
@@ -50,13 +52,15 @@ begin
   inherited;
   {$I 'Splash:impl'}
    window.addEventListener('devicemotion', @Resize, false);
-   FLayout:= Layout.Client(Layout.Client(lblADKProfile));
+
   lblADKProfile.InnerHTML:= '<div style="text-align: center; position: relative;' +
                             ' top: 50%; -ms-transform: translateY(-50%); ' +
                             ' -webkit-transform: translateY(-50%); ' +
                             'transform: translateY(-50%);"> ' +
                             'ADK Profile <br> by Cold River Labs<br>(c) 2017 </div>';
   lblADKProfile.AlignText:= taCenter;
+
+   FLayout:= Layout.Client(Layout.Client(lblADKProfile));
 end;
  
 procedure TSplash.Resize;
@@ -67,7 +71,18 @@ begin
     FLayout.Resize(self);
   end;
 end;
- 
+
+
+
+procedure TSplash.SplashActivate(Sender: TObject);
+begin
+ // FLayout:= Layout.Client(Layout.Client(lblADKProfile));
+end;
+
+procedure TSplash.SplashDeactivate(Sender: TObject);
+begin
+  FLayout:= Nil;
+end;
 initialization
   Forms.RegisterForm({$I %FILE%}, TSplash);
 end.

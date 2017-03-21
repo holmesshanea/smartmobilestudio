@@ -578,6 +578,12 @@ ul li:active {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2bbca', endColorstr='#73839f',GradientType=0 ); /* IE6-9 */
 }
 
+.TW3HeaderControl2
+{
+  cursor: default;
+  background: rgb(255,255,255);
+}
+
 .TW3HeaderControl:disabled {
 	cursor: wait;
 	opacity: 0.5;
@@ -682,6 +688,41 @@ ul li:active {
 }
 
 .TW3Button:disabled {
+	opacity: 0.50;
+}
+
+
+
+.TW3ButtonBack {
+	  border: solid 2px rgba(32,32,33,0.4);
+	  border-radius: 8px;
+	  -webkit-border-radius: 8px;
+		 -moz-border-radius: 8px;
+		  -ms-border-radius: 8px;
+		   -o-border-radius: 8px;
+
+	  background: rgb(226,226,226); /* Old browsers */
+
+	  font-size: 18px;
+	  font-weight: thin;
+	  text-shadow: 1px 1px -1px #cecece;
+	  color:  #000;
+
+  -webkit-text-size-adjust: auto;
+	 -moz-text-size-adjust: auto;
+	  -ms-text-size-adjust: auto;
+	   -o-text-size-adjust: auto;
+}
+
+.TW3ButtonBack:active:enabled {
+	  color: #FFFFFF;
+
+	  background: rgb(207,231,250); /* Old browsers */
+
+	  text-shadow: none;
+}
+
+.TW3ButtonBack:disabled {
 	opacity: 0.50;
 }
 

@@ -1,0 +1,41 @@
+<SMART>
+  <Form version="2" subversion="2">
+    <Created>2017-03-20T19:52:51.922</Created>
+    <Modified>2017-03-21T13:20:34.728</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Challenge</Name>
+      <OnDeactivate>ChallengeDeactivate</OnDeactivate>
+      <OnActivate>ChallengeActivate</OnActivate>
+      <object type="TW3Image">
+        <Width>64</Width>
+        <Top>8</Top>
+        <Left>16</Left>
+        <Height>64</Height>
+        <Name>W3Image1</Name>
+      </object>
+      <object type="TW3Label">
+        <Caption>W3Label</Caption>
+        <Width>128</Width>
+        <Top>88</Top>
+        <Left>24</Left>
+        <Height>32</Height>
+        <Name>W3Label1</Name>
+      </object>
+      <object type="TW3ListBox">
+        <Width>168</Width>
+        <Top>128</Top>
+        <Left>16</Left>
+        <Height>184</Height>
+        <Name>lbxMountains</Name>
+      </object>
+      <object type="TW3HeaderControl">
+        <Width>176</Width>
+        <Top>328</Top>
+        <Left>16</Left>
+        <Height>32</Height>
+        <Name>W3HeaderControl1</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>

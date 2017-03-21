@@ -1,7 +1,16 @@
 CACHE MANIFEST
 # Offline cache version 0.0.1
-# id:42676
+# id:94000
 
 CACHE:
 index.html
 res/app.css
+res/fall.png
+res/mtn.png
+res/sprint.png
+res/summer.png
+res/winter.png
+res/challenge32.png
+res/challenge128.png
+res/challenge64.png
+res/mtn64.png

@@ -1,0 +1,43 @@
+unit Mountain;
+
+interface
+
+uses 
+  System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Controls.Image,
+  SmartCL.Controls.Label, SmartCL.Controls.Header, SmartCL.Layout, System.Colors;
+
+type
+  TMountain = class(TW3Form)
+  private
+    {$I 'Mountain:intf'}
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  end;
+
+implementation
+
+{ TMountain }
+
+procedure TMountain.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+end;
+
+procedure TMountain.InitializeObject;
+begin
+  inherited;
+  {$I 'Mountain:impl'}
+end;
+ 
+procedure TMountain.Resize;
+begin
+  inherited;
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TMountain);
+end.
