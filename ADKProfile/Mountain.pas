@@ -80,19 +80,19 @@ begin
   W3HeaderControl1.NextButton.Caption:= 'Log';
   W3HeaderControl1.NextButton.OnClick:= HandleNextButton;
 
-  FLayout:= Layout.Client(Layout.Margins(5), [
+  {FLayout:= Layout.Client(Layout.Margins(5), [
                           Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
                           Layout.Client(fScroll),
                           Layout.Bottom(Layout.Height(32), W3HeaderControl1)
-                              ] );
+                              ] );}
 
 end;
 
 procedure TMountain.MountainActivate(Sender: TObject);
 begin
-   {FLayout:= Layout.Client(Layout.Margins(5), [
+ {FLayout:= Layout.Client(Layout.Margins(5), [
                           Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
-                          Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
+                          Layout.Client(fScroll),
                           Layout.Bottom(Layout.Height(32), W3HeaderControl1)
                               ] );}
 end;
@@ -105,9 +105,19 @@ end;
 procedure TMountain.Resize;
 begin
   inherited;
+  if not (Handle.Valid and (csReady in ComponentState)) then
+    Exit;
+
+  FLayout:= Layout.Client(Layout.Margins(5), [
+                          Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
+                          Layout.Client(fScroll),
+                          Layout.Bottom(Layout.Height(32), W3HeaderControl1)
+                              ] );
+
   if Assigned(FLayout) then
   begin
    FLayout.Resize(self);
+   W3HeaderControl1.LayoutChildren;
   end;
 end;
  

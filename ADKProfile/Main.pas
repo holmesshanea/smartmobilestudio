@@ -82,6 +82,8 @@ begin
 end;
 
 procedure TMain.InitializeObject;
+var
+ I: Integer;
 begin
   inherited;
   {$I 'Main:impl'}
@@ -113,16 +115,19 @@ begin
   W3HeaderControl2.NextButton.Visible:= True;
   W3HeaderControl2.NextButton.Caption:= 'Help';
 
-   FLayout:= Layout.Client([Layout.Top(Layout.Height(32), W3HeaderControl1),
+   {FLayout:= Layout.Client([Layout.Top(Layout.Height(32), W3HeaderControl1),
                             Layout.Client(lbxChallenges),
                             Layout.Bottom(Layout.Height(32), W3HeaderControl2)
-                            ]);
+                            ]);}
 
 end;
 
 procedure TMain.MainActivate(Sender: TObject);
 begin
-  //FLayout:= Layout.Client(Layout.Client(lbxChallenges));
+  {FLayout:= Layout.Client([Layout.Top(Layout.Height(32), W3HeaderControl1),
+                            Layout.Client(lbxChallenges),
+                            Layout.Bottom(Layout.Height(32), W3HeaderControl2)
+                            ]);}
 end;
 
 procedure TMain.MainDeactivate(Sender: TObject);
@@ -133,9 +138,20 @@ end;
 procedure TMain.Resize;
 begin
   inherited;
+  if not (Handle.Valid and (csReady in ComponentState)) then
+    Exit;
+
+  FLayout:= Layout.Client([Layout.Top(Layout.Height(32), W3HeaderControl1),
+                            Layout.Client(lbxChallenges),
+                            Layout.Bottom(Layout.Height(32), W3HeaderControl2)
+                            ]);
+
    if Assigned(FLayout) then
   begin
     FLayout.Resize(self);
+    W3HeaderControl1.LayoutChildren;
+    lbxChallenges.LayoutChildren;
+    W3HeaderControl2.LayoutChildren;
   end;
 end;
  

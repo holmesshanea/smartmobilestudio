@@ -25,6 +25,7 @@ implementation
 
 { TListBoxItem }
 
+
 procedure TListBoxItem.FinalizeObject;
 begin
  fLayout:= nil;
@@ -49,6 +50,9 @@ end;
 procedure TListBoxItem.Resize;
 begin
   inherited;
+  //if not (Handle.Valid and (csReady in ComponentState)) {or (glbApp.CurrentForm <> Self)} then
+  //  Exit;
+
   if Assigned(FLayout) then
   begin
     fLayout.Resize(Self);

@@ -65,10 +65,11 @@ procedure TChallenge.AddItem(Caption: String);
 procedure TChallenge.ChallengeActivate(Sender: TObject);
 begin
       {FLayout:= Layout.Client(Layout.Margins(5), [
-                                Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
-                                Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
-                                Layout.Client((lbxMountains)),
-                                Layout.Bottom(Layout.Height(32), W3HeaderControl1)
+                          Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
+                          Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
+                          Layout.Top(Layout.Height(32), W3HeaderControl1),
+                          Layout.Client((lbxMountains)),
+                          Layout.Bottom(Layout.Height(32), W3HeaderControl2)
                               ] );}
 end;
 
@@ -94,6 +95,8 @@ begin
 end;
 
 procedure TChallenge.InitializeObject;
+var
+ I: Integer;
 begin
   inherited;
   {$I 'Challenge:impl'}
@@ -120,6 +123,22 @@ begin
   W3HeaderControl2.NextButton.Caption:= 'Info';
   W3HeaderControl2.NextButton.OnClick:= HandleNextButton;
 
+  {FLayout:= Layout.Client(Layout.Margins(5), [
+                          Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
+                          Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
+                          Layout.Top(Layout.Height(32), W3HeaderControl1),
+                          Layout.Client((lbxMountains)),
+                          Layout.Bottom(Layout.Height(32), W3HeaderControl2)
+                              ] );}
+
+end;
+ 
+procedure TChallenge.Resize;
+begin
+  inherited;
+  if not (Handle.Valid and (csReady in ComponentState)) then
+    Exit;
+
   FLayout:= Layout.Client(Layout.Margins(5), [
                           Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
                           Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
@@ -127,14 +146,13 @@ begin
                           Layout.Client((lbxMountains)),
                           Layout.Bottom(Layout.Height(32), W3HeaderControl2)
                               ] );
-end;
- 
-procedure TChallenge.Resize;
-begin
-  inherited;
+
   if Assigned(FLayout) then
   begin
     FLayout.Resize(self);
+    W3HeaderControl1.LayoutChildren;
+    lbxMountains.LayoutChildren;
+    W3HeaderControl2.LayoutChildren;
   end;
 end;
  
