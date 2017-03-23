@@ -150,6 +150,7 @@ begin
   if Assigned(FLayout) then
   begin
     FLayout.Resize(self);
+    W3Label1.LayoutChildren;
     W3HeaderControl1.LayoutChildren;
     lbxMountains.LayoutChildren;
     W3HeaderControl2.LayoutChildren;
