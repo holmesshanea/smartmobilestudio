@@ -2,7 +2,7 @@
   <Project version="2" subversion="2">
     <Name>ADKProfile</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2017-03-23T09:44:06.526</Modified>
+    <Modified>2017-03-24T12:47:46.395</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -84,19 +84,19 @@
       <File type="main">
         <Name>ADKProfile</Name>
         <Created>2017-01-15T20:35:31.624Z</Created>
-        <Modified>2017-03-21T13:36:42.554</Modified>
+        <Modified>2017-03-23T11:52:21.549</Modified>
         <Filename>ADKProfile.spr</Filename>
       </File>
       <File type="unit">
         <Name>Application</Name>
         <Created>2017-01-15T20:35:31.624Z</Created>
-        <Modified>2017-03-21T13:40:21.482</Modified>
+        <Modified>2017-03-23T11:52:21.551</Modified>
         <Filename>Application.pas</Filename>
       </File>
       <File type="form">
         <Name>Main</Name>
         <Created>2017-01-15T20:35:31.624Z</Created>
-        <Modified>2017-03-23T09:27:27.012</Modified>
+        <Modified>2017-03-23T21:13:44.134</Modified>
         <Filename>Main.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -107,7 +107,7 @@
       <File type="form">
         <Name>Splash</Name>
         <Created>2017-03-18T18:40:58.900Z</Created>
-        <Modified>2017-03-21T13:04:42.916</Modified>
+        <Modified>2017-03-23T11:18:58.979</Modified>
         <Filename>Splash.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -124,13 +124,13 @@
       <File type="unit">
         <Name>ListBoxItem</Name>
         <Created>2017-03-19T19:05:16.863Z</Created>
-        <Modified>2017-03-23T09:18:59.097</Modified>
+        <Modified>2017-03-23T10:06:43.271</Modified>
         <Filename>ListBoxItem.pas</Filename>
       </File>
       <File type="form">
         <Name>Challenge</Name>
         <Created>2017-03-20T19:52:51.922Z</Created>
-        <Modified>2017-03-23T09:43:26.266</Modified>
+        <Modified>2017-03-23T20:55:10.728</Modified>
         <Filename>Challenge.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -189,7 +189,7 @@
       <File type="form">
         <Name>Mountain</Name>
         <Created>2017-03-21T13:35:19.052Z</Created>
-        <Modified>2017-03-23T09:27:27.016</Modified>
+        <Modified>2017-03-23T11:40:06.971</Modified>
         <Filename>Mountain.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -210,21 +210,49 @@
         <Filename>Common.pas</Filename>
       </File>
       <File type="resource">
+        <Name>mtn128.png</Name>
+        <Created>2017-03-23T11:13:15.259Z</Created>
+        <Modified>2017-03-23T11:13:15.259</Modified>
+        <Filename>www\res\mtn128.png</Filename>
+      </File>
+      <File type="form">
+        <Name>Info</Name>
+        <Created>2017-03-23T11:30:05.671Z</Created>
+        <Modified>2017-03-24T12:47:46.384</Modified>
+        <Filename>Info.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>5</Order>
+        </AutoCreate>
+      </File>
+      <File type="form">
+        <Name>About</Name>
+        <Created>2017-03-23T11:47:33.127Z</Created>
+        <Modified>2017-03-24T12:39:41.744</Modified>
+        <Filename>About.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>6</Order>
+        </AutoCreate>
+      </File>
+      <File type="resource">
         <Name>challenges.json</Name>
-        <Created>2017-03-21T18:04:41.287Z</Created>
-        <Modified>2017-03-21T18:04:41.287</Modified>
+        <Created>2017-03-24T12:33:52.666Z</Created>
+        <Modified>2017-03-24T12:33:52.667</Modified>
         <Filename>www\res\challenges.json</Filename>
       </File>
     </Files>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
     <Statistics>
-      <BackgroundCompilations>5853</BackgroundCompilations>
-      <EditTime>01:23:33.111</EditTime>
-      <CompileTime>00:04:23.344</CompileTime>
-      <TotalTime>15:15:34.727</TotalTime>
-      <DesigningTime>02:50:33.941</DesigningTime>
-      <RunningTime>01:48:03.070</RunningTime>
+      <BackgroundCompilations>7015</BackgroundCompilations>
+      <EditTime>01:40:06.053</EditTime>
+      <CompileTime>00:05:30.300</CompileTime>
+      <TotalTime>17:49:40.608</TotalTime>
+      <DesigningTime>02:59:18.742</DesigningTime>
+      <RunningTime>02:07:15.109</RunningTime>
     </Statistics>
   </Project>
 </SMART>

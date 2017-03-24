@@ -1672,10 +1672,10 @@ var TApplication = {
    $ClassName:"TApplication",$Parent:TW3CustomApplication
    ,$Init:function ($) {
       TW3CustomApplication.$Init($);
-      $.fMainForm = $.fSplashForm = $.fChallengeForm = $.fMountainForm = null;
+      $.fAboutForm = $.fChallengeForm = $.fInfoForm = $.fMainForm = $.fMountainForm = $.fSplashForm = null;
    }
    /// procedure TApplication.ApplicationStarting()
-   ///  [line: 23, column: 24, file: Application]
+   ///  [line: 25, column: 24, file: Application]
    ,ApplicationStarting:function(Self) {
       Self.fMainForm = TW3Component.Create$4$($New(TMain),Self.FDisplay.FView);
       TW3Component.SetName(Self.fMainForm,"Main");
@@ -1686,6 +1686,12 @@ var TApplication = {
       Self.fMountainForm = TW3Component.Create$4$($New(TMountain),Self.FDisplay.FView);
       TW3Component.SetName(Self.fMountainForm,"Mountain");
       TW3CustomApplication.RegisterFormInstance(Self,Self.fMountainForm,false);
+      Self.fInfoForm = TW3Component.Create$4$($New(TInfo),Self.FDisplay.FView);
+      TW3Component.SetName(Self.fInfoForm,"Info");
+      TW3CustomApplication.RegisterFormInstance(Self,Self.fInfoForm,false);
+      Self.fAboutForm = TW3Component.Create$4$($New(TAbout),Self.FDisplay.FView);
+      TW3Component.SetName(Self.fAboutForm,"About");
+      TW3CustomApplication.RegisterFormInstance(Self,Self.fAboutForm,false);
       Self.fSplashForm = TW3Component.Create$4$($New(TSplash),Self.FDisplay.FView);
       TW3Component.SetName(Self.fSplashForm,"Splash");
       TW3CustomApplication.RegisterFormInstance(Self,Self.fSplashForm,true);
@@ -7513,22 +7519,27 @@ var TMain = {
    $ClassName:"TMain",$Parent:TW3Form
    ,$Init:function ($) {
       TW3Form.$Init($);
-      $.fHttp = $.fLayout$4 = $.lbxChallenges = $.W3HeaderControl1$2 = $.W3HeaderControl2$1 = null;
+      $.fHttp = $.fLayout$5 = $.lbxChallenges = $.W3HeaderControl1$3 = $.W3HeaderControl2$2 = null;
       $.fJSONStr = "";
    }
    /// procedure TMain.AddItem(Caption: String)
-   ///  [line: 54, column: 17, file: Main]
+   ///  [line: 66, column: 17, file: Main]
    ,AddItem$1:function(Self, Caption$6) {
       var lbItem = null;
       lbItem = $As(TW3ListBox.GetItem$6(Self.lbxChallenges,TW3ListBox.Add$8(Self.lbxChallenges)),TListBoxItem);
       TListBoxItem.a$70(lbItem,Caption$6);
       TListBoxItem.a$72(lbItem,"res\\challenge32.png");
    }
+   /// procedure TMain.HandleBackButton(Sender: TObject)
+   ///  [line: 38, column: 17, file: Main]
+   ,HandleBackButton$3:function(Self, Sender$10) {
+      TW3CustomApplication.GotoForm(Application(),"About",1);
+   }
    /// procedure TMain.HandleHttpDataReady(Sender: TW3HttpRequest)
-   ///  [line: 62, column: 17, file: Main]
-   ,HandleHttpDataReady:function(Self, Sender$10) {
+   ///  [line: 74, column: 17, file: Main]
+   ,HandleHttpDataReady:function(Self, Sender$11) {
       var I = 0;
-      Self.fJSONStr = TW3HttpRequest.a$52(Sender$10);
+      Self.fJSONStr = TW3HttpRequest.a$52(Sender$11);
       gChallenges = JSON.parse(Self.fJSONStr);
       var $temp31;
       for(I=0,$temp31=gChallenges.challenges.length-1;I<=$temp31;I++) {
@@ -7536,13 +7547,13 @@ var TMain = {
       }
    }
    /// procedure TMain.InitializeForm()
-   ///  [line: 77, column: 17, file: Main]
+   ///  [line: 89, column: 17, file: Main]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
       TW3HttpRequest.Get$1(Self.fHttp,"res\\challenges.json");
    }
    /// procedure TMain.InitializeObject()
-   ///  [line: 84, column: 17, file: Main]
+   ///  [line: 96, column: 17, file: Main]
    ,InitializeObject:function(Self) {
       var I$1 = 0;
       TW3CustomControl.InitializeObject(Self);
@@ -7552,46 +7563,44 @@ var TMain = {
       Self.FOnActivate = $Event1(Self,TMain.MainActivate);
       Self.lbxChallenges = TW3Component.Create$4$($New(TW3ListBox),Self);
       TW3MovableControl.SetWidth$(Self.lbxChallenges,160);
-      TW3MovableControl.SetTop(Self.lbxChallenges,64);
-      TW3MovableControl.SetLeft(Self.lbxChallenges,16);
+      TW3MovableControl.SetTop(Self.lbxChallenges,72);
+      TW3MovableControl.SetLeft(Self.lbxChallenges,8);
       TW3MovableControl.SetHeight$(Self.lbxChallenges,328);
       TW3Component.SetName(Self.lbxChallenges,"lbxChallenges");
-      Self.W3HeaderControl1$2 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
-      TW3MovableControl.SetWidth$(Self.W3HeaderControl1$2,152);
-      TW3MovableControl.SetTop(Self.W3HeaderControl1$2,16);
-      TW3MovableControl.SetLeft(Self.W3HeaderControl1$2,8);
-      TW3MovableControl.SetHeight$(Self.W3HeaderControl1$2,32);
-      TW3Component.SetName(Self.W3HeaderControl1$2,"W3HeaderControl1");
-      Self.W3HeaderControl2$1 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
-      TW3MovableControl.SetWidth$(Self.W3HeaderControl2$1,160);
-      TW3MovableControl.SetTop(Self.W3HeaderControl2$1,400);
-      TW3MovableControl.SetLeft(Self.W3HeaderControl2$1,16);
-      TW3MovableControl.SetHeight$(Self.W3HeaderControl2$1,32);
-      TW3Component.SetName(Self.W3HeaderControl2$1,"W3HeaderControl2");
+      Self.W3HeaderControl1$3 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
+      TW3MovableControl.SetWidth$(Self.W3HeaderControl1$3,152);
+      TW3MovableControl.SetTop(Self.W3HeaderControl1$3,16);
+      TW3MovableControl.SetLeft(Self.W3HeaderControl1$3,8);
+      TW3MovableControl.SetHeight$(Self.W3HeaderControl1$3,50);
+      TW3Component.SetName(Self.W3HeaderControl1$3,"W3HeaderControl1");
+      Self.W3HeaderControl2$2 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
+      TW3MovableControl.SetWidth$(Self.W3HeaderControl2$2,160);
+      TW3MovableControl.SetTop(Self.W3HeaderControl2$2,424);
+      TW3MovableControl.SetLeft(Self.W3HeaderControl2$2,8);
+      TW3MovableControl.SetHeight$(Self.W3HeaderControl2$2,50);
+      TW3Component.SetName(Self.W3HeaderControl2$2,"W3HeaderControl2");
       window.addEventListener("devicemotion",$Event0(Self,TW3MovableControl.Resize$),false);
       Self.fHttp = TW3HttpRequest.Create$94($New(TW3HttpRequest));
       Self.fHttp.OnDataReady = $Event1(Self,TMain.HandleHttpDataReady);
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$2,"TW3HeaderControl2");
-      TW3MovableControl.SetVisible(Self.W3HeaderControl1$2.FBackBtn,false);
-      TW3MovableControl.SetVisible(Self.W3HeaderControl1$2.FNextBtn,false);
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$2.FLabel,"TW3Label2");
-      TW3Label.SetCaption$1(Self.W3HeaderControl1$2.FLabel,"Challenges");
-      TW3Label.SetTextAlign$1(Self.W3HeaderControl1$2.FLabel,1);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$3,"TW3HeaderControl2");
+      TW3MovableControl.SetVisible(Self.W3HeaderControl1$3.FBackBtn,false);
+      TW3MovableControl.SetVisible(Self.W3HeaderControl1$3.FNextBtn,false);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$3.FLabel,"TW3Label2");
+      TW3Label.SetCaption$1(Self.W3HeaderControl1$3.FLabel,"Challenges");
+      TW3Label.SetTextAlign$1(Self.W3HeaderControl1$3.FLabel,1);
       Self.lbxChallenges.FItemClass = TListBoxItem;
-      Self.lbxChallenges.FItemHeight = 32;
+      Self.lbxChallenges.FItemHeight = 50;
       Self.lbxChallenges.FStyles.FSelectedColor = 12632256;
       Self.lbxChallenges.FOnSelected = $Event2(Self,TMain.LBItemSelected$1);
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$1,"TW3HeaderControl2");
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$1.FBackBtn,"TW3ButtonBack");
-      TW3MovableControl.SetVisible(Self.W3HeaderControl2$1.FBackBtn,true);
-      TW3ToolButton.setCaption$1(Self.W3HeaderControl2$1.FBackBtn,"About");
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$1.FNextBtn,"TW3ButtonBack");
-      TW3MovableControl.SetVisible(Self.W3HeaderControl2$1.FNextBtn,true);
-      TW3ToolButton.setCaption$1(Self.W3HeaderControl2$1.FNextBtn,"Help");
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$2,"TW3HeaderControl2");
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$2.FBackBtn,"TW3ButtonBack");
+      TW3CustomControl._setMouseClick(Self.W3HeaderControl2$2.FBackBtn,$Event1(Self,TMain.HandleBackButton$3));
+      TW3MovableControl.SetVisible(Self.W3HeaderControl2$2.FBackBtn,true);
+      TW3ToolButton.setCaption$1(Self.W3HeaderControl2$2.FBackBtn,"About");
    }
    /// procedure TMain.LBItemSelected(Sender: TObject; itemIndex: Integer)
-   ///  [line: 36, column: 17, file: Main]
-   ,LBItemSelected$1:function(Self, Sender$11, itemIndex) {
+   ///  [line: 48, column: 17, file: Main]
+   ,LBItemSelected$1:function(Self, Sender$12, itemIndex) {
       var I$2 = 0;
       if (itemIndex>=0) {
          gChallengeIdx = itemIndex;
@@ -7606,27 +7615,27 @@ var TMain = {
       }
    }
    /// procedure TMain.MainActivate(Sender: TObject)
-   ///  [line: 125, column: 17, file: Main]
-   ,MainActivate:function(Self, Sender$12) {
+   ///  [line: 132, column: 17, file: Main]
+   ,MainActivate:function(Self, Sender$13) {
    }
    /// procedure TMain.MainDeactivate(Sender: TObject)
-   ///  [line: 133, column: 17, file: Main]
-   ,MainDeactivate:function(Self, Sender$13) {
-      Self.fLayout$4 = null;
+   ///  [line: 140, column: 17, file: Main]
+   ,MainDeactivate:function(Self, Sender$14) {
+      Self.fLayout$5 = null;
    }
    /// procedure TMain.Resize()
-   ///  [line: 138, column: 17, file: Main]
+   ///  [line: 145, column: 17, file: Main]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (!(TControlHandleHelper$Valid(Self.FHandle)&&$SetIn(Self.FComponentState,2,0,6))) {
          return;
       }
-      Self.fLayout$4 = Layout.Client$2(Layout,[Layout.Top$6(Layout,Layout.Height$8(Layout,32),Self.W3HeaderControl1$2), Layout.Client$3(Layout,Self.lbxChallenges), Layout.Bottom$4(Layout,Layout.Height$8(Layout,32),Self.W3HeaderControl2$1)].slice());
-      if (Self.fLayout$4) {
-         TLayout.Resize$3$(Self.fLayout$4,Self);
-         TW3CustomControl.LayoutChildren(Self.W3HeaderControl1$2);
+      Self.fLayout$5 = Layout.Client$2(Layout,[Layout.Top$6(Layout,Layout.Height$8(Layout,50),Self.W3HeaderControl1$3), Layout.Client$3(Layout,Self.lbxChallenges), Layout.Bottom$4(Layout,Layout.Height$8(Layout,50),Self.W3HeaderControl2$2)].slice());
+      if (Self.fLayout$5) {
+         TLayout.Resize$3$(Self.fLayout$5,Self);
+         TW3CustomControl.LayoutChildren(Self.W3HeaderControl1$3);
          TW3CustomControl.LayoutChildren(Self.lbxChallenges);
-         TW3CustomControl.LayoutChildren(Self.W3HeaderControl2$1);
+         TW3CustomControl.LayoutChildren(Self.W3HeaderControl2$2);
       }
    }
    ,Destroy:TW3CustomForm.Destroy
@@ -9130,7 +9139,7 @@ var TW3ListBox = {
    }
    /// procedure TW3ListBox.HandleMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X: Integer; Y: Integer)
    ///  [line: 423, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleMouseDown$1:function(Self, Sender$14, Button$1, Shift, X$2, Y$2) {
+   ,HandleMouseDown$1:function(Self, Sender$15, Button$1, Shift, X$2, Y$2) {
       if (TW3CustomControl.GetEnabled$(Self)) {
          Self.FMousePosition = Create$20(X$2,Y$2);
          Self.FMoveStart = Create$20(X$2,Y$2);
@@ -9143,7 +9152,7 @@ var TW3ListBox = {
             TW3ListBox.Colorize(Self,Self.FClickControl,2);
          }
          if (Self.FAllowMoving) {
-            Self.FStartMoving = TW3EventRepeater.Create$22($New(TW3EventRepeater),function (Sender$15) {
+            Self.FStartMoving = TW3EventRepeater.Create$22($New(TW3EventRepeater),function (Sender$16) {
                var Result = false;
                if ((Math.pow(Self.FMousePosition.X$1-Self.FMoveStart.X$1,2))+(Math.pow(Self.FMousePosition.Y$1-Self.FMoveStart.Y$1,2))<=(Math.pow(7,2))) {
                   TW3ListBox.Colorize(Self,Self.FMovingItem,3);
@@ -9162,7 +9171,7 @@ var TW3ListBox = {
    }
    /// procedure TW3ListBox.HandleMouseEnter(Sender: TObject; Shift: TShiftState; X: Integer; Y: Integer)
    ///  [line: 457, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleMouseEnter:function(Self, Sender$16, Shift$1, X$3, Y$3) {
+   ,HandleMouseEnter:function(Self, Sender$17, Shift$1, X$3, Y$3) {
       if (TW3CustomControl.GetEnabled$(Self)) {
          Self.FMousePosition = Create$20(X$3,Y$3);
          if (!Self.FMovingItem) {
@@ -9175,7 +9184,7 @@ var TW3ListBox = {
    }
    /// procedure TW3ListBox.HandleMouseExit(Sender: TObject; Shift: TShiftState; X: Integer; Y: Integer)
    ///  [line: 468, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleMouseExit:function(Self, Sender$17, Shift$2, X$4, Y$4) {
+   ,HandleMouseExit:function(Self, Sender$18, Shift$2, X$4, Y$4) {
       if (TW3CustomControl.GetEnabled$(Self)) {
          Self.FMousePosition = Create$20(X$4,Y$4);
          if (!Self.FMoving$3) {
@@ -9188,7 +9197,7 @@ var TW3ListBox = {
    }
    /// procedure TW3ListBox.HandleMouseMove(Sender: TObject; Shift: TShiftState; X: Integer; Y: Integer)
    ///  [line: 479, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleMouseMove:function(Self, Sender$18, Shift$3, X$5, Y$5) {
+   ,HandleMouseMove:function(Self, Sender$19, Shift$3, X$5, Y$5) {
       if (TW3CustomControl.GetEnabled$(Self)) {
          Self.FMousePosition = Create$20(X$5,Y$5);
          if (Self.FMoving$3) {
@@ -9205,7 +9214,7 @@ var TW3ListBox = {
    }
    /// procedure TW3ListBox.HandleMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X: Integer; Y: Integer)
    ///  [line: 496, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleMouseUp:function(Self, Sender$19, Button$2, Shift$4, X$6, Y$6) {
+   ,HandleMouseUp:function(Self, Sender$20, Button$2, Shift$4, X$6, Y$6) {
       if (TW3CustomControl.GetEnabled$(Self)) {
          Self.FMousePosition = Create$20(X$6,Y$6);
          TW3ListBox.Colorize(Self,TW3ListBox.ItemAtPos(Self,X$6,Y$6),1);
@@ -9223,7 +9232,7 @@ var TW3ListBox = {
    }
    /// procedure TW3ListBox.HandleMouseWheel(Sender: TObject; Shift: TShiftState; wheelData: Integer; const mousePos: TPoint; var handled: Boolean)
    ///  [line: 513, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleMouseWheel:function(Self, Sender$20, Shift$5, wheelData, mousePos$3, handled$4) {
+   ,HandleMouseWheel:function(Self, Sender$21, Shift$5, wheelData, mousePos$3, handled$4) {
       if (TW3CustomControl.GetEnabled$(Self)) {
          TW3ListBox.Scroll(Self,0,$Div(wheelData*(Self.FItemHeight+1),3));
       }
@@ -9233,33 +9242,33 @@ var TW3ListBox = {
    }
    /// procedure TW3ListBox.HandleTouchBegin(Sender: TObject; Info: TW3TouchData)
    ///  [line: 522, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleTouchBegin:function(Self, Sender$21, Info$1) {
+   ,HandleTouchBegin:function(Self, Sender$22, Info$1) {
       var sr$7 = {Bottom$1:0,Left$3:0,Right$1:0,Top$3:0};
       sr$7 = TW3MovableControl.ScreenRect(Self);
       TShiftState.SetKeyStateEvent(TShiftState.Current(),event);
-      TW3ListBox.HandleMouseDown$1(Self,Sender$21,0,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$1),0).FScreenX-sr$7.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$1),0).FScreenY-sr$7.Top$3);
+      TW3ListBox.HandleMouseDown$1(Self,Sender$22,0,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$1),0).FScreenX-sr$7.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$1),0).FScreenY-sr$7.Top$3);
       if (Self.FOnTouchBegin) {
          Self.FOnTouchBegin(Self,Info$1);
       }
    }
    /// procedure TW3ListBox.HandleTouchEnd(Sender: TObject; Info: TW3TouchData)
    ///  [line: 542, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleTouchEnd:function(Self, Sender$22, Info$2) {
+   ,HandleTouchEnd:function(Self, Sender$23, Info$2) {
       var sr$8 = {Bottom$1:0,Left$3:0,Right$1:0,Top$3:0};
       sr$8 = TW3MovableControl.ScreenRect(Self);
       TShiftState.SetKeyStateEvent(TShiftState.Current(),event);
-      TW3ListBox.HandleMouseUp(Self,Sender$22,0,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$2),0).FScreenX-sr$8.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$2),0).FScreenY-sr$8.Top$3);
+      TW3ListBox.HandleMouseUp(Self,Sender$23,0,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$2),0).FScreenX-sr$8.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$2),0).FScreenY-sr$8.Top$3);
       if (Self.FOnTouchEnd) {
          Self.FOnTouchEnd(Self,Info$2);
       }
    }
    /// procedure TW3ListBox.HandleTouchMove(Sender: TObject; Info: TW3TouchData)
    ///  [line: 532, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleTouchMove:function(Self, Sender$23, Info$3) {
+   ,HandleTouchMove:function(Self, Sender$24, Info$3) {
       var sr$9 = {Bottom$1:0,Left$3:0,Right$1:0,Top$3:0};
       sr$9 = TW3MovableControl.ScreenRect(Self);
       TShiftState.SetKeyStateEvent(TShiftState.Current(),event);
-      TW3ListBox.HandleMouseMove(Self,Sender$23,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$3),0).FScreenX-sr$9.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$3),0).FScreenY-sr$9.Top$3);
+      TW3ListBox.HandleMouseMove(Self,Sender$24,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$3),0).FScreenX-sr$9.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$3),0).FScreenY-sr$9.Top$3);
       if (Self.FOnTouchMove) {
          Self.FOnTouchMove(Self,Info$3);
       }
@@ -9526,10 +9535,10 @@ var TW3EventRepeater = {
    /// procedure TW3EventRepeater.After(aDelay: Integer; aProc: TProcedureRef)
    ///  [line: 156, column: 34, file: SmartCL.Time]
    ,After:function(Self, aDelay$1, aProc) {
-      GlobalRepeaterList.push(TW3EventRepeater.Create$22($New(TW3EventRepeater),function (Sender$24) {
+      GlobalRepeaterList.push(TW3EventRepeater.Create$22($New(TW3EventRepeater),function (Sender$25) {
          var Result = false;
          aProc();
-         GlobalRepeaterList.splice(GlobalRepeaterList.indexOf(Sender$24),1)
+         GlobalRepeaterList.splice(GlobalRepeaterList.indexOf(Sender$25),1)
          ;
          Result = true;
          return Result
@@ -9681,7 +9690,7 @@ var TAnimation = {
    }
    /// function TAnimation.AnimationTimer(Sender: TObject) : Boolean
    ///  [line: 195, column: 21, file: SmartCL.Animation]
-   ,AnimationTimer:function(Self, Sender$25) {
+   ,AnimationTimer:function(Self, Sender$26) {
       var Result = false;
       var progress$2 = 0;
       Result = false;
@@ -10828,8 +10837,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$1,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
-   ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
+   IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
+   ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$1,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
 }
 function a$98(Self) {
    return ((!Self[0]())?true:false);
@@ -11085,12 +11094,12 @@ var TBinaryData = {
    ,LoadFromFile:function(Self, aFileURI, OnReady$1) {
       var mObj$13 = null;
       mObj$13 = TW3HttpRequest.Create$94($New(TW3HttpRequest));
-      mObj$13.OnDataReady = function (Sender$26) {
+      mObj$13.OnDataReady = function (Sender$27) {
          var mTemp$7 = null;
          if (!TAllocation.a$46(Self)) {
             TAllocation.Release$1(Self);
          }
-         mTemp$7 = TW3HttpRequest.ResponseAsBinaryData(Sender$26);
+         mTemp$7 = TW3HttpRequest.ResponseAsBinaryData(Sender$27);
          if (mTemp$7!==null) {
             TAllocation.Allocate$2(Self,TAllocation.getSize(mTemp$7));
             TBinaryData.CopyFrom$2(Self,mTemp$7,0,TAllocation.getSize(mTemp$7));
@@ -11493,8 +11502,8 @@ var TBinaryData = {
 };
 TBinaryData.$Intf={
    IBinaryData:[TBinaryData.Allocation,TBinaryData.getByte,TBinaryData.setByte,TBinaryData.OffsetInRange,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.CopyFrom$2,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr,TBinaryData.ReadBytes,TBinaryData.Clone$1,TBinaryData.FromBase64,TBinaryData.ToBase64,TBinaryData.ToString$12,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream$1,TBinaryData.LoadFromFile,TBinaryData.setBit,TBinaryData.getBit]
-   ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$1,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
    ,IDataTransport:[TAllocation.dataOffset,TAllocation.dataGetSize,TAllocation.dataRead,TAllocation.dataWrite]
+   ,IAllocation:[TAllocation.getHandle,TAllocation.getTotalSize,TAllocation.getSize,TAllocation.GetTransport,TAllocation.Allocate$2,TAllocation.Release$1,TAllocation.Grow$1,TAllocation.Shrink$1,TAllocation.ReAllocate,TAllocation.Transport]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 122, column: 3, file: System.interop]
@@ -11851,7 +11860,7 @@ var TW3ToolbarButton = {
    }
    /// procedure TW3ToolbarButton.HandleGlyphReady(Sender: TObject)
    ///  [line: 122, column: 28, file: SmartCL.Controls.ToolBar]
-   ,HandleGlyphReady:function(Self, Sender$27) {
+   ,HandleGlyphReady:function(Self, Sender$28) {
       var mTemp$9 = "";
       mTemp$9 = Self.FCaption$2;
       Self.FCaption$2 = "";
@@ -12187,14 +12196,14 @@ var TW3CustomScrollBar = {
    }
    /// procedure TW3CustomScrollBar.HandleMaxClick(Sender: TObject)
    ///  [line: 194, column: 30, file: SmartCL.Controls.ScrollBar]
-   ,HandleMaxClick:function(Self, Sender$28) {
+   ,HandleMaxClick:function(Self, Sender$29) {
       if (Self.FTotal>0) {
          TW3CustomScrollBar.setPosition(Self,Self.FPosition+Self.FPageSize);
       }
    }
    /// procedure TW3CustomScrollBar.HandleMinClick(Sender: TObject)
    ///  [line: 188, column: 30, file: SmartCL.Controls.ScrollBar]
-   ,HandleMinClick:function(Self, Sender$29) {
+   ,HandleMinClick:function(Self, Sender$30) {
       if (Self.FTotal>0) {
          TW3CustomScrollBar.setPosition(Self,Self.FPosition-Self.FPageSize);
       }
@@ -12210,7 +12219,7 @@ var TW3CustomScrollBar = {
       Self.FHandle$10 = TW3Component.Create$4$($New(TW3ScrollbarHandle),Self);
       TW3ControlBackground.FromColor(TW3MovableControl.GetBackGround(Self),16777215);
       TControlHandleHelper$ReadyExecute(Self.FHandle,function () {
-         TW3CustomControl._setMouseWheel(Self,function (Sender$30, shift$1, wheelDelta$3, mousePos$4, handled$5) {
+         TW3CustomControl._setMouseWheel(Self,function (Sender$31, shift$1, wheelDelta$3, mousePos$4, handled$5) {
             var e$18,
                delta = 0;
             if (Self.FTotal>0) {
@@ -12366,7 +12375,7 @@ var TW3VerticalScrollbar = {
    }
    /// procedure TW3VerticalScrollbar.HandleDragBarMouseDown(Sender: TObject; button: TMouseButton; shiftState: TShiftState; x: Integer; y: Integer)
    ///  [line: 450, column: 32, file: SmartCL.Controls.ScrollBar]
-   ,HandleDragBarMouseDown:function(Self, Sender$31, button$5, shiftState$11, x$63, y$42) {
+   ,HandleDragBarMouseDown:function(Self, Sender$32, button$5, shiftState$11, x$63, y$42) {
       if (button$5==0) {
          if (TRect$ContainsPos$1(TW3MovableControl.GetBoundsRect(Self.FHandle$10),x$63,y$42)) {
             TW3CustomControl.SetCapture(Self);
@@ -12383,7 +12392,7 @@ var TW3VerticalScrollbar = {
    }
    /// procedure TW3VerticalScrollbar.HandleDragBarMouseMove(Sender: TObject; shiftState: TShiftState; x: Integer; y: Integer)
    ///  [line: 474, column: 32, file: SmartCL.Controls.ScrollBar]
-   ,HandleDragBarMouseMove:function(Self, Sender$32, shiftState$12, x$64, y$43) {
+   ,HandleDragBarMouseMove:function(Self, Sender$33, shiftState$12, x$64, y$43) {
       var mNewPos = 0;
       var dy$13 = 0;
       if (Self.FMoving) {
@@ -12395,7 +12404,7 @@ var TW3VerticalScrollbar = {
    }
    /// procedure TW3VerticalScrollbar.HandleDragBarMouseUp(Sender: TObject; button: TMouseButton; shiftState: TShiftState; x: Integer; y: Integer)
    ///  [line: 496, column: 32, file: SmartCL.Controls.ScrollBar]
-   ,HandleDragBarMouseUp:function(Self, Sender$33, button$6, shiftState$13, x$65, y$44) {
+   ,HandleDragBarMouseUp:function(Self, Sender$34, button$6, shiftState$13, x$65, y$44) {
       if (Self.FMoving) {
          Self.FMoving = false;
          TW3CustomScrollBar.setPosition(Self,TW3CustomScrollBar.PixelOffsetToPosition(Self,(TW3MovableControl.GetTop(Self.FHandle$10)-(TW3MovableControl.GetBoundsRect(Self.FUpBtn).Bottom$1+1))));
@@ -12599,7 +12608,7 @@ var TW3HorizontalScrollbar = {
    }
    /// procedure TW3HorizontalScrollbar.HandleDragBarMouseDown(Sender: TObject; button: TMouseButton; shiftState: TShiftState; x: Integer; y: Integer)
    ///  [line: 333, column: 34, file: SmartCL.Controls.ScrollBar]
-   ,HandleDragBarMouseDown$1:function(Self, Sender$34, button$7, shiftState$14, x$66, y$45) {
+   ,HandleDragBarMouseDown$1:function(Self, Sender$35, button$7, shiftState$14, x$66, y$45) {
       if (button$7==0) {
          if (TRect$ContainsPos$1(TW3MovableControl.GetBoundsRect(Self.FHandle$10),x$66,y$45)) {
             TW3CustomControl.SetCapture(Self);
@@ -12616,7 +12625,7 @@ var TW3HorizontalScrollbar = {
    }
    /// procedure TW3HorizontalScrollbar.HandleDragBarMouseMove(Sender: TObject; shiftState: TShiftState; x: Integer; y: Integer)
    ///  [line: 357, column: 34, file: SmartCL.Controls.ScrollBar]
-   ,HandleDragBarMouseMove$1:function(Self, Sender$35, shiftState$15, x$67, y$46) {
+   ,HandleDragBarMouseMove$1:function(Self, Sender$36, shiftState$15, x$67, y$46) {
       var mNewPos$1 = 0;
       var dx$12 = 0;
       if (Self.FMoving$1) {
@@ -12628,7 +12637,7 @@ var TW3HorizontalScrollbar = {
    }
    /// procedure TW3HorizontalScrollbar.HandleDragBarMouseUp(Sender: TObject; button: TMouseButton; shiftState: TShiftState; x: Integer; y: Integer)
    ///  [line: 379, column: 34, file: SmartCL.Controls.ScrollBar]
-   ,HandleDragBarMouseUp$1:function(Self, Sender$36, button$8, shiftState$16, x$68, y$47) {
+   ,HandleDragBarMouseUp$1:function(Self, Sender$37, button$8, shiftState$16, x$68, y$47) {
       if (Self.FMoving$1) {
          Self.FMoving$1 = false;
          TW3CustomScrollBar.setPosition(Self,TW3CustomScrollBar.PixelOffsetToPosition(Self,(TW3MovableControl.GetLeft(Self.FHandle$10)-(TW3MovableControl.GetBoundsRect(Self.FUpBtn).Right$1+1))));
@@ -12988,16 +12997,16 @@ var TSplash = {
       TW3Component.SetName(Self.lblADKProfile,"lblADKProfile");
       TW3CustomControl._setMouseClick(Self.lblADKProfile,$Event1(Self,TSplash.lblADKProfileClick));
       window.addEventListener("devicemotion",$Event0(Self,TW3MovableControl.Resize$),false);
-      TW3TagObj.SetInnerHTML(Self.lblADKProfile,"<div style=\"text-align: center; position: relative;"+" top: 50%; -ms-transform: translateY(-50%); "+" -webkit-transform: translateY(-50%); "+"transform: translateY(-50%);\"> "+"ADK Profile <br> by Cold River Labs<br>(c) 2017 <\/div>");
+      TW3TagObj.SetInnerHTML(Self.lblADKProfile,"<div style=\"text-align: center; position: relative; border-width: 5px;border-style: solid;border-color: black;"+" top: 50%; -ms-transform: translateY(-50%); "+" -webkit-transform: translateY(-50%); "+"transform: translateY(-50%);\"> "+"<center><img src=\"res\\mtn128.png\"><\/center>"+"<p style=\"font-size:x-large; font-weight:bold\"> ADK Profile<\/p> <br> <p>by Cold River Labs <\/p> <br><p style=\"font-size:small; font-style:italic\">(c) 2017 <\/p><br><\/div>");
       TW3Label.SetTextAlign$1(Self.lblADKProfile,1);
       Self.fLayout = Layout.Client$3(Layout,Layout.Client$3(Layout,Self.lblADKProfile));
    }
    /// procedure TSplash.lblADKProfileClick(Sender: TObject)
    ///  [line: 40, column: 19, file: Splash]
-   ,lblADKProfileClick:function(Self, Sender$37) {
+   ,lblADKProfileClick:function(Self, Sender$38) {
    }
    /// procedure TSplash.Resize()
-   ///  [line: 66, column: 19, file: Splash]
+   ///  [line: 67, column: 19, file: Splash]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayout) {
@@ -13005,12 +13014,12 @@ var TSplash = {
       }
    }
    /// procedure TSplash.SplashActivate(Sender: TObject)
-   ///  [line: 77, column: 19, file: Splash]
-   ,SplashActivate:function(Self, Sender$38) {
+   ///  [line: 78, column: 19, file: Splash]
+   ,SplashActivate:function(Self, Sender$39) {
    }
    /// procedure TSplash.SplashDeactivate(Sender: TObject)
-   ///  [line: 82, column: 19, file: Splash]
-   ,SplashDeactivate:function(Self, Sender$39) {
+   ///  [line: 83, column: 19, file: Splash]
+   ,SplashDeactivate:function(Self, Sender$40) {
       Self.fLayout = null;
    }
    ,Destroy:TW3CustomForm.Destroy
@@ -13051,7 +13060,7 @@ var TChallenge = {
    $ClassName:"TChallenge",$Parent:TW3Form
    ,$Init:function ($) {
       TW3Form.$Init($);
-      $.fLayout$3 = $.lbxMountains = $.W3HeaderControl1$1 = $.W3HeaderControl2 = $.W3Image1$1 = $.W3Label1 = null;
+      $.fLayout$4 = $.lbxMountains = $.W3HeaderControl1$2 = $.W3HeaderControl2$1 = $.W3Image1$1 = $.W3Label1 = null;
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 29, column: 51, file: Challenge]
@@ -13083,12 +13092,12 @@ var TChallenge = {
    }
    /// procedure TChallenge.ChallengeActivate(Sender: TObject)
    ///  [line: 65, column: 22, file: Challenge]
-   ,ChallengeActivate:function(Self, Sender$40) {
+   ,ChallengeActivate:function(Self, Sender$41) {
    }
    /// procedure TChallenge.ChallengeDeactivate(Sender: TObject)
-   ///  [line: 76, column: 22, file: Challenge]
-   ,ChallengeDeactivate:function(Self, Sender$41) {
-      Self.fLayout$3 = null;
+   ///  [line: 70, column: 22, file: Challenge]
+   ,ChallengeDeactivate:function(Self, Sender$42) {
+      Self.fLayout$4 = null;
    }
    /// procedure TChallenge.ClearItems()
    ///  [line: 53, column: 22, file: Challenge]
@@ -13096,23 +13105,23 @@ var TChallenge = {
       TW3ListBox.Clear$8(Self.lbxMountains);
    }
    /// procedure TChallenge.HandleBackButton(Sender: TObject)
-   ///  [line: 81, column: 22, file: Challenge]
-   ,HandleBackButton$1:function(Self, Sender$42) {
+   ///  [line: 75, column: 22, file: Challenge]
+   ,HandleBackButton$2:function(Self, Sender$43) {
       TW3CustomApplication.GotoForm(Application(),"Main",2);
    }
    /// procedure TChallenge.HandleNextButton(Sender: TObject)
-   ///  [line: 86, column: 22, file: Challenge]
-   ,HandleNextButton$1:function(Self, Sender$43) {
+   ///  [line: 80, column: 22, file: Challenge]
+   ,HandleNextButton$1:function(Self, Sender$44) {
+      TW3CustomApplication.GotoForm(Application(),"Info",1);
    }
    /// procedure TChallenge.InitializeForm()
-   ///  [line: 91, column: 22, file: Challenge]
+   ///  [line: 85, column: 22, file: Challenge]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
    }
    /// procedure TChallenge.InitializeObject()
-   ///  [line: 97, column: 22, file: Challenge]
+   ///  [line: 91, column: 22, file: Challenge]
    ,InitializeObject:function(Self) {
-      var I$3 = 0;
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
       TW3Component.SetName(Self,"Challenge");
@@ -13137,41 +13146,43 @@ var TChallenge = {
       TW3MovableControl.SetLeft(Self.lbxMountains,16);
       TW3MovableControl.SetHeight$(Self.lbxMountains,184);
       TW3Component.SetName(Self.lbxMountains,"lbxMountains");
-      Self.W3HeaderControl2 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
-      TW3MovableControl.SetWidth$(Self.W3HeaderControl2,176);
-      TW3MovableControl.SetTop(Self.W3HeaderControl2,376);
-      TW3MovableControl.SetLeft(Self.W3HeaderControl2,16);
-      TW3MovableControl.SetHeight$(Self.W3HeaderControl2,32);
-      TW3Component.SetName(Self.W3HeaderControl2,"W3HeaderControl2");
-      Self.W3HeaderControl1$1 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
-      TW3MovableControl.SetWidth$(Self.W3HeaderControl1$1,168);
-      TW3MovableControl.SetTop(Self.W3HeaderControl1$1,144);
-      TW3MovableControl.SetLeft(Self.W3HeaderControl1$1,16);
-      TW3MovableControl.SetHeight$(Self.W3HeaderControl1$1,32);
-      TW3Component.SetName(Self.W3HeaderControl1$1,"W3HeaderControl1");
+      Self.W3HeaderControl2$1 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
+      TW3MovableControl.SetWidth$(Self.W3HeaderControl2$1,176);
+      TW3MovableControl.SetTop(Self.W3HeaderControl2$1,376);
+      TW3MovableControl.SetLeft(Self.W3HeaderControl2$1,16);
+      TW3MovableControl.SetHeight$(Self.W3HeaderControl2$1,32);
+      TW3Component.SetName(Self.W3HeaderControl2$1,"W3HeaderControl2");
+      Self.W3HeaderControl1$2 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
+      TW3MovableControl.SetWidth$(Self.W3HeaderControl1$2,168);
+      TW3MovableControl.SetTop(Self.W3HeaderControl1$2,144);
+      TW3MovableControl.SetLeft(Self.W3HeaderControl1$2,16);
+      TW3MovableControl.SetHeight$(Self.W3HeaderControl1$2,32);
+      TW3Component.SetName(Self.W3HeaderControl1$2,"W3HeaderControl1");
       window.addEventListener("devicemotion",$Event0(Self,TW3MovableControl.Resize$),false);
       TW3Label.SetTextAlign$1(Self.W3Label1,1);
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$1,"TW3HeaderControl2");
-      TW3MovableControl.SetVisible(Self.W3HeaderControl1$1.FBackBtn,false);
-      TW3MovableControl.SetVisible(Self.W3HeaderControl1$1.FNextBtn,false);
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$1.FLabel,"TW3Label2");
-      TW3Label.SetCaption$1(Self.W3HeaderControl1$1.FLabel,"Mountains");
-      TW3Label.SetTextAlign$1(Self.W3HeaderControl1$1.FLabel,1);
+      Self.W3Label1.FHandle.style.setProperty("font-size","large");
+      Self.W3Label1.FHandle.style.setProperty("font-weight","bold");
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$2,"TW3HeaderControl2");
+      TW3MovableControl.SetVisible(Self.W3HeaderControl1$2.FBackBtn,false);
+      TW3MovableControl.SetVisible(Self.W3HeaderControl1$2.FNextBtn,false);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$2.FLabel,"TW3Label2");
+      TW3Label.SetCaption$1(Self.W3HeaderControl1$2.FLabel,"Mountains");
+      TW3Label.SetTextAlign$1(Self.W3HeaderControl1$2.FLabel,1);
       Self.lbxMountains.FItemClass = TListBoxItem;
-      Self.lbxMountains.FItemHeight = 32;
+      Self.lbxMountains.FItemHeight = 50;
       Self.lbxMountains.FStyles.FSelectedColor = 12632256;
       Self.lbxMountains.FOnSelected = $Event2(Self,TChallenge.LBItemSelected);
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2,"TW3HeaderControl2");
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2.FBackBtn,"TW3ButtonBack");
-      TW3CustomControl._setMouseClick(Self.W3HeaderControl2.FBackBtn,$Event1(Self,TChallenge.HandleBackButton$1));
-      TW3MovableControl.SetVisible(Self.W3HeaderControl2.FNextBtn,true);
-      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2.FNextBtn,"TW3ButtonBack");
-      TW3ToolButton.setCaption$1(Self.W3HeaderControl2.FNextBtn,"Info");
-      TW3CustomControl._setMouseClick(Self.W3HeaderControl2.FNextBtn,$Event1(Self,TChallenge.HandleNextButton$1));
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$1,"TW3HeaderControl2");
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$1.FBackBtn,"TW3ButtonBack");
+      TW3CustomControl._setMouseClick(Self.W3HeaderControl2$1.FBackBtn,$Event1(Self,TChallenge.HandleBackButton$2));
+      TW3MovableControl.SetVisible(Self.W3HeaderControl2$1.FNextBtn,true);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$1.FNextBtn,"TW3ButtonBack");
+      TW3ToolButton.setCaption$1(Self.W3HeaderControl2$1.FNextBtn,"Info");
+      TW3CustomControl._setMouseClick(Self.W3HeaderControl2$1.FNextBtn,$Event1(Self,TChallenge.HandleNextButton$1));
    }
    /// procedure TChallenge.LBItemSelected(Sender: TObject; itemIndex: Integer)
    ///  [line: 40, column: 22, file: Challenge]
-   ,LBItemSelected:function(Self, Sender$44, itemIndex$3) {
+   ,LBItemSelected:function(Self, Sender$45, itemIndex$3) {
       if (itemIndex$3>=0) {
          gMountainIdx = itemIndex$3;
          TMountain.a$39($As(TW3CustomApplication.FormByName(Application(),"Mountain"),TMountain),"res\\mtn64.png");
@@ -13180,19 +13191,19 @@ var TChallenge = {
       }
    }
    /// procedure TChallenge.Resize()
-   ///  [line: 136, column: 22, file: Challenge]
+   ///  [line: 123, column: 22, file: Challenge]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (!(TControlHandleHelper$Valid(Self.FHandle)&&$SetIn(Self.FComponentState,2,0,6))) {
          return;
       }
-      Self.fLayout$3 = Layout.Client(Layout,Layout.Margins$2(Layout,5),[Layout.Top$6(Layout,Layout.Height$8(Layout,64),Layout.Center$1(Layout,Self.W3Image1$1)), Layout.Top$6(Layout,Layout.Height$8(Layout,32),Layout.Client$3(Layout,Self.W3Label1)), Layout.Top$6(Layout,Layout.Height$8(Layout,32),Self.W3HeaderControl1$1), Layout.Client$3(Layout,Self.lbxMountains), Layout.Bottom$4(Layout,Layout.Height$8(Layout,32),Self.W3HeaderControl2)].slice());
-      if (Self.fLayout$3) {
-         TLayout.Resize$3$(Self.fLayout$3,Self);
+      Self.fLayout$4 = Layout.Client(Layout,Layout.Margins$2(Layout,5),[Layout.Top$6(Layout,Layout.Height$8(Layout,64),Layout.Center$1(Layout,Self.W3Image1$1)), Layout.Top$6(Layout,Layout.Height$8(Layout,50),Layout.Client$3(Layout,Self.W3Label1)), Layout.Top$6(Layout,Layout.Height$8(Layout,50),Self.W3HeaderControl1$2), Layout.Client$3(Layout,Self.lbxMountains), Layout.Bottom$4(Layout,Layout.Height$8(Layout,50),Self.W3HeaderControl2$1)].slice());
+      if (Self.fLayout$4) {
+         TLayout.Resize$3$(Self.fLayout$4,Self);
          TW3CustomControl.LayoutChildren(Self.W3Label1);
-         TW3CustomControl.LayoutChildren(Self.W3HeaderControl1$1);
+         TW3CustomControl.LayoutChildren(Self.W3HeaderControl1$2);
          TW3CustomControl.LayoutChildren(Self.lbxMountains);
-         TW3CustomControl.LayoutChildren(Self.W3HeaderControl2);
+         TW3CustomControl.LayoutChildren(Self.W3HeaderControl2$1);
       }
    }
    ,Destroy:TW3CustomForm.Destroy
@@ -13247,12 +13258,12 @@ var TMountain = {
    }
    /// procedure TMountain.HandleBackButton(Sender: TObject)
    ///  [line: 49, column: 21, file: Mountain]
-   ,HandleBackButton:function(Self, Sender$45) {
+   ,HandleBackButton:function(Self, Sender$46) {
       TW3CustomApplication.GotoForm(Application(),"Challenge",2);
    }
    /// procedure TMountain.HandleNextButton(Sender: TObject)
    ///  [line: 54, column: 21, file: Mountain]
-   ,HandleNextButton:function(Self, Sender$46) {
+   ,HandleNextButton:function(Self, Sender$47) {
    }
    /// procedure TMountain.InitializeForm()
    ///  [line: 59, column: 21, file: Mountain]
@@ -13291,22 +13302,22 @@ var TMountain = {
       TW3CustomControl._setMouseClick(Self.W3HeaderControl1.FNextBtn,$Event1(Self,TMountain.HandleNextButton));
    }
    /// procedure TMountain.MountainActivate(Sender: TObject)
-   ///  [line: 91, column: 21, file: Mountain]
-   ,MountainActivate:function(Self, Sender$47) {
+   ///  [line: 84, column: 21, file: Mountain]
+   ,MountainActivate:function(Self, Sender$48) {
    }
    /// procedure TMountain.MountainDeactivate(Sender: TObject)
-   ///  [line: 100, column: 21, file: Mountain]
-   ,MountainDeactivate:function(Self, Sender$48) {
+   ///  [line: 89, column: 21, file: Mountain]
+   ,MountainDeactivate:function(Self, Sender$49) {
       Self.fLayout$1 = null;
    }
    /// procedure TMountain.Resize()
-   ///  [line: 105, column: 21, file: Mountain]
+   ///  [line: 94, column: 21, file: Mountain]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (!(TControlHandleHelper$Valid(Self.FHandle)&&$SetIn(Self.FComponentState,2,0,6))) {
          return;
       }
-      Self.fLayout$1 = Layout.Client(Layout,Layout.Margins$2(Layout,5),[Layout.Top$6(Layout,Layout.Height$8(Layout,64),Layout.Center$1(Layout,Self.W3Image1)), Layout.Client$3(Layout,Self.fScroll), Layout.Bottom$4(Layout,Layout.Height$8(Layout,32),Self.W3HeaderControl1)].slice());
+      Self.fLayout$1 = Layout.Client(Layout,Layout.Margins$2(Layout,5),[Layout.Top$6(Layout,Layout.Height$8(Layout,64),Layout.Center$1(Layout,Self.W3Image1)), Layout.Client$3(Layout,Self.fScroll), Layout.Bottom$4(Layout,Layout.Height$8(Layout,50),Self.W3HeaderControl1)].slice());
       if (Self.fLayout$1) {
          TLayout.Resize$3$(Self.fLayout$1,Self);
          TW3CustomControl.LayoutChildren(Self.W3HeaderControl1);
@@ -13375,7 +13386,7 @@ var TW3ScrollControl = {
    }
    /// function TW3ScrollControl.HandleFade(Sender: TObject) : Boolean
    ///  [line: 360, column: 27, file: SmartCL.Scroll]
-   ,HandleFade:function(Self, Sender$49) {
+   ,HandleFade:function(Self, Sender$50) {
       var Result = false;
       var mValue$1 = 0;
       if (Self.FFadeDelay>0) {
@@ -13738,6 +13749,220 @@ var TW3ScrollContent = {
    ,SetBorderRadius:TW3CustomControl.SetBorderRadius
    ,SetEnabled:TW3CustomControl.SetEnabled
 };
+/// TInfo = class (TW3Form)
+///  [line: 11, column: 3, file: Info]
+var TInfo = {
+   $ClassName:"TInfo",$Parent:TW3Form
+   ,$Init:function ($) {
+      TW3Form.$Init($);
+      $.fLayout$3 = $.fScroll$1 = $.W3HeaderControl1$1 = $.W3HeaderControl2 = null;
+   }
+   /// procedure TInfo.HandleBackButton(Sender: TObject)
+   ///  [line: 34, column: 17, file: Info]
+   ,HandleBackButton$1:function(Self, Sender$51) {
+      TW3CustomApplication.GotoForm(Application(),"Challenge",2);
+   }
+   /// procedure TInfo.InfoDeactivate(Sender: TObject)
+   ///  [line: 47, column: 17, file: Info]
+   ,InfoDeactivate:function(Self, Sender$52) {
+      Self.fLayout$3 = null;
+   }
+   /// procedure TInfo.InitializeForm()
+   ///  [line: 52, column: 17, file: Info]
+   ,InitializeForm:function(Self) {
+      TW3CustomForm.InitializeForm(Self);
+      TInfo.UpdateContent$1(Self);
+   }
+   /// procedure TInfo.InitializeObject()
+   ///  [line: 59, column: 17, file: Info]
+   ,InitializeObject:function(Self) {
+      TW3CustomControl.InitializeObject(Self);
+      TW3CustomForm.setCaption(Self,"W3Form");
+      TW3Component.SetName(Self,"Info");
+      Self.FOnDeactivate = $Event1(Self,TInfo.InfoDeactivate);
+      Self.W3HeaderControl1$1 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
+      TW3MovableControl.SetWidth$(Self.W3HeaderControl1$1,128);
+      TW3MovableControl.SetTop(Self.W3HeaderControl1$1,40);
+      TW3MovableControl.SetLeft(Self.W3HeaderControl1$1,32);
+      TW3MovableControl.SetHeight$(Self.W3HeaderControl1$1,32);
+      TW3Component.SetName(Self.W3HeaderControl1$1,"W3HeaderControl1");
+      Self.W3HeaderControl2 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
+      TW3MovableControl.SetWidth$(Self.W3HeaderControl2,128);
+      TW3MovableControl.SetTop(Self.W3HeaderControl2,112);
+      TW3MovableControl.SetLeft(Self.W3HeaderControl2,32);
+      TW3MovableControl.SetHeight$(Self.W3HeaderControl2,32);
+      TW3Component.SetName(Self.W3HeaderControl2,"W3HeaderControl2");
+      window.addEventListener("devicemotion",$Event0(Self,TW3MovableControl.Resize$),false);
+      Self.fScroll$1 = TW3Component.Create$4$($New(TW3ScrollControl),Self);
+      Self.fScroll$1.FHandle.style.setProperty("background-color","white");
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$1,"TW3HeaderControl2");
+      TW3MovableControl.SetVisible(Self.W3HeaderControl1$1.FBackBtn,false);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$1.FLabel,"TW3Label2");
+      TW3Label.SetCaption$1(Self.W3HeaderControl1$1.FLabel,"Info");
+      TW3Label.SetTextAlign$1(Self.W3HeaderControl1$1.FLabel,1);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2,"TW3HeaderControl2");
+      TW3MovableControl.SetVisible(Self.W3HeaderControl2.FBackBtn,true);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2.FBackBtn,"TW3ButtonBack");
+      TW3CustomControl._setMouseClick(Self.W3HeaderControl2.FBackBtn,$Event1(Self,TInfo.HandleBackButton$1));
+   }
+   /// procedure TInfo.Resize()
+   ///  [line: 81, column: 17, file: Info]
+   ,Resize:function(Self) {
+      TW3MovableControl.Resize(Self);
+      if (!(TControlHandleHelper$Valid(Self.FHandle)&&$SetIn(Self.FComponentState,2,0,6))) {
+         return;
+      }
+      Self.fLayout$3 = Layout.Client(Layout,Layout.Margins$2(Layout,5),[Layout.Top$6(Layout,Layout.Height$8(Layout,50),Self.W3HeaderControl1$1), Layout.Client$3(Layout,Self.fScroll$1), Layout.Bottom$4(Layout,Layout.Height$8(Layout,50),Self.W3HeaderControl2)].slice());
+      if (Self.fLayout$3) {
+         TLayout.Resize$3$(Self.fLayout$3,Self);
+         TW3CustomControl.LayoutChildren(Self.W3HeaderControl1$1);
+         TW3CustomControl.LayoutChildren(Self.W3HeaderControl2);
+      }
+   }
+   /// procedure TInfo.UpdateContent()
+   ///  [line: 39, column: 17, file: Info]
+   ,UpdateContent$1:function(Self) {
+      TW3TagObj.SetInnerHTML(Self.fScroll$1.FContent,"<div>"+"<center><img src=\"res\\challenge128.png\"><\/center>"+"<p>"+gChallenges.challenges[gChallengeIdx].description+"<\/p> <br>"+"<\/div>");
+   }
+   ,Destroy:TW3CustomForm.Destroy
+   ,AfterUpdate:TW3CustomControl.AfterUpdate
+   ,FinalizeObject:TW3CustomControl.FinalizeObject
+   ,InitializeObject$:function($){return $.ClassType.InitializeObject($)}
+   ,MakeElementTagId:TW3TagObj.MakeElementTagId
+   ,MakeElementTagObj:TW3TagObj.MakeElementTagObj
+   ,Showing:TW3MovableControl.Showing
+   ,StyleTagObject:TW3CustomForm.StyleTagObject
+   ,ChildAdded:TW3Component.ChildAdded
+   ,Create$4:TW3CustomForm.Create$4
+   ,GetHeight:TW3MovableControl.GetHeight
+   ,GetWidth:TW3MovableControl.GetWidth
+   ,Resize$:function($){return $.ClassType.Resize($)}
+   ,SetHeight:TW3MovableControl.SetHeight
+   ,SetWidth:TW3MovableControl.SetWidth
+   ,supportAdjustment:TW3MovableControl.supportAdjustment
+   ,CBClick:TW3CustomControl.CBClick
+   ,CBKeyDown:TW3CustomControl.CBKeyDown
+   ,CBKeyUp:TW3CustomControl.CBKeyUp
+   ,CBMouseDown:TW3CustomControl.CBMouseDown
+   ,CBMouseMove:TW3CustomControl.CBMouseMove
+   ,CBMouseUp:TW3CustomControl.CBMouseUp
+   ,CMTouchBegins:TW3CustomControl.CMTouchBegins
+   ,CMTouchEnds:TW3CustomControl.CMTouchEnds
+   ,CMTouchMove:TW3CustomControl.CMTouchMove
+   ,GetEnabled:TW3CustomControl.GetEnabled
+   ,Invalidate:TW3CustomControl.Invalidate
+   ,SetBorderRadius:TW3CustomControl.SetBorderRadius
+   ,SetEnabled:TW3CustomControl.SetEnabled
+   ,FormActivated:TW3CustomForm.FormActivated
+   ,InitializeForm$:function($){return $.ClassType.InitializeForm($)}
+};
+/// TAbout = class (TW3Form)
+///  [line: 11, column: 3, file: About]
+var TAbout = {
+   $ClassName:"TAbout",$Parent:TW3Form
+   ,$Init:function ($) {
+      TW3Form.$Init($);
+      $.fLayout$6 = $.fScroll$2 = $.W3HeaderControl1$4 = $.W3HeaderControl2$3 = null;
+   }
+   /// procedure TAbout.AboutDeactivate(Sender: TObject)
+   ///  [line: 50, column: 18, file: About]
+   ,AboutDeactivate:function(Self, Sender$53) {
+      Self.fLayout$6 = null;
+   }
+   /// procedure TAbout.HandleBackButton(Sender: TObject)
+   ///  [line: 32, column: 18, file: About]
+   ,HandleBackButton$4:function(Self, Sender$54) {
+      TW3CustomApplication.GotoForm(Application(),"Main",2);
+   }
+   /// procedure TAbout.InitializeForm()
+   ///  [line: 55, column: 18, file: About]
+   ,InitializeForm:function(Self) {
+      TW3CustomForm.InitializeForm(Self);
+      TAbout.UpdateContent$2(Self);
+   }
+   /// procedure TAbout.InitializeObject()
+   ///  [line: 62, column: 18, file: About]
+   ,InitializeObject:function(Self) {
+      TW3CustomControl.InitializeObject(Self);
+      TW3CustomForm.setCaption(Self,"W3Form");
+      TW3Component.SetName(Self,"About");
+      Self.FOnDeactivate = $Event1(Self,TAbout.AboutDeactivate);
+      Self.W3HeaderControl1$4 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
+      TW3MovableControl.SetWidth$(Self.W3HeaderControl1$4,128);
+      TW3MovableControl.SetTop(Self.W3HeaderControl1$4,32);
+      TW3MovableControl.SetLeft(Self.W3HeaderControl1$4,48);
+      TW3MovableControl.SetHeight$(Self.W3HeaderControl1$4,32);
+      TW3Component.SetName(Self.W3HeaderControl1$4,"W3HeaderControl1");
+      Self.W3HeaderControl2$3 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
+      TW3MovableControl.SetWidth$(Self.W3HeaderControl2$3,128);
+      TW3MovableControl.SetTop(Self.W3HeaderControl2$3,80);
+      TW3MovableControl.SetLeft(Self.W3HeaderControl2$3,48);
+      TW3MovableControl.SetHeight$(Self.W3HeaderControl2$3,32);
+      TW3Component.SetName(Self.W3HeaderControl2$3,"W3HeaderControl2");
+      window.addEventListener("devicemotion",$Event0(Self,TW3MovableControl.Resize$),false);
+      Self.fScroll$2 = TW3Component.Create$4$($New(TW3ScrollControl),Self);
+      Self.fScroll$2.FHandle.style.setProperty("background-color","white");
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$4,"TW3HeaderControl2");
+      TW3MovableControl.SetVisible(Self.W3HeaderControl1$4.FBackBtn,false);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl1$4.FLabel,"TW3Label2");
+      TW3Label.SetCaption$1(Self.W3HeaderControl1$4.FLabel,"About");
+      TW3Label.SetTextAlign$1(Self.W3HeaderControl1$4.FLabel,1);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$3,"TW3HeaderControl2");
+      TW3MovableControl.SetVisible(Self.W3HeaderControl2$3.FBackBtn,true);
+      TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$3.FBackBtn,"TW3ButtonBack");
+      TW3CustomControl._setMouseClick(Self.W3HeaderControl2$3.FBackBtn,$Event1(Self,TAbout.HandleBackButton$4));
+   }
+   /// procedure TAbout.Resize()
+   ///  [line: 84, column: 18, file: About]
+   ,Resize:function(Self) {
+      TW3MovableControl.Resize(Self);
+      if (!(TControlHandleHelper$Valid(Self.FHandle)&&$SetIn(Self.FComponentState,2,0,6))) {
+         return;
+      }
+      Self.fLayout$6 = Layout.Client(Layout,Layout.Margins$2(Layout,5),[Layout.Top$6(Layout,Layout.Height$8(Layout,50),Self.W3HeaderControl1$4), Layout.Client$3(Layout,Self.fScroll$2), Layout.Bottom$4(Layout,Layout.Height$8(Layout,50),Self.W3HeaderControl2$3)].slice());
+      if (Self.fLayout$6) {
+         TLayout.Resize$3$(Self.fLayout$6,Self);
+         TW3CustomControl.LayoutChildren(Self.W3HeaderControl1$4);
+         TW3CustomControl.LayoutChildren(Self.W3HeaderControl2$3);
+      }
+   }
+   /// procedure TAbout.UpdateContent()
+   ///  [line: 37, column: 18, file: About]
+   ,UpdateContent$2:function(Self) {
+      TW3TagObj.SetInnerHTML(Self.fScroll$2.FContent,"<div>"+"<center><img src=\"res\\mtn128.png\"><\/center>"+"<p>"+"ADK Profile provides an excellent way to keep track of "+"Adirondack Mountain hiking challenge date completions. It "+"even allows tracking by season. In addition, track individual "+"mountains by completion date and season too. Enjoy the "+"convenience of having all of the challenges and mountains centrally located "+"in one place."+"<\/p> <br>"+"<\/div>");
+   }
+   ,Destroy:TW3CustomForm.Destroy
+   ,AfterUpdate:TW3CustomControl.AfterUpdate
+   ,FinalizeObject:TW3CustomControl.FinalizeObject
+   ,InitializeObject$:function($){return $.ClassType.InitializeObject($)}
+   ,MakeElementTagId:TW3TagObj.MakeElementTagId
+   ,MakeElementTagObj:TW3TagObj.MakeElementTagObj
+   ,Showing:TW3MovableControl.Showing
+   ,StyleTagObject:TW3CustomForm.StyleTagObject
+   ,ChildAdded:TW3Component.ChildAdded
+   ,Create$4:TW3CustomForm.Create$4
+   ,GetHeight:TW3MovableControl.GetHeight
+   ,GetWidth:TW3MovableControl.GetWidth
+   ,Resize$:function($){return $.ClassType.Resize($)}
+   ,SetHeight:TW3MovableControl.SetHeight
+   ,SetWidth:TW3MovableControl.SetWidth
+   ,supportAdjustment:TW3MovableControl.supportAdjustment
+   ,CBClick:TW3CustomControl.CBClick
+   ,CBKeyDown:TW3CustomControl.CBKeyDown
+   ,CBKeyUp:TW3CustomControl.CBKeyUp
+   ,CBMouseDown:TW3CustomControl.CBMouseDown
+   ,CBMouseMove:TW3CustomControl.CBMouseMove
+   ,CBMouseUp:TW3CustomControl.CBMouseUp
+   ,CMTouchBegins:TW3CustomControl.CMTouchBegins
+   ,CMTouchEnds:TW3CustomControl.CMTouchEnds
+   ,CMTouchMove:TW3CustomControl.CMTouchMove
+   ,GetEnabled:TW3CustomControl.GetEnabled
+   ,Invalidate:TW3CustomControl.Invalidate
+   ,SetBorderRadius:TW3CustomControl.SetBorderRadius
+   ,SetEnabled:TW3CustomControl.SetEnabled
+   ,FormActivated:TW3CustomForm.FormActivated
+   ,InitializeForm$:function($){return $.ClassType.InitializeForm($)}
+};
 /// TListBoxItem = class (TW3CustomControl)
 ///  [line: 10, column: 3, file: ListBoxItem]
 var TListBoxItem = {
@@ -13779,6 +14004,7 @@ var TListBoxItem = {
       TW3MovableControl.SetWidth$(Self.fImage,32);
       Self.fLabel = TW3Component.Create$4$($New(TW3Label),Self);
       TW3Label.SetTextAlign$1(Self.fLabel,1);
+      Self.fLabel.FHandle.style.setProperty("font-size","large");
       Self.fLayout$2 = Layout.Client$2(Layout,[Layout.Left$5(Layout,Layout.Width$10(Layout,32),Self.fImage), Layout.Client$3(Layout,Self.fLabel)].slice());
    }
    /// procedure TListBoxItem.Resize()
@@ -14013,9 +14239,13 @@ TApplicationFormsList.RegisterAutoCreate(Forms$2(),"Main",true,true);
 TApplicationFormsList.RegisterAutoCreate(Forms$2(),"Splash",true,false);
 TApplicationFormsList.RegisterAutoCreate(Forms$2(),"Challenge",true,false);
 TApplicationFormsList.RegisterAutoCreate(Forms$2(),"Mountain",true,false);
+TApplicationFormsList.RegisterAutoCreate(Forms$2(),"Info",true,false);
+TApplicationFormsList.RegisterAutoCreate(Forms$2(),"About",true,false);
 TApplicationFormsList.RegisterForm(Forms$2(),"Main",TMain);
 setupLUT();
 TApplicationFormsList.RegisterForm(Forms$2(),"Splash",TSplash);
+TApplicationFormsList.RegisterForm(Forms$2(),"Info",TInfo);
+TApplicationFormsList.RegisterForm(Forms$2(),"About",TAbout);
 var $Application = function() {
    try {
       Application$1 = TW3CustomApplication.Create$59($New(TApplication));

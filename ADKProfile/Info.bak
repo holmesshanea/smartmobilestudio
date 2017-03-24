@@ -1,0 +1,42 @@
+unit Info;
+
+interface
+
+uses 
+  System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application;
+
+type
+  TInfo = class(TW3Form)
+  private
+    {$I 'Info:intf'}
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  end;
+
+implementation
+
+{ TInfo }
+
+procedure TInfo.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+end;
+
+procedure TInfo.InitializeObject;
+begin
+  inherited;
+  {$I 'Info:impl'}
+end;
+ 
+procedure TInfo.Resize;
+begin
+  inherited;
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TInfo);
+end.

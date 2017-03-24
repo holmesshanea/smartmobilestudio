@@ -64,13 +64,7 @@ procedure TChallenge.AddItem(Caption: String);
 
 procedure TChallenge.ChallengeActivate(Sender: TObject);
 begin
-      {FLayout:= Layout.Client(Layout.Margins(5), [
-                          Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
-                          Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
-                          Layout.Top(Layout.Height(32), W3HeaderControl1),
-                          Layout.Client((lbxMountains)),
-                          Layout.Bottom(Layout.Height(32), W3HeaderControl2)
-                              ] );}
+
 end;
 
 procedure TChallenge.ChallengeDeactivate(Sender: TObject);
@@ -85,7 +79,7 @@ end;
 
 procedure TChallenge.HandleNextButton(Sender: TObject);
 begin
-//
+  Application.GotoForm('Info', feFromRight);
 end;
 
 procedure TChallenge.InitializeForm;
@@ -95,13 +89,13 @@ begin
 end;
 
 procedure TChallenge.InitializeObject;
-var
- I: Integer;
 begin
   inherited;
   {$I 'Challenge:impl'}
   window.addEventListener('devicemotion', @Resize, false);
   W3Label1.AlignText:= taCenter;
+  W3Label1.Handle.style.setProperty('font-size', 'large');
+  W3Label1.Handle.style.setProperty('font-weight', 'bold');
 
   W3HeaderControl1.StyleClass:= 'TW3HeaderControl2';
   W3HeaderControl1.BackButton.Visible:= False;
@@ -111,7 +105,7 @@ begin
   W3HeaderControl1.Title.AlignText:= taCenter;
 
   lbxMountains.ItemClass := TListBoxItem;
-  lbxMountains.ItemHeight := 32;
+  lbxMountains.ItemHeight := 50;
   lbxMountains.Styles.SelectedColor := clSilver;
   lbxMountains.OnSelected := LBItemSelected;
 
@@ -123,13 +117,6 @@ begin
   W3HeaderControl2.NextButton.Caption:= 'Info';
   W3HeaderControl2.NextButton.OnClick:= HandleNextButton;
 
-  {FLayout:= Layout.Client(Layout.Margins(5), [
-                          Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
-                          Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
-                          Layout.Top(Layout.Height(32), W3HeaderControl1),
-                          Layout.Client((lbxMountains)),
-                          Layout.Bottom(Layout.Height(32), W3HeaderControl2)
-                              ] );}
 
 end;
  
@@ -141,10 +128,10 @@ begin
 
   FLayout:= Layout.Client(Layout.Margins(5), [
                           Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
-                          Layout.Top(Layout.Height(32), Layout.Client(W3Label1)),
-                          Layout.Top(Layout.Height(32), W3HeaderControl1),
+                          Layout.Top(Layout.Height(50), Layout.Client(W3Label1)),
+                          Layout.Top(Layout.Height(50), W3HeaderControl1),
                           Layout.Client((lbxMountains)),
-                          Layout.Bottom(Layout.Height(32), W3HeaderControl2)
+                          Layout.Bottom(Layout.Height(50), W3HeaderControl2)
                               ] );
 
   if Assigned(FLayout) then

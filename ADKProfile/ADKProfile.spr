@@ -1,4 +1,4 @@
-uses SmartCL.System, Application, Splash, ListBoxItem, Challenge, Mountain;
+uses SmartCL.System, Application, Splash, ListBoxItem, Challenge, Mountain, Info, About;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
 try

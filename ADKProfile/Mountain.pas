@@ -71,7 +71,6 @@ begin
 
   fScroll:= TW3ScrollControl.Create(self);
   fScroll.Handle.style.setProperty('background-color', 'white');
-
   W3HeaderControl1.StyleClass:= 'TW3HeaderControl2';
   W3HeaderControl1.BackButton.StyleClass:= 'TW3ButtonBack';
   W3HeaderControl1.BackButton.OnClick:= HandleBackButton;
@@ -80,21 +79,11 @@ begin
   W3HeaderControl1.NextButton.Caption:= 'Log';
   W3HeaderControl1.NextButton.OnClick:= HandleNextButton;
 
-  {FLayout:= Layout.Client(Layout.Margins(5), [
-                          Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
-                          Layout.Client(fScroll),
-                          Layout.Bottom(Layout.Height(32), W3HeaderControl1)
-                              ] );}
-
 end;
 
 procedure TMountain.MountainActivate(Sender: TObject);
 begin
- {FLayout:= Layout.Client(Layout.Margins(5), [
-                          Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
-                          Layout.Client(fScroll),
-                          Layout.Bottom(Layout.Height(32), W3HeaderControl1)
-                              ] );}
+
 end;
 
 procedure TMountain.MountainDeactivate(Sender: TObject);
@@ -111,7 +100,7 @@ begin
   FLayout:= Layout.Client(Layout.Margins(5), [
                           Layout.Top(Layout.Height(64), Layout.Center(W3Image1)),
                           Layout.Client(fScroll),
-                          Layout.Bottom(Layout.Height(32), W3HeaderControl1)
+                          Layout.Bottom(Layout.Height(50), W3HeaderControl1)
                               ] );
 
   if Assigned(FLayout) then

@@ -38,7 +38,7 @@ begin
   fImage.Width:= 32;
   fLabel:= TW3Label.create(self);
   fLabel.AlignText:= taCenter;
-
+  fLabel.Handle.style.setProperty('font-size', 'large');
   FLayout:= Layout.Client([
                            Layout.Left(Layout.Width(32), fImage),
                            Layout.Client(fLabel)

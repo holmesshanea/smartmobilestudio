@@ -19,6 +19,8 @@ type
     procedure AddItem(Caption: String);
     procedure LBItemSelected (Sender: TObject; itemIndex: integer);
   protected
+    procedure HandleBackButton(Sender: TObject);
+    procedure HandleNextButton(Sender: TObject);
     procedure HandleHttpDataReady(Sender:TW3HttpRequest);
     procedure InitializeForm; override;
     procedure InitializeObject; override;
@@ -32,6 +34,16 @@ implementation
 uses ListBoxItem, Challenge, Common;
 
 { TForm1 }
+
+procedure TMain.HandleBackButton(Sender: TObject);
+begin
+ Application.GotoForm('About', feFromRight);
+end;
+
+procedure TMain.HandleNextButton(Sender: TObject);
+begin
+ //Application.GotoForm('Help', feFromRight);
+end;
 
 procedure TMain.LBItemSelected (Sender: TObject; itemIndex: integer);
 var
@@ -100,25 +112,20 @@ begin
 
 
   lbxChallenges.ItemClass := TListBoxItem;
-  lbxChallenges.ItemHeight := 32;
+  lbxChallenges.ItemHeight := 50;
   lbxChallenges.Styles.SelectedColor := clSilver;
   lbxChallenges.OnSelected := LBItemSelected;
 
   W3HeaderControl2.StyleClass:= 'TW3HeaderControl2';
   W3HeaderControl2.BackButton.StyleClass:= 'TW3ButtonBack';
-  //W3HeaderControl2.BackButton.OnClick:= HandleBackButton;
+  W3HeaderControl2.BackButton.OnClick:= HandleBackButton;
   W3HeaderControl2.BackButton.Visible:= True;
   W3HeaderControl2.BackButton.Caption:= 'About';
 
-  W3HeaderControl2.NextButton.StyleClass:= 'TW3ButtonBack';
+ // W3HeaderControl2.NextButton.StyleClass:= 'TW3ButtonBack';
   //W3HeaderControl2.NextButton.OnClick:= HandleNextButton;
-  W3HeaderControl2.NextButton.Visible:= True;
-  W3HeaderControl2.NextButton.Caption:= 'Help';
-
-   {FLayout:= Layout.Client([Layout.Top(Layout.Height(32), W3HeaderControl1),
-                            Layout.Client(lbxChallenges),
-                            Layout.Bottom(Layout.Height(32), W3HeaderControl2)
-                            ]);}
+  //W3HeaderControl2.NextButton.Visible:= True;
+  //W3HeaderControl2.NextButton.Caption:= 'Help';
 
 end;
 
@@ -141,9 +148,9 @@ begin
   if not (Handle.Valid and (csReady in ComponentState)) then
     Exit;
 
-  FLayout:= Layout.Client([Layout.Top(Layout.Height(32), W3HeaderControl1),
+  FLayout:= Layout.Client([Layout.Top(Layout.Height(50), W3HeaderControl1),
                             Layout.Client(lbxChallenges),
-                            Layout.Bottom(Layout.Height(32), W3HeaderControl2)
+                            Layout.Bottom(Layout.Height(50), W3HeaderControl2)
                             ]);
 
    if Assigned(FLayout) then

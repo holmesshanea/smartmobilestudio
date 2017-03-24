@@ -53,11 +53,12 @@ begin
   {$I 'Splash:impl'}
    window.addEventListener('devicemotion', @Resize, false);
 
-  lblADKProfile.InnerHTML:= '<div style="text-align: center; position: relative;' +
+  lblADKProfile.InnerHTML:= '<div style="text-align: center; position: relative; border-width: 5px;border-style: solid;border-color: black;' +
                             ' top: 50%; -ms-transform: translateY(-50%); ' +
                             ' -webkit-transform: translateY(-50%); ' +
                             'transform: translateY(-50%);"> ' +
-                            'ADK Profile <br> by Cold River Labs<br>(c) 2017 </div>';
+                            '<center><img src="res\mtn128.png"></center>' +
+                            '<p style="font-size:x-large; font-weight:bold"> ADK Profile</p> <br> <p>by Cold River Labs </p> <br><p style="font-size:small; font-style:italic">(c) 2017 </p><br></div>';
   lblADKProfile.AlignText:= taCenter;
 
    FLayout:= Layout.Client(Layout.Client(lblADKProfile));

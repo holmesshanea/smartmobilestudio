@@ -1,0 +1,61 @@
+unit About;
+
+interface
+
+uses 
+  System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
+  SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Layout;
+
+type
+  TAbout = class(TW3Form)
+    procedure AboutDeactivate(Sender: TObject);
+  private
+    {$I 'About:intf'}
+   fLayout: TLayout;
+  protected
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+  end;
+
+  function window: variant; external 'window' property;
+
+implementation
+
+{ TAbout }
+
+procedure TAbout.AboutDeactivate(Sender: TObject);
+begin
+  FLayout:= Nil;
+end;
+
+procedure TAbout.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+end;
+
+procedure TAbout.InitializeObject;
+begin
+  inherited;
+  {$I 'About:impl'}
+  window.addEventListener('devicemotion', @Resize, false);
+end;
+ 
+procedure TAbout.Resize;
+begin
+  inherited;
+     if not (Handle.Valid and (csReady in ComponentState)) then
+    Exit;
+
+    //FLayout:= Layout.Client(Layout.Margins(5), [ ] );
+
+  if Assigned(FLayout) then
+  begin
+   FLayout.Resize(self);
+  end;
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TAbout);
+end.
