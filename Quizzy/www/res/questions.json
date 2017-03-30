@@ -1,0 +1,11 @@
+{
+	"questions": [{
+		"question": "Who is President of the United States?",
+		"answers": ["Joe Biden", "Donald Trump", "Hillary Clinton", "Bernie Sanders"],
+		"answer": "1"
+	}, {
+		"question": "Who is the Secretary of State?",
+		"answers": ["Shane Holmes", "Doreen Alessi-Holmes", "Evan Pendergraft", "Kyle Pendergraft"],
+		"answer": "0"
+	}]
+}
