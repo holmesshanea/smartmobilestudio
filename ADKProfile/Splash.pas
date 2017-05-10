@@ -69,7 +69,7 @@ begin
   inherited;
   if Assigned(FLayout) then
   begin
-    FLayout.Resize(self);
+    FLayout.Resize(ClientRect);
   end;
 end;
 

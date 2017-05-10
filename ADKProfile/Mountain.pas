@@ -83,7 +83,7 @@ end;
 
 procedure TMountain.MountainActivate(Sender: TObject);
 begin
-
+ UpdateContent;
 end;
 
 procedure TMountain.MountainDeactivate(Sender: TObject);
@@ -105,7 +105,7 @@ begin
 
   if Assigned(FLayout) then
   begin
-   FLayout.Resize(self);
+   FLayout.Resize(ClientRect);
    W3HeaderControl1.LayoutChildren;
   end;
 end;

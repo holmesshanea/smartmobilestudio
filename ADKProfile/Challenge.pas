@@ -136,7 +136,7 @@ begin
 
   if Assigned(FLayout) then
   begin
-    FLayout.Resize(self);
+    FLayout.Resize(ClientRect);
     W3Label1.LayoutChildren;
     W3HeaderControl1.LayoutChildren;
     lbxMountains.LayoutChildren;

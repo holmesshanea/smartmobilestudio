@@ -5,10 +5,11 @@ interface
 uses 
   SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, 
   SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Layout,
-  SmartCL.Controls, SmartCL.Inet, ECMA.JSON, System.Colors;
+  SmartCL.Controls, SmartCL.INet, ECMA.JSON, System.Colors, SmartCL.Touch;
 
 type
   TMain = class(TW3Form)
+    procedure lbxChallengesTouchBegin(Sender: TObject; Info: TW3TouchData);
     procedure MainActivate(Sender: TObject);
     procedure MainDeactivate(Sender: TObject);
   private
@@ -129,6 +130,11 @@ begin
 
 end;
 
+procedure TMain.lbxChallengesTouchBegin(Sender: TObject; Info: TW3TouchData);
+begin
+
+end;
+
 procedure TMain.MainActivate(Sender: TObject);
 begin
   {FLayout:= Layout.Client([Layout.Top(Layout.Height(32), W3HeaderControl1),
@@ -155,7 +161,7 @@ begin
 
    if Assigned(FLayout) then
   begin
-    FLayout.Resize(self);
+    FLayout.Resize(ClientRect);
     W3HeaderControl1.LayoutChildren;
     lbxChallenges.LayoutChildren;
     W3HeaderControl2.LayoutChildren;

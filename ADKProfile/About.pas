@@ -95,7 +95,7 @@ begin
 
   if Assigned(FLayout) then
   begin
-   FLayout.Resize(self);
+   FLayout.Resize(ClientRect);
    W3HeaderControl1.LayoutChildren;
    W3HeaderControl2.LayoutChildren;
 

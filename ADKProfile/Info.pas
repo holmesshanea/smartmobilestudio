@@ -9,6 +9,7 @@ uses
 
 type
   TInfo = class(TW3Form)
+    procedure InfoActivate(Sender: TObject);
     procedure InfoDeactivate(Sender: TObject);
   private
     {$I 'Info:intf'}
@@ -41,7 +42,21 @@ begin
  fScroll.Content.InnerHTML:= '<div>' +
  '<center><img src="res\challenge128.png"></center>' +
   '<p>' +  gChallenges.challenges[gChallengeIdx].description + '</p> <br>' +
+
+  '<center>' +  gChallenges.challenges[gChallengeIdx].name + '</center>' +
+  '<center>' +  gChallenges.challenges[gChallengeIdx].address + '</center>' +
+  '<center>' +  gChallenges.challenges[gChallengeIdx].phone + '</center>' +
+
+  '<center><a href="' +  gChallenges.challenges[gChallengeIdx].email + '">Email</a></center>' +
+  '<center><a href="' +  gChallenges.challenges[gChallengeIdx].website + '">Website</a></center>' +
+  '<center><a href="' +  gChallenges.challenges[gChallengeIdx].facebook + '" >Facebook</a></center>' +
   '</div>';
+
+end;
+
+procedure TInfo.InfoActivate(Sender: TObject);
+begin
+  UpdateContent;
 end;
 
 procedure TInfo.InfoDeactivate(Sender: TObject);
@@ -92,7 +107,7 @@ begin
 
   if Assigned(FLayout) then
   begin
-   FLayout.Resize(self);
+   FLayout.Resize(ClientRect);
    W3HeaderControl1.LayoutChildren;
    W3HeaderControl2.LayoutChildren;
   end;
