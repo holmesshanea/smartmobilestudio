@@ -1735,12 +1735,12 @@ var TW3TagObj = {
    $ClassName:"TW3TagObj",$Parent:TObject
    ,$Init:function ($) {
       TObject.$Init($);
+      $.TagValue = $.FUpdating = 0;
       $.FAccess = null;
       $.FComponentState = [0];
       $.FHandle = undefined;
       $.FOwner = undefined;
       $.FTagId = "";
-      $.FUpdating = 0;
    }
    /// procedure TW3TagObj.AddToComponentState(const Flags: TComponentState)
    ///  [line: 1103, column: 21, file: SmartCL.Components]
@@ -7540,7 +7540,7 @@ var PerformanceTimer = {
    ,Destroy:TObject.Destroy
 };
 /// TMain = class (TW3Form)
-///  [line: 11, column: 3, file: Main]
+///  [line: 12, column: 3, file: Main]
 var TMain = {
    $ClassName:"TMain",$Parent:TW3Form
    ,$Init:function ($) {
@@ -7548,52 +7548,46 @@ var TMain = {
       $.fHttp = $.fLayout$5 = $.lbxChallenges = $.W3HeaderControl1$3 = $.W3HeaderControl2$2 = $.W3ListBox1 = null;
       $.fJSONStr = "";
    }
-   /// procedure TMain.AddItem(Caption: String)
-   ///  [line: 67, column: 17, file: Main]
-   ,AddItem$1:function(Self, Caption$6) {
+   /// procedure TMain.AddItem(Caption: String; Index: Integer)
+   ///  [line: 88, column: 17, file: Main]
+   ,AddItem$1:function(Self, Caption$6, Index$1) {
       var lbItem = null;
       lbItem = $As(TW3ListBox.GetItem$6(Self.lbxChallenges,TW3ListBox.Add$8(Self.lbxChallenges)),TListBoxItem);
       TListBoxItem.a$70(lbItem,Caption$6);
+      lbItem.TagValue = Index$1;
       TListBoxItem.a$72(lbItem,"res\\challenge32.png");
+      TW3CustomControl._setMouseClick(lbItem,$Event1(Self,TMain.LBItemSelected$1));
    }
    /// procedure TMain.HandleBackButton(Sender: TObject)
-   ///  [line: 39, column: 17, file: Main]
+   ///  [line: 43, column: 17, file: Main]
    ,HandleBackButton$3:function(Self, Sender$10) {
       TW3CustomApplication.GotoForm(Application(),"About",1);
    }
    /// procedure TMain.HandleHttpDataReady(Sender: TW3HttpRequest)
-   ///  [line: 75, column: 17, file: Main]
+   ///  [line: 98, column: 17, file: Main]
    ,HandleHttpDataReady:function(Self, Sender$11) {
       var I = 0;
       Self.fJSONStr = TW3HttpRequest.a$52(Sender$11);
       gChallenges = JSON.parse(Self.fJSONStr);
       var $temp31;
       for(I=0,$temp31=gChallenges.challenges.length-1;I<=$temp31;I++) {
-         TMain.AddItem$1(Self,String(gChallenges.challenges[I].name));
+         TMain.AddItem$1(Self,String(gChallenges.challenges[I].name),I);
       }
    }
    /// procedure TMain.InitializeForm()
-   ///  [line: 90, column: 17, file: Main]
+   ///  [line: 114, column: 17, file: Main]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
       TW3HttpRequest.Get$1(Self.fHttp,"res\\challenges.json");
    }
    /// procedure TMain.InitializeObject()
-   ///  [line: 97, column: 17, file: Main]
+   ///  [line: 121, column: 17, file: Main]
    ,InitializeObject:function(Self) {
-      var I$1 = 0;
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
       TW3Component.SetName(Self,"Main");
       Self.FOnDeactivate = $Event1(Self,TMain.MainDeactivate);
       Self.FOnActivate = $Event1(Self,TMain.MainActivate);
-      Self.lbxChallenges = TW3Component.Create$4$($New(TW3ListBox),Self);
-      TW3MovableControl.SetWidth$(Self.lbxChallenges,152);
-      TW3MovableControl.SetTop(Self.lbxChallenges,72);
-      TW3MovableControl.SetLeft(Self.lbxChallenges,8);
-      TW3MovableControl.SetHeight$(Self.lbxChallenges,328);
-      TW3Component.SetName(Self.lbxChallenges,"lbxChallenges");
-      Self.lbxChallenges.FOnTouchBegin = $Event2(Self,TMain.lbxChallengesTouchBegin);
       Self.W3HeaderControl1$3 = TW3Component.Create$4$($New(TW3HeaderControl),Self);
       TW3MovableControl.SetWidth$(Self.W3HeaderControl1$3,152);
       TW3MovableControl.SetTop(Self.W3HeaderControl1$3,16);
@@ -7612,6 +7606,13 @@ var TMain = {
       TW3MovableControl.SetLeft(Self.W3ListBox1,224);
       TW3MovableControl.SetHeight$(Self.W3ListBox1,32);
       TW3Component.SetName(Self.W3ListBox1,"W3ListBox1");
+      Self.lbxChallenges = TW3Component.Create$4$($New(TW3ListBox),Self);
+      TW3MovableControl.SetWidth$(Self.lbxChallenges,152);
+      TW3MovableControl.SetTop(Self.lbxChallenges,80);
+      TW3MovableControl.SetLeft(Self.lbxChallenges,8);
+      TW3MovableControl.SetHeight$(Self.lbxChallenges,336);
+      TW3Component.SetName(Self.lbxChallenges,"lbxChallenges");
+      TW3CustomControl._setMouseClick(Self.lbxChallenges,$Event1(Self,TMain.lbxChallengesClick));
       window.addEventListener("devicemotion",$Event0(Self,TW3MovableControl.Resize$),false);
       Self.fHttp = TW3HttpRequest.Create$94($New(TW3HttpRequest));
       Self.fHttp.OnDataReady = $Event1(Self,TMain.HandleHttpDataReady);
@@ -7624,44 +7625,42 @@ var TMain = {
       Self.lbxChallenges.FItemClass = TListBoxItem;
       Self.lbxChallenges.FItemHeight = 50;
       Self.lbxChallenges.FStyles.FSelectedColor = 12632256;
-      Self.lbxChallenges.FOnSelected = $Event2(Self,TMain.LBItemSelected$1);
       TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$2,"TW3HeaderControl2");
       TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$2.FBackBtn,"TW3ButtonBack");
       TW3CustomControl._setMouseClick(Self.W3HeaderControl2$2.FBackBtn,$Event1(Self,TMain.HandleBackButton$3));
       TW3MovableControl.SetVisible(Self.W3HeaderControl2$2.FBackBtn,true);
       TW3ToolButton.setCaption$1(Self.W3HeaderControl2$2.FBackBtn,"About");
    }
-   /// procedure TMain.LBItemSelected(Sender: TObject; itemIndex: Integer)
-   ///  [line: 49, column: 17, file: Main]
-   ,LBItemSelected$1:function(Self, Sender$12, itemIndex) {
-      var I$2 = 0;
-      if (itemIndex>=0) {
-         gChallengeIdx = itemIndex;
-         TChallenge.a$76($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),"res\\challenge64.png");
-         TChallenge.a$74($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),(String(gChallenges.challenges[gChallengeIdx].name)));
-         TChallenge.ClearItems($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge));
-         var $temp32;
-         for(I$2=0,$temp32=gChallenges.challenges[gChallengeIdx].mountains.length-1;I$2<=$temp32;I$2++) {
-            TChallenge.AddItem($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),String(gChallenges.challenges[gChallengeIdx].mountains[I$2].name));
-         }
-         TW3CustomApplication.GotoForm(Application(),"Challenge",1);
+   /// procedure TMain.LBItemSelected(Sender: TObject)
+   ///  [line: 71, column: 17, file: Main]
+   ,LBItemSelected$1:function(Self, Sender$12) {
+      var I$1 = 0;
+      gChallengeIdx = $As(Sender$12,TListBoxItem).TagValue;
+      alert(gChallengeIdx.toString());
+      TChallenge.a$76($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),"res\\challenge64.png");
+      TChallenge.a$74($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),(String(gChallenges.challenges[gChallengeIdx].name)));
+      TChallenge.ClearItems($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge));
+      var $temp32;
+      for(I$1=0,$temp32=gChallenges.challenges[gChallengeIdx].mountains.length-1;I$1<=$temp32;I$1++) {
+         TChallenge.AddItem($As(TW3CustomApplication.FormByName(Application(),"Challenge"),TChallenge),String(gChallenges.challenges[gChallengeIdx].mountains[I$1].name),I$1);
       }
+      TW3CustomApplication.GotoForm(Application(),"Challenge",1);
    }
-   /// procedure TMain.lbxChallengesTouchBegin(Sender: TObject; Info: TW3TouchData)
-   ///  [line: 133, column: 17, file: Main]
-   ,lbxChallengesTouchBegin:function(Self, Sender$13, Info$1) {
+   /// procedure TMain.lbxChallengesClick(Sender: TObject)
+   ///  [line: 166, column: 17, file: Main]
+   ,lbxChallengesClick:function(Self, Sender$13) {
    }
    /// procedure TMain.MainActivate(Sender: TObject)
-   ///  [line: 138, column: 17, file: Main]
+   ///  [line: 171, column: 17, file: Main]
    ,MainActivate:function(Self, Sender$14) {
    }
    /// procedure TMain.MainDeactivate(Sender: TObject)
-   ///  [line: 146, column: 17, file: Main]
+   ///  [line: 176, column: 17, file: Main]
    ,MainDeactivate:function(Self, Sender$15) {
       Self.fLayout$5 = null;
    }
    /// procedure TMain.Resize()
-   ///  [line: 151, column: 17, file: Main]
+   ///  [line: 181, column: 17, file: Main]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (!(TControlHandleHelper$Valid(Self.FHandle)&&$SetIn(Self.FComponentState,2,0,6))) {
@@ -9279,35 +9278,35 @@ var TW3ListBox = {
    }
    /// procedure TW3ListBox.HandleTouchBegin(Sender: TObject; Info: TW3TouchData)
    ///  [line: 522, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleTouchBegin:function(Self, Sender$23, Info$2) {
+   ,HandleTouchBegin:function(Self, Sender$23, Info$1) {
       var sr$7 = {Bottom$1:0,Left$3:0,Right$1:0,Top$3:0};
       sr$7 = TW3MovableControl.ScreenRect(Self);
       TShiftState.SetKeyStateEvent(TShiftState.Current(),event);
-      TW3ListBox.HandleMouseDown$1(Self,Sender$23,0,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$2),0).FScreenX-sr$7.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$2),0).FScreenY-sr$7.Top$3);
+      TW3ListBox.HandleMouseDown$1(Self,Sender$23,0,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$1),0).FScreenX-sr$7.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$1),0).FScreenY-sr$7.Top$3);
       if (Self.FOnTouchBegin) {
-         Self.FOnTouchBegin(Self,Info$2);
+         Self.FOnTouchBegin(Self,Info$1);
       }
    }
    /// procedure TW3ListBox.HandleTouchEnd(Sender: TObject; Info: TW3TouchData)
    ///  [line: 542, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleTouchEnd:function(Self, Sender$24, Info$3) {
+   ,HandleTouchEnd:function(Self, Sender$24, Info$2) {
       var sr$8 = {Bottom$1:0,Left$3:0,Right$1:0,Top$3:0};
       sr$8 = TW3MovableControl.ScreenRect(Self);
       TShiftState.SetKeyStateEvent(TShiftState.Current(),event);
-      TW3ListBox.HandleMouseUp(Self,Sender$24,0,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$3),0).FScreenX-sr$8.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$3),0).FScreenY-sr$8.Top$3);
+      TW3ListBox.HandleMouseUp(Self,Sender$24,0,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$2),0).FScreenX-sr$8.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$2),0).FScreenY-sr$8.Top$3);
       if (Self.FOnTouchEnd) {
-         Self.FOnTouchEnd(Self,Info$3);
+         Self.FOnTouchEnd(Self,Info$2);
       }
    }
    /// procedure TW3ListBox.HandleTouchMove(Sender: TObject; Info: TW3TouchData)
    ///  [line: 532, column: 22, file: SmartCL.Controls.Listbox]
-   ,HandleTouchMove:function(Self, Sender$25, Info$4) {
+   ,HandleTouchMove:function(Self, Sender$25, Info$3) {
       var sr$9 = {Bottom$1:0,Left$3:0,Right$1:0,Top$3:0};
       sr$9 = TW3MovableControl.ScreenRect(Self);
       TShiftState.SetKeyStateEvent(TShiftState.Current(),event);
-      TW3ListBox.HandleMouseMove(Self,Sender$25,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$4),0).FScreenX-sr$9.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$4),0).FScreenY-sr$9.Top$3);
+      TW3ListBox.HandleMouseMove(Self,Sender$25,TShiftState.Current(),TW3TouchList.a$18(TW3TouchData.GetChanged(Info$3),0).FScreenX-sr$9.Left$3,TW3TouchList.a$18(TW3TouchData.GetChanged(Info$3),0).FScreenY-sr$9.Top$3);
       if (Self.FOnTouchMove) {
-         Self.FOnTouchMove(Self,Info$4);
+         Self.FOnTouchMove(Self,Info$3);
       }
    }
    /// function TW3ListBox.IndexOf(item: TW3CustomControl) : Integer
@@ -9362,17 +9361,17 @@ var TW3ListBox = {
    }
    /// procedure TW3ListBox.Move(itemIndex: Integer; newTop: Integer)
    ///  [line: 621, column: 22, file: SmartCL.Controls.Listbox]
-   ,Move$4:function(Self, itemIndex$1, newTop) {
-      TW3ListBox.MoveNotify(Self,itemIndex$1,newTop,function () {
+   ,Move$4:function(Self, itemIndex, newTop) {
+      TW3ListBox.MoveNotify(Self,itemIndex,newTop,function () {
       });
    }
    /// procedure TW3ListBox.MoveNotify(itemIndex: Integer; newTop: Integer; notifyAtEnd: TAnimationNotify)
    ///  [line: 626, column: 22, file: SmartCL.Controls.Listbox]
-   ,MoveNotify:function(Self, itemIndex$2, newTop$1, notifyAtEnd) {
+   ,MoveNotify:function(Self, itemIndex$1, newTop$1, notifyAtEnd) {
       if (Self.FEnableAnimation) {
-         TControlAnimationList.Move$5(TAnimationManager.GetAnimationList(Animation(),TW3ListBox.GetItem$6(Self,itemIndex$2)),150,TW3MovableControl.GetLeft(TW3ListBox.GetItem$6(Self,itemIndex$2)),newTop$1,TAnimationConfig.SetOnCompleted(TAnimationManager.Config$2(Animation().ClassType),notifyAtEnd));
+         TControlAnimationList.Move$5(TAnimationManager.GetAnimationList(Animation(),TW3ListBox.GetItem$6(Self,itemIndex$1)),150,TW3MovableControl.GetLeft(TW3ListBox.GetItem$6(Self,itemIndex$1)),newTop$1,TAnimationConfig.SetOnCompleted(TAnimationManager.Config$2(Animation().ClassType),notifyAtEnd));
       } else {
-         TW3MovableControl.SetTop(TW3ListBox.GetItem$6(Self,itemIndex$2),newTop$1);
+         TW3MovableControl.SetTop(TW3ListBox.GetItem$6(Self,itemIndex$1),newTop$1);
          notifyAtEnd();
       }
    }
@@ -11103,13 +11102,13 @@ var TBinaryData = {
    }
    /// function TBinaryData.getByte(const Index: Integer) : Byte
    ///  [line: 506, column: 22, file: System.interop]
-   ,getByte:function(Self, Index$1) {
+   ,getByte:function(Self, Index$2) {
       var Result = 0;
       if (TAllocation.getHandle(Self)) {
-         if (TBinaryData.OffsetInRange(Self,Index$1)) {
-            Result = Self.FDataView.getUint8(Index$1);
+         if (TBinaryData.OffsetInRange(Self,Index$2)) {
+            Result = Self.FDataView.getUint8(Index$2);
          } else {
-            throw EW3Exception.CreateFmt($New(EBinaryData),"invalid byte index, expected %d..%d, not %d",[0, TAllocation.getHandle(Self).length-1, Index$1]);
+            throw EW3Exception.CreateFmt($New(EBinaryData),"invalid byte index, expected %d..%d, not %d",[0, TAllocation.getHandle(Self).length-1, Index$2]);
          }
       }
       return Result
@@ -11262,12 +11261,12 @@ var TBinaryData = {
    }
    /// procedure TBinaryData.setByte(const Index: Integer; const Value: Byte)
    ///  [line: 518, column: 23, file: System.interop]
-   ,setByte:function(Self, Index$2, Value$18) {
+   ,setByte:function(Self, Index$3, Value$18) {
       if (TAllocation.getHandle(Self)) {
-         if (TBinaryData.OffsetInRange(Self,Index$2)) {
-            Self.FDataView.setUint8(Index$2,Value$18);
+         if (TBinaryData.OffsetInRange(Self,Index$3)) {
+            Self.FDataView.setUint8(Index$3,Value$18);
          } else {
-            throw EW3Exception.CreateFmt($New(EBinaryData),"Invalid byte index, expected %d..%d, not %d",[0, TAllocation.getHandle(Self).length-1, Index$2]);
+            throw EW3Exception.CreateFmt($New(EBinaryData),"Invalid byte index, expected %d..%d, not %d",[0, TAllocation.getHandle(Self).length-1, Index$3]);
          }
       }
    }
@@ -11573,13 +11572,13 @@ var TBitAccess = {
    }
    /// function TBitAccess.Set(const Index: Integer; const Value: Byte; const Data: Boolean) : Byte
    ///  [line: 116, column: 27, file: System.Types.Bits]
-   ,Set$3:function(Self, Index$3, Value$20, Data$8) {
+   ,Set$3:function(Self, Index$4, Value$20, Data$8) {
       var Result = 0;
       var mSet = false;
       var mMask$1 = 0;
       Result = Value$20;
-      if (Index$3>=0&&Index$3<8) {
-         mMask$1 = 1<<Index$3;
+      if (Index$4>=0&&Index$4<8) {
+         mMask$1 = 1<<Index$4;
          mSet = (Value$20&mMask$1)!=0;
          if (mSet!=Data$8) {
             switch (Data$8) {
@@ -13119,45 +13118,47 @@ var TChallenge = {
    ,a$73:function(Self) {
       return Self.W3Label1.FCaption$1;
    }
-   /// procedure TChallenge.AddItem(Caption: String)
-   ///  [line: 58, column: 22, file: Challenge]
-   ,AddItem:function(Self, Caption$7) {
+   /// procedure TChallenge.AddItem(Caption: String; Value: Integer)
+   ///  [line: 53, column: 22, file: Challenge]
+   ,AddItem:function(Self, Caption$7, Value$27) {
       var lbItem$1 = null;
       lbItem$1 = $As(TW3ListBox.GetItem$6(Self.lbxMountains,TW3ListBox.Add$8(Self.lbxMountains)),TListBoxItem);
       TListBoxItem.a$70(lbItem$1,Caption$7);
+      lbItem$1.TagValue = Value$27;
       TListBoxItem.a$72(lbItem$1,"res\\mtn.png");
+      TW3CustomControl._setMouseClick(lbItem$1,$Event1(Self,TChallenge.LBItemSelected));
    }
    /// procedure TChallenge.ChallengeActivate(Sender: TObject)
-   ///  [line: 65, column: 22, file: Challenge]
+   ///  [line: 62, column: 22, file: Challenge]
    ,ChallengeActivate:function(Self, Sender$42) {
    }
    /// procedure TChallenge.ChallengeDeactivate(Sender: TObject)
-   ///  [line: 70, column: 22, file: Challenge]
+   ///  [line: 67, column: 22, file: Challenge]
    ,ChallengeDeactivate:function(Self, Sender$43) {
       Self.fLayout$4 = null;
    }
    /// procedure TChallenge.ClearItems()
-   ///  [line: 53, column: 22, file: Challenge]
+   ///  [line: 48, column: 22, file: Challenge]
    ,ClearItems:function(Self) {
       TW3ListBox.Clear$8(Self.lbxMountains);
    }
    /// procedure TChallenge.HandleBackButton(Sender: TObject)
-   ///  [line: 75, column: 22, file: Challenge]
+   ///  [line: 72, column: 22, file: Challenge]
    ,HandleBackButton$2:function(Self, Sender$44) {
       TW3CustomApplication.GotoForm(Application(),"Main",2);
    }
    /// procedure TChallenge.HandleNextButton(Sender: TObject)
-   ///  [line: 80, column: 22, file: Challenge]
+   ///  [line: 77, column: 22, file: Challenge]
    ,HandleNextButton$1:function(Self, Sender$45) {
       TW3CustomApplication.GotoForm(Application(),"Info",1);
    }
    /// procedure TChallenge.InitializeForm()
-   ///  [line: 85, column: 22, file: Challenge]
+   ///  [line: 82, column: 22, file: Challenge]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
    }
    /// procedure TChallenge.InitializeObject()
-   ///  [line: 91, column: 22, file: Challenge]
+   ///  [line: 88, column: 22, file: Challenge]
    ,InitializeObject:function(Self) {
       TW3CustomControl.InitializeObject(Self);
       TW3CustomForm.setCaption(Self,"W3Form");
@@ -13208,7 +13209,6 @@ var TChallenge = {
       Self.lbxMountains.FItemClass = TListBoxItem;
       Self.lbxMountains.FItemHeight = 50;
       Self.lbxMountains.FStyles.FSelectedColor = 12632256;
-      Self.lbxMountains.FOnSelected = $Event2(Self,TChallenge.LBItemSelected);
       TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$1,"TW3HeaderControl2");
       TW3CustomControl.SetStyleClass(Self.W3HeaderControl2$1.FBackBtn,"TW3ButtonBack");
       TW3CustomControl._setMouseClick(Self.W3HeaderControl2$1.FBackBtn,$Event1(Self,TChallenge.HandleBackButton$2));
@@ -13217,18 +13217,16 @@ var TChallenge = {
       TW3ToolButton.setCaption$1(Self.W3HeaderControl2$1.FNextBtn,"Info");
       TW3CustomControl._setMouseClick(Self.W3HeaderControl2$1.FNextBtn,$Event1(Self,TChallenge.HandleNextButton$1));
    }
-   /// procedure TChallenge.LBItemSelected(Sender: TObject; itemIndex: Integer)
+   /// procedure TChallenge.LBItemSelected(Sender: TObject)
    ///  [line: 40, column: 22, file: Challenge]
-   ,LBItemSelected:function(Self, Sender$46, itemIndex$3) {
-      if (itemIndex$3>=0) {
-         gMountainIdx = itemIndex$3;
-         TMountain.a$39($As(TW3CustomApplication.FormByName(Application(),"Mountain"),TMountain),"res\\mtn64.png");
-         TMountain.UpdateContent($As(TW3CustomApplication.FormByName(Application(),"Mountain"),TMountain));
-         TW3CustomApplication.GotoForm(Application(),"Mountain",1);
-      }
+   ,LBItemSelected:function(Self, Sender$46) {
+      gMountainIdx = $As(Sender$46,TListBoxItem).TagValue;
+      TMountain.a$39($As(TW3CustomApplication.FormByName(Application(),"Mountain"),TMountain),"res\\mtn64.png");
+      TMountain.UpdateContent($As(TW3CustomApplication.FormByName(Application(),"Mountain"),TMountain));
+      TW3CustomApplication.GotoForm(Application(),"Mountain",1);
    }
    /// procedure TChallenge.Resize()
-   ///  [line: 123, column: 22, file: Challenge]
+   ///  [line: 119, column: 22, file: Challenge]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (!(TControlHandleHelper$Valid(Self.FHandle)&&$SetIn(Self.FComponentState,2,0,6))) {
@@ -13285,8 +13283,8 @@ var TMountain = {
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 26, column: 52, file: Mountain]
-   ,a$39:function(Self, Value$27) {
-      TW3Image.setSrc(Self.W3Image1,Value$27);
+   ,a$39:function(Self, Value$28) {
+      TW3Image.setSrc(Self.W3Image1,Value$28);
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 26, column: 31, file: Mountain]
@@ -14017,8 +14015,8 @@ var TListBoxItem = {
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 21, column: 50, file: ListBoxItem]
-   ,a$72:function(Self, Value$28) {
-      TW3Image.setSrc(Self.fImage,Value$28);
+   ,a$72:function(Self, Value$29) {
+      TW3Image.setSrc(Self.fImage,Value$29);
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 21, column: 31, file: ListBoxItem]
@@ -14027,8 +14025,8 @@ var TListBoxItem = {
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 20, column: 54, file: ListBoxItem]
-   ,a$70:function(Self, Value$29) {
-      TW3Label.SetCaption$1(Self.fLabel,Value$29);
+   ,a$70:function(Self, Value$30) {
+      TW3Label.SetCaption$1(Self.fLabel,Value$30);
    }
    /// anonymous TSourceMethodSymbol
    ///  [line: 20, column: 31, file: ListBoxItem]

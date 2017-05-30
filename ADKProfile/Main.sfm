@@ -1,20 +1,12 @@
 <SMART>
   <Form version="2" subversion="2">
     <Created>2017-01-15T20:35:31.625</Created>
-    <Modified>2017-03-24T18:43:51.274</Modified>
+    <Modified>2017-05-27T11:39:49.623</Modified>
     <object type="TW3Form">
       <Caption>W3Form</Caption>
       <Name>Main</Name>
       <OnDeactivate>MainDeactivate</OnDeactivate>
       <OnActivate>MainActivate</OnActivate>
-      <object type="TW3ListBox">
-        <Width>152</Width>
-        <Top>72</Top>
-        <Left>8</Left>
-        <Height>328</Height>
-        <Name>lbxChallenges</Name>
-        <OnTouchBegin>lbxChallengesTouchBegin</OnTouchBegin>
-      </object>
       <object type="TW3HeaderControl">
         <Width>152</Width>
         <Top>16</Top>
@@ -35,6 +27,14 @@
         <Left>224</Left>
         <Height>32</Height>
         <Name>W3ListBox1</Name>
+      </object>
+      <object type="TW3ListBox">
+        <Width>152</Width>
+        <Top>80</Top>
+        <Left>8</Left>
+        <Height>336</Height>
+        <Name>lbxChallenges</Name>
+        <OnClick>lbxChallengesClick</OnClick>
       </object>
     </object>
   </Form>

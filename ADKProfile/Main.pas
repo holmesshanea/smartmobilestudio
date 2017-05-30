@@ -5,10 +5,13 @@ interface
 uses 
   SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms, 
   SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Layout,
-  SmartCL.Controls, SmartCL.INet, ECMA.JSON, System.Colors, SmartCL.Touch;
+  SmartCL.Controls, SmartCL.INet, ECMA.JSON, System.Colors,
+  SmartCL.Touch, SmartCL.Controls.Elements;
 
 type
   TMain = class(TW3Form)
+    procedure lbxChallengesClick(Sender: TObject);
+    procedure lbxChallengesSelected(Sender: TObject; itemIndex: Integer);
     procedure lbxChallengesTouchBegin(Sender: TObject; Info: TW3TouchData);
     procedure MainActivate(Sender: TObject);
     procedure MainDeactivate(Sender: TObject);
@@ -17,8 +20,9 @@ type
     fLayout: TLayout;
     fHttp: TW3HttpRequest;
     fJSONStr: String;
-    procedure AddItem(Caption: String);
-    procedure LBItemSelected (Sender: TObject; itemIndex: integer);
+    procedure AddItem(Caption: String; Index: Integer);
+    //procedure LBItemSelected (Sender: TObject; itemIndex: integer);
+    procedure LBItemSelected (Sender: TObject);
   protected
     procedure HandleBackButton(Sender: TObject);
     procedure HandleNextButton(Sender: TObject);
@@ -46,7 +50,7 @@ begin
  //Application.GotoForm('Help', feFromRight);
 end;
 
-procedure TMain.LBItemSelected (Sender: TObject; itemIndex: integer);
+{procedure TMain.LBItemSelected (Sender: TObject; itemIndex: integer);
 var
  I: integer;
 begin
@@ -62,13 +66,32 @@ begin
   end;
   Application.GotoForm('Challenge', feFromRight);
  end;
+end;}
+
+procedure TMain.LBItemSelected (Sender: TObject);
+var
+ I: integer;
+begin
+  gChallengeIdx:= TListBoxItem(Sender).TagValue;
+  ShowMessage(inttostr(gChallengeIdx));
+  TChallenge(Application.FormByName('Challenge')).Url:= 'res\challenge64.png';
+  TChallenge(Application.FormByName('Challenge')).Title:= gChallenges.challenges[gChallengeIdx].name;
+  TChallenge(Application.FormByName('Challenge')).ClearItems;
+  for I:= 0 to gChallenges.challenges[gChallengeIdx].mountains.length-1 do
+  begin
+   TChallenge(Application.FormByName('Challenge')).AddItem(gChallenges.challenges[gChallengeIdx].mountains[I].name, I);
+  end;
+  Application.GotoForm('Challenge', feFromRight);
+
 end;
 
-procedure TMain.AddItem(Caption: String);
+procedure TMain.AddItem(Caption: String; Index: Integer);
  begin
    var lbItem := lbxChallenges.Items[lbxChallenges.Add] as TListBoxItem;
    lbItem.Text:= Caption;
+   lbItem.TagValue:= Index;
    lbItem.Url:= 'res\challenge32.png';
+   lbItem.OnClick:= LBItemSelected;
  end;
 
 
@@ -83,8 +106,9 @@ begin
 
   for I:= 0 to gChallenges.challenges.length-1 do
   begin
-   AddItem(gChallenges.challenges[I].name);
+   AddItem(gChallenges.challenges[I].name, I);
   end;
+
 end;
 
 procedure TMain.InitializeForm;
@@ -95,8 +119,6 @@ begin
 end;
 
 procedure TMain.InitializeObject;
-var
- I: Integer;
 begin
   inherited;
   {$I 'Main:impl'}
@@ -115,7 +137,8 @@ begin
   lbxChallenges.ItemClass := TListBoxItem;
   lbxChallenges.ItemHeight := 50;
   lbxChallenges.Styles.SelectedColor := clSilver;
-  lbxChallenges.OnSelected := LBItemSelected;
+  //lbxChallenges.OnSelected := LBItemSelected;
+
 
   W3HeaderControl2.StyleClass:= 'TW3HeaderControl2';
   W3HeaderControl2.BackButton.StyleClass:= 'TW3ButtonBack';
@@ -135,12 +158,19 @@ begin
 
 end;
 
+procedure TMain.lbxChallengesSelected(Sender: TObject; itemIndex: Integer);
+begin
+
+end;
+
+procedure TMain.lbxChallengesClick(Sender: TObject);
+begin
+
+end;
+
 procedure TMain.MainActivate(Sender: TObject);
 begin
-  {FLayout:= Layout.Client([Layout.Top(Layout.Height(32), W3HeaderControl1),
-                            Layout.Client(lbxChallenges),
-                            Layout.Bottom(Layout.Height(32), W3HeaderControl2)
-                            ]);}
+//
 end;
 
 procedure TMain.MainDeactivate(Sender: TObject);

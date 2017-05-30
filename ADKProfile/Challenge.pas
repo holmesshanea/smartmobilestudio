@@ -15,7 +15,7 @@ type
   private
     {$I 'Challenge:intf'}
     fLayout: TLayout;
-    procedure LBItemSelected (Sender: TObject; itemIndex: integer);
+    procedure LBItemSelected (Sender: TObject);
   protected
     procedure InitializeForm; override;
     procedure InitializeObject; override;
@@ -23,7 +23,7 @@ type
     procedure HandleBackButton(Sender: TObject);
     procedure HandleNextButton(Sender: TObject);
   public
-   procedure AddItem(Caption: String);
+   procedure AddItem(Caption: String; Value: Integer);
    procedure ClearItems;
    property Title: String read (W3Label1.Caption) write (W3Label1.Caption);
    property Url: String read (W3Image1.Url) write (W3Image1.Url);
@@ -37,17 +37,12 @@ uses ListBoxItem, Mountain, Common;
 
 { TChallenge }
 
-procedure TChallenge.LBItemSelected (Sender: TObject; itemIndex: integer);
-//var
- //I: integer;
+procedure TChallenge.LBItemSelected (Sender: TObject);
 begin
- if itemIndex >= 0 then
- begin
-  gMountainIdx:= itemIndex;
+  gMountainIdx:= TListBoxItem(Sender).TagValue;
   TMountain(Application.FormByName('Mountain')).Url:= 'res\mtn64.png';
   TMountain(Application.FormByName('Mountain')).UpdateContent;
   Application.GotoForm('Mountain', feFromRight);
- end;
 end;
 
 procedure TChallenge.ClearItems;
@@ -55,11 +50,13 @@ begin
  lbxMountains.Clear;
 end;
 
-procedure TChallenge.AddItem(Caption: String);
+procedure TChallenge.AddItem(Caption: String; Value: Integer);
  begin
    var lbItem := lbxMountains.Items[lbxMountains.Add] as TListBoxItem;
    lbItem.Text:= Caption;
+   lbItem.TagValue:= Value;
    lbItem.Url:= 'res\mtn.png';
+   lbItem.OnClick := LBItemSelected;
  end;
 
 procedure TChallenge.ChallengeActivate(Sender: TObject);
@@ -107,7 +104,6 @@ begin
   lbxMountains.ItemClass := TListBoxItem;
   lbxMountains.ItemHeight := 50;
   lbxMountains.Styles.SelectedColor := clSilver;
-  lbxMountains.OnSelected := LBItemSelected;
 
   W3HeaderControl2.StyleClass:= 'TW3HeaderControl2';
   W3HeaderControl2.BackButton.StyleClass:= 'TW3ButtonBack';
