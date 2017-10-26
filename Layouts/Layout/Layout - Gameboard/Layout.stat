@@ -1,11 +1,11 @@
 ﻿<SMART>
   <Statistics>
-    <BackgroundCompilations>1071</BackgroundCompilations>
-    <EditTime>T00:17:22.509</EditTime>
+    <BackgroundCompilations>1094</BackgroundCompilations>
+    <EditTime>T00:17:37.822</EditTime>
     <CompileTime>T00:00:00.000</CompileTime>
-    <TotalTime>T02:10:50.299</TotalTime>
-    <DesigningTime>T00:00:27.762</DesigningTime>
-    <RunningTime>T00:10:51.750</RunningTime>
+    <TotalTime>T02:11:31.915</TotalTime>
+    <DesigningTime>T00:00:27.770</DesigningTime>
+    <RunningTime>T00:10:57.921</RunningTime>
     <TotalLinesOfCode>96</TotalLinesOfCode>
     <Snapshots>
       <Snapshot>
@@ -807,6 +807,36 @@
         <RunningTime>T00:10:51.750</RunningTime>
         <TotalLinesOfCode>96</TotalLinesOfCode>
         <TimeStamp>2017-10-25T21:30:56.875</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>1080</BackgroundCompilations>
+        <EditTime>T00:17:32.362</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T02:11:13.346</TotalTime>
+        <DesigningTime>T00:00:27.770</DesigningTime>
+        <RunningTime>T00:10:53.785</RunningTime>
+        <TotalLinesOfCode>96</TotalLinesOfCode>
+        <TimeStamp>2017-10-26T15:37:01.181</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>1088</BackgroundCompilations>
+        <EditTime>T00:17:32.362</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T02:11:23.185</TotalTime>
+        <DesigningTime>T00:00:27.770</DesigningTime>
+        <RunningTime>T00:10:56.222</RunningTime>
+        <TotalLinesOfCode>96</TotalLinesOfCode>
+        <TimeStamp>2017-10-26T15:37:11.020</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>1094</BackgroundCompilations>
+        <EditTime>T00:17:37.822</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T02:11:31.915</TotalTime>
+        <DesigningTime>T00:00:27.770</DesigningTime>
+        <RunningTime>T00:10:57.921</RunningTime>
+        <TotalLinesOfCode>96</TotalLinesOfCode>
+        <TimeStamp>2017-10-26T15:37:19.750</TimeStamp>
       </Snapshot>
     </Snapshots>
   </Statistics>

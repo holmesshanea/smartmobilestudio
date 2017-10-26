@@ -8254,10 +8254,10 @@ var TBinaryData = {
 TBinaryData.$Intf={
    IBinaryDataImport:[TBinaryData.FromBase64]
    ,IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
+   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
    ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
    ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
    ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone]
-   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize$1,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate,TAllocation.Release,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport]
    ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
@@ -8452,9 +8452,9 @@ var TW3Structure = {
    ,Destroy:TObject.Destroy
 };
 TW3Structure.$Intf={
-   IW3StructureReadAccess:[TW3Structure.Exists$2,TW3Structure.ReadString$3,TW3Structure.ReadInt$1,TW3Structure.ReadBool$1,TW3Structure.ReadFloat$1,TW3Structure.ReadDateTime$2,TW3Structure.Read$4,TW3Structure.ReadBytes$1]
-   ,IW3StructureWriteAccess:[TW3Structure.WriteString$2,TW3Structure.WriteInt,TW3Structure.WriteBool,TW3Structure.WriteFloat,TW3Structure.WriteDateTime$1,TW3Structure.Write$10,TW3Structure.WriteBytes,TW3Structure.WriteStream]
+   IW3StructureWriteAccess:[TW3Structure.WriteString$2,TW3Structure.WriteInt,TW3Structure.WriteBool,TW3Structure.WriteFloat,TW3Structure.WriteDateTime$1,TW3Structure.Write$10,TW3Structure.WriteBytes,TW3Structure.WriteStream]
    ,IW3Structure:[TW3Structure.WriteString$2,TW3Structure.WriteInt,TW3Structure.WriteBool,TW3Structure.WriteFloat,TW3Structure.WriteDateTime$1,TW3Structure.ReadString$3,TW3Structure.ReadInt$1,TW3Structure.ReadBool$1,TW3Structure.ReadFloat$1,TW3Structure.ReadDateTime$2,TW3Structure.Read$4,TW3Structure.Write$10]
+   ,IW3StructureReadAccess:[TW3Structure.Exists$2,TW3Structure.ReadString$3,TW3Structure.ReadInt$1,TW3Structure.ReadBool$1,TW3Structure.ReadFloat$1,TW3Structure.ReadDateTime$2,TW3Structure.Read$4,TW3Structure.ReadBytes$1]
 }
 /// EW3Structure = class (EW3Exception)
 ///  [line: 91, column: 3, file: system.structure]
@@ -13016,7 +13016,7 @@ var TForm1 = {
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayout) {
-         Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel1), Layout.Right$5(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel2)].slice()), Layout.Bottom$4(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel3), Layout.Right$5(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel4)].slice())].slice());
+         Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel1), Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel2)].slice()), Layout.Bottom$4(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel3), Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel4)].slice())].slice());
          TLayout.Resize$6$(Self.fLayout,Self);
       }
    }
