@@ -3314,8 +3314,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
-   ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize$1,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate,TAllocation.Release,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport]
+   IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize$1,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate,TAllocation.Release,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 function a$171(Self) {
    return ((!Self[0]())?true:false);
@@ -8252,14 +8252,14 @@ var TBinaryData = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TBinaryData.$Intf={
-   IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataImport:[TBinaryData.FromBase64]
-   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
+   IBinaryDataImport:[TBinaryData.FromBase64]
+   ,IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
+   ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
    ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
    ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone]
-   ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
+   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize$1,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate,TAllocation.Release,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport]
+   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 125, column: 3, file: System.Memory.Buffer]
@@ -13009,14 +13009,14 @@ var TForm1 = {
       Self.fPanel2 = TW3TagContainer.Create$85$($New(TW3Panel),Self);
       Self.fPanel3 = TW3TagContainer.Create$85$($New(TW3Panel),Self);
       Self.fPanel4 = TW3TagContainer.Create$85$($New(TW3Panel),Self);
-      Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel1), Layout.Client$1(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel2)].slice()), Layout.Bottom$4(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel3), Layout.Client$1(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel4)].slice())].slice());
+      Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel1), Layout.Right$5(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel2)].slice()), Layout.Bottom$4(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel3), Layout.Right$5(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel4)].slice())].slice());
    }
    /// procedure TForm1.Resize()
    ///  [line: 50, column: 18, file: Form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
       if (Self.fLayout) {
-         Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel1), Layout.Client$1(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel2)].slice()), Layout.Bottom$4(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel3), Layout.Client$1(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel4)].slice())].slice());
+         Self.fLayout = Layout.Client$2(Layout,[Layout.Top$6(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel1), Layout.Right$5(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel2)].slice()), Layout.Bottom$4(Layout,Layout.Height$10(Layout,$Div(TW3MovableControl.ClientHeight(Self),2)),[Layout.Left$6(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel3), Layout.Right$5(Layout,TLayoutConfig.Width$11$(Layout.Margins$2(Layout,5),$Div(TW3MovableControl.ClientWidth(Self),2)),Self.fPanel4)].slice())].slice());
          TLayout.Resize$6$(Self.fLayout,Self);
       }
    }
@@ -13104,20 +13104,10 @@ var Layout = {
    ,Client$2:function(Self, controls$2) {
       return Layout.Client(Self,NullConfig,controls$2);
    }
-   /// function Layout.Client(config: TLayoutConfig; control: TObject) : TLayout
-   ///  [line: 1232, column: 23, file: SmartCL.Layout]
-   ,Client$1:function(Self, config$1, control$2) {
-      var Result = null;
-      var objArr = [];
-      $ArraySetLenC(objArr,1,function (){return null});
-      objArr[0]=control$2;
-      Result = Layout.Client(Self,config$1,objArr);
-      return Result
-   }
    /// function Layout.Client(config: TLayoutConfig; controls: TObjectArr) : TLayout
    ///  [line: 1227, column: 23, file: SmartCL.Layout]
-   ,Client:function(Self, config$2, controls$3) {
-      return TLayoutImpl.Create$150($New(TLayoutImpl),4,config$2,controls$3);
+   ,Client:function(Self, config$1, controls$3) {
+      return TLayoutImpl.Create$150($New(TLayoutImpl),4,config$1,controls$3);
    }
    /// function Layout.Height(aHeight: Integer) : TLayoutConfig
    ///  [line: 1304, column: 23, file: SmartCL.Layout]
@@ -13126,30 +13116,30 @@ var Layout = {
    }
    /// function Layout.Left(config: TLayoutConfig; controls: TObjectArr) : TLayout
    ///  [line: 1075, column: 23, file: SmartCL.Layout]
-   ,Left$7:function(Self, config$3, controls$4) {
+   ,Left$7:function(Self, config$2, controls$4) {
       var Result = null;
       var iControl$2 = 0;
       var inner$1 = [];
       if (controls$4.length<=1||NotAllComponents(controls$4)) {
-         Result = TLayoutImpl.Create$150($New(TLayoutImpl),0,config$3,controls$4);
+         Result = TLayoutImpl.Create$150($New(TLayoutImpl),0,config$2,controls$4);
       } else {
          $ArraySetLenC(inner$1,controls$4.length,function (){return null});
          var $temp56;
          for(iControl$2=0,$temp56=controls$4.length;iControl$2<$temp56;iControl$2++) {
-            inner$1[iControl$2]=TLayoutImpl.Create$150($New(TLayoutImpl),0,config$3,[controls$4[iControl$2]].slice());
+            inner$1[iControl$2]=TLayoutImpl.Create$150($New(TLayoutImpl),0,config$2,[controls$4[iControl$2]].slice());
          }
-         Result = TLayoutImpl.Create$150($New(TLayoutImpl),0,config$3,inner$1);
+         Result = TLayoutImpl.Create$150($New(TLayoutImpl),0,config$2,inner$1);
       }
       return Result
    }
    /// function Layout.Left(config: TLayoutConfig; control: TObject) : TLayout
    ///  [line: 1090, column: 23, file: SmartCL.Layout]
-   ,Left$6:function(Self, config$4, control$3) {
+   ,Left$6:function(Self, config$3, control$2) {
       var Result = null;
-      var objArr$1 = [];
-      $ArraySetLenC(objArr$1,1,function (){return null});
-      objArr$1[0]=control$3;
-      Result = Layout.Left$7(Self,config$4,objArr$1);
+      var objArr = [];
+      $ArraySetLenC(objArr,1,function (){return null});
+      objArr[0]=control$2;
+      Result = Layout.Left$7(Self,config$3,objArr);
       return Result
    }
    /// function Layout.Margins(value: Integer) : TLayoutConfig
@@ -13157,21 +13147,49 @@ var Layout = {
    ,Margins$2:function(Self, value$25) {
       return TLayoutConfig.Margins$(TObject.Create($New(TLayoutConfigImpl)),value$25);
    }
-   /// function Layout.Top(config: TLayoutConfig; controls: TObjectArr) : TLayout
-   ///  [line: 1151, column: 23, file: SmartCL.Layout]
-   ,Top$6:function(Self, config$5, controls$5) {
+   /// function Layout.Right(config: TLayoutConfig; control: TObject) : TLayout
+   ///  [line: 1128, column: 23, file: SmartCL.Layout]
+   ,Right$5:function(Self, config$4, control$3) {
+      var Result = null;
+      var objArr$1 = [];
+      $ArraySetLenC(objArr$1,1,function (){return null});
+      objArr$1[0]=control$3;
+      Result = Layout.Right$4(Self,config$4,objArr$1);
+      return Result
+   }
+   /// function Layout.Right(config: TLayoutConfig; controls: TObjectArr) : TLayout
+   ///  [line: 1113, column: 23, file: SmartCL.Layout]
+   ,Right$4:function(Self, config$5, controls$5) {
       var Result = null;
       var iControl$3 = 0;
       var inner$2 = [];
       if (controls$5.length<=1||NotAllComponents(controls$5)) {
-         Result = TLayoutImpl.Create$150($New(TLayoutImpl),1,config$5,controls$5);
+         Result = TLayoutImpl.Create$150($New(TLayoutImpl),2,config$5,controls$5);
       } else {
          $ArraySetLenC(inner$2,controls$5.length,function (){return null});
          var $temp57;
          for(iControl$3=0,$temp57=controls$5.length;iControl$3<$temp57;iControl$3++) {
-            inner$2[iControl$3]=TLayoutImpl.Create$150($New(TLayoutImpl),1,config$5,[controls$5[iControl$3]].slice());
+            inner$2[(controls$5.length-1)-iControl$3]=TLayoutImpl.Create$150($New(TLayoutImpl),2,config$5,[controls$5[iControl$3]].slice());
          }
-         Result = TLayoutImpl.Create$150($New(TLayoutImpl),1,config$5,inner$2);
+         Result = TLayoutImpl.Create$150($New(TLayoutImpl),2,config$5,inner$2);
+      }
+      return Result
+   }
+   /// function Layout.Top(config: TLayoutConfig; controls: TObjectArr) : TLayout
+   ///  [line: 1151, column: 23, file: SmartCL.Layout]
+   ,Top$6:function(Self, config$6, controls$6) {
+      var Result = null;
+      var iControl$4 = 0;
+      var inner$3 = [];
+      if (controls$6.length<=1||NotAllComponents(controls$6)) {
+         Result = TLayoutImpl.Create$150($New(TLayoutImpl),1,config$6,controls$6);
+      } else {
+         $ArraySetLenC(inner$3,controls$6.length,function (){return null});
+         var $temp58;
+         for(iControl$4=0,$temp58=controls$6.length;iControl$4<$temp58;iControl$4++) {
+            inner$3[iControl$4]=TLayoutImpl.Create$150($New(TLayoutImpl),1,config$6,[controls$6[iControl$4]].slice());
+         }
+         Result = TLayoutImpl.Create$150($New(TLayoutImpl),1,config$6,inner$3);
       }
       return Result
    }
@@ -13371,10 +13389,10 @@ var TLayoutImpl = {
    }
    /// constructor TLayoutImpl.Create(align: TAlign; config: TLayoutConfig; controls: TObjectArr)
    ///  [line: 608, column: 25, file: SmartCL.Layout]
-   ,Create$150:function(Self, align$18, config$6, controls$6) {
+   ,Create$150:function(Self, align$18, config$7, controls$7) {
       Self.FAlign = align$18;
-      Self.FConfig = TLayoutConfigImpl.CreateFrom($New(TLayoutConfigImpl),$As(config$6,TLayoutConfigImpl));
-      Self.FControls = controls$6;
+      Self.FConfig = TLayoutConfigImpl.CreateFrom($New(TLayoutConfigImpl),$As(config$7,TLayoutConfigImpl));
+      Self.FControls = controls$7;
       ++LayoutCount;
       Self.FName$3 = ("Layout "+LayoutCount.toString()+" ("+AlignToString(align$18).toString()+")");
       return Self
@@ -13383,23 +13401,23 @@ var TLayoutImpl = {
    ///  [line: 679, column: 23, file: SmartCL.Layout]
    ,InternalResize:function(Self, container$1) {
       var gotClient = false;
-      var iControl$4 = 0;
+      var iControl$5 = 0;
       TLayoutImpl.CalculateUsableArea(Self,container$1);
-      var $temp58;
-      for(iControl$4=0,$temp58=Self.FControls.length;iControl$4<$temp58;iControl$4++) {
-         if ($Is(Self.FControls[iControl$4],TW3CustomControl)||$As(Self.FControls[iControl$4],TLayoutImpl).FAlign!=4) {
-            TLayoutImpl.AlignControl(Self,Self.FControls[iControl$4]);
+      var $temp59;
+      for(iControl$5=0,$temp59=Self.FControls.length;iControl$5<$temp59;iControl$5++) {
+         if ($Is(Self.FControls[iControl$5],TW3CustomControl)||$As(Self.FControls[iControl$5],TLayoutImpl).FAlign!=4) {
+            TLayoutImpl.AlignControl(Self,Self.FControls[iControl$5]);
          }
       }
       gotClient = false;
-      var $temp59;
-      for(iControl$4=0,$temp59=Self.FControls.length;iControl$4<$temp59;iControl$4++) {
-         if ($Is(Self.FControls[iControl$4],TLayoutImpl)&&$As(Self.FControls[iControl$4],TLayoutImpl).FAlign==4) {
+      var $temp60;
+      for(iControl$5=0,$temp60=Self.FControls.length;iControl$5<$temp60;iControl$5++) {
+         if ($Is(Self.FControls[iControl$5],TLayoutImpl)&&$As(Self.FControls[iControl$5],TLayoutImpl).FAlign==4) {
             if (gotClient) {
                throw Exception.Create($New(Exception),"Layout can contain only one client-aligned child");
             }
             gotClient = true;
-            TLayoutImpl.AlignControl(Self,Self.FControls[iControl$4]);
+            TLayoutImpl.AlignControl(Self,Self.FControls[iControl$5]);
          }
       }
    }
@@ -13469,17 +13487,17 @@ var TLayoutImpl = {
          var clientSizeInt = 0;
          var countStretched = 0;
          var dim,
-            iControl$5 = 0;
+            iControl$6 = 0;
          var layout = null;
          if (clientSize==null) {
             return;
          }
          countStretched = 0;
          clientSizeInt = parseInt(clientSize,10);
-         var $temp60;
-         for(iControl$5=0,$temp60=Self.FControls.length;iControl$5<$temp60;iControl$5++) {
-            if ($Is(Self.FControls[iControl$5],TLayoutImpl)) {
-               layout = $As(Self.FControls[iControl$5],TLayoutImpl);
+         var $temp61;
+         for(iControl$6=0,$temp61=Self.FControls.length;iControl$6<$temp61;iControl$6++) {
+            if ($Is(Self.FControls[iControl$6],TLayoutImpl)) {
+               layout = $As(Self.FControls[iControl$6],TLayoutImpl);
                if (align$19.indexOf(layout.FAlign)>=0) {
                   if (layout.FConfig.FStretch) {
                      ++countStretched;
@@ -13493,10 +13511,10 @@ var TLayoutImpl = {
             }
          }
          clientSizeInt-=Self.FConfig.FSpacing*(Self.FControls.length-1);
-         var $temp61;
-         for(iControl$5=0,$temp61=Self.FControls.length;iControl$5<$temp61;iControl$5++) {
-            if ($Is(Self.FControls[iControl$5],TLayoutImpl)) {
-               layout = $As(Self.FControls[iControl$5],TLayoutImpl);
+         var $temp62;
+         for(iControl$6=0,$temp62=Self.FControls.length;iControl$6<$temp62;iControl$6++) {
+            if ($Is(Self.FControls[iControl$6],TLayoutImpl)) {
+               layout = $As(Self.FControls[iControl$6],TLayoutImpl);
                if (align$19.indexOf(layout.FAlign)>=0) {
                   if (layout.FConfig.FStretch) {
                      dimSet(layout,$Div(clientSizeInt,countStretched));
@@ -13539,12 +13557,12 @@ var TLayoutImpl = {
       var control$8 = null;
       var controlCount = 0;
       var dim$1,
-         iControl$6 = 0;
+         iControl$7 = 0;
       var sum;
-      var $temp62;
-      for(iControl$6=0,$temp62=Self.FControls.length;iControl$6<$temp62;iControl$6++) {
-         if ($Is(Self.FControls[iControl$6],TLayoutImpl)) {
-            TLayoutImpl.ResolveDimensionsFromChildren($As(Self.FControls[iControl$6],TLayoutImpl));
+      var $temp63;
+      for(iControl$7=0,$temp63=Self.FControls.length;iControl$7<$temp63;iControl$7++) {
+         if ($Is(Self.FControls[iControl$7],TLayoutImpl)) {
+            TLayoutImpl.ResolveDimensionsFromChildren($As(Self.FControls[iControl$7],TLayoutImpl));
          }
       }
       if (Self.FAlign==5&&Self.FConfig.FWidth$2!=null&&Self.FConfig.FHeight$2!=null) {
@@ -13558,9 +13576,9 @@ var TLayoutImpl = {
       } else {
          sum = 0;
          controlCount = 0;
-         var $temp63;
-         for(iControl$6=0,$temp63=Self.FControls.length;iControl$6<$temp63;iControl$6++) {
-            control$8 = Self.FControls[iControl$6];
+         var $temp64;
+         for(iControl$7=0,$temp64=Self.FControls.length;iControl$7<$temp64;iControl$7++) {
+            control$8 = Self.FControls[iControl$7];
             switch (Self.FAlign) {
                case 0 :
                case 2 :
@@ -13783,13 +13801,13 @@ var TLayoutArea = {
 /// TAlign enumeration
 ///  [line: 82, column: 3, file: SmartCL.Layout]
 var TAlign = [ "Left", "Top", "Right", "Bottom", "Client", "Center" ];
-function NotAllComponents(controls$7) {
+function NotAllComponents(controls$8) {
    var Result = false;
    var iControl = 0;
    Result = true;
-   var $temp64;
-   for(iControl=0,$temp64=controls$7.length;iControl<$temp64;iControl++) {
-      if (!$Is(controls$7[iControl],TW3CustomControl)) {
+   var $temp65;
+   for(iControl=0,$temp65=controls$8.length;iControl<$temp65;iControl++) {
+      if (!$Is(controls$8[iControl],TW3CustomControl)) {
          return Result;
       }
    }
@@ -14259,8 +14277,8 @@ var TW3HttpRequest = {
          LData$4 = "";
       if (THttpHeaders.Count$8(Self.FheaderCache)>0) {
          try {
-            var $temp65;
-            for(x$79=0,$temp65=THttpHeaders.Count$8(Self.FheaderCache);x$79<$temp65;x$79++) {
+            var $temp66;
+            for(x$79=0,$temp66=THttpHeaders.Count$8(Self.FheaderCache);x$79<$temp66;x$79++) {
                LName$5 = THttpHeaders.a$165(Self.FheaderCache,x$79);
                LData$4 = THttpHeaders.a$166(Self.FheaderCache,x$79);
                Self.FReqObj.setRequestHeader(LName$5,LData$4);
@@ -14310,8 +14328,8 @@ var THttpHeaders = {
    ,Assign$5:function(Self, Headers$1) {
       var i$2 = 0;
       var name$29 = "";
-      var $temp66;
-      for(i$2=0,$temp66=THttpHeaders.Count$8(Headers$1);i$2<$temp66;i$2++) {
+      var $temp67;
+      for(i$2=0,$temp67=THttpHeaders.Count$8(Headers$1);i$2<$temp67;i$2++) {
          name$29 = THttpHeaders.a$165(Headers$1,i$2);
          THttpHeaders.SetValue(Self,name$29,THttpHeaders.GetValue(Headers$1,name$29));
       }
@@ -14321,8 +14339,8 @@ var THttpHeaders = {
    ,Assign$4:function(Self, Headers$2) {
       var a$206 = 0;
       var header = "";
-      var $temp67;
-      for(a$206=0,$temp67=Headers$2.length;a$206<$temp67;a$206++) {
+      var $temp68;
+      for(a$206=0,$temp68=Headers$2.length;a$206<$temp68;a$206++) {
          header = Headers$2[a$206];
          THttpHeaders.Add$7(Self,header);
       }
@@ -14373,8 +14391,8 @@ var THttpHeaders = {
       var Result = 0;
       var ucName = "";
       ucName = (Name$22).toLocaleUpperCase();
-      var $temp68;
-      for(Result=0,$temp68=THttpHeaders.Count$8(Self);Result<$temp68;Result++) {
+      var $temp69;
+      for(Result=0,$temp69=THttpHeaders.Count$8(Self);Result<$temp69;Result++) {
          if ((THttpHeaders.a$165(Self,Result)).toLocaleUpperCase()==ucName) {
             return Result;
          }
@@ -14453,8 +14471,8 @@ var TCustomCodec = {
    ,MakeCodecInfo$:function($){return $.ClassType.MakeCodecInfo($)}
 };
 TCustomCodec.$Intf={
-   ICodecBinding:[TCustomCodec.RegisterBinding,TCustomCodec.UnRegisterBinding]
-   ,ICodecProcess:[TCustomCodec.Encode,TCustomCodec.Decode]
+   ICodecProcess:[TCustomCodec.Encode,TCustomCodec.Decode]
+   ,ICodecBinding:[TCustomCodec.RegisterBinding,TCustomCodec.UnRegisterBinding]
 }
 /// TBase64Codec = class (TCustomCodec)
 ///  [line: 32, column: 3, file: System.Codec.Base64]
@@ -14648,8 +14666,8 @@ var TCodecManager = {
       var a$208 = [];
       Result = null;
       a$208 = Self.FCodecs;
-      var $temp69;
-      for(a$207=0,$temp69=a$208.length;a$207<$temp69;a$207++) {
+      var $temp70;
+      for(a$207=0,$temp70=a$208.length;a$207<$temp70;a$207++) {
          LItem$11 = a$208[a$207];
          if (TObject.ClassType(LItem$11.ClassType)==ClsType) {
             Result = LItem$11;
@@ -14666,8 +14684,8 @@ var TCodecManager = {
       try {
          var a$210 = [];
          a$210 = Self.FCodecs;
-         var $temp70;
-         for(a$209=0,$temp70=a$210.length;a$209<$temp70;a$209++) {
+         var $temp71;
+         for(a$209=0,$temp71=a$210.length;a$209<$temp71;a$209++) {
             LItem$12 = a$210[a$209];
             TObject.Free(LItem$12);
          }

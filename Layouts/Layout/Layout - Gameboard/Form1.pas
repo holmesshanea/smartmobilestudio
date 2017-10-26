@@ -42,8 +42,8 @@ begin
   fPanel4:= TW3Panel.create(self);
 
   fLayout:= Layout.Client([
-                          Layout.Top(Layout.Height(ClientHeight Div 2),[Layout.Left(Layout.margins(5).Width(ClientWidth Div 2),fPanel1), Layout.Client(Layout.margins(5).Width(ClientWidth Div 2),fPanel2)]),
-                          Layout.Bottom(Layout.Height(ClientHeight Div 2),[Layout.Left(Layout.margins(5).Width(ClientWidth Div 2),fPanel3), Layout.Client(Layout.margins(5).Width(ClientWidth Div 2),fPanel4)])
+                          Layout.Top(Layout.Height(ClientHeight Div 2),[Layout.Left(Layout.margins(5).Width(ClientWidth Div 2),fPanel1), Layout.Right(Layout.margins(5).Width(ClientWidth Div 2),fPanel2)]),
+                          Layout.Bottom(Layout.Height(ClientHeight Div 2),[Layout.Left(Layout.margins(5).Width(ClientWidth Div 2),fPanel3), Layout.Right(Layout.margins(5).Width(ClientWidth Div 2),fPanel4)])
   ]);
 end;
 
@@ -53,8 +53,8 @@ begin
   if Assigned(fLayout) then
   begin
   fLayout:= Layout.Client([
-                          Layout.Top(Layout.Height(ClientHeight Div 2),[Layout.Left(Layout.margins(5).Width(ClientWidth Div 2),fPanel1), Layout.Client(Layout.margins(5).Width(ClientWidth Div 2),fPanel2)]),
-                          Layout.Bottom(Layout.Height(ClientHeight Div 2),[Layout.Left(Layout.margins(5).Width(ClientWidth Div 2),fPanel3), Layout.Client(Layout.margins(5).Width(ClientWidth Div 2),fPanel4)])
+                          Layout.Top(Layout.Height(ClientHeight Div 2),[Layout.Left(Layout.margins(5).Width(ClientWidth Div 2),fPanel1), Layout.Right(Layout.margins(5).Width(ClientWidth Div 2),fPanel2)]),
+                          Layout.Bottom(Layout.Height(ClientHeight Div 2),[Layout.Left(Layout.margins(5).Width(ClientWidth Div 2),fPanel3), Layout.Right(Layout.margins(5).Width(ClientWidth Div 2),fPanel4)])
   ]);
    fLayout.Resize(self);
   end;
