@@ -1,0 +1,10 @@
+Layout1 - Client
+
+Creates a Panel on the form and aligns it to the dimensions of the form
+
+It is  the same as doing a fPanel.SetBounds(0,0,width,height);
+
+It takes more code to do it with a Layout, but you will soon see how powerfull Layout is and what it can do and setBounds cant do.
+
+
+

@@ -1,0 +1,10 @@
+Layout6 = Center
+
+Creates a Panel on the form and aligns it to the center of the form with a width & height of 50
+
+It is  the same as doing a fPanel.SetBounds((width div 2)-25, (height div 2)- 25, 50, 50);
+
+It takes more code to do it with a Layout, but you will soon see how powerfull Layout is and what it can do and setBounds cant do.
+
+
+

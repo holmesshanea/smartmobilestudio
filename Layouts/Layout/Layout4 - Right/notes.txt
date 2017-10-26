@@ -1,0 +1,10 @@
+Layout4 - Right
+
+Creates a Panel on the form and aligns it to the Right of the form with a width of 50
+
+It is  the same as doing a fPanel.SetBounds(Width-50,0,width, height);
+
+It takes more code to do it with a Layout, but you will soon see how powerfull Layout is and what it can do and setBounds cant do.
+
+
+
