@@ -1,8 +1,8 @@
-<SMART>
-  <Project version="2" subversion="2">
+﻿<SMART>
+  <Project version="2" subversion="9">
     <Name>TimerDemo2</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-01-30T20:26:34.964</Modified>
+    <Modified>2017-10-30T20:39:56.201</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -21,7 +21,12 @@
       </ChromeApp>
       <Cordova>
         <WidgetID></WidgetID>
-        <AllowIntent>http://*/*&#13;&#10;https://*/*&#13;&#10;tel:*&#13;&#10;sms:*&#13;&#10;mailto:*&#13;&#10;geo:*</AllowIntent>
+        <AllowIntent>http://*/*
+https://*/*
+tel:*
+sms:*
+mailto:*
+geo:*</AllowIntent>
       </Cordova>
     </VendorSpecific>
     <Options>
@@ -29,6 +34,7 @@
         <Assertions>1</Assertions>
         <Optimize>1</Optimize>
         <HintsLevel>1</HintsLevel>
+        <ProjectSearchPath></ProjectSearchPath>
       </Compiler>
       <Codegen>
         <Obfuscation>0</Obfuscation>
@@ -79,6 +85,9 @@
         <PauseAfterExecution>0</PauseAfterExecution>
         <ExecuteType>0</ExecuteType>
       </Execute>
+      <WebFonts>
+        <usewebfonts>0</usewebfonts>
+      </WebFonts>
     </Options>
     <Files>
       <File type="main">
@@ -127,7 +136,7 @@ end.]]>
       <File type="form">
         <Name>Form1</Name>
         <Created>2016-01-30T16:59:47.075Z</Created>
-        <Modified>2016-01-30T20:25:07.872</Modified>
+        <Modified>2017-10-30T20:39:56.187</Modified>
         <Source>
           <![CDATA[unit Form1;
 
@@ -147,7 +156,7 @@ type
     {$I 'Form1:intf'}
     fCount: Integer;
     fTimer: TW3Timer;
-procedure HandleTimer(sender:TObject);
+    procedure HandleTimer(sender:TObject);
   protected
     procedure InitializeForm; override;
     procedure InitializeObject; override;
@@ -231,7 +240,7 @@ end.]]>
         </Source>
         <Design>
           <![CDATA[<?xml version="1.0" encoding="utf-16"?>
-<Form version="2" subversion="2">
+<Form version="2" subversion="9">
   <Created>2016-01-30T16:59:47.075</Created>
   <Modified>2016-01-30T17:38:48.699</Modified>
   <object type="TW3Form">
@@ -286,13 +295,5 @@ end.]]>
     </Files>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
-    <Statistics>
-      <BackgroundCompilations>789</BackgroundCompilations>
-      <EditTime>00:11:03.204</EditTime>
-      <CompileTime>00:00:17.791</CompileTime>
-      <TotalTime>00:48:05.965</TotalTime>
-      <DesigningTime>00:04:06.394</DesigningTime>
-      <RunningTime>00:05:29.988</RunningTime>
-    </Statistics>
   </Project>
 </SMART>

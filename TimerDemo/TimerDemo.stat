@@ -1,0 +1,33 @@
+﻿<SMART>
+  <Statistics>
+    <BackgroundCompilations>627</BackgroundCompilations>
+    <EditTime>T00:08:48.603</EditTime>
+    <CompileTime>T00:00:14.776</CompileTime>
+    <TotalTime>T00:41:37.739</TotalTime>
+    <DesigningTime>T00:04:03.078</DesigningTime>
+    <RunningTime>T00:04:46.673</RunningTime>
+    <TotalLinesOfCode>125</TotalLinesOfCode>
+    <Snapshots>
+      <Snapshot>
+        <BackgroundCompilations>623</BackgroundCompilations>
+        <EditTime>T00:08:48.603</EditTime>
+        <CompileTime>T00:00:14.776</CompileTime>
+        <TotalTime>T00:41:25.775</TotalTime>
+        <DesigningTime>T00:04:03.078</DesigningTime>
+        <RunningTime>T00:04:46.673</RunningTime>
+        <TotalLinesOfCode>125</TotalLinesOfCode>
+        <TimeStamp>2017-10-30T20:33:15.761</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>627</BackgroundCompilations>
+        <EditTime>T00:08:48.603</EditTime>
+        <CompileTime>T00:00:14.776</CompileTime>
+        <TotalTime>T00:41:37.739</TotalTime>
+        <DesigningTime>T00:04:03.078</DesigningTime>
+        <RunningTime>T00:04:46.673</RunningTime>
+        <TotalLinesOfCode>125</TotalLinesOfCode>
+        <TimeStamp>2017-10-30T20:33:27.725</TimeStamp>
+      </Snapshot>
+    </Snapshots>
+  </Statistics>
+</SMART>

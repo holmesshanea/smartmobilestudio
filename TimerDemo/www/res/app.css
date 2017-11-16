@@ -285,195 +285,87 @@ ul li:active {
 }
 
 
+
 /* =============================================
  * TW3Scrollbar
  * ============================================= */
 
 .TW3ScrollbarUpBtn {
- color: #FFF;
- border-top: 1px solid #bcbcbc;
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+  border-top: 1px solid rgba(0,0,0,0.3);
+  background-color: #FFFFFF;
+  overflow: hidden;
 }
 
 .TW3ScrollbarDownBtn {
- color: #FFF;
- border-bottom: 1px solid #bcbcbc;
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  background-color: #FFFFFF;
+  overflow: hidden;
 }
 
 .TW3ScrollbarUpBtn:active, .TW3ScrollbarDownBtn:active {
-	background-image: -webkit-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:    -moz-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:     -ms-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:      -o-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:         linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-color:#E5E5E5;
 }
 
 .TW3ScrollbarDownBtn:hover, .TW3ScrollbarUpBtn:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .TW3ScrollbarLeftBtn {
- color: #FFF;
- border-right: 1px solid #bcbcbc;
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+  border-right: 1px solid rgba(0,0,0,0.3);
+  background-color: #FFFFFF;
+  overflow: hidden;
 }
 
 .TW3ScrollbarRightBtn {
- color: #FFF;
- border-left: 1px solid #bcbcbc;
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+  border-left: 1px solid rgba(0,0,0,0.3);
+  background-color: #FFFFFF;
+  overflow: hidden;
 }
 
 .TW3ScrollbarLeftBtn:active, .TW3ScrollbarRightBtn:active {
-	background-image: -webkit-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:    -moz-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:     -ms-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:      -o-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:         linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-color:#E5E5E5;
 }
 
 .TW3ScrollbarLeftBtn:hover, .TW3ScrollbarRightBtn:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .TW3ScrollbarHandle {
-	color: #888;
-	border-radius: 4px;
-	border: 1px solid #bcbcbc;
-
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+  border: 1px solid rgba(0,0,0,0.3);
+  background-color: #FFFFFF;
+  overflow: hidden;
+	//box-shadow:0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5);
 }
 
 .TW3ScrollbarHandle:active {
-	background-image: -webkit-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:    -moz-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:     -ms-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:      -o-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:         linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+	background-color:#E5E5E5;
 }
 
 .TW3ScrollbarHandle:Hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .TW3VerticalScrollbar {
-	border: 1px solid rgba(0,0,0,0.4);
-	overflow: hidden;
-	//background-color: #EFEFEF;
-	-webkit-touch-callout: none;
+  border: 1px solid rgba(0,0,0,0.4);
+  overflow: hidden;
+  background-color: rgba(250,250,250,0.3);
+  -webkit-touch-callout: none;
 }
 
 .TW3VerticalScrollbar:disabled {
-	opacity: 0.5;
-	cursor: wait;
+  opacity: 0.5;
+  cursor: wait;
 }
 
 .TW3HorizontalScrollbar {
-	border: 1px solid rgba(0,0,0,0.4);
-	overflow: hidden;
-	-webkit-touch-callout: none;
+  border: 1px solid rgba(0,0,0,0.4);
+  overflow: hidden;
+  background-color: rgba(250,250,250,0.3);
+  -webkit-touch-callout: none;
 }
 
 .TW3HorizontalScrollbar:disabled {
-	opacity: 0.5;
-	cursor: wait;
-}
-
-.TW3ToolButton
-{
-	-webkit-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-	 -moz-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-	  -ms-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-	   -o-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-		  box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-
-	-webkit-border-radius: 5px;
-	 -moz-border-radius: 5px;
-	  -ms-border-radius: 5px;
-	   -o-border-radius: 5px;
-		  border-radius: 5px;
-
-  cursor: default;
-	color: #fff;
-	font-size: 12px;
-  border: solid 1px #54617d;
-	border-color: #484e59 #54617d #4c5c7a #54617d;
-
-  background: rgb(146,161,191); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(146,161,191,1) 0%, rgba(121,138,173,1) 25%, rgba(98,118,160,1) 50%, rgba(85,106,151,1) 53%, rgba(86,108,152,1) 75%, rgba(84,105,147,1) 95%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(146,161,191,1)), color-stop(25%,rgba(121,138,173,1)), color-stop(50%,rgba(98,118,160,1)), color-stop(53%,rgba(85,106,151,1)), color-stop(75%,rgba(86,108,152,1)), color-stop(95%,rgba(84,105,147,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* IE10+ */
-  background: linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92a1bf', endColorstr='#546993',GradientType=0 ); /* IE6-9 */
-}
-
-.TW3ToolButton:active:enabled
-{
-  background: rgb(84,105,147); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(84,105,147,1) 5%, rgba(86,108,152,1) 25%, rgba(85,106,151,1) 47%, rgba(98,118,160,1) 50%, rgba(121,138,173,1) 75%, rgba(146,161,191,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,rgba(84,105,147,1)), color-stop(25%,rgba(86,108,152,1)), color-stop(47%,rgba(85,106,151,1)), color-stop(50%,rgba(98,118,160,1)), color-stop(75%,rgba(121,138,173,1)), color-stop(100%,rgba(146,161,191,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* IE10+ */
-  background: linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#546993', endColorstr='#92a1bf',GradientType=0 ); /* IE6-9 */
-}
-
-.TW3ToolButton:disabled {
-	opacity: 0.5;
+  opacity: 0.5;
   cursor: wait;
 }
 
@@ -548,6 +440,74 @@ ul li:active {
 	-webkit-user-select: auto;
 	user-select: auto;
 }
+
+/* =============================================
+ * TW3TabControl
+ * ============================================= */
+
+.TW3TabControl {
+  font-family: "verdana";
+  font-size: 12px;
+  background: #FFFFFF;
+}
+
+.TW3TabHeader {
+  cursor: default;
+  font-family: "verdana"
+  font-size: 12px;
+  font-color: #444444;
+  text-shadow: 1px 1px #ECECEC;
+
+  border-top-color: #1975D8;
+  border-top-width: 1px;
+  border-top-style: solid;
+
+  border-bottom-color: #1975D8;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+
+  background: #FFFFFF;
+
+  padding: 4px;
+}
+
+.TW3TabHeaderSplit {
+  border-right-color: #1975D8;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+.TW3TabHeaderFirst {
+  border-left-color: #1975D8;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.TW3TabHeaderLast {
+  border-right-color: #1975D8;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.TW3TabHeaders {
+  margin: 2px;
+}
+
+.TW3TabHeaderSelected {
+  background: #007AFF;
+  color: #FFFFFF;
+
+  text-shadow: 2px 2px #005FD3;
+
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-right-color: #1773D6;
+}
+
 
 /* =============================================
  * TW3HeaderControl
