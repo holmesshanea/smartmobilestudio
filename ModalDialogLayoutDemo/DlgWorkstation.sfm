@@ -1,0 +1,43 @@
+﻿<SMART>
+  <Form version="2" subversion="9">
+    <Created>2017-11-29T17:04:18.061</Created>
+    <Modified>2017-11-29T17:09:31.155</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>DlgWorkstation</Name>
+      <object type="TW3Panel">
+        <Width>360</Width>
+        <Top>24</Top>
+        <Left>16</Left>
+        <Height>376</Height>
+        <Name>pnlWorkstation</Name>
+        <object type="TW3Button">
+          <Caption>Ok</Caption>
+          <Width>128</Width>
+          <Top>320</Top>
+          <Left>24</Left>
+          <Height>32</Height>
+          <Name>btnOk</Name>
+          <OnClick>btnOkClick</OnClick>
+        </object>
+        <object type="TW3Button">
+          <Caption>Cancel</Caption>
+          <Width>128</Width>
+          <Top>320</Top>
+          <Left>160</Left>
+          <Height>32</Height>
+          <Name>btnCancel</Name>
+          <OnClick>btnCancelClick</OnClick>
+        </object>
+        <object type="TW3EditBox">
+          <Text>W3EditBox</Text>
+          <Width>128</Width>
+          <Top>32</Top>
+          <Left>24</Left>
+          <Height>32</Height>
+          <Name>edtWorkstation</Name>
+        </object>
+      </object>
+    </object>
+  </Form>
+</SMART>

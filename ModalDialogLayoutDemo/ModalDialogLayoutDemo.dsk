@@ -1,0 +1,21 @@
+﻿<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="44" col="32" row="59" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Unit1" fullname="Unit1.pas" topline="1" col="1" row="1" />
+      <tab filename="ModalDialogLayoutDemo" fullname="ModalDialogLayoutDemo.spr" topline="1" col="1" row="1" />
+      <tab filename="DlgWorkstation" fullname="DlgWorkstation.pas" topline="31" col="7" row="52" splitview="0" designview="0" splitter="0.444444447755814" />
+      <activetab>DlgWorkstation</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>1004</BackgroundCompilations>
+      <EditTime>T00:13:47.466</EditTime>
+      <CompileTime>T00:00:00.000</CompileTime>
+      <TotalTime>T01:05:41.624</TotalTime>
+      <DesigningTime>T00:15:01.438</DesigningTime>
+      <RunningTime>T00:04:17.200</RunningTime>
+      <TotalLinesOfCode>214</TotalLinesOfCode>
+    </Statistics>
+  </state>
+</SMART>

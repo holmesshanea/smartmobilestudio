@@ -1,0 +1,10 @@
+﻿<SMART>
+  <Form version="2" subversion="9">
+    <Created>2017-11-29T17:04:18.061</Created>
+    <Modified>2017-11-29T17:04:18.061</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>DlgWorkstation</Name>
+    </object>
+  </Form>
+</SMART>
