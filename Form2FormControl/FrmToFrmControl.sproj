@@ -1,8 +1,8 @@
 ﻿<SMART>
   <Project version="2" subversion="9">
-    <Name>MultipleForms</Name>
+    <Name>FrmToFrmControl</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2017-11-30T19:33:34.413</Modified>
+    <Modified>2017-11-30T20:20:10.027</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -26,8 +26,7 @@ https://*/*
 tel:*
 sms:*
 mailto:*
-geo:*
-</AllowIntent>
+geo:*</AllowIntent>
       </Cordova>
     </VendorSpecific>
     <Options>
@@ -38,7 +37,7 @@ geo:*
         <ProjectSearchPath></ProjectSearchPath>
       </Compiler>
       <Codegen>
-        <Obfuscation>1</Obfuscation>
+        <Obfuscation>0</Obfuscation>
         <RangeChecking>0</RangeChecking>
         <InstanceChecking>0</InstanceChecking>
         <ConditionChecking>0</ConditionChecking>
@@ -49,7 +48,7 @@ geo:*
         <EmitRTTI>0</EmitRTTI>
         <Devirtualize>1</Devirtualize>
         <MainBody>1</MainBody>
-        <CodePacking>1</CodePacking>
+        <CodePacking>0</CodePacking>
         <SmartLinking>1</SmartLinking>
         <Verbosity>1</Verbosity>
       </Codegen>
@@ -68,7 +67,7 @@ geo:*
         <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
         <GenerateCordovaConfigXML>0</GenerateCordovaConfigXML>
         <ExternalCSS>1</ExternalCSS>
-        <Theme>iOS.css</Theme>
+        <Theme>default.css</Theme>
         <CustomTheme>0</CustomTheme>
         <EmbedJavaScript>1</EmbedJavaScript>
       </Linker>
@@ -80,35 +79,33 @@ geo:*
       <Import />
       <Execute>
         <ServeManifest>0</ServeManifest>
-        <Server>0</Server>
+        <Server>1</Server>
         <CustomFile></CustomFile>
         <LoadCustomFile>0</LoadCustomFile>
         <PauseAfterExecution>0</PauseAfterExecution>
-        <ExecuteType>2</ExecuteType>
-        <ExecuteableName>chrome.exe</ExecuteableName>
-        <ExecuteableParams>%output%</ExecuteableParams>
+        <ExecuteType>0</ExecuteType>
       </Execute>
       <WebFonts>
-        <usewebfonts>0</usewebfonts>
+        <usewebfonts>1</usewebfonts>
       </WebFonts>
     </Options>
     <Files>
       <File type="main">
-        <Name>MultipleForms</Name>
-        <Created>2016-01-13T16:52:54.781Z</Created>
-        <Modified>2016-01-21T02:41:08.234</Modified>
-        <Filename>MultipleForms.spr</Filename>
+        <Name>FrmToFrmControl</Name>
+        <Created>2017-11-30T19:31:05.676Z</Created>
+        <Modified>2017-11-30T20:18:45.169</Modified>
+        <Filename>FrmToFrmControl.spr</Filename>
       </File>
       <File type="unit">
-        <Name>uMultipleFormsDemo</Name>
-        <Created>2016-01-13T16:52:54.781Z</Created>
-        <Modified>2016-01-21T02:41:08.234</Modified>
-        <Filename>uMultipleFormsDemo.pas</Filename>
+        <Name>Unit1</Name>
+        <Created>2017-11-30T19:31:05.676Z</Created>
+        <Modified>2017-11-30T19:35:31.015</Modified>
+        <Filename>Unit1.pas</Filename>
       </File>
       <File type="form">
         <Name>Form1</Name>
-        <Created>2016-01-13T16:52:54.781Z</Created>
-        <Modified>2016-01-21T02:41:08.234</Modified>
+        <Created>2017-11-30T19:31:05.676Z</Created>
+        <Modified>2017-11-30T19:51:57.197</Modified>
         <Filename>Form1.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -118,8 +115,8 @@ geo:*
       </File>
       <File type="form">
         <Name>Form2</Name>
-        <Created>2016-01-21T02:39:32.906Z</Created>
-        <Modified>2016-01-21T02:41:08.234</Modified>
+        <Created>2017-11-30T19:31:52.269Z</Created>
+        <Modified>2017-11-30T19:54:14.509</Modified>
         <Filename>Form2.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -127,18 +124,8 @@ geo:*
           <Order>2</Order>
         </AutoCreate>
       </File>
-      <File type="form">
-        <Name>Form3</Name>
-        <Created>2016-01-21T02:39:56.078Z</Created>
-        <Modified>2016-01-21T02:41:08.234</Modified>
-        <Filename>Form3.pas</Filename>
-        <AutoCreate>
-          <IsAutoCreate>1</IsAutoCreate>
-          <IsMainForm>0</IsMainForm>
-          <Order>3</Order>
-        </AutoCreate>
-      </File>
     </Files>
     <Target>Browser</Target>
+    <Generator>Visual Components Project</Generator>
   </Project>
 </SMART>

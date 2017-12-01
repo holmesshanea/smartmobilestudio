@@ -1,0 +1,17 @@
+﻿<SMART>
+  <Form version="2" subversion="9">
+    <Created>2017-11-30T19:31:52.269</Created>
+    <Modified>2017-11-30T19:42:55.808</Modified>
+    <object type="TW3Form">
+      <Caption>W3Form</Caption>
+      <Name>Form2</Name>
+      <object type="TW3Panel">
+        <Width>128</Width>
+        <Top>168</Top>
+        <Left>168</Left>
+        <Height>32</Height>
+        <Name>W3Panel1</Name>
+      </object>
+    </object>
+  </Form>
+</SMART>

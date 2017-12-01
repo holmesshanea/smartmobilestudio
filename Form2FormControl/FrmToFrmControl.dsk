@@ -1,0 +1,21 @@
+﻿<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="18" col="1" row="43" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="FrmToFrmControl" fullname="FrmToFrmControl.spr" topline="1" col="1" row="1" />
+      <tab filename="Form2" fullname="Form2.pas" topline="10" col="1" row="21" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Unit1" fullname="Unit1.pas" topline="1" col="12" row="4" />
+      <activetab>Form1</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>389</BackgroundCompilations>
+      <EditTime>T00:04:30.088</EditTime>
+      <CompileTime>T00:00:00.000</CompileTime>
+      <TotalTime>T00:25:25.687</TotalTime>
+      <DesigningTime>T00:04:29.928</DesigningTime>
+      <RunningTime>T00:00:26.523</RunningTime>
+      <TotalLinesOfCode>166</TotalLinesOfCode>
+    </Statistics>
+  </state>
+</SMART>
