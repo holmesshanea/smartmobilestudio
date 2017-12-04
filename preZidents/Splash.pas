@@ -3,7 +3,7 @@ unit Splash;
 interface
 
 uses 
-  System.Types, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
+  System.Types, System.Time, SmartCL.System, SmartCL.Graphics, SmartCL.Components, SmartCL.Forms,
   SmartCL.Fonts, SmartCL.Borders, SmartCL.Application, SmartCL.Layout,
   SmartCl.Controls.Image, SmartCL.Time;
 
@@ -13,6 +13,8 @@ type
     {$I 'Splash:intf'}
     fLayout: TLayout;
     fLogo: TW3Image;
+    Timer: TW3Timer;
+    procedure HandleOnTime(Sender: TObject);
   protected
     procedure InitializeForm; override;
     procedure InitializeObject; override;
@@ -25,10 +27,20 @@ implementation
 
 { TfrmSplash }
 
+procedure TfrmSplash.HandleOnTime(Sender: TObject);
+begin
+ Application.GoToForm('Navigation', feFromRight);
+end;
+
 procedure TfrmSplash.FormActivated;
 begin
  inherited;
- TW3EventRepeater.After(3000, lambda Application.GoToForm('Navigation', feFromRight) end);
+ //TW3EventRepeater.After(3000, lambda Application.GoToForm('Navigation', feFromRight) end);
+  Timer:= TW3Timer.Create(self);
+  Timer.Delay:= 3000;
+  Timer.Enabled:= True;
+  Timer.OnTime:= HandleOnTime;
+
 end;
 
 procedure TfrmSplash.InitializeForm;
@@ -46,6 +58,7 @@ procedure TfrmSplash.InitializeObject;
 begin
   inherited;
   {$I 'Splash:impl'}
+  handle.addEventListener('devicemotion', @Resize, false);
   fLogo:= TW3Image.Create(self);
   fLogo.SetBounds(0,0, self.ClientWidth, self.ClientHeight);
 end;

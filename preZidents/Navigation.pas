@@ -93,6 +93,7 @@ end;
 procedure TfrmNavigation.InitializeForm;
 begin
   inherited;
+  handle.addEventListener('devicemotion', @Resize, false);
   // this is a good place to initialize components
    FLayout:= Layout.Client([
                            Layout.Top(Layout.Margins(0,10,0,0).Height(32), fTitle),

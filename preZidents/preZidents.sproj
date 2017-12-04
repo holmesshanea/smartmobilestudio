@@ -1,8 +1,8 @@
-<SMART>
-  <Project version="2" subversion="2">
+﻿<SMART>
+  <Project version="2" subversion="9">
     <Name>preZidents</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-11-04T14:43:53.958</Modified>
+    <Modified>2017-12-03T20:07:11.439</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -21,7 +21,12 @@
       </ChromeApp>
       <Cordova>
         <WidgetID>com.smartmobilestudio.app</WidgetID>
-        <AllowIntent>http://*/*&#13;&#10;https://*/*&#13;&#10;tel:*&#13;&#10;sms:*&#13;&#10;mailto:*&#13;&#10;geo:*</AllowIntent>
+        <AllowIntent>http://*/*
+https://*/*
+tel:*
+sms:*
+mailto:*
+geo:*</AllowIntent>
       </Cordova>
     </VendorSpecific>
     <Options>
@@ -29,6 +34,7 @@
         <Assertions>1</Assertions>
         <Optimize>1</Optimize>
         <HintsLevel>1</HintsLevel>
+        <ProjectSearchPath></ProjectSearchPath>
       </Compiler>
       <Codegen>
         <Obfuscation>0</Obfuscation>
@@ -79,6 +85,9 @@
         <PauseAfterExecution>0</PauseAfterExecution>
         <ExecuteType>0</ExecuteType>
       </Execute>
+      <WebFonts>
+        <usewebfonts>0</usewebfonts>
+      </WebFonts>
     </Options>
     <Files>
       <File type="main">
@@ -96,7 +105,7 @@
       <File type="form">
         <Name>Navigation</Name>
         <Created>2016-10-20T14:47:31.465Z</Created>
-        <Modified>2016-11-04T12:46:43.302</Modified>
+        <Modified>2017-12-03T20:06:22.389</Modified>
         <Filename>Navigation.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -383,7 +392,7 @@
       <File type="form">
         <Name>Splash</Name>
         <Created>2016-11-04T12:46:01.984Z</Created>
-        <Modified>2016-11-04T14:43:04.590</Modified>
+        <Modified>2017-12-03T20:07:11.439</Modified>
         <Filename>Splash.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -406,13 +415,5 @@
     </Files>
     <Target>Browser</Target>
     <Generator>Visual Components Project</Generator>
-    <Statistics>
-      <BackgroundCompilations>4469</BackgroundCompilations>
-      <EditTime>01:07:04.235</EditTime>
-      <CompileTime>00:05:04.571</CompileTime>
-      <TotalTime>23:09:43.517</TotalTime>
-      <DesigningTime>00:04:04.434</DesigningTime>
-      <RunningTime>02:00:01.604</RunningTime>
-    </Statistics>
   </Project>
 </SMART>

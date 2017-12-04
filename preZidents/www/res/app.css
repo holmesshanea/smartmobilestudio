@@ -1,856 +1,1065 @@
-/* Apply to all elements */
-* {
-	margin: 0;
-	padding: 0;
-	border: 0;
 
-	/* Define "normal" boxing */
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
 
-	/* no tap highlight color */
-	-webkit-tap-highlight-color: transparent;
+/* ######################################################################### */
+/* External references                                                       */
+/* ######################################################################### */
 
-  -webkit-appearance: none;
+  /* Ubuntu is the default font (or fallback font) */
+  @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
-	/* no border style by default */
-	-webkit-border-style: none;
-	border-style: none;
+  /* And we use font-awesome for inline glyphs */
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
 
-	/* Turn off font resizing */
-	-webkit-text-size-adjust: none;
-	text-size-adjust: none;
 
-	-webkit-font-smoothing: always;
-	font-smoothing: always;
+/* ######################################################################### */
+/* Define font sizes                                                         */
+/* ######################################################################### */
 
-	-webkit-user-select: none;
-	user-select: none;
-
-	font-family: "Helvetica Neue", Helvetica, sans-serif;
+.ThemeFontSmall {
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+    font-name: "Helvetica Neue";
+    font-size: 12px;
+    color:     #6D6D72;
 }
+
+.ThemeFontNormal {
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+    font-name: "Helvetica Neue";
+    font-size: 14px;
+    color:     #6D6D72;
+}
+
+.ThemeFontMedium {
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+    font-name: "Helvetica Neue";
+    font-size: 18px;
+    color:     #6D6D72;
+}
+
+.ThemeFontLarge {
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+    font-name: "Helvetica Neue";
+    font-size: 24px;
+    color:     #6D6D72;
+}
+
+
+
+/* ######################################################################### */
+/* Define common disabled state                                              */
+/* ######################################################################### */
+
+/* When a control has it's enabled property set to false, typically there
+   is some visual feedback. While you can naturally define whatever
+   you like individually - the "DisabledState" styleclass is automatically
+   added to your control. It is removed again when you enable a control. */
+
+.DisabledState {
+  opacity:        0.5 !Important;
+  cursor:         not-allowed !Important;
+  touch-action:   none !Important;
+  outline:        none !Important;
+  pointer-events: none !Important;
+  background:     #EFEFF4
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat !Important;
+}
+
+.DisabledState > * {
+  opacity:        0.5 !Important;
+  cursor:         not-allowed !Important;
+  touch-action:   none !Important;
+  outline:        none !Important;
+  pointer-events: none !Important;
+  background:     #EFEFF4
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat !Important;
+}
+
+
+/* ######################################################################### */
+/* Define fundamental properties for the document                            */
+/* ######################################################################### */
 
 :focus {
-    outline: 0;
+  outline: 0;
 }
 
-html, body
-{
-	/* iOS basics */
-	-webkit-touch-callout: none;
-	user-select: none;
+html, body, document {
+   margin:  0px;
+  padding:  0px;
+   border:  0px;
+   cursor:  default;
+    color:  #6D6D72;
 
-	/* default to black screen */
-	background-color: #000;
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+    font-name: "Helvetica Neue";
+    font-size: 14px;
 
-	/* No overflow, means no scrolling */
-	overflow: hidden;
-}
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+       -o-text-size-adjust: none;
 
-button { background: none; }
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 
-ul {
-	cursor: default;
-	list-style: none;
-}
-
-ul li {
-	background-color: #FFF;
-	border: 1px solid #999;
-	color: #222;
-	cursor: hand;
-	font-size: 17px;
-	font-weight: bold;
-	margin-bottom: -1px;
-	padding: 12px 12px;
-	text-decoration: none;
-}
-
-ul li:first-child {
-	border-top-left-radius:  8px;
-	border-top-right-radius:  8px;
-}
-
-ul li:last-child {
-	border-bottom-left-radius:  8px;
-	border-bottom-right-radius:  8px;
-}
-
-ul li:active {
-	color: #FFF;
-	background-image: url(data:image/png;base64,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);
-	background-size: auto 100%;
-	background-repeat: repeat-x;
+  /* No overflow, means no auto-scrolling */
+  overflow: hidden !important;
 }
 
 
-/* =============================================
- * TW3CustomControl
- * ============================================= */
+/* ######################################################################### */
+/* Define common properties for all elements that will be created at runtime */
+/* ######################################################################### */
 
-.TW3CustomControl
-{
-	cursor: default;
-	background-color: #CECECE;
+
+/* Apply to all elements */
+* {
+   margin:  0px;
+  padding:  0px;
+   border:  0px;
+   cursor:  default;
+    color:  #6D6D72;
+
+  /* Define "normal" boxing */
+  -webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box;
+	     -o-box-sizing: border-box;
+	        box-sizing: border-box;
+
+
+  /* no tap highlight color */
+	-webkit-tap-highlight-color: transparent;
+	   -moz-tap-highlight-color: transparent;
+	    -ms-tap-highlight-color: transparent;
+	     -o-tap-highlight-color: transparent;
+	        tap-highlight-color: transparent;
+
+  /* no border style by default */
+  -webkit-border-style: none;
+	   -moz-border-style: none;
+	    -ms-border-style: none;
+	     -o-border-style: none;
+	        border-style: none;
+
+	-webkit-font-smoothing: always;
+	   -moz-font-smoothing: always;
+	    -ms-font-smoothing: always;
+	        font-smoothing: always;
+
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+       -o-text-size-adjust: none;
+
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+    font-name: "Helvetica Neue";
 }
 
-/* =============================================
- * TW3ScrollContentIndicator
- * ============================================= */
 
-.TW3ScrollContentIndicator {
-	background-color: #222;
-	border: solid 1px #9A9A9A;
+/* ######################################################################### */
+/* Background types                                                          */
+/* ######################################################################### */
+
+/* The display background is, as the name implies, used by display classes.
+   These are classes associated with the display, which is typically
+    -TW3Application->Display
+    -TW3Application->Display->View     */
+.TW3DisplayBackground {
+  background-color: #333333;
 }
 
-/* =============================================
- * TW3CustomForm
- * ============================================= */
-
-.TW3CustomForm, .TW3Form
-{
-  /* This forces the browsers that support it to
-     use the GPU rather than CPU for movement */
-	-webkit-transform: translateZ(0);
-	   -moz-transform: translateZ(0);
-	    -ms-transform: translateZ(0);
-	     -o-transform: translateZ(0);
-
-	background-color: #D5DCE1;
-	background-size: 5px 100%;
-	background-image: -webkit-gradient(linear, left top, right top,
-	  from(#c5ccd4),
-	  color-stop(0.75, #c5ccd4),
-	  color-stop(0.75, transparent),
-	  to(transparent));
-	background-image: -moz-linear-gradient(left,
-	  #c5ccd4,
-	  #c5ccd4 75%,
-	  transparent 75%,
-	  transparent);
+/* The control background is a generic background that can be
+   used with ordinary, flat controls. It is typically a single color
+   depending on the theme and should not really contain anything in
+   particular. It simply defines the client surface of a control visually */
+.TW3ControlBackground {
+  background-color: #f8f8f8;
 }
 
-/* =============================================
- * TW3BlockBox:
- *  In order to emulate modal dialogs we use
- *  a single DIV to cover the active form.
- *  This div prevents the user from clicking
- *  on the underlying controls - thus forcing
- *  the user to deal with the dialog, which is
- *  hosted as a child of the TW3BlockBox control
- * ============================================= */
+/* The container background is used by controls designed to house
+   other controls, visually on a form. Controls like: TW3Panel, TW3TabControl,
+   and TW3GroupBox all use this background. It should typically stand out
+   from the other backgrounds very subtle, depending on the style. */
+.TW3ContainerBackground {
+  background-color: #F7F7F8;
+}
+
+/* Edit control background. Typically a single color
+   used by TW3Edit and TW3Memo  */
+.TW3EditBackground {
+  background-color: #FFFFFF;
+}
+
+/* The selection color [highlight] can also be adjusted */
+.TW3EditBackground::selection {
+  background-color: default;
+}
+
+/* List control backgrounds. Controls like TW3ListBox
+   use these styles. Notice that we separate between
+   normal-item and selected-item */
+.TW3ListBackground {
+  background-color: #FFFFFF;
+}
+
+.TW3ListItemBackground {
+  background-color: #FFFFFF;
+}
+
+.TW3ListItemSelectedBackground {
+  background-color: #EFEFEF;
+}
+
+.TW3ButtonBackground {
+  background-color: #f8f8f8;
+  color: #007AFF;
+}
+
+.TW3ButtonBackground:active {
+  background-color: #ededed;
+  color: #007AFF;
+}
+
+.TW3DialogButtonBackground {
+  background-color: #f8f8f8 !important;
+}
+
+.TW3DialogButtonBackground:active {
+  background-color: #ededed !important;
+}
+
+.TW3DecorativeBackground {
+  color: #007AFF !important;
+  background-color: #D9D9D9;
+}
+
+.TW3DecorativeBackgroundInvert {
+  color: #007AFF !important;
+  background-color: #D9D9D9;
+}
+
+.TW3DecorativeDarkBackground {
+  color: #007AFF !important;
+  background-color: #D9D9D9;
+}
+
+.TW3ToolContainerBackground {
+  background-color: #F7F7F8;
+}
+
+.TW3ToolButtonBackground {
+  background-color: #F7F7F8;
+}
+
+.TW3ToolButtonBackground:active {
+  background-color: #F7F7F8;
+}
+
+.TW3ToolControlBackground {
+  background-color: #F7F7F8;
+}
+
+/* ######################################################################### */
+/* Border types                                                              */
+/* ######################################################################### */
+
+.TW3ControlBorder {
+	border: 1px solid #C8C7CC;
+}
+
+.TW3ContainerBorder {
+  border: 1px solid #C8C7CC;
+}
+
+.TW3FlatBorder {
+  border: 1px solid #C8C7CC;
+}
+
+.TW3ButtonBorder {
+  border-top:     1px solid rgba(250, 250, 250, 0.7);
+  border-left:    1px solid rgba(250, 250, 250, 0.7);
+  border-right:   1px solid rgba(240, 240, 240, 0.5);
+  border-bottom:  1px solid rgba(240, 240, 240, 0.5);
+}
+
+.TW3ButtonBorder:active {
+  border-top:     1px solid rgba(240, 240, 240, 0.5);
+  border-left:    1px solid rgba(240, 240, 240, 0.5);
+  border-right:   1px solid rgba(250, 250, 250, 0.7);
+  border-bottom:  1px solid rgba(250, 250, 250, 0.7);
+}
+
+.TW3DialogButtonBorder {
+	border-radius:  3px;
+  border: 1px solid #C8C7CC !important;
+}
+
+.TW3EditBorder {
+  border-radius: 3px;
+  border: 1px solid #C8C7CC;
+}
+
+.TW3ListBorder {
+  border: 0px none;
+  /* border: 1px solid #C8C7CC; */
+}
+
+.TW3ToolControlFlatBorder {
+  border: 1px solid <?pad=clToolFlatBorderColor?>;
+}
+
+.TW3ToolControlBorder {
+  border: 1px solid #C8C7CC; /* #353431; */
+}
+
+.TW3ToolContainerBorder {
+  border: 1px solid #C8C7CC;
+}
+
+.TW3ToolButtonBorder {
+}
+
+.TW3DecorativeBorder {
+	border: 1px solid #C8C7CC;
+}
+
+.TW3ListMenuBorder {
+	border: 1px solid #C8C7CC;
+}
+
+/* ######################################################################### */
+/* TW3CustomControl, this is the base ancestor of all controls               */
+/* ######################################################################### */
+
+.TW3CustomControl {
+  padding: 2px;
+  color: #6D6D72;
+  cursor: default;
+  background-color: #EFEFF4;
+}
+
+
+/* ######################################################################### */
+/* TW3Display, TW3DisplayView, these are our base displays for forms         */
+/* ######################################################################### */
+
+.TW3Display, .TW3DisplayView {
+    margin: 0px;
+   padding: 0px;
+    border: 0px;
+    cursor: default;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+/* ######################################################################### */
+/* TW3BlockBox                                                               */
+/* ######################################################################### */
 
 .TW3BlockBox {
-	overflow: hidden;
-	-webkit-touch-callout: none;
+  overflow: hidden;
+  -webkit-touch-callout: none;
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* =============================================
- * TW3AlertDialog
- * ============================================= */
-.TW3AlertButton {
-	font-size: 18px;
-	font-weight: bold;
-	text-align: center;
-	text-decoration: none;
-	color: #fff;
-	border: 1px solid rgba(19, 30, 58, 0.9);
-	background-color: #5f6981;
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b0b5c0), color-stop(50%, #6a748b), color-stop(51%, #505a75), color-stop(100%, #5f6981)); /* for iOS Webkit */
-
-	-webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-      -ms-border-radius: 6px;
-       -o-border-radius: 6px;
-          border-radius: 6px;
-
-  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.8);
-     -moz-box-shadow: 0 1px 0 rgba(0,0,0,.8);
-      -ms-box-shadow: 0 1px 0 rgba(0,0,0,.8);
-       -o-box-shadow: 0 1px 0 rgba(0,0,0,.8);
-          box-shadow: 0 1px 0 rgba(0,0,0,.8);
-
-  -webkit-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
-     -moz-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
-      -ms-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
-       -o-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
-          text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+.TW3NoSelect {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
-.TW3AlertButton:active {
-	background-image: -webkit-gradient(linear, left top, left bottom,
-	color-stop(0%, #5f6981),
-	color-stop(50%, #505a75),
-	color-stop(51%, #6a748b),
-	color-stop(100%, #b0b5c0));
+/* ######################################################################### */
+/* Form styles                                                               */
+/* ######################################################################### */
+
+.TW3CustomForm, .TW3Form
+{
+  background-color: #EFEFF4;
+
+  /* This forces the browsers that support it to
+     use the GPU rather than CPU for movement */
+  -webkit-transform: translateZ(0);
+     -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+       -o-transform: translateZ(0);
 }
 
-.TW3AlertDialog {
+/* ######################################################################### */
+/* TW3EditBox                                                                */
+/* ######################################################################### */
+
+.TW3EditBox {
+  padding: 2px;
+  resize: none;
+  font-size: 14px;
+	-webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+       -o-user-select: auto;
+          user-select: auto;
+ }
+
+/* ######################################################################### */
+/* TW3Memo                                                                   */
+/* ######################################################################### */
+
+.TW3Memo {
+  padding: 2px;
+  resize: none;
+   font-size: 14px;
+	-webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+       -o-user-select: auto;
+          user-select: auto;
+}
+
+/* ######################################################################### */
+/* TW3ComboBox                                                               */
+/* ######################################################################### */
+
+ .TW3ComboBox {
+  padding: 2px;
+  resize: none;
+  -webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+       -o-user-select: auto;
+          user-select: auto;
+ }
+
+/* ######################################################################### */
+/* TW3Panel                                                                  */
+/* ######################################################################### */
+
+.TW3Panel, .TW3CustomPanel {
+  padding: 2px;
+}
+
+/* ######################################################################### */
+/* TW3Image                                                                  */
+/* ######################################################################### */
+
+.TW3Image {
+  padding: 0px !important;
+}
+
+/* ######################################################################### */
+/* TW3Label                                                                  */
+/* ######################################################################### */
+
+.TW3Label {
+  padding: 0px !important;
+}
+
+/* ######################################################################### */
+/* TW3GroupBox                                                               */
+/* ######################################################################### */
+
+.TW3GroupBox {
+  padding: 2px;
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+  font-name: "Helvetica Neue";
+  font-size: 14px;
+}
+
+.TW3GroupBox > legend {
+  margin: 0px;
+  padding: 0px;
+  border: 0px none;
+  font-size: 14px;
+  color: inherit !important;
+  text-align: center;
+}
+
+/* ######################################################################### */
+/* TW3ListBox                                                                */
+/* ######################################################################### */
+
+.TW3ListBox {
+  padding: 2px;
+  margin:  0px;
+  background-color: #FFFFFF;
+
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+    font-name: "Helvetica Neue";
+    font-size: 14px;
+}
+
+/* ######################################################################### */
+/* TW3ScrollContainer                                                        */
+/* ######################################################################### */
+
+.TW3CustomScrollContent, .TW3ScrollContent {
+  padding: 2px;
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+  font-name: "Helvetica Neue";
+  font-size: 14px;
+  color: #6D6D72;
+}
+
+TW3CustomScrollContainer, .TW3ScrollContainer {
+  padding: 0px;
+  font-family: "Helvetica Neue", Helvetica, "Ubuntu";
+  font-name: "Helvetica Neue";
+  font-size: 14px;
+  color: #6D6D72;
+}
+
+/* ######################################################################### */
+/* TW3ListMenu                                                               */
+/* ######################################################################### */
+
+.TW3ListMenu {
+  padding: 2px;
+	cursor: default;
+	list-style: none;
+  background-color: #FFFFFF;
+  font-family:"Helvetica Neue", Helvetica, "Ubuntu";
+  font-name:  "Helvetica Neue";
+  font-size:  18px;
+}
+
+.TW3ListMenuItem {
+  padding: 0px;
+  font-family: inherit !important;
+  font-name: inherit !important;
+  font-size: inherit !important;
+	background-color: #FFFFFF;
+	border: 1px solid #C8C7CC;
+  color: #007AFF;
+	margin-bottom: -1px;
+}
+
+.TW3ListMenuItem > * {
+  color: inherit !important;
+  font-family: inherit !important;
+  font-name: inherit !important;
+  font-size: inherit !important;
+}
+
+.TW3ListMenuItem:first-child {
+	border-top-left-radius:  0px;
+	border-top-right-radius:  0px;
+}
+
+.TW3ListMenuItem:last-child {
+	border-bottom-left-radius:  0px;
+	border-bottom-right-radius:  0px;
+}
+
+.TW3ListMenuItem:active {
+  opacity: 0.5;
+  color: rgba(rgba(0, 122, 255, 1)) !important;
+}
+
+.TW3ListMenuItem:active > * {
+  font-family: inherit !important;
+  font-name: inherit !important;
+  font-size: inherit !important;
+  color: #007AFF !important;
+}
+
+/* ######################################################################### */
+/* TW3Button                                                                 */
+/* ######################################################################### */
+
+.TW3Button {
+      padding: 2px;
+    font-size: 18px;
+  font-weight: bold;
+        color: #007AFF;
+}
+
+.TW3Button:active:enabled {
+  color: #007AFF;
+}
+
+/* ######################################################################### */
+/* TW3DialogButton                                                           */
+/* ######################################################################### */
+
+.TW3DialogButton {
+      margin: 2px;
+      padding: 2px;
+    font-size: 18px;
+        color: #007AFF;
+}
+
+.TW3DialogButton:active:enabled {
+      padding: 2px;
+        color: #6D6D72;
+}
+
+
+/* ######################################################################### */
+/* TW3Dialog                                                                 */
+/* ######################################################################### */
+
+.TW3Dialog {
+  padding:  0px;
+  border-radius: 8px;
 	z-index: 1000;
-	padding: 6px 5px;
-	border: 2px solid rgba(178, 183, 194, 0.8);
-	border-top-color: rgba(226, 227, 228, 0.8);
-
-	/* border-radius: 15px; */
-	background: rgba(11, 27, 68, 0.8) url(data:image/png;base64,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)
-	no-repeat 50% 0;
-
 	box-shadow: 0 8px 19px rgba(0,0,0,.9);
-	color: #fff;
-	text-shadow: 0 -1px 0 rgba(0,0,0,.8);
-	text-align: center;
-	-webkit-border-radius: 15px;
-	-webkit-box-shadow: 0 8px 19px rgba(0,0,0,.9);
-	-webkit-text-shadow: 0 -1px 0 rgba(0,0,0,.8);
+}
+
+/* ######################################################################### */
+/* TW3DialogHeader                                                           */
+/* ######################################################################### */
+
+.TW3DialogHeader {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  height: 48px;
+}
+
+/* ######################################################################### */
+/* TW3DialogButtonPanel                                                      */
+/* ######################################################################### */
+
+.TW3DialogButtonPanel {
+  padding: 2px;
+  height: 64px;
 }
 
 
-/* =============================================
- * TW3ProgressBar:
- * ============================================= */
+
+/* ######################################################################### */
+/* TW3ToolButton                                                             */
+/* ######################################################################### */
+
+.TW3ToolButton {
+  padding: 2px;
+  cursor: default;
+	color: #FFFFFF;
+}
+
+/* ######################################################################### */
+/* TW3Toolbar                                                                */
+/* ######################################################################### */
+
+.TW3Toolbar {
+  padding: 2px;
+  color:   #6D6D72;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  border-left: 0px none !important;
+  border-right: 0px none !important;
+}
+
+.TW3Toolbar :first-child {
+  margin-left: 2px !important;
+}
+
+.TW3Toolbar > * {
+  margin-right: 4px !important;
+}
+/* ######################################################################### */
+/* TW3ToolElement: alignment                                                 */
+/* ######################################################################### */
+
+.TW3ToolElementAlignLeft {
+  float: left !important;
+}
+
+.TW3ToolElementAlignRight {
+  float: right !important;
+}
+
+/* ######################################################################### */
+/* TW3ToolbarButton                                                           */
+/* ######################################################################### */
+
+.TW3ToolbarButton {
+  padding: 2px;
+  color: #6D6D72;
+}
+
+.TW3ToolbarButton:active {
+  color: #007AFF;
+}
+
+/* ######################################################################### */
+/* TW3ToolbarSeparator                                                       */
+/* ######################################################################### */
+
+.TW3ToolbarSeparator {
+  color: #6D6D72;
+  padding: 2px;
+  margin-left:    2px !important;
+  margin-right    2px !important;
+}
+
+.TW3ToolbarSeparator:active {
+  border: 1px dotted #C8C7CC;
+  color: #007AFF;
+}
+
+/* ######################################################################### */
+/* TW3HeaderControl                                                           */
+/* ######################################################################### */
+
+.TW3HeaderControl {
+  padding: 2px;
+  font-size: 24px;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  color: #6D6D72;
+}
+
+.TW3HeaderButton {
+  padding: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 18px;
+  color: #007AFF;
+  flex: 1;
+  flex-grow: 0;
+}
+
+.TW3HeaderButton:hover {
+  opacity: 0.5;
+}
+
+.TW3HeaderButton:selected {
+  opacity: 0.5;
+}
+
+.TW3HeaderTitle {
+  padding: 2px;
+  color: inherit !important;
+  flex: 2;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+
+/* ######################################################################### */
+/* TW3ToggleSwitch                                                           */
+/* ######################################################################### */
+
+.TW3ToggleSwitch {
+  padding: 0px !important;
+  margin: 0px !important;
+	border-radius: 3px;
+	overflow: hidden;
+ }
+
+.TW3ToggleOnLabel {
+  color: #007AFF;
+  text-transform: capitalize; /* Make sure title is capitalized ("On and Off") */
+}
+
+.TW3ToggleOffLabel {
+  color: #6D6D72 !important;
+  text-transform: capitalize; /* Make sure title is capitalized ("On and Off") */
+}
+
+.TW3ToggleKnob {
+  outline: none;
+  margin: 0px;
+  width: 52% !important;
+  border: 1px solid rgba(109, 109, 114, 0.4); /* clFlatBorderColor?>; */
+  border-radius: 3px;
+  background-color: #f8f8f8;
+}
+
+/* ######################################################################### */
+/* TW3ScrollContentIndicator                                                 */
+/* ######################################################################### */
+
+.TW3ScrollContentIndicator, .TW3CustomScrollContentIndicator
+{
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0, 0.2);
+}
+
+/* ######################################################################### */
+/* TW3ProgressBar                                                            */
+/* ######################################################################### */
 
 @-webkit-keyframes move_bg_progressmeter {
 	0% {
-		background-position: 50px 50px;
+	   background-position: 50px 50px;
 	}
 	100% {
-		background-position: 0 0;
+	   background-position: 0 0;
 	}
 }
 
 @-moz-keyframes move_bg_progressmeter {
 	0% {
-		background-position: 50px 50px;
+	   background-position: 50px 50px;
 	}
 	100% {
-		background-position: 0 0;
+	   background-position: 0 0;
 	}
 }
 
 @-o-keyframes move_bg_progressmeter {
 	0% {
-		background-position: 50px 50px;
+	   background-position: 50px 50px;
 	}
 	100% {
-		background-position: 0 0;
+	   background-position: 0 0;
 	}
 }
 
-
 .TW3ProgressBar {
-	border: 2px solid rgba(0,0,0,0.3);
-
-	background-color: #FFF;
-	overflow: hidden;
-	-webkit-touch-callout: none;
-
-	-webkit-border-radius: 25px;
-	border-radius: 25px;
+  padding: 2px;
+  -webkit-box-shadow: inset 0 0 10px rgba(rgb(0, 0, 0), 0.9);
+     -moz-box-shadow: inset 0 0 10px rgba(rgb(0, 0, 0), 0.9);
+       -o-box-shadow: inset 0 0 10px rgba(rgb(0, 0, 0), 0.9);
+          box-shadow: inset 0 0 10px rgba(rgb(0, 0, 0), 0.9);
 }
 
 .TW3ProgressMeter
 {
-	overflow: hidden;
-	background-color: rgba(144,156,179,1);
+  border-radius: 3px;
+  background-color: #4CD964; /* rgba(255, 255, 255, 0.1); */
 
-	-webkit-touch-callout: none;
-
-	-webkit-animation: move_bg_progressmeter 3s linear infinite;
-	animation: move_bg_progressmeter 3s linear infinite;
+  -webkit-touch-callout: none;
+  -webkit-animation: move_bg_progressmeter 3s linear infinite;
+	   -moz-animation: move_bg_progressmeter 3s linear infinite;
+      -ms-animation: move_bg_progressmeter 3s linear infinite;
+	     -o-animation: move_bg_progressmeter 3s linear infinite;
 
 	-webkit-background-size: 50px 50px;
-	background-size: 50px 50px;
+	   -moz-background-size: 50px 50px;
+	    -ms-background-size: 50px 50px;
+		   -o-background-size: 50px 50px;
+          background-size: 50px 50px;
 
-	-webkit-border-radius: 25px;
-	border-radius: 25px;
+	background-image:
+	   -webkit-gradient(linear, 0 0, 100% 100%,
+		  color-stop(.25, rgba(255, 255, 255, .4)),
+		  color-stop(.25, transparent),
+      color-stop(.5, transparent),
+		  color-stop(.5, rgba(255, 255, 255, .4)),
+		  color-stop(.75, rgba(255, 255, 255, .4)),
+		  color-stop(.75, transparent), to(transparent)
+	   );
 
-	background-image: -webkit-gradient(linear, 0 0, 100% 100%,
-		color-stop(.25, rgba(255, 255, 255, .2)),
-		color-stop(.25, transparent), color-stop(.5, transparent),
-		color-stop(.5, rgba(255, 255, 255, .2)),
-		color-stop(.75, rgba(255, 255, 255, .2)),
-		color-stop(.75, transparent), to(transparent)
-	);
-
-	background-image: linear-gradient(-45deg,
-		rgba(255, 255, 255, .2) 25%,
-		transparent 25%,
-		transparent 50%,
-		rgba(255, 255, 255, .2) 50%,
-		rgba(255, 255, 255, .2) 75%,
-		transparent 75%,
-		transparent
-	);
+	background-image:
+		-moz-linear-gradient(
+		  -45deg,
+		  rgba(255, 255, 255, .4) 25%,
+		  transparent 25%,
+		  transparent 50%,
+		  rgba(255, 255, 255, .4) 50%,
+		  rgba(255, 255, 255, .4) 75%,
+		  transparent 75%,
+		  transparent
+	   );
+	background-image:
+		-ms-linear-gradient(
+		  -45deg,
+		  rgba(255, 255, 255, .4) 25%,
+		  transparent 25%,
+		  transparent 50%,
+		  rgba(255, 255, 255, .4) 50%,
+		  rgba(255, 255, 255, .4) 75%,
+		  transparent 75%,
+		  transparent
+	   );
+	background-image:
+		-o-linear-gradient(
+		  -45deg,
+		  rgba(255, 255, 255, .4) 25%,
+		  transparent 25%,
+		  transparent 50%,
+		  rgba(255, 255, 255, .4) 50%,
+		  rgba(255, 255, 255, .4) 75%,
+		  transparent 75%,
+		  transparent
+	   );
 }
 
+/* ######################################################################### */
+/* TW3ScrollbarTopButton                                                      */
+/* ######################################################################### */
 
-/* =============================================
- * TW3Scrollbar
- * ============================================= */
-
-.TW3ScrollbarUpBtn {
- color: #FFF;
- border-top: 1px solid #bcbcbc;
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+.TW3ScrollbarTopButton {
+  cursor: default;
+  border-radius: 3px;
+  padding: 1px;
 }
 
-.TW3ScrollbarDownBtn {
- color: #FFF;
- border-bottom: 1px solid #bcbcbc;
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+.TW3ScrollbarTopButton:active {
+  background-color: rgba(rgb(246, 246, 245), 0.9)?>;
 }
 
-.TW3ScrollbarUpBtn:active, .TW3ScrollbarDownBtn:active {
-	background-image: -webkit-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:    -moz-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:     -ms-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:      -o-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:         linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+.TW3ScrollbarTopButton:hover {
+  cursor: default;
 }
 
-.TW3ScrollbarDownBtn:hover, .TW3ScrollbarUpBtn:hover {
-	cursor: pointer;
+.TW3ScrollbarTopButton:hover > * {
+  cursor: default;
 }
 
-.TW3ScrollbarLeftBtn {
- color: #FFF;
- border-right: 1px solid #bcbcbc;
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+/* ######################################################################### */
+/* TW3ScrollbarBottomButton                                                    */
+/* ######################################################################### */
 
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+.TW3ScrollbarBottomButton {
+  cursor: default;
+  border-radius: 3px;
+  padding: 1px;
 }
 
-.TW3ScrollbarRightBtn {
- color: #FFF;
- border-left: 1px solid #bcbcbc;
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+.TW3ScrollbarBottomButton:active {
+  background-color: rgba(rgb(246, 246, 245), 0.9)?>;
 }
 
-.TW3ScrollbarLeftBtn:active, .TW3ScrollbarRightBtn:active {
-	background-image: -webkit-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:    -moz-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:     -ms-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:      -o-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:         linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
+.TW3ScrollbarBottomButton:hover {
+  cursor: default;
 }
 
-.TW3ScrollbarLeftBtn:hover, .TW3ScrollbarRightBtn:hover {
-	cursor: pointer;
+.TW3ScrollbarBottomButton:hover > * {
+  cursor: default;
 }
+
+/* ######################################################################### */
+/* TW3ScrollbarLeftButton                                                    */
+/* ######################################################################### */
+
+.TW3ScrollbarLeftButton {
+  padding: 2px;
+  cursor: default;
+  border-radius: 3px;
+}
+
+.TW3ScrollbarLeftButton:active {
+  background-color: rgba(rgb(246, 246, 245), 0.9)?>;
+}
+
+.TW3ScrollbarLeftButton:hover  {
+  cursor: default;
+}
+
+.TW3ScrollbarLeftButton:hover > * {
+  cursor: default;
+}
+
+/* ######################################################################### */
+/* TW3ScrollbarRightBtn                                                      */
+/* ######################################################################### */
+
+.TW3ScrollbarRightButton {
+  padding: 2px;
+  cursor: default;
+  border-radius: 3px;
+}
+
+.TW3ScrollbarRightButton:active {
+  background-color: rgba(rgb(246, 246, 245), 0.9)?>;
+}
+
+.TW3ScrollbarRightButton:hover  {
+  cursor: default;
+}
+
+.TW3ScrollbarRightButton:hover > * {
+  cursor: default;
+}
+
+/* ######################################################################### */
+/* TW3ScrollbarHandle                                                      */
+/* ######################################################################### */
 
 .TW3ScrollbarHandle {
-	color: #888;
-	border-radius: 4px;
-	border: 1px solid #bcbcbc;
-
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-      -ms-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-       -o-box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-	        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-
-	background-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -moz-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
-	background-image: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(239,239,239,1) 60%,rgba(225,223,226,1) 100%);
+  cursor: default;
+  border-radius: 3px;
+  background-color: rgba(174, 167, 159, 0.6);
 }
 
-.TW3ScrollbarHandle:active {
-	background-image: -webkit-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:    -moz-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:     -ms-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:      -o-linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-	background-image:         linear-gradient(top,rgba(225,223,226,1)  0%,rgba(239,239,239,1) 60%, rgba(255,255,255,1) 100%);
-}
-
-.TW3ScrollbarHandle:Hover {
-	cursor: pointer;
-}
+/* ######################################################################### */
+/* TW3VerticalScrollbar                                                      */
+/* ######################################################################### */
 
 .TW3VerticalScrollbar {
-	border: 1px solid rgba(0,0,0,0.4);
-	overflow: hidden;
-	//background-color: #EFEFEF;
-	-webkit-touch-callout: none;
+  padding-top:      0px;
+  padding-bottom:   0px;
+  padding-left:     2px;
+  padding-right:    2px;
+  background-color: rgba(239, 239, 244, 0.4);
+  border-left:      1px solid rgba(81, 81, 81, 0.3)
 }
 
-.TW3VerticalScrollbar:disabled {
-	opacity: 0.5;
-	cursor: wait;
-}
+/* ######################################################################### */
+/* TW3HorizontalScrollbar                                                    */
+/* ######################################################################### */
 
 .TW3HorizontalScrollbar {
-	border: 1px solid rgba(0,0,0,0.4);
-	overflow: hidden;
-	-webkit-touch-callout: none;
+  padding-top:      2px;
+  padding-bottom:   2px;
+  padding-left:     0px;
+  padding-right:    0px;
+  background-color: rgba(239, 239, 244, 0.4);
+  border-top:       1px solid rgba(81, 81, 81, 0.3)
 }
 
-.TW3HorizontalScrollbar:disabled {
-	opacity: 0.5;
-	cursor: wait;
+/* ######################################################################### */
+/* TW3TabControl                                                    */
+/* ######################################################################### */
+
+.TW3TabControl {
+  padding: 0px;
+  font-size:    12px;
+  font-family:  "Helvetica Neue", Helvetica, "Ubuntu";
+    font-name:  "Helvetica Neue";
+    font-size:  14px;
 }
 
-.TW3ToolButton
-{
-	-webkit-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-	 -moz-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-	  -ms-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-	   -o-box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-		  box-shadow: 0 1px 1px #9aa5bb, 0 -1px 1px #8e96a5;
-
-	-webkit-border-radius: 5px;
-	 -moz-border-radius: 5px;
-	  -ms-border-radius: 5px;
-	   -o-border-radius: 5px;
-		  border-radius: 5px;
-
-  cursor: default;
-	color: #fff;
-	font-size: 12px;
-  border: solid 1px #54617d;
-	border-color: #484e59 #54617d #4c5c7a #54617d;
-
-  background: rgb(146,161,191); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(146,161,191,1) 0%, rgba(121,138,173,1) 25%, rgba(98,118,160,1) 50%, rgba(85,106,151,1) 53%, rgba(86,108,152,1) 75%, rgba(84,105,147,1) 95%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(146,161,191,1)), color-stop(25%,rgba(121,138,173,1)), color-stop(50%,rgba(98,118,160,1)), color-stop(53%,rgba(85,106,151,1)), color-stop(75%,rgba(86,108,152,1)), color-stop(95%,rgba(84,105,147,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* IE10+ */
-  background: linear-gradient(top,  rgba(146,161,191,1) 0%,rgba(121,138,173,1) 25%,rgba(98,118,160,1) 50%,rgba(85,106,151,1) 53%,rgba(86,108,152,1) 75%,rgba(84,105,147,1) 95%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92a1bf', endColorstr='#546993',GradientType=0 ); /* IE6-9 */
+.TW3Tab {
+ background-color: #FFFFFF;
 }
 
-.TW3ToolButton:active:enabled
-{
-  background: rgb(84,105,147); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(84,105,147,1) 5%, rgba(86,108,152,1) 25%, rgba(85,106,151,1) 47%, rgba(98,118,160,1) 50%, rgba(121,138,173,1) 75%, rgba(146,161,191,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%,rgba(84,105,147,1)), color-stop(25%,rgba(86,108,152,1)), color-stop(47%,rgba(85,106,151,1)), color-stop(50%,rgba(98,118,160,1)), color-stop(75%,rgba(121,138,173,1)), color-stop(100%,rgba(146,161,191,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* IE10+ */
-  background: linear-gradient(top,  rgba(84,105,147,1) 5%,rgba(86,108,152,1) 25%,rgba(85,106,151,1) 47%,rgba(98,118,160,1) 50%,rgba(121,138,173,1) 75%,rgba(146,161,191,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#546993', endColorstr='#92a1bf',GradientType=0 ); /* IE6-9 */
+.TW3TabHeaders {
+  margin: 0px;
+  padding: 2px;
 }
 
-.TW3ToolButton:disabled {
-	opacity: 0.5;
-  cursor: wait;
+.TW3TabHeader:active {
+  border-radius:  3px;
+  border-top:     1px solid rgba(200, 199, 204, 0.7);
+  border-left:    1px solid rgba(200, 199, 204, 0.7);
+  border-right:   1px solid rgba(200, 199, 204, 0.7);
+  border-bottom:  1px solid rgba(200, 199, 204, 0.7);
 }
 
-/* =============================================
- * TW3Panel
- * ============================================= */
+.TW3TabHeader {
+  font-family:      "Helvetica Neue", Helvetica, "Ubuntu";
+  font-name:        "Helvetica Neue";
+  font-size:        14px;
+  color: #ACACAC;
+  line-height: 40px;
+  margin-right: 4px;
+  padding-left: 16px;
+  padding-right: 18px;
+  min-width: 70px;
+  min-height: 80%;
+ }
 
-.TW3Panel {
-	cursor: inherited;
-	border: 2px solid #7c7a77;
-	resize: none;
-	font-size: 12px;
-	border-radius: 6px;
-	background-color: #FFF;
-}
-
-/* =============================================
- * TW3Toolbar
- * ============================================= */
-
-.TW3ToolbarButton {
-	border: 0;
-
-	border-right-style: solid;
-	border-right-width: 2px;
-	border-right-color: #FFFFFF;
-
-	color: #FFFFFF;
-	background-color: rgba(255,255,255,0.20);
-
-	font-size: 12px;
-	text-align: center;
-	text-shadow: 0 -1px -1px rgba(0,0,0,.30);
-}
-
-.TW3ToolbarButton:active {
-	background-color: rgba(0,0,0,0.20);
-}
-
-.TW3ToolbarButton:disabled {
-	background-color: transparent;
-}
-
-.ButtonDown {
-  border:2px inset;
-}
-
-.TW3Toolbar
-{
-  cursor: default;
-	background-image:-webkit-gradient(linear, left top, left bottom,
-		from(#b2bbca),
-		color-stop(0.25, #a7b0c3),
-		color-stop(0.5, #909cb3),
-		color-stop(0.5, #8593ac),
-		color-stop(0.75, #7c8ba5),
-		to(#73839f));
-  border-top: 1px solid #dde5ef;
-  border-bottom: 1px solid #2d3642;
-  -webkit-box-shadow: rgba(33, 33, 33, 0.2) 0 1px 1px;
-	/* box-shadow: rgba(33, 33, 33, 0.2) 0 1px 1px; */
-}
-
-/* =============================================
- * TW3Memo
- * ============================================= */
-
-.TW3Memo, .TW3EditBox, .TW3ComboBox {
-	border: 1px solid #acacac;
-	border-radius: 5px;
-	resize: none;
-	-webkit-user-select: auto;
-	user-select: auto;
-}
-
-/* =============================================
- * TW3HeaderControl
- * ============================================= */
-
-.TW3HeaderControl
-{
-  cursor: default;
-  border-bottom: 1px solid #2d3642;
-  border-top: 1px solid #cdd5df;
-  box-shadow: 0 1px 1px rgba(33, 33, 33, 0.2);
-
-  background: rgb(178,187,202);   /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(178,187,202,1) 1%, rgba(167,176,195,1) 25%, rgba(144,156,179,1) 47%, rgba(133,147,172,1) 50%, rgba(124,139,165,1) 75%, rgba(115,131,159,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(178,187,202,1)), color-stop(25%,rgba(167,176,195,1)), color-stop(47%,rgba(144,156,179,1)), color-stop(50%,rgba(133,147,172,1)), color-stop(75%,rgba(124,139,165,1)), color-stop(100%,rgba(115,131,159,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(178,187,202,1) 1%,rgba(167,176,195,1) 25%,rgba(144,156,179,1) 47%,rgba(133,147,172,1) 50%,rgba(124,139,165,1) 75%,rgba(115,131,159,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(178,187,202,1) 1%,rgba(167,176,195,1) 25%,rgba(144,156,179,1) 47%,rgba(133,147,172,1) 50%,rgba(124,139,165,1) 75%,rgba(115,131,159,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(178,187,202,1) 1%,rgba(167,176,195,1) 25%,rgba(144,156,179,1) 47%,rgba(133,147,172,1) 50%,rgba(124,139,165,1) 75%,rgba(115,131,159,1) 100%); /* IE10+ */
-  background: linear-gradient(top,  rgba(178,187,202,1) 1%,rgba(167,176,195,1) 25%,rgba(144,156,179,1) 47%,rgba(133,147,172,1) 50%,rgba(124,139,165,1) 75%,rgba(115,131,159,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2bbca', endColorstr='#73839f',GradientType=0 ); /* IE6-9 */
-}
-
-.TW3HeaderControl:disabled {
-	cursor: wait;
-	opacity: 0.5;
-}
-
-/* =============================================
- * TW3Label
- * ============================================= */
-
-.TW3Label, TW3LabelText {
-	opacity: 1.0;
-	cursor: default;
-}
-
-.TW3Label:disabled, TW3LabelText:disabled {
-	text-shadow: 0 1px 0 #fff;
-	opacity: 0.5;
-}
-
-
-/* =============================================
- * TW3SimpleButton
- * ============================================= */
-
-.TW3SimpleButton {
-  border-radius: 12px;
-  background-color: rgb(109,133,163);
-  border: solid 2px rgba(50,103,153,1);
-  text-decoration: none;
-  text-overflow: ellipsis;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.TW3SimpleButton:active {
-  color: #86B7D9;
-  border: solid 2px rgba(40,130,215,1.0);
-}
-
-/* =============================================
- * TW3Button
- * ============================================= */
-
-.TW3SimpleButton {
-  border-radius: 8px;
-  background-color: #FFFFFF;
-  border: solid 2px rgba(51,105,141,1);
-  text-decoration: none;
-  text-overflow: ellipsis;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.TW3SimpleButton:active {
-  color: #86B7D9;
-  border: solid 2px rgba(40,130,215,1.0);
-}
-
-.TW3Button {
-	  border: solid 2px rgba(32,32,33,0.4);
-	  border-radius: 8px;
-	  -webkit-border-radius: 8px;
-		 -moz-border-radius: 8px;
-		  -ms-border-radius: 8px;
-		   -o-border-radius: 8px;
-
-	  background: rgb(226,226,226); /* Old browsers */
-	  background: -moz-linear-gradient(top,  rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 52%, rgba(254,254,254,1) 100%); /* FF3.6+ */
-	  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(226,226,226,1)), color-stop(50%,rgba(219,219,219,1)), color-stop(52%,rgba(209,209,209,1)), color-stop(100%,rgba(254,254,254,1))); /* Chrome,Safari4+ */
-	  background: -webkit-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 52%,rgba(254,254,254,1) 100%); /* Chrome10+,Safari5.1+ */
-	  background: -o-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 52%,rgba(254,254,254,1) 100%); /* Opera 11.10+ */
-	  background: -ms-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 52%,rgba(254,254,254,1) 100%); /* IE10+ */
-	  background: linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 52%,rgba(254,254,254,1) 100%); /* W3C */
-	  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
-
-	  font-size: 18px;
-	  font-weight: thin;
-	  text-shadow: 1px 1px -1px #cecece;
-	  color:  #000;
-
-  -webkit-text-size-adjust: auto;
-	 -moz-text-size-adjust: auto;
-	  -ms-text-size-adjust: auto;
-	   -o-text-size-adjust: auto;
-}
-
-.TW3Button:active:enabled {
-	  color: #FFFFFF;
-
-	  background: rgb(207,231,250); /* Old browsers */
-	  background: -moz-linear-gradient(top,  rgba(207,231,250,1) 0%, rgba(99,147,193,1) 52%, rgba(78,136,191,1) 66%, rgba(192,224,249,1) 96%); /* FF3.6+ */
-	  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(207,231,250,1)), color-stop(52%,rgba(99,147,193,1)), color-stop(66%,rgba(78,136,191,1)), color-stop(96%,rgba(192,224,249,1))); /* Chrome,Safari4+ */
-	  background: -webkit-linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 52%,rgba(78,136,191,1) 66%,rgba(192,224,249,1) 96%); /* Chrome10+,Safari5.1+ */
-	  background: -o-linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 52%,rgba(78,136,191,1) 66%,rgba(192,224,249,1) 96%); /* Opera 11.10+ */
-	  background: -ms-linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 52%,rgba(78,136,191,1) 66%,rgba(192,224,249,1) 96%); /* IE10+ */
-	  background: linear-gradient(top,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 52%,rgba(78,136,191,1) 66%,rgba(192,224,249,1) 96%); /* W3C */
-	  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#c0e0f9',GradientType=0 ); /* IE6-9 */
-
-	  text-shadow: none;
-}
-
-.TW3Button:disabled {
-	opacity: 0.50;
-}
-
-
-/* =============================================
- * TW3ToggleSwitch
- * ============================================= */
-
-.TW3ToggleSwitch {
-	background-color: #FFF;
-	border:1px solid #AAA;
-	border-radius:6px;
-	color:#FFF;
-	font-weight:700;
-	overflow:hidden;
-	box-shadow:0 1px 0 #FFF;
-	user-select: none;
-}
-
-.TW3ToggleOnLabel {
-	border-radius: 6px;
-	text-align:center;
-	background:#007FEA;
-	text-shadow:0 -1px 0 #093B5C;
-	box-shadow:0 4px 5px -2px rgba(0,0,0,0.3) inset;
-}
-
-.TW3ToggleOffLabel {
-	border-radius: 6px;
-	text-align:center;
-	box-shadow:0 4px 5px -2px rgba(0,0,0,0.3) inset;
-}
-
-.TW3ToggleKnob {
-	cursor: pointer;
-	background-color: #FFF;
-	border:1px solid #AAA;
-	border-radius:4px;
-	color:#FFF;
-	font-weight:700;
-	overflow:hidden;
-	box-shadow:0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5);
-}
-
-.TW3ToggleKnob:hover {
-	background:#E5E5E5;
-}
-
-/* =============================================
- * Page Animation: BACKSCROLL
- * ============================================= */
-
-@-webkit-keyframes BACKSCROLL {
-	0% {
-		-webkit-transform: translateZ(0);
-		background-position: 0 0;
-	}
-	100% {
-		background-position: -557px 0;
-		-webkit-transform: translateZ(0);
-	}
-}
-
-@keyframes BACKSCROLL {
-	0% {
-		transform: translateZ(0);
-		background-position: 0 0;
-	}
-	100% {
-		background-position: -557px 0;
-		transform: translateZ(0);
-	}
-}
-
-/* =============================================
- * Page Animation: MOVE-LEFT
- * ============================================= */
-
-@-webkit-keyframes MOVE-LEFT {
-	0% {
-		-webkit-transform: translateX(100%);
-	}
-	100% {
-		-webkit-transform: translateX(0);
-	}
-}
-
-@-webkit-keyframes MOVE-OUT-LEFT {
-	0% {
-		-webkit-transform: translateX(0);
-	}
-	100% {
-		-webkit-transform: translateX(-100%);
-	}
-}
-
-@keyframes MOVE-LEFT {
-	0% {
-		transform: translateX(100%);
-	}
-	100% {
-		transform: translateX(0);
-	}
-}
-
-@keyframes MOVE-OUT-LEFT {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(-100%);
-	}
-}
-
-
-/* =============================================
- * Page Animation: MOVE-Right
- * ============================================= */
-
-@-webkit-keyframes MOVE-RIGHT {
-	0% {
-		-webkit-transform: translateX(-100%);
-	}
-	100% {
-		-webkit-transform: translateX(0);
-		visibility: hidden;
-	}
-}
-
-@-webkit-keyframes MOVE-OUT-RIGHT {
-	0% {
-		-webkit-transform: translateX(0);
-	}
-	100% {
-		-webkit-transform: translateX(100%);
-		visibility: hidden;
-	}
-}
-
-@keyframes MOVE-RIGHT {
-	0% {
-		transform: translateX(-100%);
-	}
-	100% {
-		transform: translateX(0);
-		visibility: hidden;
-	}
-}
-
-@keyframes MOVE-OUT-RIGHT {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(100%);
-		visibility: hidden;
-	}
-}
-
-/* =============================================
- * Page Animation: ROTATE-FOREVER
- * ============================================= */
-
-@-webkit-keyframes ROTATE-FOREVER {
-	from {
-		-webkit-transform: none;
-	}
-	to {
-		-webkit-transform: rotate(360deg);
-	}
-}
-
-@keyframes ROTATE-FOREVER {
-	from {
-		transform: none;
-	}
-	to {
-		transform: rotate(360deg);
-	}
+.TW3TabHeaderSelected {
+  color: #FFFFFF;
 }
