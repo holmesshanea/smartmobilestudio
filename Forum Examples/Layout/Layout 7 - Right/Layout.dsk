@@ -1,0 +1,18 @@
+﻿<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="1" col="21" row="38" splitview="0" designview="0" splitter="0.444444447755814" />
+      <activetab>Form1</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>431</BackgroundCompilations>
+      <EditTime>T00:06:36.779</EditTime>
+      <CompileTime>T00:00:00.000</CompileTime>
+      <TotalTime>T00:23:49.177</TotalTime>
+      <DesigningTime>T00:00:27.754</DesigningTime>
+      <RunningTime>T00:01:52.947</RunningTime>
+      <TotalLinesOfCode>81</TotalLinesOfCode>
+    </Statistics>
+  </state>
+</SMART>
