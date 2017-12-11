@@ -43,6 +43,8 @@ end;
 procedure TForm1.Resize;
 begin
   inherited;
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
   if Assigned(fLayout) then
   begin
    fLayout.Resize(self);

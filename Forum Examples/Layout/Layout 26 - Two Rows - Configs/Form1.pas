@@ -41,6 +41,8 @@ end;
 procedure TForm1.Resize;
 begin
   inherited;
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
   fLayout:= Layout.Client(Layout.Margins(10),
                           [Layout.Top(Layout.Height((ClientHeight DIV 2)-15), fTopRow),
                           Layout.Bottom(Layout.Height((ClientHeight DIV 2)-15), fBottomRow)]);

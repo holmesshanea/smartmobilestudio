@@ -66,9 +66,9 @@ end;
 procedure TForm2.Resize;
 begin
   inherited;
-  if Handle <> nil then
-  begin
-      fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+  fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
                             [Layout.Top(fLabel),
                              Layout.Client( Layout.Left(
                                             Layout.Spacing(5).Stretch,
@@ -76,11 +76,8 @@ begin
                                            ),
                             Layout.Bottom(fButton)]
                            );
-  end;
   if assigned(fLayout) then
-  begin
    fLayout.Resize(self);
-  end;
 end;
 
 initialization

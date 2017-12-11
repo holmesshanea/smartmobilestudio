@@ -38,16 +38,18 @@ begin
   fHeader:= TW3Panel.create(self);
   fColumn:= TW3Panel.create(self);
   fFooter:= TW3Panel.create(self);
-  fLayout:= Layout.Client(
-                         [Layout.Top(fHeader),
-                         Layout.Client(fColumn),
-                         Layout.Bottom(fFooter)]
-                         );
 end;
  
 procedure TForm1.Resize;
 begin
   inherited;
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+  fLayout:= Layout.Client(
+                         [Layout.Top(fHeader),
+                         Layout.Client(fColumn),
+                         Layout.Bottom(fFooter)]
+                         );
   if Assigned(fLayout) then
   begin
    fLayout.Resize(self);

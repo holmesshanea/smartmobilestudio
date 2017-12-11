@@ -1,12 +1,12 @@
 ﻿<SMART>
   <Statistics>
-    <BackgroundCompilations>467</BackgroundCompilations>
-    <EditTime>T00:07:07.970</EditTime>
+    <BackgroundCompilations>483</BackgroundCompilations>
+    <EditTime>T00:07:24.653</EditTime>
     <CompileTime>T00:00:00.000</CompileTime>
-    <TotalTime>T00:24:04.070</TotalTime>
-    <DesigningTime>T00:00:25.865</DesigningTime>
-    <RunningTime>T00:03:43.239</RunningTime>
-    <TotalLinesOfCode>93</TotalLinesOfCode>
+    <TotalTime>T00:24:33.002</TotalTime>
+    <DesigningTime>T00:00:25.873</DesigningTime>
+    <RunningTime>T00:03:45.544</RunningTime>
+    <TotalLinesOfCode>94</TotalLinesOfCode>
     <Snapshots>
       <Snapshot>
         <BackgroundCompilations>3</BackgroundCompilations>
@@ -357,6 +357,16 @@
         <RunningTime>T00:03:43.239</RunningTime>
         <TotalLinesOfCode>93</TotalLinesOfCode>
         <TimeStamp>2017-12-05T15:06:08.325</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>483</BackgroundCompilations>
+        <EditTime>T00:07:24.653</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T00:24:33.002</TotalTime>
+        <DesigningTime>T00:00:25.873</DesigningTime>
+        <RunningTime>T00:03:45.544</RunningTime>
+        <TotalLinesOfCode>94</TotalLinesOfCode>
+        <TimeStamp>2017-12-11T15:30:34.658</TimeStamp>
       </Snapshot>
     </Snapshots>
   </Statistics>

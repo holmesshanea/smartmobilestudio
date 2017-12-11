@@ -1,12 +1,12 @@
 ﻿<SMART>
   <Statistics>
-    <BackgroundCompilations>2031</BackgroundCompilations>
-    <EditTime>T00:31:39.218</EditTime>
+    <BackgroundCompilations>2077</BackgroundCompilations>
+    <EditTime>T00:32:24.054</EditTime>
     <CompileTime>T00:00:00.000</CompileTime>
-    <TotalTime>T07:13:53.840</TotalTime>
-    <DesigningTime>T00:00:27.813</DesigningTime>
-    <RunningTime>T00:09:12.747</RunningTime>
-    <TotalLinesOfCode>164</TotalLinesOfCode>
+    <TotalTime>T07:15:50.536</TotalTime>
+    <DesigningTime>T00:00:27.820</DesigningTime>
+    <RunningTime>T00:10:34.114</RunningTime>
+    <TotalLinesOfCode>165</TotalLinesOfCode>
     <Snapshots>
       <Snapshot>
         <BackgroundCompilations>3</BackgroundCompilations>
@@ -1427,6 +1427,36 @@
         <RunningTime>T00:09:12.747</RunningTime>
         <TotalLinesOfCode>164</TotalLinesOfCode>
         <TimeStamp>2017-12-08T17:25:44.273</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>2043</BackgroundCompilations>
+        <EditTime>T00:31:48.993</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T07:14:38.900</TotalTime>
+        <DesigningTime>T00:00:27.820</DesigningTime>
+        <RunningTime>T00:10:25.717</RunningTime>
+        <TotalLinesOfCode>164</TotalLinesOfCode>
+        <TimeStamp>2017-12-11T15:36:23.018</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>2047</BackgroundCompilations>
+        <EditTime>T00:31:51.965</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T07:14:47.556</TotalTime>
+        <DesigningTime>T00:00:27.820</DesigningTime>
+        <RunningTime>T00:10:28.256</RunningTime>
+        <TotalLinesOfCode>164</TotalLinesOfCode>
+        <TimeStamp>2017-12-11T15:36:31.674</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>2077</BackgroundCompilations>
+        <EditTime>T00:32:24.054</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T07:15:50.536</TotalTime>
+        <DesigningTime>T00:00:27.820</DesigningTime>
+        <RunningTime>T00:10:34.114</RunningTime>
+        <TotalLinesOfCode>165</TotalLinesOfCode>
+        <TimeStamp>2017-12-11T15:37:34.654</TimeStamp>
       </Snapshot>
     </Snapshots>
   </Statistics>

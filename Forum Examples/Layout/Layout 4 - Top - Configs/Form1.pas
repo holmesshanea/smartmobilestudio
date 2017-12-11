@@ -27,7 +27,6 @@ procedure TForm1.InitializeForm;
 begin
   inherited;
   // this is a good place to initialize components
-  fLayout:= Layout.Top(Layout.Height(50).Margins(10), fPanel);
 end;
 
 procedure TForm1.InitializeObject;
@@ -40,6 +39,8 @@ end;
 procedure TForm1.Resize;
 begin
   inherited;
+
+  fLayout:= Layout.Top(Layout.Height(50).Margins(10), fPanel);
   if Assigned(fLayout) then
   begin
    fLayout.Resize(self);

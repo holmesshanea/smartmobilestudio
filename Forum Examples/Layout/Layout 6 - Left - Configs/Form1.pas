@@ -34,12 +34,14 @@ begin
   inherited;
   {$I 'Form1:impl'}
   fPanel:= TW3Panel.create(self);
-  fLayout:= Layout.Left(Layout.Width(50).Margins(10), fPanel);
 end;
  
 procedure TForm1.Resize;
 begin
   inherited;
+    if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+   fLayout:= Layout.Left(Layout.Width(50).Margins(10), fPanel);
   if Assigned(fLayout) then
   begin
    fLayout.Resize(self);

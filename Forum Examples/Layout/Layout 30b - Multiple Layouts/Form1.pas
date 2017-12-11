@@ -80,9 +80,9 @@ end;
 procedure TForm1.Resize;
 begin
   inherited;
-  if Handle <> nil then
-  begin
-   fLeftLayout:= Layout.Client(
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+  fLeftLayout:= Layout.Client(
                               Layout.Top(Layout.Spacing(5).Stretch, [fLeftLbl, fLeftEdt, fLeftCxBx1, fLeftCxBx2, fLeftCxBx3, fLeftButton])
                               );
   fRightLayout:= Layout.Client(
@@ -95,8 +95,8 @@ begin
                               Layout.Client(fRightLayout)
                               ]
                               );
+  if assigned(fMainLayout) then
    fMainLayout.Resize(self);
-  end;
 end;
  
 initialization

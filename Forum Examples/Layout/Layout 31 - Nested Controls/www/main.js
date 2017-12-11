@@ -15483,12 +15483,12 @@ var TBinaryData = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TBinaryData.$Intf={
-   IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone]
+   IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
+   ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone]
    ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
-   ,IBinaryDataImport:[TBinaryData.FromBase64]
-   ,IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
    ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
    ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
+   ,IBinaryDataImport:[TBinaryData.FromBase64]
    ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize$1,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate,TAllocation.Release,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport]
    ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
 }
@@ -16762,11 +16762,9 @@ var TForm1 = {
    ///  [line: 38, column: 18, file: Form1]
    ,InitializeForm:function(Self) {
       TW3CustomForm.InitializeForm(Self);
-      Self.fMainLayout = Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,200),Self.fHeaderPanel);
-      Self.fHeaderLayout = Layout$1.Client$2(Layout$1,[Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fNameLbl), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fNameEdt), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fAddrLbl), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fAddrEdt), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fLocaLbl), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fLocaEdt)].slice());
    }
    /// procedure TForm1.InitializeObject()
-   ///  [line: 59, column: 18, file: Form1]
+   ///  [line: 44, column: 18, file: Form1]
    ,InitializeObject:function(Self) {
       TW3CustomForm.InitializeObject(Self);
       TW3CustomForm.SetCaption(Self,"W3Form");
@@ -16783,9 +16781,14 @@ var TForm1 = {
       Self.fLocaEdt = TW3TagContainer.Create$86$($New(TW3EditBox),Self.fHeaderPanel);
    }
    /// procedure TForm1.Resize()
-   ///  [line: 79, column: 18, file: Form1]
+   ///  [line: 63, column: 18, file: Form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
+      if ((!TControlHandleHelper$Valid$2(Self.FHandle$3))&&$SetIn(Self.FComponentState,3,0,9)) {
+         return;
+      }
+      Self.fMainLayout = Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,200),Self.fHeaderPanel);
+      Self.fHeaderLayout = Layout$1.Client$2(Layout$1,[Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fNameLbl), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fNameEdt), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fAddrLbl), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fAddrEdt), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fLocaLbl), Layout$1.Top$8(Layout$1,Layout$1.Height$11(Layout$1,32),Self.fLocaEdt)].slice());
       if (Self.fMainLayout) {
          TLayout.Resize$8$(Self.fMainLayout,Self);
          TLayout.Resize$8$(Self.fHeaderLayout,Self.fHeaderPanel);
@@ -18584,8 +18587,8 @@ var TCustomCodec = {
    ,MakeCodecInfo$:function($){return $.ClassType.MakeCodecInfo($)}
 };
 TCustomCodec.$Intf={
-   ICodecProcess:[TCustomCodec.Encode,TCustomCodec.Decode]
-   ,ICodecBinding:[TCustomCodec.RegisterBinding,TCustomCodec.UnRegisterBinding]
+   ICodecBinding:[TCustomCodec.RegisterBinding,TCustomCodec.UnRegisterBinding]
+   ,ICodecProcess:[TCustomCodec.Encode,TCustomCodec.Decode]
 }
 /// TBase64Codec = class (TCustomCodec)
 ///  [line: 32, column: 3, file: System.Codec.Base64]

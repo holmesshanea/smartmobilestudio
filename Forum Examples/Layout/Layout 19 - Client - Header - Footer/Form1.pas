@@ -36,15 +36,18 @@ begin
   {$I 'Form1:impl'}
   fHeader:= TW3Panel.create(self);
   fFooter:= TW3Panel.create(self);
-  fLayout:= Layout.Client(
-                          [Layout.Top(Layout.Height(50).Margins(10), fHeader),
-                          Layout.Bottom(Layout.Height(50).Margins(10), fFooter)]
-                          );
 end;
  
 procedure TForm1.Resize;
 begin
   inherited;
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+  fLayout:= Layout.Client(
+                          [Layout.Top(Layout.Height(50).Margins(10), fHeader),
+                          Layout.Bottom(Layout.Height(50).Margins(10), fFooter)]
+                          );
+
   if Assigned(fLayout) then
   begin
    fLayout.Resize(self);

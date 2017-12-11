@@ -63,17 +63,18 @@ begin
    Application.GotoForm('Form2', feFromRight);
   end;
 
-  fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
-                            [Layout.Top(fLabel),
-                            Layout.Client(fPanel),
-                            Layout.Bottom(fButton)]
-                           );
-
 end;
 
 procedure TForm1.Resize;
 begin
   inherited;
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+   fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
+                            [Layout.Top(fLabel),
+                            Layout.Client(fPanel),
+                            Layout.Bottom(fButton)]
+                           );
   if (assigned(fLayout)) then
    fLayout.Resize(self);
 end;

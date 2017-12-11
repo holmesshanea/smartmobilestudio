@@ -36,16 +36,18 @@ begin
   {$I 'Form1:impl'}
   fLeftBar:= TW3Panel.create(self);
   fRightBar:= TW3Panel.create(self);
-
-  fLayout:= Layout.Client(Layout.Margins(10),
-                          [Layout.Left(Layout.Width(100), fLeftBar),
-                          Layout.Right(Layout.Width(100), fRightBar)]
-                          );
 end;
  
 procedure TForm1.Resize;
 begin
   inherited;
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+  fLayout:= Layout.Client(Layout.Margins(10),
+                          [Layout.Left(Layout.Width(100), fLeftBar),
+                          Layout.Right(Layout.Width(100), fRightBar)]
+                          );
+
   if Assigned(fLayout) then
   begin
    fLayout.Resize(self);

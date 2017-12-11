@@ -81,8 +81,15 @@ begin
   fButton3.Caption:= 'Delete';
   fButton4:= TW3Button.Create(fButtonPanel);
   fButton4.Caption:= 'Clear';
+end;
 
-     fContactLayout:= Layout.Client(
+procedure TForm1.Resize;
+begin
+  inherited;
+   if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+
+   fContactLayout:= Layout.Client(
                                   [
                                   Layout.Top(Layout.Height(32), fNameLbl),
                                   Layout.Top(Layout.Height(32), fNameEdt),
@@ -98,13 +105,6 @@ begin
                            );
 
 
-end;
-
-procedure TForm1.Resize;
-begin
-  inherited;
-  if Handle <> nil then
-  begin
     if ClientHeight > ClientWidth then
 
     fMainLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
@@ -123,11 +123,12 @@ begin
                               );
 
 
-
-   fMainLayout.Resize(self);
-   fContactLayout.Resize(fContactPanel);
-   fButtonLayout.Resize(fButtonPanel);
-  end;
+   if assigned(fMainLayout) then
+   begin
+    fMainLayout.Resize(self);
+    fContactLayout.Resize(fContactPanel);
+    fButtonLayout.Resize(fButtonPanel);
+   end;
 end;
  
 initialization

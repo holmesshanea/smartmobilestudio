@@ -44,14 +44,14 @@ begin
   fBody:= TW3Panel.create(self);
   fRightBar:= TW3Panel.create(self);
   fFooter:= TW3Panel.create(self);
-
 end;
  
 procedure TForm1.Resize;
 begin
   inherited;
-  if self.Handle<> nil then
-  begin
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+
    fLayout:= Layout.Client(Layout.Margins(10).Spacing(10),
                          [Layout.Top(Layout.Height(ClientHeight DIV 4), fHeader),
                           Layout.Top(Layout.Height(ClientHeight DIV 6), fNav),
@@ -60,9 +60,8 @@ begin
                                         Layout.Client(fBody)]),
                          Layout.Bottom(Layout.Height(ClientHeight DIV 4),fFooter)]
                          );
-
+  if assigned(fLayout) then
    fLayout.Resize(self);
-  end;
 end;
  
 initialization

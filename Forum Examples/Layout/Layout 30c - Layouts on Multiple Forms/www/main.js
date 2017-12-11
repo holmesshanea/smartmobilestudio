@@ -3623,8 +3623,8 @@ var TAllocation = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TAllocation.$Intf={
-   IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize$1,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate,TAllocation.Release,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport]
-   ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
+   IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
+   ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize$1,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate,TAllocation.Release,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport]
 }
 function a$314(Self) {
    return ((!Self[0]())?true:false);
@@ -15691,14 +15691,14 @@ var TBinaryData = {
    ,HandleReleased$:function($){return $.ClassType.HandleReleased($)}
 };
 TBinaryData.$Intf={
-   IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
-   ,IBinaryDataImport:[TBinaryData.FromBase64]
+   IBinaryDataImport:[TBinaryData.FromBase64]
    ,IBinaryDataWriteAccess:[TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
    ,IBinaryDataReadWriteAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes,TBinaryData.AppendBytes,TBinaryData.AppendStr,TBinaryData.AppendMemory,TBinaryData.AppendBuffer,TBinaryData.AppendFloat32,TBinaryData.AppendFloat64,TBinaryData.Write$2,TBinaryData.WriteFloat32,TBinaryData.WriteFloat64,TBinaryData.CopyFrom$2,TBinaryData.CopyFromMemory,TBinaryData.CutBinaryData,TBinaryData.CutStream,TBinaryData.CutTypedArray]
-   ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
    ,IBinaryDataExport:[TBinaryData.ToBase64,TBinaryData.ToString,TBinaryData.ToTypedArray,TBinaryData.ToBytes,TBinaryData.ToHexDump,TBinaryData.ToStream,TBinaryData.Clone]
-   ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize$1,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate,TAllocation.Release,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport]
+   ,IBinaryDataBitAccess:[TBinaryData.GetBitCount,TBinaryData.GetBit$1,TBinaryData.SetBit$1]
+   ,IBinaryDataReadAccess:[TBinaryData.ReadFloat32,TBinaryData.ReadFloat64,TBinaryData.ReadBool,TBinaryData.ReadInt,TBinaryData.ReadStr$1,TBinaryData.ReadBytes]
    ,IBinaryTransport:[TAllocation.DataOffset$1,TAllocation.DataGetSize$1,TAllocation.DataRead$1,TAllocation.DataWrite$1]
+   ,IAllocation:[TAllocation.GetHandle,TAllocation.GetTotalSize$1,TAllocation.GetSize$3,TAllocation.GetTransport,TAllocation.Allocate,TAllocation.Release,TAllocation.Grow,TAllocation.Shrink,TAllocation.ReAllocate,TAllocation.Transport]
 }
 /// EBinaryData = class (EW3Exception)
 ///  [line: 125, column: 3, file: system.memory.buffer]
@@ -17152,12 +17152,15 @@ var TForm1 = {
       TW3CustomControl._setMouseClick(Self.fButton$1,function (Sender$14) {
          TW3CustomApplication.GotoForm(Application(),"Form2",1);
       });
-      Self.fLayout$1 = Layout$1.Client(Layout$1,TLayoutConfig.Spacing$(Layout$1.Margins$2(Layout$1,5),5),[Layout$1.Top$10(Layout$1,Self.fLabel$1), Layout$1.Client$3(Layout$1,Self.fPanel), Layout$1.Bottom$7(Layout$1,Self.fButton$1)].slice());
    }
    /// procedure TForm1.Resize()
-   ///  [line: 74, column: 18, file: Form1]
+   ///  [line: 68, column: 18, file: Form1]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
+      if ((!TControlHandleHelper$Valid$2(Self.FHandle$3))&&$SetIn(Self.FComponentState,3,0,9)) {
+         return;
+      }
+      Self.fLayout$1 = Layout$1.Client(Layout$1,TLayoutConfig.Spacing$(Layout$1.Margins$2(Layout$1,5),5),[Layout$1.Top$10(Layout$1,Self.fLabel$1), Layout$1.Client$3(Layout$1,Self.fPanel), Layout$1.Bottom$7(Layout$1,Self.fButton$1)].slice());
       if (Self.fLayout$1) {
          TLayout.Resize$8$(Self.fLayout$1,Self);
       }
@@ -18311,9 +18314,10 @@ var TForm2 = {
    ///  [line: 66, column: 18, file: Form2]
    ,Resize:function(Self) {
       TW3MovableControl.Resize(Self);
-      if (Self.FHandle$3) {
-         Self.fLayout = Layout$1.Client(Layout$1,TLayoutConfig.Spacing$(Layout$1.Margins$2(Layout$1,5),5),[Layout$1.Top$10(Layout$1,Self.fLabel), Layout$1.Client$3(Layout$1,Layout$1.Left$8(Layout$1,TLayoutConfig.Stretch$2$(Layout$1.Spacing$1(Layout$1,5)),[Self.fListBox1, Self.fListBox2].slice())), Layout$1.Bottom$7(Layout$1,Self.fButton)].slice());
+      if ((!TControlHandleHelper$Valid$2(Self.FHandle$3))&&$SetIn(Self.FComponentState,3,0,9)) {
+         return;
       }
+      Self.fLayout = Layout$1.Client(Layout$1,TLayoutConfig.Spacing$(Layout$1.Margins$2(Layout$1,5),5),[Layout$1.Top$10(Layout$1,Self.fLabel), Layout$1.Client$3(Layout$1,Layout$1.Left$8(Layout$1,TLayoutConfig.Stretch$2$(Layout$1.Spacing$1(Layout$1,5)),[Self.fListBox1, Self.fListBox2].slice())), Layout$1.Bottom$7(Layout$1,Self.fButton)].slice());
       if (Self.fLayout) {
          TLayout.Resize$8$(Self.fLayout,Self);
       }

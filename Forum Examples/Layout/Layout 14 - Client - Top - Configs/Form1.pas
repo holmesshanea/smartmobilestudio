@@ -42,6 +42,11 @@ end;
 procedure TForm1.Resize;
 begin
   inherited;
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+  fLayout:= Layout.Client(
+                          Layout.Top(Layout.Height(50).Margins(10), fPanel)
+                          );
   if Assigned(fLayout) then
   begin
    fLayout.Resize(self);

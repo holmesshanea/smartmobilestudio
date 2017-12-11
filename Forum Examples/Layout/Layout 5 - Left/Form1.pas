@@ -27,7 +27,6 @@ procedure TForm1.InitializeForm;
 begin
   inherited;
   // this is a good place to initialize components
-  fLayout:= Layout.Left(fPanel);
 end;
 
 procedure TForm1.InitializeObject;
@@ -41,6 +40,9 @@ end;
 procedure TForm1.Resize;
 begin
   inherited;
+  if not Handle.Valid and (csReady in ComponentState) then
+   exit;
+  fLayout:= Layout.Left(fPanel);
   if Assigned(fLayout) then
   begin
    fLayout.Resize(self);

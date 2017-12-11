@@ -1,21 +1,21 @@
 ﻿<SMART>
   <state>
     <editor>
-      <tab filename="Form1" fullname="Form1.pas" topline="43" col="5" row="83" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Form1" fullname="Form1.pas" topline="40" col="1" row="73" splitview="0" designview="0" splitter="0.444444447755814" />
       <tab filename="Layout" fullname="Layout.spr" topline="1" col="1" row="1" />
-      <tab filename="Form2" fullname="Form2.pas" topline="48" col="5" row="88" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Form2" fullname="Form2.pas" topline="39" col="1" row="69" splitview="0" designview="0" splitter="0.444444447755814" />
       <tab filename="Unit1" fullname="Unit1.pas" topline="1" col="14" row="34" />
-      <activetab>Form2</activetab>
+      <activetab>Form1</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>2849</BackgroundCompilations>
-      <EditTime>T00:43:59.128</EditTime>
+      <BackgroundCompilations>2880</BackgroundCompilations>
+      <EditTime>T00:44:26.172</EditTime>
       <CompileTime>T00:00:00.000</CompileTime>
-      <TotalTime>T09:06:23.922</TotalTime>
-      <DesigningTime>T00:01:54.192</DesigningTime>
-      <RunningTime>T00:39:13.844</RunningTime>
-      <TotalLinesOfCode>218</TotalLinesOfCode>
+      <TotalTime>T09:07:33.517</TotalTime>
+      <DesigningTime>T00:01:54.207</DesigningTime>
+      <RunningTime>T00:39:21.460</RunningTime>
+      <TotalLinesOfCode>216</TotalLinesOfCode>
     </Statistics>
   </state>
 </SMART>

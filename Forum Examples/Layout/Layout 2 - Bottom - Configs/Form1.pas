@@ -40,7 +40,8 @@ end;
 procedure TForm1.Resize;
 begin
   inherited;
-  if Handle <> nil then
+   if not Handle.Valid and (csReady in ComponentState) then
+   exit;
    fLayout:= Layout.Bottom(Layout.Height(ClientHeight Div 4).Margins(10), fPanel);
   if Assigned(fLayout) then
   begin
