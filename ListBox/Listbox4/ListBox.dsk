@@ -1,0 +1,20 @@
+﻿<SMART>
+  <state>
+    <editor>
+      <tab filename="Form1" fullname="Form1.pas" topline="1" col="57" row="15" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="ListBox" fullname="ListBox.spr" topline="1" col="1" row="1" />
+      <tab filename="XListBoxItem" fullname="XListBoxItem.pas" topline="1" col="2" row="13" />
+      <activetab>Form1</activetab>
+      <breakpoints />
+    </editor>
+    <Statistics>
+      <BackgroundCompilations>838</BackgroundCompilations>
+      <EditTime>T00:12:56.350</EditTime>
+      <CompileTime>T00:00:00.000</CompileTime>
+      <TotalTime>T13:54:09.789</TotalTime>
+      <DesigningTime>T00:01:53.619</DesigningTime>
+      <RunningTime>T00:05:09.955</RunningTime>
+      <TotalLinesOfCode>164</TotalLinesOfCode>
+    </Statistics>
+  </state>
+</SMART>
