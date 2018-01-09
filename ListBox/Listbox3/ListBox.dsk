@@ -1,21 +1,21 @@
 ﻿<SMART>
   <state>
     <editor>
-      <tab filename="XListBoxItem" fullname="XListBoxItem.pas" topline="18" col="47" row="27" />
-      <tab filename="Form1" fullname="Form1.pas" topline="87" col="4" row="116" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="default.css" fullname="default.css" topline="1503" col="17" row="1540" />
+      <tab filename="XListBoxItem" fullname="XListBoxItem.pas" topline="40" col="1" row="72" />
+      <tab filename="Form1" fullname="Form1.pas" topline="1" col="71" row="11" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="default.css" fullname="default.css" topline="1498" col="28" row="1546" />
       <tab filename="ListBox" fullname="ListBox.spr" topline="1" col="1" row="1" />
-      <activetab>ListBox</activetab>
+      <activetab>Form1</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>1288</BackgroundCompilations>
-      <EditTime>T00:20:28.145</EditTime>
+      <BackgroundCompilations>1322</BackgroundCompilations>
+      <EditTime>T00:21:00.407</EditTime>
       <CompileTime>T00:00:00.000</CompileTime>
-      <TotalTime>T03:29:20.177</TotalTime>
-      <DesigningTime>T00:01:57.261</DesigningTime>
-      <RunningTime>T00:08:46.552</RunningTime>
-      <TotalLinesOfCode>243</TotalLinesOfCode>
+      <TotalTime>T03:33:18.812</TotalTime>
+      <DesigningTime>T00:01:57.263</DesigningTime>
+      <RunningTime>T00:09:12.533</RunningTime>
+      <TotalLinesOfCode>244</TotalLinesOfCode>
     </Statistics>
   </state>
 </SMART>

@@ -1,12 +1,12 @@
 ﻿<SMART>
   <Statistics>
-    <BackgroundCompilations>1287</BackgroundCompilations>
-    <EditTime>T00:20:28.145</EditTime>
+    <BackgroundCompilations>1321</BackgroundCompilations>
+    <EditTime>T00:21:00.407</EditTime>
     <CompileTime>T00:00:00.000</CompileTime>
-    <TotalTime>T03:29:19.976</TotalTime>
-    <DesigningTime>T00:01:57.255</DesigningTime>
-    <RunningTime>T00:08:42.396</RunningTime>
-    <TotalLinesOfCode>243</TotalLinesOfCode>
+    <TotalTime>T03:33:18.812</TotalTime>
+    <DesigningTime>T00:01:57.263</DesigningTime>
+    <RunningTime>T00:08:56.272</RunningTime>
+    <TotalLinesOfCode>244</TotalLinesOfCode>
     <Snapshots>
       <Snapshot>
         <BackgroundCompilations>3</BackgroundCompilations>
@@ -747,6 +747,36 @@
         <RunningTime>T00:08:42.396</RunningTime>
         <TotalLinesOfCode>243</TotalLinesOfCode>
         <TimeStamp>2018-01-09T10:32:50.427</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>1300</BackgroundCompilations>
+        <EditTime>T00:20:41.623</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T03:31:04.135</TotalTime>
+        <DesigningTime>T00:01:57.263</DesigningTime>
+        <RunningTime>T00:08:46.552</RunningTime>
+        <TotalLinesOfCode>243</TotalLinesOfCode>
+        <TimeStamp>2018-01-09T12:43:14.066</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>1317</BackgroundCompilations>
+        <EditTime>T00:20:52.796</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T03:31:35.844</TotalTime>
+        <DesigningTime>T00:01:57.263</DesigningTime>
+        <RunningTime>T00:08:50.343</RunningTime>
+        <TotalLinesOfCode>243</TotalLinesOfCode>
+        <TimeStamp>2018-01-09T12:43:45.775</TimeStamp>
+      </Snapshot>
+      <Snapshot>
+        <BackgroundCompilations>1321</BackgroundCompilations>
+        <EditTime>T00:21:00.407</EditTime>
+        <CompileTime>T00:00:00.000</CompileTime>
+        <TotalTime>T03:33:18.812</TotalTime>
+        <DesigningTime>T00:01:57.263</DesigningTime>
+        <RunningTime>T00:08:56.272</RunningTime>
+        <TotalLinesOfCode>244</TotalLinesOfCode>
+        <TimeStamp>2018-01-09T12:45:28.743</TimeStamp>
       </Snapshot>
     </Snapshots>
   </Statistics>

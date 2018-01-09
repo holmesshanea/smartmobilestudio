@@ -37,17 +37,17 @@ implementation
 procedure TXListBoxItemData.RemoveSelectedStyle;
 begin
   //TXListBoxItem(ItemObject).StyleClass:= 'XListBoxItemStyle';
-  //TXListBoxItem(ItemObject).Label.StyleClass:= 'XListBoxItemStyle';
-  TXListBoxItem(ItemObject).Label.Color:= clWhite;
-  TXListBoxItem(ItemObject).Label.Font.Color:= clBlack;
+  TXListBoxItem(ItemObject).Label.StyleClass:= 'XListBoxItemStyle';
+  //TXListBoxItem(ItemObject).Label.Color:= clWhite;
+  //TXListBoxItem(ItemObject).Label.Font.Color:= clBlack;
 end;
 
 procedure TXListBoxItemData.SetSelectedStyle;
 begin
   //TXListBoxItem(ItemObject).StyleClass:= 'XListBoxItemSelectedStyle';
-  //TXListBoxItem(ItemObject).Label.StyleClass:= 'XListBoxItemSelectedStyle';
-  TXListBoxItem(ItemObject).Label.Color:= clBlack;
-  TXListBoxItem(ItemObject).Label.Font.Color:= clWhite;
+  TXListBoxItem(ItemObject).Label.StyleClass:= 'XListBoxItemSelectedStyle';
+  //TXListBoxItem(ItemObject).Label.Color:= clBlack;
+  //TXListBoxItem(ItemObject).Label.Font.Color:= clWhite;
 end;
 
 

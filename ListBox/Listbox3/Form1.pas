@@ -109,6 +109,7 @@ begin
   inherited;
   {$I 'Form1:impl'}
   W3Listbox1:= TW3ListBox.create(self);
+  W3Listbox1.RecycleControls := False;
   W3ListBox1.ItemClass:= TXListBoxItem;
   W3ListBox1.ItemDataClass:= TXListBoxItemData;
 //  W3ListBox1.OnItemClick:= HandleItemClick;
