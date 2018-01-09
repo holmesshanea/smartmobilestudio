@@ -20,13 +20,35 @@ type
     procedure FinalizeObject; override;
     procedure Resize; override;
   public
-   property Text: string read (fLabel.Caption) write (fLabel.Caption);
-   property Url: String read  (fImage.Url) write (fImage.Url);
+   property Label: TW3Label read fLabel write fLabel;
+   property Image: TW3Image read fImage write fImage;
+  end;
+
+  TXListBoxItemData = class(TW3ListBoxItemData)
+  protected
+    procedure RemoveSelectedStyle; override;
+    procedure SetSelectedStyle; override;
   end;
 
 implementation
 
 { TXListBoxItem }
+
+procedure TXListBoxItemData.RemoveSelectedStyle;
+begin
+  //TXListBoxItem(ItemObject).StyleClass:= 'XListBoxItemStyle';
+  //TXListBoxItem(ItemObject).Label.StyleClass:= 'XListBoxItemStyle';
+  TXListBoxItem(ItemObject).Label.Color:= clWhite;
+  TXListBoxItem(ItemObject).Label.Font.Color:= clBlack;
+end;
+
+procedure TXListBoxItemData.SetSelectedStyle;
+begin
+  //TXListBoxItem(ItemObject).StyleClass:= 'XListBoxItemSelectedStyle';
+  //TXListBoxItem(ItemObject).Label.StyleClass:= 'XListBoxItemSelectedStyle';
+  TXListBoxItem(ItemObject).Label.Color:= clBlack;
+  TXListBoxItem(ItemObject).Label.Font.Color:= clWhite;
+end;
 
 
 procedure TXListBoxItem.FinalizeObject;

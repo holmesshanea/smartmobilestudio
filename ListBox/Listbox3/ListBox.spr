@@ -1,4 +1,4 @@
-uses SmartCL.System, Unit1, XListBoxItem;
+uses SmartCL.System, Unit1;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
 try

@@ -2,7 +2,7 @@
   <Project version="2" subversion="9">
     <Name>ListBox</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2018-01-08T16:33:48.079</Modified>
+    <Modified>2018-01-09T10:32:50.426</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -11,7 +11,7 @@
     <VendorSpecific>
       <Apple>
         <FormatDetection>1</FormatDetection>
-        <StatusBarStyle>black</StatusBarStyle>
+        <StatusBarStyle>default</StatusBarStyle>
         <WebAppCapable>1</WebAppCapable>
       </Apple>
       <ChromeApp>
@@ -20,7 +20,7 @@
         <OfflineEnabled>1</OfflineEnabled>
       </ChromeApp>
       <Cordova>
-        <WidgetID></WidgetID>
+        <WidgetID>com.smartmobilestudio.app</WidgetID>
         <AllowIntent>http://*/*
 https://*/*
 tel:*
@@ -68,7 +68,7 @@ geo:*</AllowIntent>
         <GenerateCordovaConfigXML>0</GenerateCordovaConfigXML>
         <ExternalCSS>1</ExternalCSS>
         <Theme>default.css</Theme>
-        <CustomTheme>0</CustomTheme>
+        <CustomTheme>1</CustomTheme>
         <EmbedJavaScript>1</EmbedJavaScript>
       </Linker>
       <Output>
@@ -87,13 +87,17 @@ geo:*</AllowIntent>
       </Execute>
       <WebFonts>
         <usewebfonts>0</usewebfonts>
+        <webfontitem>
+          <fontname>Ubuntu</fontname>
+          <fonturl>https://fonts.googleapis.com/css?family=Ubuntu</fonturl>
+        </webfontitem>
       </WebFonts>
     </Options>
     <Files>
       <File type="main">
         <Name>ListBox</Name>
         <Created>2017-09-30T15:02:46.594Z</Created>
-        <Modified>2017-09-30T18:47:42.126</Modified>
+        <Modified>2018-01-09T09:26:41.415</Modified>
         <Filename>ListBox.spr</Filename>
       </File>
       <File type="unit">
@@ -105,7 +109,7 @@ geo:*</AllowIntent>
       <File type="form">
         <Name>Form1</Name>
         <Created>2017-09-30T15:02:46.595Z</Created>
-        <Modified>2018-01-08T16:28:07.582</Modified>
+        <Modified>2018-01-09T09:59:45.517</Modified>
         <Filename>Form1.pas</Filename>
         <AutoCreate>
           <IsAutoCreate>1</IsAutoCreate>
@@ -116,7 +120,7 @@ geo:*</AllowIntent>
       <File type="unit">
         <Name>XListBoxItem</Name>
         <Created>2017-09-30T18:47:41.566Z</Created>
-        <Modified>2017-09-30T18:47:41.566</Modified>
+        <Modified>2018-01-09T10:01:44.173</Modified>
         <Filename>XListBoxItem.pas</Filename>
       </File>
       <File type="resource">
@@ -124,6 +128,12 @@ geo:*</AllowIntent>
         <Created>2017-09-30T20:32:08.713Z</Created>
         <Modified>2017-09-30T20:32:08.713</Modified>
         <Filename>www\res\1.png</Filename>
+      </File>
+      <File type="css">
+        <Name>default.css</Name>
+        <Created>2018-01-09T09:49:49.669Z</Created>
+        <Modified>2018-01-09T09:54:11.942</Modified>
+        <Filename>default.css</Filename>
       </File>
     </Files>
     <Target>Browser</Target>

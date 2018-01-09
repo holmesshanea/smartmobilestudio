@@ -31,8 +31,8 @@ procedure TForm1.HandleShowItem(Sender: TW3ListBox; Item: TW3ListBoxItemData);
 begin
  if Item.ItemObject is TXListBoxItem then
   begin
-    TXListBoxItem(Item.ItemObject).Text:= Item.Caption;
-    TXListBoxItem(Item.ItemObject).Url:=  'res\' + intToStr(Item.Index + 1) + '.png';
+    TXListBoxItem(Item.ItemObject).Label.Caption:= Item.Caption;
+    TXListBoxItem(Item.ItemObject).Image.Url:=  'res\' + intToStr(Item.Index + 1) + '.png';
   end;
 end;
 
@@ -110,9 +110,10 @@ begin
   {$I 'Form1:impl'}
   W3Listbox1:= TW3ListBox.create(self);
   W3ListBox1.ItemClass:= TXListBoxItem;
-  W3ListBox1.OnItemClick:= HandleItemClick;
+  W3ListBox1.ItemDataClass:= TXListBoxItemData;
+//  W3ListBox1.OnItemClick:= HandleItemClick;
   W3ListBox1.OnShowItem:= HandleShowItem;
-  W3ListBox1.OnSelected:= HandleItemSelected;
+ // W3ListBox1.OnSelected:= HandleItemSelected;
 end;
  
 procedure TForm1.Resize;

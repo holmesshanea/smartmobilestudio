@@ -1234,3 +1234,12 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
   color: #FFFFFF;
 }
 
+.XListBoxItemStyle{
+ background-color: #000000;
+ color: #FFFFFF
+}
+
+.XListBoxItemSelectedStyle{
+ color: #000000;
+ background-color: #FFFFFF
+}
