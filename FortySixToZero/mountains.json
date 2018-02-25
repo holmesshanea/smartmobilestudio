@@ -1,0 +1,36 @@
+{
+	"mountains": [{
+		"rank": "1",
+		"name": "Mount Marcy",
+		"elevation": "5344",
+                "prominence": "4914",
+                "range": "Marcy Group",
+                "coords": "44.112857, -73.923784",
+                "completed": "false",
+                "date": "YYYY-MM-DD",
+                "notes": ""
+	}, 
+        {
+		"rank": "2",
+		"name": "Algonquin Peak",
+		"elevation": "5115",
+                "prominence": "2097",
+                "range": "McIntyre Mountains",
+                "coords": "44.143624, -73.986721",
+                "completed": "false",
+                "date": "YYYY-MM-DD",
+                "notes": ""
+	}, 
+        {
+		"rank": "3",
+		"name": "Mount Haystack",
+		"elevation": "4961",
+                "prominence": "827",
+                "range": "Marcy Group",
+                "coords": "44.105796, -73.900787",
+                "completed": "false",
+                "date": "YYYY-MM-DD",
+                "notes": ""
+	}
+]
+}

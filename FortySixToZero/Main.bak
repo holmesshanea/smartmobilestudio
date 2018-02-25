@@ -1,0 +1,148 @@
+unit Main;
+
+interface
+
+uses 
+  System.Colors,
+  System.Types,
+  System.JSON,
+  System.Types.Convert,
+  System.Objects,
+  System.Time,
+  SmartCL.System,
+  SmartCL.Time,
+  SmartCL.Graphics,
+  SmartCL.Components,
+  SmartCL.FileUtils,
+  SmartCL.Forms,
+  SmartCL.Fonts,
+  SmartCL.Theme,
+  SmartCL.Borders,
+  SmartCL.Application,
+  SmartCL.Layout,
+  SmartCL.Controls.Label,
+  SmartCL.Controls.Image,
+  SmartCL.Controls.Button;
+
+type
+  TfrmMain = class(TW3Form)
+  private
+    {$I 'Main:intf'}
+    fHeader: TW3Label;
+    fImage: TW3Image;
+    fSendBtn: TW3Button;
+    fContinueBtn: TW3Button;
+    fLayout: TLayout;
+  protected
+    procedure HandleSendClick(Sender: TObject);
+    procedure HandleContinueClick(Sender: TObject);
+    procedure InitializeForm; override;
+    procedure InitializeObject; override;
+    procedure Resize; override;
+    procedure FormActivated; override;
+    procedure FormDeactivated;override;
+  end;
+
+implementation
+
+uses UntCommon, Mountains;
+
+{ TMain }
+
+procedure TfrmMain.HandleContinueClick(Sender: TObject);
+begin
+ Application.GotoForm('Mountains', feFromRight);
+end;
+
+procedure TfrmMain.HandleSendClick(Sender: TObject);
+begin
+ //mail completion to ADK46ers
+end;
+
+procedure TfrmMain.FormDeactivated;
+begin
+  FLayout:= Nil;
+  inherited;
+end;
+
+procedure TfrmMain.FormActivated;
+begin
+  inherited;
+  if CompArray.Length < 46 then
+  begin
+   fHeader.Caption:= 'Remaining';
+   fImage.Url:= 'res\100X100_' + intToStr(46 - CompArray.Length) + '.png';
+  end
+  else
+  begin
+   fSendBtn.Enabled:= True;
+   fHeader.Caption:= 'Congratulations!';
+   fImage.Url:= 'res\adk46erlogo.png';
+  end;
+end;
+
+procedure TfrmMain.InitializeForm;
+begin
+  inherited;
+  // this is a good place to initialize components
+  self.Color:= clWhite;
+
+end;
+
+procedure TfrmMain.InitializeObject;
+begin
+  inherited;
+  {$I 'Main:impl'}
+  handle.addEventListener('devicemotion', @Resize, false);
+  fHeader:= TW3Label.Create(self);
+  fHeader.Height:= 32;
+  fHeader.Caption:= 'Remaining';
+  fHeader.AlignText:= taCenter;
+  fHeader.StyleClass:= 'header';
+  fImage:= TW3Image.Create(self);
+  fImage.Width:= 150; fImage.Height:= 150;
+
+  fSendBtn:= TW3Button.Create(self);
+  fSendBtn.Height:= 32; fSendBtn.Width:= 125;
+  fSendBtn.Caption:= 'Send';
+  fSendBtn.OnClick:= HandleSendClick;
+  fSendBtn.Enabled:= False;
+
+  fContinueBtn:= TW3Button.Create(self);
+  fContinueBtn.Height:= 32; fContinueBtn.Width:= 125;
+  fContinueBtn.Caption:= 'Continue';
+  fContinueBtn.OnClick:= HandleContinueClick;
+
+  fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
+                          [
+                           Layout.Top(fHeader),
+                           //Layout.Bottom(Layout.Height(32), Layout.Center(fContinueBtn)),
+                           Layout.Bottom(Layout.Height(32), Layout.Left(Layout.Spacing(5).Stretch, [fSendBtn, fContinueBtn])),
+                           Layout.Client(Layout.Center(fImage))
+                          ]
+                          );
+end;
+ 
+procedure TfrmMain.Resize;
+begin
+  inherited;
+  if  Handle.Valid and (csReady in ComponentState) then
+  begin
+   fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
+                          [
+                           Layout.Top(fHeader),
+                           //Layout.Bottom(Layout.Height(32), Layout.Center(fContinueBtn)),
+                           Layout.Bottom(Layout.Height(32), Layout.Left(Layout.Spacing(5).Stretch, [fSendBtn, fContinueBtn])),
+                           Layout.Client(Layout.Center(fImage))
+                          ]
+                          );
+   if Assigned(fLayout) then
+   begin
+    fLayout.Resize(self);
+   end;
+  end;
+end;
+ 
+initialization
+  Forms.RegisterForm({$I %FILE%}, TfrmMain);
+end.

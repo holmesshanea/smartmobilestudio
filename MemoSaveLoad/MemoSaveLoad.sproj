@@ -1,8 +1,8 @@
-<SMART>
-  <Project version="2" subversion="2">
+﻿<SMART>
+  <Project version="2" subversion="9">
     <Name>MemoSaveLoad</Name>
     <Created>T00:00:00.000</Created>
-    <Modified>2016-01-21T01:31:58.125</Modified>
+    <Modified>2018-01-23T09:59:29.854</Modified>
     <Version>
       <Major>0</Major>
       <Minor>0</Minor>
@@ -19,12 +19,23 @@
         <KioskOnly>1</KioskOnly>
         <OfflineEnabled>1</OfflineEnabled>
       </ChromeApp>
+      <Cordova>
+        <WidgetID></WidgetID>
+        <AllowIntent>http://*/*
+https://*/*
+tel:*
+sms:*
+mailto:*
+geo:*
+</AllowIntent>
+      </Cordova>
     </VendorSpecific>
     <Options>
       <Compiler>
         <Assertions>1</Assertions>
         <Optimize>1</Optimize>
         <HintsLevel>1</HintsLevel>
+        <ProjectSearchPath></ProjectSearchPath>
       </Compiler>
       <Codegen>
         <Obfuscation>1</Obfuscation>
@@ -55,6 +66,7 @@
         <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
         <GenerateWebAppManifest>1</GenerateWebAppManifest>
         <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
+        <GenerateCordovaConfigXML>0</GenerateCordovaConfigXML>
         <ExternalCSS>1</ExternalCSS>
         <Theme>iOS.css</Theme>
         <CustomTheme>0</CustomTheme>
@@ -69,11 +81,16 @@
       <Execute>
         <ServeManifest>0</ServeManifest>
         <Server>0</Server>
+        <CustomFile></CustomFile>
+        <LoadCustomFile>0</LoadCustomFile>
         <PauseAfterExecution>0</PauseAfterExecution>
         <ExecuteType>2</ExecuteType>
         <ExecuteableName>chrome.exe</ExecuteableName>
         <ExecuteableParams>%output%</ExecuteableParams>
       </Execute>
+      <WebFonts>
+        <usewebfonts>1</usewebfonts>
+      </WebFonts>
     </Options>
     <Files>
       <File type="main">
@@ -101,13 +118,5 @@
       </File>
     </Files>
     <Target>Browser</Target>
-    <Statistics>
-      <BackgroundCompilations>16</BackgroundCompilations>
-      <EditTime>00:00:00.000</EditTime>
-      <CompileTime>00:00:08.516</CompileTime>
-      <TotalTime>00:01:47.686</TotalTime>
-      <DesigningTime>00:01:47.436</DesigningTime>
-      <RunningTime>00:00:00.000</RunningTime>
-    </Statistics>
   </Project>
 </SMART>

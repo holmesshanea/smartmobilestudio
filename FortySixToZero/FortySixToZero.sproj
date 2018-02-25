@@ -1,0 +1,589 @@
+﻿<SMART>
+  <Project version="3" subversion="0">
+    <Name>FortySixToZero</Name>
+    <Created>T00:00:00.000</Created>
+    <Modified>2018-02-24T20:33:02.881</Modified>
+    <Version>
+      <Major>0</Major>
+      <Minor>0</Minor>
+      <Revision>0</Revision>
+    </Version>
+    <VendorSpecific>
+      <Apple>
+        <FormatDetection>1</FormatDetection>
+        <StatusBarStyle>default</StatusBarStyle>
+        <WebAppCapable>1</WebAppCapable>
+      </Apple>
+      <ChromeApp>
+        <Kiosk>0</Kiosk>
+        <KioskOnly>1</KioskOnly>
+        <OfflineEnabled>1</OfflineEnabled>
+      </ChromeApp>
+      <Cordova>
+        <WidgetID>com.smartmobilestudio.app</WidgetID>
+        <AllowIntent>http://*/*
+https://*/*
+tel:*
+sms:*
+mailto:*
+geo:*</AllowIntent>
+      </Cordova>
+    </VendorSpecific>
+    <Options>
+      <Compiler>
+        <Assertions>1</Assertions>
+        <Optimize>1</Optimize>
+        <HintsLevel>1</HintsLevel>
+        <ProjectSearchPath></ProjectSearchPath>
+      </Compiler>
+      <Codegen>
+        <Obfuscation>0</Obfuscation>
+        <RangeChecking>0</RangeChecking>
+        <InstanceChecking>0</InstanceChecking>
+        <ConditionChecking>0</ConditionChecking>
+        <LoopChecking>0</LoopChecking>
+        <InlineMagics>1</InlineMagics>
+        <IgnorePublishedInImplementation>0</IgnorePublishedInImplementation>
+        <EmitSourceLocation>0</EmitSourceLocation>
+        <EmitRTTI>0</EmitRTTI>
+        <Devirtualize>1</Devirtualize>
+        <MainBody>1</MainBody>
+        <CodePacking>0</CodePacking>
+        <SmartLinking>1</SmartLinking>
+        <Verbosity>1</Verbosity>
+      </Codegen>
+      <ConditionalDefines>
+        <HandleExceptions>1</HandleExceptions>
+        <AutoRefresh>0</AutoRefresh>
+        <LegacySupportForIE>0</LegacySupportForIE>
+      </ConditionalDefines>
+      <Linker>
+        <SourceMap>0</SourceMap>
+        <CompressCSS>0</CompressCSS>
+        <GenerateAppCacheManifest>1</GenerateAppCacheManifest>
+        <GenerateChromeAppManifest>0</GenerateChromeAppManifest>
+        <GenerateFireFoxManifest>0</GenerateFireFoxManifest>
+        <GenerateWebAppManifest>1</GenerateWebAppManifest>
+        <GenerateWidgetPackageConfigXML>0</GenerateWidgetPackageConfigXML>
+        <GenerateCordovaConfigXML>0</GenerateCordovaConfigXML>
+        <ExternalCSS>1</ExternalCSS>
+        <Theme>default.css</Theme>
+        <CustomTheme>1</CustomTheme>
+        <EmbedJavaScript>1</EmbedJavaScript>
+      </Linker>
+      <Output>
+        <JavaScriptFileName>main.js</JavaScriptFileName>
+        <HtmlFileName>index.html</HtmlFileName>
+        <OutputFilePath>www\</OutputFilePath>
+      </Output>
+      <Import />
+      <Execute>
+        <ServeManifest>0</ServeManifest>
+        <Server>1</Server>
+        <CustomFile></CustomFile>
+        <LoadCustomFile>0</LoadCustomFile>
+        <PauseAfterExecution>0</PauseAfterExecution>
+        <ExecuteType>0</ExecuteType>
+      </Execute>
+      <WebFonts>
+        <usewebfonts>1</usewebfonts>
+        <webfontitem>
+          <fontname>Ubuntu</fontname>
+          <fonturl>https://fonts.googleapis.com/css?family=Ubuntu</fonturl>
+        </webfontitem>
+      </WebFonts>
+    </Options>
+    <Files>
+      <File type="main">
+        <Name>FortySixToZero</Name>
+        <Created>2018-01-11T18:43:14.409Z</Created>
+        <Modified>2018-02-24T20:12:16.251</Modified>
+        <Filename>FortySixToZero.spr</Filename>
+      </File>
+      <File type="unit">
+        <Name>UntApp</Name>
+        <Created>2018-01-11T18:43:14.409Z</Created>
+        <Modified>2018-02-24T20:12:25.890</Modified>
+        <Filename>UntApp.pas</Filename>
+      </File>
+      <File type="form">
+        <Name>Mountains</Name>
+        <Created>2018-01-11T18:43:14.409Z</Created>
+        <Modified>2018-02-12T21:41:03.914</Modified>
+        <Filename>Mountains.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>1</IsMainForm>
+          <Order>1</Order>
+        </AutoCreate>
+      </File>
+      <File type="form">
+        <Name>Splash</Name>
+        <Created>2018-01-11T20:28:18.870Z</Created>
+        <Modified>2018-02-23T10:07:38.270</Modified>
+        <Filename>Splash.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>2</Order>
+        </AutoCreate>
+      </File>
+      <File type="form">
+        <Name>Main</Name>
+        <Created>2018-01-13T20:16:45.175Z</Created>
+        <Modified>2018-02-24T18:52:22.956</Modified>
+        <Filename>Main.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>3</Order>
+        </AutoCreate>
+      </File>
+      <File type="resource">
+        <Name>logo-vert.png</Name>
+        <Created>2018-01-12T12:38:07.771Z</Created>
+        <Modified>2018-01-12T12:38:07.772</Modified>
+        <Filename>logo-vert.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>logo-horiz.png</Name>
+        <Created>2018-01-12T12:38:13.031Z</Created>
+        <Modified>2018-01-12T12:38:13.032</Modified>
+        <Filename>logo-horiz.png</Filename>
+      </File>
+      <File type="unit">
+        <Name>UntXListboxItem</Name>
+        <Created>2018-01-12T17:57:51.995Z</Created>
+        <Modified>2018-02-12T20:57:06.494</Modified>
+        <Filename>UntXListboxItem.pas</Filename>
+      </File>
+      <File type="unit">
+        <Name>UntCommon</Name>
+        <Created>2018-01-12T18:24:37.264Z</Created>
+        <Modified>2018-02-23T17:17:28.599</Modified>
+        <Filename>UntCommon.pas</Filename>
+      </File>
+      <File type="css">
+        <Name>default.css</Name>
+        <Created>2018-01-12T18:44:39.714Z</Created>
+        <Modified>2018-02-23T16:15:30.627</Modified>
+        <Filename>default.css</Filename>
+      </File>
+      <File type="form">
+        <Name>Mountain</Name>
+        <Created>2018-01-14T20:49:28.200Z</Created>
+        <Modified>2018-02-13T11:29:51.085</Modified>
+        <Filename>Mountain.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>4</Order>
+        </AutoCreate>
+      </File>
+      <File type="form">
+        <Name>Complete</Name>
+        <Created>2018-01-16T20:24:55.479Z</Created>
+        <Modified>2018-02-22T09:31:36.007</Modified>
+        <Filename>Complete.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>5</Order>
+        </AutoCreate>
+      </File>
+      <File type="form">
+        <Name>Journal</Name>
+        <Created>2018-01-16T20:30:53.984Z</Created>
+        <Modified>2018-02-12T21:50:56.035</Modified>
+        <Filename>Journal.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>6</Order>
+        </AutoCreate>
+      </File>
+      <File type="form">
+        <Name>Map</Name>
+        <Created>2018-01-31T09:00:08.599Z</Created>
+        <Modified>2018-02-02T18:36:55.596</Modified>
+        <Filename>Map.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>8</Order>
+        </AutoCreate>
+      </File>
+      <File type="unit">
+        <Name>GoogleMaps</Name>
+        <Created>2018-01-31T09:34:57.039Z</Created>
+        <Modified>2018-01-31T09:47:51.621</Modified>
+        <Filename>GoogleMaps.pas</Filename>
+      </File>
+      <File type="resource">
+        <Name>mtn32C.png</Name>
+        <Created>2018-02-12T20:36:51.775Z</Created>
+        <Modified>2018-02-12T20:36:51.776</Modified>
+        <Filename>www\res\mtn32C.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>mtn128C.png</Name>
+        <Created>2018-02-12T20:37:24.494Z</Created>
+        <Modified>2018-02-12T20:37:24.495</Modified>
+        <Filename>www\res\mtn128C.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>mtn32S.png</Name>
+        <Created>2018-02-12T20:58:21.324Z</Created>
+        <Modified>2018-02-12T20:58:21.325</Modified>
+        <Filename>images\mtn32S.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>mtn32.png</Name>
+        <Created>2018-02-12T20:58:53.402Z</Created>
+        <Modified>2018-02-12T20:58:53.403</Modified>
+        <Filename>images\mtn32.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>mtn32SC.png</Name>
+        <Created>2018-02-12T20:59:02.691Z</Created>
+        <Modified>2018-02-12T20:59:02.692</Modified>
+        <Filename>images\mtn32SC.png</Filename>
+      </File>
+      <File type="form">
+        <Name>Congrats</Name>
+        <Created>2018-02-21T21:01:13.261Z</Created>
+        <Modified>2018-02-22T18:14:47.525</Modified>
+        <Filename>Congrats.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>9</Order>
+        </AutoCreate>
+      </File>
+      <File type="resource">
+        <Name>patch1.jpg</Name>
+        <Created>2018-02-22T09:28:31.678Z</Created>
+        <Modified>2018-02-22T09:28:31.685</Modified>
+        <Filename>www\res\patch1.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch2.jpg</Name>
+        <Created>2018-02-22T09:28:31.692Z</Created>
+        <Modified>2018-02-22T09:28:31.692</Modified>
+        <Filename>www\res\patch2.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch3.jpg</Name>
+        <Created>2018-02-22T09:28:31.697Z</Created>
+        <Modified>2018-02-22T09:28:31.698</Modified>
+        <Filename>www\res\patch3.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch4.jpg</Name>
+        <Created>2018-02-22T09:28:31.702Z</Created>
+        <Modified>2018-02-22T09:28:31.702</Modified>
+        <Filename>www\res\patch4.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch5.jpg</Name>
+        <Created>2018-02-22T09:28:31.707Z</Created>
+        <Modified>2018-02-22T09:28:31.707</Modified>
+        <Filename>www\res\patch5.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch6.jpg</Name>
+        <Created>2018-02-22T10:02:59.864Z</Created>
+        <Modified>2018-02-22T10:02:59.865</Modified>
+        <Filename>www\res\patch6.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch7.jpg</Name>
+        <Created>2018-02-22T10:02:59.867Z</Created>
+        <Modified>2018-02-22T10:02:59.878</Modified>
+        <Filename>www\res\patch7.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch8.jpg</Name>
+        <Created>2018-02-22T10:02:59.882Z</Created>
+        <Modified>2018-02-22T10:02:59.882</Modified>
+        <Filename>www\res\patch8.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch9.jpg</Name>
+        <Created>2018-02-22T10:02:59.887Z</Created>
+        <Modified>2018-02-22T10:02:59.887</Modified>
+        <Filename>www\res\patch9.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch10.gif</Name>
+        <Created>2018-02-22T10:02:59.892Z</Created>
+        <Modified>2018-02-22T10:02:59.892</Modified>
+        <Filename>www\res\patch10.gif</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch11.jpg</Name>
+        <Created>2018-02-22T10:34:08.969Z</Created>
+        <Modified>2018-02-22T10:34:08.971</Modified>
+        <Filename>www\res\patch11.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch12.jpg</Name>
+        <Created>2018-02-22T10:34:08.973Z</Created>
+        <Modified>2018-02-22T10:34:08.973</Modified>
+        <Filename>www\res\patch12.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch13.jpg</Name>
+        <Created>2018-02-22T10:34:08.977Z</Created>
+        <Modified>2018-02-22T10:34:08.977</Modified>
+        <Filename>www\res\patch13.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch14.jpg</Name>
+        <Created>2018-02-22T10:34:08.982Z</Created>
+        <Modified>2018-02-22T10:34:08.982</Modified>
+        <Filename>www\res\patch14.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch15.jpg</Name>
+        <Created>2018-02-22T10:34:08.986Z</Created>
+        <Modified>2018-02-22T10:34:08.986</Modified>
+        <Filename>www\res\patch15.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch16.jpg</Name>
+        <Created>2018-02-22T10:34:08.991Z</Created>
+        <Modified>2018-02-22T10:34:08.991</Modified>
+        <Filename>www\res\patch16.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch17.jpg</Name>
+        <Created>2018-02-22T10:34:08.996Z</Created>
+        <Modified>2018-02-22T10:34:08.996</Modified>
+        <Filename>www\res\patch17.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch18.jpg</Name>
+        <Created>2018-02-22T10:34:09.000Z</Created>
+        <Modified>2018-02-22T10:34:09.000</Modified>
+        <Filename>www\res\patch18.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch19.jpg</Name>
+        <Created>2018-02-22T10:34:09.005Z</Created>
+        <Modified>2018-02-22T10:34:09.005</Modified>
+        <Filename>www\res\patch19.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch20.jpg</Name>
+        <Created>2018-02-22T10:34:09.010Z</Created>
+        <Modified>2018-02-22T10:34:09.010</Modified>
+        <Filename>www\res\patch20.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch21.jpg</Name>
+        <Created>2018-02-22T10:34:09.025Z</Created>
+        <Modified>2018-02-22T10:34:09.025</Modified>
+        <Filename>www\res\patch21.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch22.jpg</Name>
+        <Created>2018-02-22T10:34:09.028Z</Created>
+        <Modified>2018-02-22T10:34:09.028</Modified>
+        <Filename>www\res\patch22.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch23.jpg</Name>
+        <Created>2018-02-22T10:34:09.033Z</Created>
+        <Modified>2018-02-22T10:34:09.033</Modified>
+        <Filename>www\res\patch23.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch24.jpg</Name>
+        <Created>2018-02-22T11:05:46.537Z</Created>
+        <Modified>2018-02-22T11:05:46.539</Modified>
+        <Filename>www\res\patch24.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch25.jpg</Name>
+        <Created>2018-02-22T11:05:46.541Z</Created>
+        <Modified>2018-02-22T11:05:46.552</Modified>
+        <Filename>www\res\patch25.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch26.jpg</Name>
+        <Created>2018-02-22T11:05:46.554Z</Created>
+        <Modified>2018-02-22T11:05:46.554</Modified>
+        <Filename>www\res\patch26.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch27.jpg</Name>
+        <Created>2018-02-22T11:05:46.557Z</Created>
+        <Modified>2018-02-22T11:05:46.557</Modified>
+        <Filename>www\res\patch27.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch28.jpg</Name>
+        <Created>2018-02-22T11:05:46.561Z</Created>
+        <Modified>2018-02-22T11:05:46.561</Modified>
+        <Filename>www\res\patch28.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch29.jpg</Name>
+        <Created>2018-02-22T11:05:46.576Z</Created>
+        <Modified>2018-02-22T11:05:46.576</Modified>
+        <Filename>www\res\patch29.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch30.jpg</Name>
+        <Created>2018-02-22T11:05:46.581Z</Created>
+        <Modified>2018-02-22T11:05:46.581</Modified>
+        <Filename>www\res\patch30.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch31.jpg</Name>
+        <Created>2018-02-22T11:05:46.586Z</Created>
+        <Modified>2018-02-22T11:05:46.586</Modified>
+        <Filename>www\res\patch31.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch32.jpg</Name>
+        <Created>2018-02-22T11:05:46.591Z</Created>
+        <Modified>2018-02-22T11:05:46.591</Modified>
+        <Filename>www\res\patch32.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch33.jpg</Name>
+        <Created>2018-02-22T11:05:46.594Z</Created>
+        <Modified>2018-02-22T11:05:46.594</Modified>
+        <Filename>www\res\patch33.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch34.jpg</Name>
+        <Created>2018-02-22T11:05:46.608Z</Created>
+        <Modified>2018-02-22T11:05:46.609</Modified>
+        <Filename>www\res\patch34.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch35.jpg</Name>
+        <Created>2018-02-22T11:05:46.612Z</Created>
+        <Modified>2018-02-22T11:05:46.612</Modified>
+        <Filename>www\res\patch35.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch36.jpg</Name>
+        <Created>2018-02-22T11:05:46.614Z</Created>
+        <Modified>2018-02-22T11:05:46.614</Modified>
+        <Filename>www\res\patch36.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch37.jpg</Name>
+        <Created>2018-02-22T11:18:31.641Z</Created>
+        <Modified>2018-02-22T11:18:31.642</Modified>
+        <Filename>www\res\patch37.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch38.jpg</Name>
+        <Created>2018-02-22T11:18:31.645Z</Created>
+        <Modified>2018-02-22T11:18:31.645</Modified>
+        <Filename>www\res\patch38.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch39.jpg</Name>
+        <Created>2018-02-22T11:18:31.647Z</Created>
+        <Modified>2018-02-22T11:18:31.647</Modified>
+        <Filename>www\res\patch39.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch40.jpg</Name>
+        <Created>2018-02-22T11:18:31.650Z</Created>
+        <Modified>2018-02-22T11:18:31.650</Modified>
+        <Filename>www\res\patch40.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch41.jpg</Name>
+        <Created>2018-02-22T11:18:31.654Z</Created>
+        <Modified>2018-02-22T11:18:31.654</Modified>
+        <Filename>www\res\patch41.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch42.jpg</Name>
+        <Created>2018-02-22T11:18:31.656Z</Created>
+        <Modified>2018-02-22T11:18:31.656</Modified>
+        <Filename>www\res\patch42.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch43.jpg</Name>
+        <Created>2018-02-22T11:18:31.660Z</Created>
+        <Modified>2018-02-22T11:18:31.660</Modified>
+        <Filename>www\res\patch43.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch44.jpg</Name>
+        <Created>2018-02-22T11:18:31.663Z</Created>
+        <Modified>2018-02-22T11:18:31.663</Modified>
+        <Filename>www\res\patch44.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch45.jpg</Name>
+        <Created>2018-02-22T11:18:31.676Z</Created>
+        <Modified>2018-02-22T11:18:31.676</Modified>
+        <Filename>www\res\patch45.jpg</Filename>
+      </File>
+      <File type="resource">
+        <Name>patch46.jpg</Name>
+        <Created>2018-02-22T11:18:31.681Z</Created>
+        <Modified>2018-02-22T11:18:31.681</Modified>
+        <Filename>www\res\patch46.jpg</Filename>
+      </File>
+      <File type="form">
+        <Name>Menu</Name>
+        <Created>2018-02-23T09:16:07.786Z</Created>
+        <Modified>2018-02-24T20:19:07.881</Modified>
+        <Filename>Menu.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>10</Order>
+        </AutoCreate>
+      </File>
+      <File type="resource">
+        <Name>menuitem1.png</Name>
+        <Created>2018-02-23T12:50:14.666Z</Created>
+        <Modified>2018-02-23T12:50:14.667</Modified>
+        <Filename>www\res\menuitem1.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>menuitem2.png</Name>
+        <Created>2018-02-23T12:50:14.669Z</Created>
+        <Modified>2018-02-23T12:50:14.669</Modified>
+        <Filename>www\res\menuitem2.png</Filename>
+      </File>
+      <File type="form">
+        <Name>About</Name>
+        <Created>2018-02-24T20:10:33.795Z</Created>
+        <Modified>2018-02-24T20:32:34.417</Modified>
+        <Filename>About.pas</Filename>
+        <AutoCreate>
+          <IsAutoCreate>1</IsAutoCreate>
+          <IsMainForm>0</IsMainForm>
+          <Order>11</Order>
+        </AutoCreate>
+      </File>
+      <File type="resource">
+        <Name>about-horiz.png</Name>
+        <Created>2018-02-24T20:32:16.282Z</Created>
+        <Modified>2018-02-24T20:32:16.283</Modified>
+        <Filename>www\res\about-horiz.png</Filename>
+      </File>
+      <File type="resource">
+        <Name>about-vert.png</Name>
+        <Created>2018-02-24T20:32:16.286Z</Created>
+        <Modified>2018-02-24T20:32:16.286</Modified>
+        <Filename>www\res\about-vert.png</Filename>
+      </File>
+    </Files>
+    <Target>Browser</Target>
+    <Generator>Visual Components Project</Generator>
+  </Project>
+</SMART>

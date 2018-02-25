@@ -1,0 +1,501 @@
+unit UntCommon;
+
+interface
+
+uses 
+  ECMA.Date,
+  System.Types,
+  System.Types.Convert,
+  SmartCL.System,
+  SmartCL.Storage.Local;
+
+  Const
+  Elements = 46;
+
+  type
+
+   TCompleteMode = (cmNone, cmEdit);
+
+   TCompletion = record
+    Rank: string; external "Rank";
+    Date: string; external "Date";
+    Notes: string; external "Notes";
+   end;
+
+var
+
+ CompArray: Array of TCompletion;
+
+ MtnArray  : array  [1..Elements] of string = (
+                      'Mount Marcy',         //1
+                      'Algonquin Peak',      //2
+                      'Mount Haystack',      //3
+                      'Mount Skylight',      //4
+                      'Whiteface Mountain',  //5
+                      'Iroquois Peak',       //6
+                      'Basin Mountain',      //7
+                      'Gray Peak',           //8
+                      'Dix Mountain',        //9
+                      'Gothics',             //10
+                      'Mount Colden',        //11
+                      'Giant Mountain',      //12
+                      'Santanoni Peak',      //13
+                      'Mount Redfield',      //14
+                      'Nippletop',           //15
+                      'Wright Peak',         //16
+                      'Saddleback Mountain', //17
+                      'Panther Peak',        //18
+                      'Armstrong Mountain',  //19
+                      'Table Top Mountain',  //20
+                      'Hough Peak',          //21
+                      'Rocky Peak Ridge',    //22
+                      'Macomb Mountain',     //23
+                      'Mount Marshall',      //24
+                      'Allen Mountain',      //25
+                      'Seward Mountain',     //26
+                      'Esther Mountain',     //27
+                      'Upper Wolfjaw Mountain', //28
+                      'Big Slide Mountain',     //29
+                      'Lower Wolfjaw Mountain', //30
+                      'Phelps Mountain',        //31
+                      'Street Mountain',        //32
+                      'Sawteeth',               //33
+                      'Donaldson Mountain',     //34
+                      'Cascade Mountain',       //35
+                      'Seymour Mountain',       //36
+                      'Porter Mountain',        //37
+                      'South Dix',              //38
+                      'Mount Emmons',           //39
+                      'Mount Colvin',           //40
+                      'East Dix Mountain',      //41
+                      'Dial Mountain',          //42
+                      'Blake Peak',             //43
+                      'Cliff Mountain',         //44
+                      'Nye Mountain',           //45
+                      'Couchsachraga Peak'      //46
+                      );
+
+ ElevArray : array [1..Elements] of String = (
+                      '5344', //1 - Mount Marcy
+                      '5115', //2 - Algonquin Peak
+                      '4961', //3 - Mount Haystack
+                      '4925', //4 - Mount Skylight
+                      '4865', //5 - Whiteface Mountain
+                      '4843', //6 - Iroquois Peak
+                      '4826', //7 - Basin Mountain
+                      '4826', //8 - Gray Peak
+                      '4823', //9 - Dix Mountain
+                      '4734', //10 - Gothics
+                      '4715', //11 - Mount Colden
+                      '4626', //12 - Giant Mountain
+                      '4606', //13 - Santanoni Peak
+                      '4606', //14 - Mount Redfield
+                      '4593', //15 - Nippletop
+                      '4587', //16 - Wright Peak
+                      '4528', //17 - Saddleback Mountain
+                      '4442', //18 - Panther Peak
+                      '4429', //19 - Armstrong Mountain
+                      '4413', //20 - Table Top Mountain
+                      '4409', //21 - Hough Peak
+                      '4390', //22 - Rocky Peak Ridge
+                      '4370', //23 - Macomb Mountain
+                      '4364', //24 - Mount Marshall
+                      '4347', //25 - Allen Mountain
+                      '4331', //26 - Seward Mountain
+                      '4239', //27 - Esther Mountain
+                      '4203', //28 - Upper Wolfjaw Mountain
+                      '4199', //29 - Big Slide Mountain
+                      '4173', //30 - Lower Wolfjaw Mountain
+                      '4160', //31 - Phelps Mountain
+                      '4134', //32 - Street Mountain
+                      '4134', //33 - Sawteeth
+                      '4108', //34 - Donaldson Mountain
+                      '4098', //35 - Cascade Mountain
+                      '4091', //36 - Seymour Mountain
+                      '4068', //37 - Porter Mountain
+                      '4068', //38 - South Dix
+                      '4039', //39 - Mount Emmons
+                      '4035', //40 - Mount Colvin
+                      '4026', //41 - East Dix Mountain
+                      '4003', //42 - Dial Mountain
+                      '3970', //43 - Blake Peak
+                      '3944', //44 - Cliff Mountain
+                      '3839', //45 - Nye Mountain
+                      '3793'  //46 - Couchsachraga Peak
+                    );
+
+ PromArray : array [1..Elements] of String = (
+
+                      '4914', //1 - Mount Marcy
+                      '2097', //2 - Algonquin Peak
+                      '827',  //3 - Mount Haystack
+                      '578',  //4 - Mount Skylight
+                      '3093', //5 - Whiteface Mountain
+                      '151',  //6 - Iroquois Peak
+                      '725',  //7 - Basin Mountain
+                      '102',  //8 - Gray Peak
+                      '2789', //9 - Dix Mountain
+                      '699',  //10 - Gothics
+                      '876',  //11 - Mount Colden
+                      '2953', //12 - Giant Mountain
+                      '2408', //13 - Santanoni Peak
+                      '242',  //14 - Mount Redfield
+                      '1345', //15 - Nippletop
+                      '256',  //16 - Wright Peak
+                      '361',  //17 - Saddleback Mountain
+                      '275',  //18 - Panther Peak
+                      '98',   //19 - Armstrong Mountain
+                      '410',  //20 - Table Top Mountain
+                      '374',  //21 - Hough Peak
+                      '617',  //22 - Rocky Peak Ridge
+                      '564',  //23 - Macomb Mountain
+                      '493',  //24 - Mount Marshall
+                      '640',  //25 - Allen Mountain
+                      '2021', //26 - Seward Mountain
+                      '302',  //27 - Esther Mountain
+                      '266',  //28 - Upper Wolfjaw Mountain
+                      '1049', //29 - Big Slide Mountain
+                      '663',  //30 - Lower Wolfjaw Mountain
+                      '190',  //31 - Phelps Mountain
+                      '1247', //32 - Street Mountain
+                      '459',  //33 - Sawteeth
+                      '138',  //34 - Donaldson Mountain
+                      '1178', //35 - Cascade Mountain
+                      '1007', //36 - Seymour Mountain
+                      '295',  //37 - Porter Mountain
+                      '164',  //38 - South Dix
+                      '102',  //39 - Mount Emmons
+                      '689',  //40 - Mount Colvin
+                      '319',  //41 - East Dix Mountain
+                      '164',  //42 - Dial Mountain
+                      '558',  //43 - Blake Peak
+                      '466',  //44 - Cliff Mountain
+                      '66',   //45 - Nye Mountain
+                      '250'   //46 - Couchsachraga Peak
+                      );
+
+ RangeArray : array [1..Elements] of String = (
+                    'Marcy Group',             // 1 - Mount Marcy
+                    'McIntyre Mountains',      // 2 - Algonquin Peak
+                    'Marcy Group',             // 3 - Mount Haystack
+                    'Marcy Group',             // 4 - Mount Skylight
+                    'Whiteface Mountain Area', // 5 - Whiteface Mountain
+                    'McIntyre Mountains',      // 6 - Iroquois Peak
+                    'Great Range',             // 7 - Basin Mountain
+                    'Marcy Group',             // 8 - Gray Peak
+                    'Dix Range',               // 9 - Dix Mountain
+                    'Great Range',             //10 - Gothics
+                    'Marcy Group',             //11 - Mount Colden
+                    'Giant Mountain Area',     //12 - Giant Mountain
+                    'Santanoni Range',         //13 - Santanoni Peak
+                    'Marcy Group',             //14 - Mount Redfield
+                    'Colvin Range',            //15 - Nippletop
+                    'McIntyre Mountains',      //16 - Wright Peak
+                    'Great Range',             //17 - Saddleback Mountain
+                    'Santanoni Range',         //18 - Panther Peak
+                    'Great Range',             //19 - Armstrong Mountain
+                    'Northern High Peaks',     //20 - Table Top Mountain
+                    'Dix Range',               //21 - Hough Peak
+                    'Giant Mountain Area',     //22 - Rocky Peak Ridge
+                    'Dix Range',               //23 - Macomb Mountain
+                    'McIntyre Mountains',      //24 - Mount Marshall
+                    'Marcy Group',             //25 - Allen Mountain
+                    'Seward Mountains',        //26 - Seward Mountain
+                    'Whiteface Mountain Area', //27 - Esther Mountain
+                    'Great Range',             //28 - Upper Wolfjaw Mountain
+                    'Northern High Peaks',     //29 - Big Slide Mountain
+                    'Great Range',             //30 - Lower Wolfjaw Mountain
+                    'Northern High Peaks',     //31 - Phelps Mountain
+                    'Street Range',            //32 - Street Mountain
+                    'Great Range',             //33 - Sawteeth
+                    'Seward Mountains',        //34 - Donaldson Mountain
+                    'Northern High Peaks',     //35 - Cascade Mountain
+                    'Seward Mountains',        //36 - Seymour Mountain
+                    'Northern High Peaks',     //37 - Porter Mountain
+                    'Dix Range',               //38 - South Dix
+                    'Seward Mountains',        //39 - Mount Emmons
+                    'Colvin Range',            //40 - Mount Colvin
+                    'Dix Range',               //41 - East Dix Mountain
+                    'Colvin Range',            //42 - Dial Mountain
+                    'Colvin Range',            //43 - Blake Peak
+                    'Marcy Group',             //44 - Cliff Mountain
+                    'Street Range',            //45 - Nye Mountain
+                    'Santanoni Range'          //46 - Couchsachraga Peak
+                     );
+
+ LatArray : array [1..Elements] of Double = (
+                    44.112857, // 1  - Mount Marcy
+                    44.143624,  // 2 - Algonquin Peak
+                    44.105796,  // 3 - Mount Haystack
+                    44.099543,    // 4 - Mount Skylight
+                    44.365795,  // 5 - Whiteface Mountain
+                    44.136881,  // 6 - Iroquois Peak
+                    44.121392,   // 7 - Basin Mountain
+                    44.111683,   // 8 - Gray Peak
+                    44.082417,  // 9 - Dix Mountain
+                    44.127528,  //10 - Gothics
+                    44.126996,  //11 - Mount Colden
+                    44.161243,  //12 - Giant Mountain
+                    44.082445,  //13 - Santanoni Peak
+                    44.094817,  //14 - Mount Redfield
+                    44.089104,  //15 - Nippletop
+                    44.151768,  //16 - Wright Peak
+                    44.126584,  //17 - Saddleback Mountain
+                    44.098438,  //18 - Panther Peak
+                    44.134718,  //19 - Armstrong Mountain
+                    44.140661,  //20 - Table Top Mountain
+                    44.069622,  //21 - Hough Peak
+                    44.154363,  //22 - Rocky Peak Ridge
+                    44.05176,   //23 - Macomb Mountain
+                    44.127744,   //24 - Mount Marshall
+                    44.071037,  //25 - Allen Mountain
+                    44.159861,   //26 - Seward Mountain ****
+                    44.387191,  //27 - Esther Mountain
+                    44.140504,  //28 - Upper Wolfjaw Mountain
+                    44.182303,  //29 - Big Slide Mountain
+                    44.148407,  //30 - Lower Wolfjaw Mountain
+                    44.157024,  //31 - Phelps Mountain
+                    44.179393,  //32 - Street Mountain
+                    44.1134,    //33 - Sawteeth
+                    44.154118,  //34 - Donaldson Mountain
+                    44.21855,   //35 - Cascade Mountain
+                    44.158107,  //36 - Seymour Mountain
+                    44.212416,  //37 - Porter Mountain
+                    44.060073,  //38 - South Dix
+                    44.143807,  //39 - Mount Emmons
+                    44.094202,  //40 - Mount Colvin
+                    44.06534,   //41 - East Dix Mountain
+                    44.105941,  //42 - Dial Mountain
+                    44.081398,  //43 - Blake Peak
+                    44.103354,  //44 - Cliff Mountain
+                    44.187291,  //45 - Nye Mountain
+                    44.095561   //46 - Couchsachraga Peak
+                    );
+
+LonArray : array [1..Elements] of Double = (
+                     -73.923784, // 1  - Mount Marcy
+                    -73.986721,  // 2 - Algonquin Peak
+                    -73.900787,  // 3 - Mount Haystack
+                    -73.9312,    // 4 - Mount Skylight
+                    -73.903219,  // 5 - Whiteface Mountain
+                    -73.998263,  // 6 - Iroquois Peak
+                    -73.88656,   // 7 - Basin Mountain
+                    -73.93537,   // 8 - Gray Peak
+                    -73.786588,  // 9 - Dix Mountain
+                    -73.858031,  //10 - Gothics
+                    -73.960092,  //11 - Mount Colden
+                    -73.720261,  //12 - Giant Mountain
+                    -74.131163,  //13 - Santanoni Peak
+                    -73.950006,  //14 - Mount Redfield
+                    -73.816293,  //15 - Nippletop
+                    -73.979762,  //16 - Wright Peak
+                    -73.875073,  //17 - Saddleback Mountain
+                    -74.132291,  //18 - Panther Peak
+                    -73.849824,  //19 - Armstrong Mountain
+                    -73.916373,  //20 - Table Top Mountain
+                    -73.777727,  //21 - Hough Peak
+                    -73.705445,  //22 - Rocky Peak Ridge
+                    -73.780276,   //23 - Macomb Mountain
+                    -74.01232,   //24 - Mount Marshall
+                    -73.939912,  //25 - Allen Mountain
+                    -74.19967,   //26 - Seward Mountain ****
+                    -73.889839,  //27 - Esther Mountain
+                    -73.845274,  //28 - Upper Wolfjaw Mountain
+                    -73.870842,  //29 - Big Slide Mountain
+                    -73.832884,  //30 - Lower Wolfjaw Mountain
+                    -73.921508,  //31 - Phelps Mountain
+                    -74.027066,  //32 - Street Mountain
+                    -73.850664,    //33 - Sawteeth
+                    -74.211587,  //34 - Donaldson Mountain
+                    -73.860169,   //35 - Cascade Mountain
+                    -74.172565,  //36 - Seymour Mountain
+                    -73.853665,  //37 - Porter Mountain
+                    -73.774443,  //38 - South Dix
+                    -74.214392,  //39 - Mount Emmons
+                    -73.834472,  //40 - Mount Colvin
+                    -73.757444,   //41 - East Dix Mountain
+                    -73.796421,  //42 - Dial Mountain
+                    -73.844691,  //43 - Blake Peak
+                    -73.975278,  //44 - Cliff Mountain
+                    -74.024109,  //45 - Nye Mountain
+                    -74.160136   //46 - Couchsachraga Peak
+                    );
+
+ LatLonArray : array [1..Elements] of String = (
+                     '44.112857,-73.923784', // 1  - Mount Marcy
+                    '44.143624,-73.986721',  // 2 - Algonquin Peak
+                    '44.105796,-73.900787',  // 3 - Mount Haystack
+                    '44.099543,-73.9312',    // 4 - Mount Skylight
+                    '44.365795,-73.903219',  // 5 - Whiteface Mountain
+                    '44.136881,-73.998263',  // 6 - Iroquois Peak
+                    '44.121392,-73.88656',   // 7 - Basin Mountain
+                    '44.111683,-73.93537',   // 8 - Gray Peak
+                    '44.082417,-73.786588',  // 9 - Dix Mountain
+                    '44.127528,-73.858031',  //10 - Gothics
+                    '44.126996,-73.960092',  //11 - Mount Colden
+                    '44.161243,-73.720261',  //12 - Giant Mountain
+                    '44.082445,-74.131163',  //13 - Santanoni Peak
+                    '44.094817,-73.950006',  //14 - Mount Redfield
+                    '44.089104,-73.816293',  //15 - Nippletop
+                    '44.151768,-73.979762',  //16 - Wright Peak
+                    '44.126584,-73.875073',  //17 - Saddleback Mountain
+                    '44.098438,-74.132291',  //18 - Panther Peak
+                    '44.134718,-73.849824',  //19 - Armstrong Mountain
+                    '44.140661,-73.916373',  //20 - Table Top Mountain
+                    '44.069622,-73.777727',  //21 - Hough Peak
+                    '44.154363,-73.705445',  //22 - Rocky Peak Ridge
+                    '44.05176, 73.780276',   //23 - Macomb Mountain
+                    '44.127744,-74.01232',   //24 - Mount Marshall
+                    '44.071037,-73.939912',  //25 - Allen Mountain
+                    '44.159861,-74.19967',   //26 - Seward Mountain ****
+                    '44.387191,-73.889839',  //27 - Esther Mountain
+                    '44.140504,-73.845274',  //28 - Upper Wolfjaw Mountain
+                    '44.182303,-73.870842',  //29 - Big Slide Mountain
+                    '44.148407,-73.832884',  //30 - Lower Wolfjaw Mountain
+                    '44.157024,-73.921508',  //31 - Phelps Mountain
+                    '44.179393,-74.027066',  //32 - Street Mountain
+                    '44.1134,-73.850664',    //33 - Sawteeth
+                    '44.154118,-74.211587',  //34 - Donaldson Mountain
+                    '44.21855, -73.860169',   //35 - Cascade Mountain
+                    '44.158107,-74.172565',  //36 - Seymour Mountain
+                    '44.212416,-73.853665',  //37 - Porter Mountain
+                    '44.060073,-73.774443',  //38 - South Dix
+                    '44.143807,-74.214392',  //39 - Mount Emmons
+                    '44.094202,-73.834472',  //40 - Mount Colvin
+                    '44.06534,-73.757444',   //41 - East Dix Mountain
+                    '44.105941,-73.796421',  //42 - Dial Mountain
+                    '44.081398,-73.844691',  //43 - Blake Peak
+                    '44.103354,-73.975278',  //44 - Cliff Mountain
+                    '44.187291,-74.024109',  //45 - Nye Mountain
+                    '44.095561,-74.160136'   //46 - Couchsachraga Peak
+                    );
+
+ JSONStr: String;
+
+function getCompDate(ARank: String): String;
+function getNotes(ARank: String): String;
+function getCompleted(ARank: String): Boolean;
+
+function recExists(ARank: String): Boolean;
+procedure AddRec(ARank, ADate, ANotes: String);
+procedure RemoveRec(ARank: String);
+procedure EditRec(ARank, ADate, ANotes: String);
+
+function ReadData: String;
+procedure WriteData;
+
+function getLat(AValue: String): Double;
+function getLong(AValue: String): Double;
+
+implementation
+
+function getLat(AValue: String): String;
+begin
+ result:= copy(AValue, 1, length(AValue) - pos(',', AValue)-1);
+end;
+
+function getLong(AValue: String): String;
+begin
+ result:= copy(AValue, pos(',', AValue)+1, length(AValue));
+end;
+
+procedure RemoveRec(ARank: String);
+var i: integer;
+begin
+ for i:= 0 to CompArray.Length-1 do
+  if CompArray[i].Rank = ARank then
+  begin
+   CompArray.Delete(i);
+   exit;
+  end;
+end;
+
+function getCompDate(ARank: String): String;
+var i: integer;
+begin
+ for i:= 0 to CompArray.Length-1 do
+  if CompArray[i].Rank = ARank then
+  begin
+   result:= CompArray[i].Date;
+   exit;
+  end;
+end;
+
+function getNotes(ARank: String): String;
+var i: integer;
+begin
+ for i:= 0 to CompArray.Length-1 do
+  if CompArray[i].Rank = ARank then
+  begin
+   result:= CompArray[i].Notes;
+   exit;
+  end;
+end;
+
+function getCompleted(ARank: String): Boolean;
+var i: integer;
+begin
+ result:= False;
+ for i:= 0 to CompArray.Length-1 do
+  if CompArray[i].Rank = ARank then
+  begin
+   result:= True;
+   exit;
+  end;
+end;
+
+function recExists(ARank: String): Boolean;
+var i: integer;
+begin
+ result:= false;
+ for i:= 0 to CompArray.Length-1 do
+  if CompArray[i].Rank = ARank then
+  begin
+   result:= true;
+   exit;
+  end;
+end;
+
+procedure AddRec(ARank, ADate, ANotes: String);
+var
+ Comp: TCompletion;
+begin
+ Comp.Rank:= ARank;
+ Comp.Date:= ADate;
+ Comp.Notes:= ANotes;
+ CompArray.Add(Comp);
+end;
+
+procedure EditRec(ARank, ADate, ANotes: String);
+var i: integer;
+begin
+ for i:= 0 to CompArray.Length-1 do
+  if CompArray[i].Rank = ARank then
+  begin
+   CompArray[i].Date:= ADate;
+   CompArray[i].Notes:= ANotes;
+   exit;
+  end;
+end;
+
+procedure WriteData;
+var Storage: TW3LocalStorage;
+begin
+ Storage := TW3LocalStorage.Create;
+ Storage.Open('46To0');
+ Storage.setKeyStr('Data', JSONStr);
+ Storage.Close;
+ Storage.Free;
+end;
+
+function ReadData: String;
+var Storage: TW3LocalStorage;
+begin
+ Storage := TW3LocalStorage.Create;
+ Storage.Open('46To0');
+ result := Storage.getKeyStr('Data', 'error');
+ Storage.Close;
+ Storage.Free;
+end;
+
+end.

@@ -1,0 +1,1559 @@
+<?pas
+
+  const clBlack               = "#000000";
+  const clWhite               = "#FFFFFF";
+
+  const StdPadding            = "2px";
+
+  const EdgeRounding          = "4px";
+  const ListMenuRounding      = "8px";
+
+  const clContainerBackground = "#F5F2EF";
+
+  const clBackground          = "#EFEBE7";
+  const clDisplayBackground   = "#333333";
+  const clWindowBackground    = "#EFEBE7";
+
+  // Shade base-colors
+  const clShadowBaseColor     = "#121212";
+  const clDlgShadowBaseColor  = "#515151";
+  const clCtrlShadowBaseColor = "#FFFFFF";
+
+  const clEditBackground        = "#FFFFFF";
+  const clEditSelectionColor    = "default";
+
+  const clToolControlBackground = "#474642";
+  const clToolFlatBorderColor   = "#2C2C2C";
+
+  const clFlatBorderColor       = "#2C2C2C";
+
+  const clScrollbarHandleColor    = "#AEA79F";
+  const clScrollbarBtnActiveColor = "#F6F6F5";
+  const clVScrollbarBackground    = clWindowBackground;
+  const clHScrollbarBackground    = clWindowBackground;
+
+  //#############################################
+  //Text Colors
+  //#############################################
+
+  const clTextColor             = clBlack;
+  const clToolTextColor         = clWhite;
+  const clToolTextColorSelected = "#BEBEBE";
+
+  const clBtnFace             = "#f8f8f8";
+  const clBtnDown             = "#ededed";
+  const clBtnText             = "#494949";
+  const clBtnTextSelected     = "#494949";
+  const clBtnTextShadow       = "#FFFFFF";
+
+  const clDlgBtnFace          = "#f8f8f8";
+  const clDlgBtnDown          = "#ededed";
+  const clDlgButtonText       = "#494949";
+  const clDlgButtonTextSelect = "#494949";
+  const clDlgButtonTextShadow = clWhite;
+
+  //#############################################
+  //ListMenu | Listbox Colors
+  //#############################################
+
+  const clListBackground              = clWhite;
+  const clListItemBackground          = clWhite;
+  const clListItemSelectedBackground  = "#EFEFEF";
+  const clListItemTextColor           = clBlack;
+  const clListItemTextSelectedColor   = "#FFFFFF";
+
+  const clListMenuBorderColor         = "#515151";
+
+  //#############################################
+  //Fonts
+  //#############################################
+
+  const fntDefaultName = '"Ubuntu"';
+  const fntFamily      = '"Ubuntu", verdana, Helvetica';
+  const fntSmallSize   = "12px";
+  const fntNormalSize  = "14px";
+  const fntMediumSize  = "18px";
+  const fntLargeSize   = "24px";
+  const fntDefaultSize =  fntNormalSize;
+
+  type
+  TRGBAText = record
+    rs: string;
+    gs: string;
+    bs: string;
+    ac: string;
+  end;
+
+  type
+  TBrowserFormat = (
+    gtWebkit1,
+    gtWebkit2,
+    gtMoz,
+    gtMs,
+    gtIE,
+    gtAny
+  );
+
+  function ValidColorDef(ColorDef: string): boolean;
+  const
+    validchars = '0123456789abcdef';
+  begin
+    ColorDef := ColorDef.trim().ToLower();
+    if ColorDef.StartsWith('#') and (ColorDef.Length = 7) then
+    begin
+      for var x := 2 to 7 do
+      begin
+        result := ValidChars.Contains(copy(ColorDef, x, 1));
+        if not result then
+          break;
+      end;
+    end;
+  end;
+
+  function GetR(ColorDef: string): string;
+  begin
+    ColorDef := ColorDef.trim();
+    if ValidColorDef(ColorDef) then
+    begin
+      var temp := Copy(ColorDef, 2, 2);
+      result := HexToInt(temp).ToString();
+    end else
+    raise Exception.Create('Invalid color-definition, expected #RRGGBB error');
+  end;
+
+  function GetG(ColorDef: string): string;
+  begin
+    ColorDef := ColorDef.trim();
+    if ValidColorDef(ColorDef) then
+    begin
+      var temp := Copy(ColorDef, 4, 2);
+      result := HexToInt(temp).ToString();
+    end else
+    raise Exception.Create('Invalid color-definition, expected #RRGGBB error');
+  end;
+
+  function GetB(ColorDef: string): string;
+  begin
+    ColorDef := ColorDef.trim();
+    if ValidColorDef(ColorDef) then
+    begin
+      var temp := Copy(ColorDef, 6, 2);
+      result := HexToInt(temp).ToString();
+    end else
+    raise Exception.Create('Invalid color-definition, expected #RRGGBB error');
+  end;
+
+  function OpacityToStr(const Opacity: float): string;
+  begin
+    result := FloatToStr(Opacity);
+    if result.IndexOf(',') > 0 then
+      result := StrReplace(result, ',', '.')
+  end;
+
+  function ColorDefToRGB(const ColorDef: string): TRGBAText;
+  begin
+    result.rs := GetR(ColorDef);
+    result.gs := GetG(ColorDef);
+    result.bs := GetB(ColorDef);
+    result.ac := '255';
+  end;
+
+  function ColorDefToRGBA(const ColorDef: string; Opacity: float): TRGBAText;
+  begin
+    result.rs := GetR(ColorDef);
+    result.gs := GetG(ColorDef);
+    result.bs := GetB(ColorDef);
+    result.ac := OpacityToStr(Opacity);
+  end;
+
+  function GetRGB(ColorDef: string): string;
+  begin
+    result += 'rgb(';
+    result += GetR(ColorDef) + ', ';
+    result += GetG(ColorDef) + ', ';
+    result += GetB(ColorDef);
+    result += ')';
+  end;
+
+  function GetRGBA(ColorDef: string; Opacity: float): string;
+  begin
+    result += 'rgba(';
+    result += GetR(ColorDef) + ', ';
+    result += GetG(ColorDef) + ', ';
+    result += GetB(ColorDef) + ', ';
+    result += OpacityToStr(Opacity);
+    result += ')';
+  end;
+
+  function SetGradientRGBSInMask(const Mask: string; First, Second: TRGBAText): string;
+  begin
+    result := StrReplace(Mask,   '$r1', first.rs);
+    result := StrReplace(result, '$g1', first.gs);
+    result := StrReplace(result, '$b1', first.bs);
+
+    if result.contains('$a1') then
+      result := StrReplace(result, '$a1', first.ac);
+
+    result := StrReplace(result, '$r2', Second.bs);
+    result := StrReplace(result, '$g2', Second.bs);
+    result := StrReplace(result, '$b2', Second.bs);
+
+    if result.contains('$a2') then
+      result := StrReplace(result, '$a2', second.ac);
+  end;
+
+  function GradientTopBottomA(FromColorDef, ToColorDef: TRGBAText;
+           BrowserFormat: TBrowserFormat): string;
+  begin
+    var xfirst := FromColorDef;
+    var xSecond := ToColorDef;
+
+    case BrowserFormat of
+    gtWebkit1:
+      begin
+        var mask := "-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba($r1,$g1,$b2,$a1)), color-stop(100, rgba($r2,$g2,$b2,$a2)))";
+        result := SetGradientRGBSInMask(mask, xFirst, xSecond);
+      end;
+
+    gtWebkit2:
+      begin
+        var mask := "-webkit-linear-gradient(top, rgba($r1,$g1,$b2,$a1) 0%, rgba($r2,$g2,$b2,$a2) 100%)";
+        result := SetGradientRGBSInMask(mask, xFirst, xSecond);
+      end;
+
+    gtMoz:
+      begin
+        var mask := "-moz-linear-gradient(top, rgba($r1,$g1,$b2,$a1) 0%, rgba($r2,$g2,$b2,$a2) 100%)";
+        result := SetGradientRGBSInMask(mask, xFirst, xSecond);
+      end;
+
+    gtMs:
+      begin
+        var mask := "-ms-linear-gradient(top, rgba($r1,$g1,$b2,$a1) 0%, rgba($r2,$g2,$b2,$a2) 100%)";
+        result := SetGradientRGBSInMask(mask, xFirst, xSecond);
+      end;
+
+    gtIE:
+      begin
+        var mask := "filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=rgba($r1,$g1,$b2,$a1), endColorstr=rgba($r2,$g2,$b2,$a2),GradientType=0)";
+        result := SetGradientRGBSInMask(mask, xFirst, xSecond);
+      end;
+
+    gtAny:
+      begin
+        var mask := "linear-gradient(to bottom, rgba($r1,$g1,$b2,$a1) 0%, rgba($r2,$g2,$b2,$a2) 100%)";
+        result := SetGradientRGBSInMask(mask, xFirst, xSecond);
+      end;
+    end;
+  end;
+
+
+  function GradientTopBottom(FromColorDef, ToColorDef: string;
+           BrowserFormat: TBrowserFormat): string;
+  begin
+    (* var xfirst  := ColorDefToRGB(FromColorDef);
+    var xSecond := ColorDefToRGB(ToColorDef);
+    var mask := ''; *)
+
+    case BrowserFormat of
+    gtWebkit1:
+      begin
+        var mask := "-webkit-gradient(linear, left top, left bottom, color-stop(0, $a), color-stop(100, $b))";
+        result := StrReplace(mask, '$a', FromColorDef);
+        result := StrReplace(result, '$b', ToColorDef);
+      end;
+
+    gtWebkit2:
+      begin
+        var mask := "-webkit-linear-gradient(top, $a 0%, $b 100%)";
+        result := StrReplace(mask, '$a', FromColorDef);
+        result := StrReplace(result, '$b', ToColorDef);
+      end;
+
+    gtMoz:
+      begin
+        var mask := "-moz-linear-gradient(top, $a 0%, $b 100%)";
+        result := StrReplace(mask, '$a', FromColorDef);
+        result := StrReplace(result, '$b', ToColorDef);
+      end;
+
+    gtMs:
+      begin
+        var mask := "-ms-linear-gradient(top, $a 0%, $b 100%)";
+        result := StrReplace(mask, '$a', FromColorDef);
+        result := StrReplace(result, '$b', ToColorDef);
+      end;
+
+    gtIE:
+      begin
+        var mask := "filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$a', endColorstr='$b',GradientType=0)";
+        result := StrReplace(mask, '$a', FromColorDef);
+        result := StrReplace(result, '$b', ToColorDef);
+      end;
+
+    gtAny:
+      begin
+        var mask := "linear-gradient(to bottom, $a 0%, $b 100%)";
+        result := StrReplace(mask, '$a', FromColorDef);
+        result := StrReplace(result, '$b', ToColorDef);
+      end;
+    end;
+  end;
+?>
+
+/* ######################################################################### */
+/* External references                                                       */
+/* ######################################################################### */
+
+  /* Ubuntu is the default font for this style */
+  @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+  /* And we use font-awesome for inline glyphs */
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+
+/* ######################################################################### */
+/* Define fundamental properties for the document                            */
+/* ######################################################################### */
+
+:focus {
+  outline-width: 0px;
+  outline-color: transparent;
+  outline-style: none;
+}
+
+html, body, document {
+   margin:  0px;
+  padding:  0px;
+   border:  0px;
+   cursor:  default;
+    color:  <?pas=clTextColor?>;
+
+  font-family: <?pas=fntFamily?>;
+    font-name: <?pas=fntDefaultName?>;
+    font-size: <?pas=fntDefaultSize?>;
+
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+       -o-text-size-adjust: none;
+
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+  /* No overflow, means no auto-scrolling */
+  overflow: hidden !important;
+}
+
+
+/* ######################################################################### */
+/* Define common properties for all elements that will be created at runtime */
+/* ######################################################################### */
+
+/* Apply to all elements */
+
+div, input, button, fieldset, legend, span {
+
+   margin:  0px;
+   border:  0px;
+   cursor:  default;
+   padding: <?pas=StdPadding?>;
+
+  /* font-family: <?pas=fntFamily?>;
+    font-name: <?pas=fntDefaultName?>;
+    color:  <?pas=clTextColor?>; */
+
+  /* Define "normal" boxing, which means width and height
+     properties include the border etc.
+     The default property is content-box, which is not suited for 1:1
+     absolute pixel position mode */
+  -webkit-box-sizing: border-box !important;
+	   -moz-box-sizing: border-box !important;
+	    -ms-box-sizing: border-box !important;
+	     -o-box-sizing: border-box !important;
+	        box-sizing: border-box !important;
+
+  /* no tap highlight color */
+	-webkit-tap-highlight-color: transparent;
+	   -moz-tap-highlight-color: transparent;
+	    -ms-tap-highlight-color: transparent;
+	     -o-tap-highlight-color: transparent;
+	        tap-highlight-color: transparent;
+
+  /* no border style by default */
+  -webkit-border-style: none;
+	   -moz-border-style: none;
+	    -ms-border-style: none;
+	     -o-border-style: none;
+	        border-style: none;
+
+	-webkit-font-smoothing: always;
+	   -moz-font-smoothing: always;
+	    -ms-font-smoothing: always;
+	        font-smoothing: always;
+
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+       -o-text-size-adjust: none;
+
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+/* ######################################################################### */
+/* Define common disabled state                                              */
+/* ######################################################################### */
+
+/* When a control has it's enabled property set to false, typically there
+   is some visual feedback. While you can naturally define whatever
+   you like individually - the "DisabledState" styleclass is automatically
+   added to your control. It is removed again when you enable a control. */
+
+.DisabledState {
+  opacity:        0.5 !Important;
+  cursor:         not-allowed !Important;
+  touch-action:   none !Important;
+  outline:        none !Important;
+  pointer-events: none !Important;
+  background:     <?pas=clBackground?>
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat !Important;
+}
+
+.DisabledState > * {
+  opacity:        0.5 !Important;
+  cursor:         not-allowed !Important;
+  touch-action:   none !Important;
+  outline:        none !Important;
+  pointer-events: none !Important;
+  background:     <?pas=clBackground?>
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat !Important;
+}
+
+/* ######################################################################### */
+/* TW3CustomControl, this is the base ancestor of all controls               */
+/* ######################################################################### */
+
+.TW3CustomControl {
+  background-color: <?pas=clBackground?>;
+  color: <?pas=clTextColor?>;
+}
+
+/* ######################################################################### */
+/* TW3Display, TW3DisplayView, these are our base displays for forms         */
+/* ######################################################################### */
+
+.TW3Display, .TW3DisplayView {
+    margin: 0px;
+   padding: 0px;
+    border: 0px;
+  overflow: hidden !important;
+  background-color: <?pas=clDisplayBackground?>;
+}
+
+/* ######################################################################### */
+/* TW3BlockBox                                                               */
+/* ######################################################################### */
+
+.TW3BlockBox {
+  overflow: hidden;
+  -webkit-touch-callout: none;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.TW3NoSelect {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+
+/* ######################################################################### */
+/* Define font sizes                                                         */
+/* ######################################################################### */
+
+.ThemeFontSmall {
+  font-family: <?pas=fntFamily?>;
+    font-name: <?pas=fntDefaultName?>;
+    font-size: <?pas=fntSmallSize?>;
+    color:     <?pas=clTextColor?>;
+}
+
+.ThemeFontNormal {
+  font-family: <?pas=fntFamily?>;
+    font-name: <?pas=fntDefaultName?>;
+    font-size: <?pas=fntDefaultSize?>;
+    color:     <?pas=clTextColor?>;
+}
+
+.ThemeFontMedium {
+  font-family: <?pas=fntFamily?>;
+    font-name: <?pas=fntDefaultName?>;
+    font-size: <?pas=fntMediumSize?>;
+    color:     <?pas=clTextColor?>;
+}
+
+.ThemeFontLarge {
+  font-family: <?pas=fntFamily?>;
+    font-name: <?pas=fntDefaultName?>;
+    font-size: <?pas=fntLargeSize?>;
+    color:     <?pas=clTextColor?>;
+}
+
+/* ######################################################################### */
+/* Background types                                                          */
+/* ######################################################################### */
+
+/* The display background is, as the name implies, used by display classes.
+   These are classes associated with the display, which is typically
+    -TW3Application->Display
+    -TW3Application->Display->View     */
+.TW3DisplayBackground {
+  background-color: <?pas=clDisplayBackground?>;
+}
+
+/* The control background is a generic background that can be
+   used with ordinary, flat controls. It is typically a single color
+   depending on the theme and should not really contain anything in
+   particular. It simply defines the client surface of a control visually */
+.TW3ControlBackground {
+  background-color: <?pas=clBtnFace?>;
+}
+
+/* The container background is used by controls designed to house
+   other controls, visually on a form. Controls like: TW3Panel, TW3TabControl,
+   and TW3GroupBox all use this background. It should typically stand out
+   from the other backgrounds very subtle, depending on the style. */
+.TW3ContainerBackground {
+  background-color: <?pas=clContainerBackground?>;
+}
+
+/* Edit control background. Typically a single color
+   used by TW3Edit and TW3Memo  */
+.TW3EditBackground {
+  background-color: <?pas=clEditBackground?>;
+}
+
+/* The selection color [highlight] can also be adjusted */
+.TW3EditBackground::selection {
+  background-color: <?pas=clEditSelectionColor?>;
+}
+
+/* List control backgrounds. Controls like TW3ListBox
+   use these styles. Notice that we separate between
+   normal-item and selected-item */
+.TW3ListBackground {
+  background-color: <?pas=clListBackground?>;
+}
+
+.TW3ListItemBackground {
+  background-color: <?pas=clListItemBackground?>;
+}
+
+.TW3ListItemSelectedBackground {
+  background-color: <?pas=clListItemSelectedBackground?>;
+}
+
+.TW3ButtonBackground {
+  background-color: <?pas=clBtnFace?>;
+  background-image: <?pas=GradientTopBottom(clWhite,'#F0F0F0', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom(clWhite,'#F0F0F0', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom(clWhite,'#F0F0F0', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom(clWhite,'#F0F0F0', gtMs)?>;
+  background-image: <?pas=GradientTopBottom(clWhite,'#F0F0F0', gtIE)?>;
+  background-image: <?pas=GradientTopBottom(clWhite,'#F0F0F0', gtAny)?>;
+}
+
+.TW3ButtonBackground:active {
+  background-color: <?pas=clBtnDown?>;
+  background-image: <?pas=GradientTopBottom('#E7E7E7',clWhite, gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom('#E7E7E7',clWhite, gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom('#E7E7E7',clWhite, gtMoz)?>;
+  background-image: <?pas=GradientTopBottom('#E7E7E7',clWhite, gtMs)?>;
+  background-image: <?pas=GradientTopBottom('#E7E7E7',clWhite, gtIE)?>;
+  background-image: <?pas=GradientTopBottom('#E7E7E7',clWhite, gtAny)?>;
+}
+
+.TW3DialogButtonBackground {
+  background-color: <?pas=clDlgBtnFace?>;
+  background-image: <?pas=GradientTopBottom('#E0E0E0','#CCCCCC', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom('#E0E0E0','#CCCCCC', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom('#E0E0E0','#CCCCCC', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom('#E0E0E0','#CCCCCC', gtMs)?>;
+  background-image: <?pas=GradientTopBottom('#E0E0E0','#CCCCCC', gtIE)?>;
+  background-image: <?pas=GradientTopBottom('#E0E0E0','#CCCCCC', gtAny)?>;
+}
+
+.TW3DialogButtonBackground:active {
+  background-color: <?pas=clDlgBtnDown?>;
+  background-image: <?pas=GradientTopBottom('#CCCCCC','#E0E0E0', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom('#CCCCCC','#E0E0E0', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom('#CCCCCC','#E0E0E0', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom('#CCCCCC','#E0E0E0', gtMs)?>;
+  background-image: <?pas=GradientTopBottom('#CCCCCC','#E0E0E0', gtIE)?>;
+  background-image: <?pas=GradientTopBottom('#CCCCCC','#E0E0E0', gtAny)?>;
+}
+
+.TW3DecorativeBackground {
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtMs)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtIE)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtAny)?>;
+}
+
+.TW3DecorativeBackgroundInvert {
+  background-image: <?pas=GradientTopBottom('#5B88C7','#2B5897', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom('#5B88C7','#2B5897', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom('#5B88C7','#2B5897', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom('#5B88C7','#2B5897', gtMs)?>;
+  background-image: <?pas=GradientTopBottom('#5B88C7','#2B5897', gtIE)?>;
+  background-image: <?pas=GradientTopBottom('#5B88C7','#2B5897', gtAny)?>;
+}
+
+.TW3DecorativeDarkBackground {
+  background-image: <?pas=GradientTopBottom(clBlack,'#293D69', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom(clBlack,'#293D69', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom(clBlack,'#293D69', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom(clBlack,'#293D69', gtMs)?>;
+  background-image: <?pas=GradientTopBottom(clBlack,'#293D69', gtIE)?>;
+  background-image: <?pas=GradientTopBottom(clBlack,'#293D69', gtAny)?>;
+}
+
+.TW3ToolContainerBackground {
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtMs)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtIE)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtAny)?>;
+}
+
+.TW3ToolButtonBackground {
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtMs)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtIE)?>;
+  background-image: <?pas=GradientTopBottom('#5C5B56','#393834', gtAny)?>;
+}
+
+.TW3ToolButtonBackground:active {
+  background-image: <?pas=GradientTopBottom('#393834','#5C5B56', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom('#393834','#5C5B56', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom('#393834','#5C5B56', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom('#393834','#5C5B56', gtMs)?>;
+  background-image: <?pas=GradientTopBottom('#393834','#5C5B56', gtIE)?>;
+  background-image: <?pas=GradientTopBottom('#393834','#5C5B56', gtAny)?>;
+}
+
+.TW3ToolControlBackground {
+  background-color: <?pas=clToolControlBackground?>;
+}
+
+/* ######################################################################### */
+/* Border types                                                              */
+/* ######################################################################### */
+
+.TW3ControlBorder {
+	border-radius: <?pas=EdgeRounding?>;
+	border: 1px solid <?pas=clBtnDown?>;
+  -webkit-box-shadow: 0px 1px <?pas=clCtrlShadowBaseColor?>;
+     -moz-box-shadow: 0px 1px <?pas=clCtrlShadowBaseColor?>;
+      -ms-box-shadow: 0px 1px <?pas=clCtrlShadowBaseColor?>;
+       -o-box-shadow: 0px 1px <?pas=clCtrlShadowBaseColor?>;
+          box-shadow: 0px 1px <?pas=clCtrlShadowBaseColor?>;
+}
+
+.TW3ContainerBorder {
+	border-radius:  <?pas=EdgeRounding?>;
+  border-top:     1px solid rgba(250, 250, 250, 0.7);
+  border-left:    1px solid rgba(250, 250, 250, 0.7);
+  border-right:   1px solid rgba(240, 240, 240, 0.5);
+  border-bottom:  1px solid rgba(240, 240, 240, 0.5);
+  -webkit-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.3)?>;
+     -moz-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.3)?>;
+      -ms-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.3)?>;
+       -o-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.3)?>;
+          box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.3)?>;
+}
+
+
+.TW3FlatBorder {
+	border-radius:  <?pas=EdgeRounding?>;
+  border-top:     1px solid rgba(44, 44, 44, 0.8);
+  border-left:    1px solid rgba(44, 44, 44, 0.8);
+  border-right:   1px solid rgba(44, 44, 44, 0.8);
+  border-bottom:  1px solid rgba(44, 44, 44, 0.8);
+}
+
+.TW3ButtonBorder {
+	border-radius:  <?pas=EdgeRounding?>;
+  border-top:     1px solid rgba(250, 250, 250, 0.7);
+  border-left:    1px solid rgba(250, 250, 250, 0.7);
+  border-right:   1px solid rgba(240, 240, 240, 0.5);
+  border-bottom:  1px solid rgba(240, 240, 240, 0.5);
+  -webkit-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+     -moz-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+      -ms-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+       -o-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+          box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+}
+
+.TW3ButtonBorder:active {
+	border-radius:  <?pas=EdgeRounding?>;
+  border-top:     1px solid rgba(240, 240, 240, 0.5);
+  border-left:    1px solid rgba(240, 240, 240, 0.5);
+  border-right:   1px solid rgba(250, 250, 250, 0.7);
+  border-bottom:  1px solid rgba(250, 250, 250, 0.7);
+
+  -webkit-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+     -moz-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+      -ms-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+       -o-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+          box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+}
+
+.TW3DialogButtonBorder {
+	border-radius:  <?pas=EdgeRounding?>;
+  border-top:     1px solid rgba(250, 250, 250, 0.7);
+  border-left:    1px solid rgba(250, 250, 250, 0.7);
+  border-right:   1px solid rgba(240, 240, 240, 0.5);
+  border-bottom:  1px solid rgba(240, 240, 240, 0.5);
+  -webkit-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+     -moz-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+      -ms-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+       -o-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+          box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+}
+
+.TW3DialogButtonBorder:active {
+	border-radius:  <?pas=EdgeRounding?>;
+  border-top:     1px solid rgba(240, 240, 240, 0.5);
+  border-left:    1px solid rgba(240, 240, 240, 0.5);
+  border-right:   1px solid rgba(250, 250, 250, 0.7);
+  border-bottom:  1px solid rgba(250, 250, 250, 0.7);
+  -webkit-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+     -moz-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+      -ms-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+       -o-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+          box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clDlgShadowBaseColor, 0.8)?>;
+}
+
+.TW3EditBorder {
+  border-top:     1px solid #979797;
+  border-left:    1px solid #979797;
+  border-bottom:  1px solid <?pas=clWhite?>;
+  border-right:   1px solid <?pas=clWhite?>;
+  -webkit-box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+     -moz-box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+      -ms-box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+       -o-box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+          box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+}
+
+.TW3ListBorder {
+  border-top:     1px solid #979797;
+  border-left:    1px solid #979797;
+  border-bottom:  1px solid <?pas=clWhite?>;
+  border-right:   1px solid <?pas=clWhite?>;
+	border-radius:  <?pas=EdgeRounding?>;
+
+  -webkit-box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+     -moz-box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+      -ms-box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+       -o-box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+          box-shadow: inset 0 0 3px <?pas=GetRGBA(clShadowBaseColor, 0.6)?>;
+}
+
+.TW3ToolControlFlatBorder {
+  border-top:     1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+  border-left:    1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+  border-right:   1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+  border-bottom:  1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+}
+
+.TW3ToolControlBorder {
+  border: 1px solid #353431;
+}
+
+.TW3ToolContainerBorder {
+  border-top:     1px solid rgba(33, 33, 33, 0.7);
+  border-left:    1px solid rgba(33, 33, 33, 0.7);
+  border-right:   1px solid rgba(33, 33, 33, 0.7);
+  border-bottom:  1px solid rgba(33, 33, 33, 0.7);
+  -webkit-box-shadow: 0px 1px 1px <?pas=GetRGBA("#212121", 0.4)?>;
+     -moz-box-shadow: 0px 1px 1px <?pas=GetRGBA("#212121", 0.4)?>;
+      -ms-box-shadow: 0px 1px 1px <?pas=GetRGBA("#212121", 0.4)?>;
+       -o-box-shadow: 0px 1px 1px <?pas=GetRGBA("#212121", 0.4)?>;
+          box-shadow: 0px 1px 1px <?pas=GetRGBA("#212121", 0.4)?>;
+}
+
+.TW3ToolButtonBorder {
+	border-radius:  <?pas=EdgeRounding?>;
+  border-top:     1px solid rgba(250, 250, 250, 0.7);
+  border-left:    1px solid rgba(250, 250, 250, 0.7);
+  border-right:   1px solid rgba(220, 220, 220, 0.5);
+  border-bottom:  1px solid rgba(220, 220, 220, 0.5);
+  -webkit-box-shadow: 1px 1px 0px 0px <?pas=GetRGBA("#212121", 0.9)?>;
+     -moz-box-shadow: 1px 1px 0px 0px <?pas=GetRGBA("#212121", 0.9)?>;
+      -ms-box-shadow: 1px 1px 0px 0px <?pas=GetRGBA("#212121", 0.9)?>;
+       -o-box-shadow: 1px 1px 0px 0px <?pas=GetRGBA("#212121", 0.9)?>;
+          box-shadow: 1px 1px 0px 0px <?pas=GetRGBA("#212121", 0.9)?>;
+}
+
+.TW3ToolButtonBorder:active {
+  border-top:     1px solid rgba(250, 250, 250, 0.5);
+  border-left:    1px solid rgba(250, 250, 250, 0.5);
+  border-right:   1px solid rgba(220, 220, 220, 0.7);
+  border-bottom:  1px solid rgba(220, 220, 220, 0.7);
+  -webkit-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA("#212121", 0.9)?>;
+     -moz-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA("#212121", 0.9)?>;
+      -ms-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA("#212121", 0.9)?>;
+       -o-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA("#212121", 0.9)?>;
+          box-shadow: 0px 0px 1px 1px <?pas=GetRGBA("#212121", 0.9)?>;
+}
+
+.TW3DecorativeBorder {
+	border-radius: <?pas=EdgeRounding?>;
+	border: 1px solid #AAAAAA;
+  -webkit-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+     -moz-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+      -ms-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+       -o-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+          box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+}
+
+.TW3ListMenuBorder {
+  -webkit-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clListMenuBorderColor, 0.3)?>;
+     -moz-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clListMenuBorderColor, 0.3)?>;
+      -ms-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clListMenuBorderColor, 0.3)?>;
+       -o-box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clListMenuBorderColor, 0.3)?>;
+          box-shadow: 0px 0px 1px 1px <?pas=GetRGBA(clListMenuBorderColor, 0.3)?>;
+}
+
+.TW3ListMenuBorder:active {
+	border: 1px solid #AAAAAA;
+  -webkit-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+     -moz-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+      -ms-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+       -o-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+          box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+}
+
+.TW3ListMenuBorder:first-child {
+	border-top-left-radius:  <?pas=ListMenuRounding?>;
+	border-top-right-radius:  <?pas=ListMenuRounding?>;
+}
+
+.TW3ListMenuBorder:last-child {
+	border-bottom-left-radius:  <?pas=ListMenuRounding?>;
+	border-bottom-right-radius:  <?pas=ListMenuRounding?>;
+}
+
+
+/* ######################################################################### */
+/* Form styles                                                               */
+/* ######################################################################### */
+
+.TW3CustomForm, .TW3Form
+{
+  background-color: <?pas=clWindowBackground?>;
+
+  /* This forces the browsers that support it to
+     use the GPU rather than CPU for movement */
+  -webkit-transform: translateZ(0);
+     -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+       -o-transform: translateZ(0);
+}
+
+/* ######################################################################### */
+/* TW3EditBox                                                                */
+/* ######################################################################### */
+
+.TW3EditBox {
+  resize: none;
+  font-size: <?pas=fntDefaultSize?>;
+	-webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+       -o-user-select: auto;
+          user-select: auto;
+ }
+
+/* ######################################################################### */
+/* TW3Memo                                                                   */
+/* ######################################################################### */
+
+.TW3Memo {
+  resize: none;
+   font-size: <?pas=fntDefaultSize?>;
+	-webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+       -o-user-select: auto;
+          user-select: auto;
+}
+
+/* ######################################################################### */
+/* TW3ComboBox                                                               */
+/* ######################################################################### */
+
+ .TW3ComboBox {
+  resize: none;
+	-webkit-user-select: auto;
+     -moz-user-select: auto;
+      -ms-user-select: auto;
+       -o-user-select: auto;
+          user-select: auto;
+ }
+
+/* ######################################################################### */
+/* TW3Panel                                                                  */
+/* ######################################################################### */
+
+.TW3Panel, .TW3CustomPanel {
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: <?pas=clWindowBackground?>;
+  outline-offset: -4px;
+}
+
+/* ######################################################################### */
+/* TW3Image                                                                  */
+/* ######################################################################### */
+
+.TW3Image {
+  padding: 0px !important;
+}
+
+/* ######################################################################### */
+/* TW3Label                                                                  */
+/* ######################################################################### */
+
+.TW3Label {
+  padding: 0px !important;
+}
+
+/* ######################################################################### */
+/* TW3ScrollContent and TW3ScrollContainer                                   */
+/* ######################################################################### */
+
+.TW3CustomScrollContent, .TW3ScrollContainer, .TW3ScrollContent {
+  padding: 0px !important;
+}
+
+/* ######################################################################### */
+/* TW3GroupBox                                                               */
+/* ######################################################################### */
+
+.TW3GroupBox {
+  font-family: <?pas=fntFamily?>;
+  font-name: <?pas=fntDefaultName?>;
+  font-size: <?pas=fntDefaultSize?>;
+}
+
+.TW3GroupBox > legend {
+  margin: 0px;
+  padding: 0px;
+  border: 0px none;
+  font-size: <?pas=fntDefaultSize?>;
+  text-shadow: 1px 1px 1px RGBA(255, 255, 255, 0.9);
+  color: inherit !important;
+  text-align: center;
+}
+
+/* ######################################################################### */
+/* TW3ListBox                                                                */
+/* ######################################################################### */
+
+.TW3ListBox {
+  margin:  0px;
+  background-color: <?pas=clListBackground?>;
+  font-family: <?pas=fntFamily?>;
+    font-name: <?pas=fntDefaultName?>;
+    font-size: <?pas=fntDefaultSize?>;
+}
+
+/* ######################################################################### */
+/* TW3ScrollContainer                                                        */
+/* ######################################################################### */
+
+.TW3CustomScrollContent, .TW3ScrollContent {
+  font-family: <?pas=fntFamily?>;
+  font-name: <?pas=fntDefaultName?>;
+  font-size: <?pas=fntDefaultSize?>;
+  color: <?pas=clTextColor?>;
+}
+
+TW3CustomScrollContainer, .TW3ScrollContainer {
+  font-family: <?pas=fntFamily?>;
+  font-name: <?pas=fntDefaultName?>;
+  font-size: <?pas=fntDefaultSize?>;
+  color: <?pas=clTextColor?>;
+}
+
+/* ######################################################################### */
+/* TW3ListMenu                                                               */
+/* ######################################################################### */
+
+.TW3ListMenu {
+  font-family:<?pas=fntFamily?>;
+  font-name:  <?pas=fntDefaultName?>;
+  font-size:  <?pas=fntMediumSize?>;
+  font-weight: bold;
+}
+
+.TW3ListMenuItem {
+  color: <?pas=clListItemTextColor?>;
+}
+
+.TW3ListMenuItem:active {
+  color: rgba(<?pas=GetRGBA(clListItemTextSelectedColor, 0.7)?>) !important;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtWebkit1)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtWebkit2)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtMoz)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtMs)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtIE)?>;
+  background-image: <?pas=GradientTopBottom('#2B5897','#5B88C7', gtAny)?>;
+}
+
+.TW3ListMenuItem > * {
+  color: inherit !important;
+}
+
+.TW3ListMenuItem:active > * {
+  color: <?pas=clListItemTextSelectedColor?> !important;
+}
+
+/* ######################################################################### */
+/* TW3Button                                                                 */
+/* ######################################################################### */
+
+.TW3Button {
+    font-size: <?pas=fntMediumSize?>;
+  font-weight: bold;
+        color: <?pas=clBtnText?>;
+  text-shadow: 1px 1px 1px <?pas=GetRGBA(clBtnTextShadow, 1.0) ?>;
+}
+
+.TW3Button:active:enabled {
+        color: <?pas=clBtnTextSelected?>;
+  text-shadow: -1px -1px 1px <?pas=GetRGBA(clBtnTextShadow, 1.0) ?>;
+}
+
+/* ######################################################################### */
+/* TW3DialogButton                                                           */
+/* ######################################################################### */
+
+.TW3DialogButton {
+  min-width:   80px;
+  min-height:  32px;
+  margin: 5px;
+    font-size: <?pas=fntMediumSize?>;
+  font-weight: bold;
+        color: <?pas=clDlgButtonText?>;
+  text-shadow: 1px 1px 1px <?pas=GetRGBA(clDlgButtonTextShadow, 0.8) ?>;
+}
+
+.TW3DialogButton:active:enabled {
+        color: <?pas=clDlgButtonTextSelect?>;
+  text-shadow: -1px -1px 1px <?pas=GetRGBA(clDlgButtonTextShadow, 0.8) ?>;
+}
+
+.TW3DialogButton > * {
+  font-family: inherit !important;
+  font-name: inherit !important;
+  font-size: inherit !important;
+}
+
+/* ######################################################################### */
+/* TW3Dialog                                                                 */
+/* ######################################################################### */
+
+.TW3Dialog {
+  padding:  0px;
+  border-radius: 8px;
+	z-index: 1000;
+	box-shadow: 0 8px 19px rgba(0,0,0,.9);
+}
+
+/* ######################################################################### */
+/* TW3DialogHeader                                                           */
+/* ######################################################################### */
+
+.TW3DialogHeader {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  height: 48px;
+}
+
+/* ######################################################################### */
+/* TW3DialogButtonPanel                                                      */
+/* ######################################################################### */
+
+.TW3DialogButtonPanel {
+  height: 64px;
+}
+
+
+/* ######################################################################### */
+/* TW3ToolButton                                                             */
+/* ######################################################################### */
+
+.TW3ToolButton {
+	color: <?pas=clWhite?>;
+}
+
+/* ######################################################################### */
+/* TW3Toolbar                                                                */
+/* ######################################################################### */
+
+.TW3Toolbar {
+  color:   <?pas=clToolTextColor?>;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  -webkit-box-shadow: 0px -1px 2px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+     -moz-box-shadow: 0px -1px 2px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+      -ms-box-shadow: 0px -1px 2px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+       -o-box-shadow: 0px -1px 2px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+          box-shadow: 0px -1px 2px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+}
+
+.TW3Toolbar :first-child {
+  margin-left: 2px !important;
+}
+
+.TW3Toolbar > * {
+  margin-right: 4px !important;
+}
+
+.TW3ToolElementAlignLeft {
+  float: left !important;
+}
+
+.TW3ToolElementAlignRight {
+  float: right !important;
+}
+
+/* ######################################################################### */
+/* TW3ToolbarButton                                                           */
+/* ######################################################################### */
+
+.TW3ToolbarButton {
+  color: <?pas=clToolTextColor?>;
+	text-shadow: 0 -1px -1px rgba(0,0,0,.30);
+}
+
+.TW3ToolbarButton:active {
+  color: <?pas=clToolTextColorSelected?>;
+}
+
+/* ######################################################################### */
+/* TW3ToolbarSeparator                                                       */
+/* ######################################################################### */
+
+.TW3ToolbarSeparator {
+  color: <?pas=clToolTextColor?>;
+  margin-left:    2px !important;
+  margin-right    2px !important;
+}
+
+.TW3ToolbarSeparator:active {
+  border: 1px dotted <?pas=clFlatBorderColor?>;
+  color: <?pas=clToolTextColorSelected?>;
+}
+
+/* ######################################################################### */
+/* TW3HeaderControl                                                           */
+/* ######################################################################### */
+
+.TW3HeaderControl {
+  font-size: <?pas=fntLargeSize?>;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  color: <?pas=clToolTextColor?>;
+
+  -webkit-box-shadow: -1px 2px 4px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+     -moz-box-shadow: -1px 2px 4px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+      -ms-box-shadow: -1px 2px 4px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+       -o-box-shadow: -1px 2px 4px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+          box-shadow: -1px 2px 4px <?pas=GetRGBA(clShadowBaseColor, 0.4)?>;
+}
+
+.TW3HeaderButton {
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: <?pas=fntMediumSize?>;
+  color: <?pas=clToolTextColor?>;
+  flex: 1;
+  flex-grow: 0;
+}
+
+.TW3HeaderTitle {
+  color: inherit !important;
+  flex: 2;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.TW3HeaderTitle:selected {
+  color: <?pas=clToolTextColorSelected?> !important;
+}
+
+/* ######################################################################### */
+/* TW3ToggleSwitch                                                           */
+/* ######################################################################### */
+
+.TW3ToggleSwitch {
+  outline: none;
+  margin: 0px;
+  padding: 0px; /* <?pas=StdPadding?> */
+  border-radius: <?pas=EdgeRounding?>;
+  box-shadow: 0px 1px 1px 1px <?pas=clWhite?>;
+ }
+
+.TW3ToggleOnLabel {
+	text-shadow: 1px 1px <?pas=clBlack?>;
+  color: <?pas=clWhite?>;
+  text-transform: capitalize; /* Make sure title is capitalized ("On and Off") */
+  -webkit-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+     -moz-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+      -ms-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+       -o-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+          box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+
+}
+
+.TW3ToggleOffLabel {
+	text-shadow: 1px 1px <?pas=clBlack?>;
+  color: <?pas=clWhite?>;
+  text-transform: capitalize; /* Make sure title is capitalized ("On and Off") */
+  -webkit-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+     -moz-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+      -ms-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+       -o-box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+          box-shadow: inset 0 0 10px <?pas=GetRGBA(clShadowBaseColor, 0.9)?>;
+}
+
+.TW3ToggleKnob {
+  width: 54% !important;
+  border: 1px solid #333333;
+
+	background-color: <?pas=clBtnFace?>;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%,color-stop(0, rgb(255, 255, 255)),color-stop(1, rgb(240, 240, 240)));
+	background-image: -webkit-repeating-linear-gradient(top,rgb(255, 255, 255) 0%,rgb(240, 240, 240) 100%);
+	background-image: repeating-linear-gradient(to bottom,rgb(255, 255, 255) 0%,rgb(240, 240, 240) 100%);
+	background-image: -ms-repeating-linear-gradient(top,rgb(255, 255, 255) 0%,rgb(240, 240, 240) 100%);
+
+  border-radius: <?pas=EdgeRounding?>;
+  border-top: 2px solid rgba(<?pas=getrgb(clBlack)?>, 1);
+  border-left: 2px solid rgba(<?pas=getrgb(clBlack)?>, 1);
+  border-bottom: 2px solid rgba(<?pas=getrgb(clBlack)?>, 1);
+  border-right: 2px solid rgba(<?pas=getrgb(clBlack)?>, 1);
+
+	/* background-color: <?pas=clBtnFace?>;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%,color-stop(0, rgb(255, 255, 255)),color-stop(1, rgb(240, 240, 240)));
+	background-image: -webkit-repeating-linear-gradient(top,rgb(255, 255, 255) 0%,rgb(240, 240, 240) 100%);
+	background-image: repeating-linear-gradient(to bottom,rgb(255, 255, 255) 0%,rgb(240, 240, 240) 100%);
+	background-image: -ms-repeating-linear-gradient(top,rgb(255, 255, 255) 0%,rgb(240, 240, 240) 100%);
+
+  -webkit-box-shadow: inset 0 0 10px rgba(<?pas=getrgb(clBlack)?>, 0.75);
+     -moz-box-shadow: inset 0 0 10px rgba(<?pas=getrgb(clBlack)?>, 0.75);
+       -o-box-shadow: inset 0 0 10px rgba(<?pas=getrgb(clBlack)?>, 0.75);
+          box-shadow: inset 0 0 10px rgba(<?pas=getrgb(clBlack)?>, 0.75); */
+}
+
+/* ######################################################################### */
+/* TW3ScrollContentIndicator                                                 */
+/* ######################################################################### */
+
+.TW3ScrollContentIndicator, .TW3CustomScrollContentIndicator
+{
+  border-radius: <?pas=EdgeRounding?>;
+  border: 1px solid rgba(0,0,0, 0.2);
+}
+
+/* ######################################################################### */
+/* TW3ProgressBar                                                            */
+/* ######################################################################### */
+
+@-webkit-keyframes move_bg_progressmeter {
+	0% {
+	   background-position: 50px 50px;
+	}
+	100% {
+	   background-position: 0 0;
+	}
+}
+
+@-moz-keyframes move_bg_progressmeter {
+	0% {
+	   background-position: 50px 50px;
+	}
+	100% {
+	   background-position: 0 0;
+	}
+}
+
+@-o-keyframes move_bg_progressmeter {
+	0% {
+	   background-position: 50px 50px;
+	}
+	100% {
+	   background-position: 0 0;
+	}
+}
+
+.TW3ProgressBar {
+
+  /* box-shadow: 0px 1px 1px 1px #FFFFFF; */
+  -webkit-box-shadow: inset 0 0 10px rgba(<?pas=GetRGB(clBlack)?>, 0.9);
+     -moz-box-shadow: inset 0 0 10px rgba(<?pas=GetRGB(clBlack)?>, 0.9);
+       -o-box-shadow: inset 0 0 10px rgba(<?pas=GetRGB(clBlack)?>, 0.9);
+          box-shadow: inset 0 0 10px rgba(<?pas=GetRGB(clBlack)?>, 0.9);
+}
+
+.TW3ProgressMeter
+{
+  border-radius: <?pas=EdgeRounding?>;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  -webkit-touch-callout: none;
+  -webkit-animation: move_bg_progressmeter 3s linear infinite;
+	   -moz-animation: move_bg_progressmeter 3s linear infinite;
+      -ms-animation: move_bg_progressmeter 3s linear infinite;
+	     -o-animation: move_bg_progressmeter 3s linear infinite;
+
+	-webkit-background-size: 50px 50px;
+	   -moz-background-size: 50px 50px;
+	    -ms-background-size: 50px 50px;
+		   -o-background-size: 50px 50px;
+          background-size: 50px 50px;
+
+	background-image:
+	   -webkit-gradient(linear, 0 0, 100% 100%,
+		  color-stop(.25, rgba(255, 255, 255, .3)),
+		  color-stop(.25, transparent),
+      color-stop(.5, transparent),
+		  color-stop(.5, rgba(255, 255, 255, .3)),
+		  color-stop(.75, rgba(255, 255, 255, .3)),
+		  color-stop(.75, transparent), to(transparent)
+	   );
+
+	background-image:
+		-moz-linear-gradient(
+		  -45deg,
+		  rgba(255, 255, 255, .3) 25%,
+		  transparent 25%,
+		  transparent 50%,
+		  rgba(255, 255, 255, .3) 50%,
+		  rgba(255, 255, 255, .3) 75%,
+		  transparent 75%,
+		  transparent
+	   );
+	background-image:
+		-ms-linear-gradient(
+		  -45deg,
+		  rgba(255, 255, 255, .3) 25%,
+		  transparent 25%,
+		  transparent 50%,
+		  rgba(255, 255, 255, .3) 50%,
+		  rgba(255, 255, 255, .3) 75%,
+		  transparent 75%,
+		  transparent
+	   );
+	background-image:
+		-o-linear-gradient(
+		  -45deg,
+		  rgba(255, 255, 255, .3) 25%,
+		  transparent 25%,
+		  transparent 50%,
+		  rgba(255, 255, 255, .3) 50%,
+		  rgba(255, 255, 255, .3) 75%,
+		  transparent 75%,
+		  transparent
+	   );
+}
+
+/* ######################################################################### */
+/* TW3ScrollbarTopButton                                                      */
+/* ######################################################################### */
+
+.TW3ScrollbarTopButton {
+  border-radius: <?pas=EdgeRounding?>;
+}
+
+.TW3ScrollbarTopButton:active {
+  background-color: rgba(<?pas=GetRGB(clScrollbarBtnActiveColor)?>, 0.9)?>;
+}
+
+
+.TW3ScrollbarTopButton:hover > * {
+  cursor: inherit;
+}
+
+/* ######################################################################### */
+/* TW3ScrollbarBottomButton                                                    */
+/* ######################################################################### */
+
+.TW3ScrollbarBottomButton {
+  border-radius: <?pas=EdgeRounding?>;
+}
+
+.TW3ScrollbarBottomButton:active {
+  background-color: rgba(<?pas=GetRGB(clScrollbarBtnActiveColor)?>, 0.9)?>;
+}
+
+.TW3ScrollbarBottomButton:hover > * {
+  cursor: inherit;
+}
+
+/* ######################################################################### */
+/* TW3ScrollbarLeftButton                                                    */
+/* ######################################################################### */
+
+.TW3ScrollbarLeftButton {
+  border-radius: <?pas=EdgeRounding?>;
+}
+
+.TW3ScrollbarLeftButton:active {
+  background-color: rgba(<?pas=GetRGB(clScrollbarBtnActiveColor)?>, 0.9)?>;
+}
+
+.TW3ScrollbarLeftButton:hover > * {
+  cursor: inherit;
+}
+
+/* ######################################################################### */
+/* TW3ScrollbarRightBtn                                                      */
+/* ######################################################################### */
+
+.TW3ScrollbarRightButton {
+  border-radius:    <?pas=EdgeRounding?>;
+}
+
+.TW3ScrollbarRightButton:active {
+  background-color: rgba(<?pas=GetRGB(clScrollbarBtnActiveColor)?>, 0.9)?>;
+}
+
+.TW3ScrollbarRightButton:hover > * {
+  cursor: inherit;
+}
+
+/* ######################################################################### */
+/* TW3ScrollbarHandle                                                      */
+/* ######################################################################### */
+
+.TW3ScrollbarHandle {
+  border-radius:    <?pas=EdgeRounding?>;
+  background-color: <?pas=GetRGBA(clScrollbarHandleColor, 0.6)?>;
+}
+
+/* ######################################################################### */
+/* TW3VerticalScrollbar                                                      */
+/* ######################################################################### */
+
+.TW3VerticalScrollbar {
+  padding-top:      0px;
+  padding-bottom:   0px;
+  padding-left:     <?pas=StdPadding?>;
+  padding-right:    <?pas=StdPadding?>;
+  background-color: <?pas=GetRGBA(clVScrollbarBackground, 0.4)?>;
+  border-left:      1px solid <?pas=GetRGBA(clDlgShadowBaseColor, 0.3)?>
+}
+
+/* ######################################################################### */
+/* TW3HorizontalScrollbar                                                    */
+/* ######################################################################### */
+
+.TW3HorizontalScrollbar {
+  padding-top:      <?pas=StdPadding?>;
+  padding-bottom:   <?pas=StdPadding?>;
+  padding-left:     0px;
+  padding-right:    0px;
+  background-color: <?pas=GetRGBA(clHScrollbarBackground, 0.4)?>;
+  border-top:       1px solid <?pas=GetRGBA(clDlgShadowBaseColor, 0.3)?>
+}
+
+/* ######################################################################### */
+/* TW3TabControl                                                    */
+/* ######################################################################### */
+
+.TW3TabControl {
+  padding: 0px;
+  font-size:    12px;
+  font-family:  <?pas=fntFamily?>;
+    font-name:  <?pas=fntDefaultName?>;
+    font-size:  <?pas=fntNormalSize?>;
+}
+
+.TW3Tab {
+ background-color: #FFFFFF;
+}
+
+.TW3TabHeaders {
+  margin: 2px;
+  padding: 4px;
+}
+
+.TW3TabHeader {
+  font-family:      <?pas=fntFamily?>;
+  font-name:        <?pas=fntDefaultName?>;
+  font-size:        <?pas=fntNormalSize?>;
+  color: #ACACAC;
+  margin-right: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  line-height: 30px;
+ }
+
+.TW3TabHeader:active {
+  border-radius:  <?pas=EdgeRounding?>;
+  border-top:     1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+  border-left:    1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+  border-right:   1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+  border-bottom:  1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+}
+
+.TW3TabHeaderSelected {
+  color: #FFFFFF;
+}
+
+
+.XListBoxItemSelectedStyle{
+ background-color: #000000;
+ color: #FFFFFF;
+}
+
+.XListBoxItemStyle{
+ color: #000000;
+ background-color: #FFFFFF;
+}
+
+
+.header {
+  padding: 0px !important;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-size: x-large;
+  border-top:     1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+  border-left:    1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+  border-right:   1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+  border-bottom:  1px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
+}

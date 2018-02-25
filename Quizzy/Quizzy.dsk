@@ -1,19 +1,20 @@
-<SMART>
+﻿<SMART>
   <state>
     <editor>
-      <tab filename="Question" fullname="Question.pas" topline="143" col="51" row="175" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Question" fullname="Question.pas" topline="144" col="5" row="190" splitview="0" designview="0" splitter="0.444444447755814" />
       <tab filename="Application" fullname="Application.pas" topline="1" col="1" row="1" />
       <tab filename="Quizzy" fullname="Quizzy.spr" topline="1" col="1" row="1" />
       <activetab>Question</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>1951</BackgroundCompilations>
-      <EditTime>00:30:14.319</EditTime>
-      <CompileTime>00:01:36.960</CompileTime>
-      <TotalTime>03:36:00.005</TotalTime>
-      <DesigningTime>00:10:51.221</DesigningTime>
-      <RunningTime>00:23:22.425</RunningTime>
+      <BackgroundCompilations>1953</BackgroundCompilations>
+      <EditTime>T00:30:14.319</EditTime>
+      <CompileTime>T00:01:36.960</CompileTime>
+      <TotalTime>T03:36:00.194</TotalTime>
+      <DesigningTime>T00:10:51.229</DesigningTime>
+      <RunningTime>T00:23:22.425</RunningTime>
+      <TotalLinesOfCode>229</TotalLinesOfCode>
     </Statistics>
   </state>
 </SMART>

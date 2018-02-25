@@ -1,0 +1,23 @@
+﻿<SMART>
+  <Statistics>
+    <BackgroundCompilations>19</BackgroundCompilations>
+    <EditTime>T00:00:00.000</EditTime>
+    <CompileTime>T00:00:12.704</CompileTime>
+    <TotalTime>T00:01:55.032</TotalTime>
+    <DesigningTime>T00:01:51.727</DesigningTime>
+    <RunningTime>T00:00:00.000</RunningTime>
+    <TotalLinesOfCode>85</TotalLinesOfCode>
+    <Snapshots>
+      <Snapshot>
+        <BackgroundCompilations>19</BackgroundCompilations>
+        <EditTime>T00:00:00.000</EditTime>
+        <CompileTime>T00:00:12.704</CompileTime>
+        <TotalTime>T00:01:55.032</TotalTime>
+        <DesigningTime>T00:01:51.727</DesigningTime>
+        <RunningTime>T00:00:00.000</RunningTime>
+        <TotalLinesOfCode>85</TotalLinesOfCode>
+        <TimeStamp>2018-01-23T09:59:29.855</TimeStamp>
+      </Snapshot>
+    </Snapshots>
+  </Statistics>
+</SMART>
