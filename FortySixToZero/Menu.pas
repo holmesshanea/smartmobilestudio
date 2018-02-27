@@ -8,6 +8,7 @@ uses
   System.Types.Convert,
   System.Objects,
   System.Time,
+  System.JSON,
   SmartCL.System,
   SmartCL.Time,
   SmartCL.Graphics,
@@ -45,7 +46,7 @@ type
 
 implementation
 
-uses UntCommon;
+uses Common;
 
 { TMenu }
 
@@ -56,15 +57,45 @@ end;
 
 Procedure TMenu.HandleRegularImgClick(Sender: TObject);
 begin
- Mode:= mdRegular;
+ //save current data to local storage
+ if CompArray.Length > 0 then
+ begin
+  JSONStr:= JSON.Stringify(variant(CompArray));
+  WriteData(Mode);
+ end;
  //load regular data from local storage
+ Mode:= mdRegular;
+ JSONStr:= ReadData(Mode);
+  if (JSONStr <> '') AND (JSONStr <> 'error')  then
+  begin
+   asm
+    @CompArray = JSON.parse(@JSONStr);
+   end;
+  end
+  else
+  CompArray.Clear;
  Application.GotoForm('Main', feFromRight);
 end;
 
 Procedure TMenu.HandleWinterImgClick(Sender: TObject);
 begin
- Mode:= mdWinter;
+ //save current data to local storage
+ if CompArray.Length > 0 then
+ begin
+  JSONStr:= JSON.Stringify(variant(CompArray));
+  WriteData(Mode);
+ end;
  //load winter data from local storage
+ Mode:= mdWinter;
+ JSONStr:= ReadData(Mode);
+ if (JSONStr <> '') AND (JSONStr <> 'error')  then
+  begin
+   asm
+    @CompArray = JSON.parse(@JSONStr);
+   end;
+  end
+  else
+  CompArray.Clear;
  Application.GotoForm('Main', feFromRight);
 end;
 

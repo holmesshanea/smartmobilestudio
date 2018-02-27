@@ -19,8 +19,6 @@ uses
   SmartCL.Borders,
   SmartCL.Application,
   SmartCL.Layout,
-  SmartCL.Dialogs,
-  SmartCL.GlyphContainer,
   SmartCL.Controls.Label,
   SmartCL.Controls.Image,
   SmartCL.Controls.Elements,
@@ -62,34 +60,14 @@ type
 
 implementation
 
-uses Complete, Common;
+uses Complete, UntCommon;
 
 { TJournal }
 
 procedure TfrmJournal.HandleUndoClick(sender: Tobject);
 begin
-
-    application.ShowDialog(aoYesNo,
-      procedure (const Dialog: TW3Dialog)
-      begin
-        Dialog.SetBounds(0,0,ClientWidth,ClientHeight);
-        Dialog.Header.Caption := 'Undo';
-        Dialog.Text.Caption := 'Are You Sure';
-        Dialog.Glyph.GlyphType := lgtFontAwesome;
-        Dialog.Glyph.GlyphColor := clWhite;
-        Dialog.Glyph.GlyphId := 'fa-5x fa-question';
-      end,
-
-      procedure (const Dialog: TW3Dialog;
-      const DialogResult: TW3DialogResult)
-      begin
-       if DialogResult = roYes then
-       begin
-        RemoveRec(Rank);
-        Application.GotoForm('Mountain', feToLeft);
-       end;
-      end);
-
+ RemoveRec(Rank);
+ Application.GotoForm('Mountain', feToLeft);
 end;
 
 procedure TfrmJournal.HandleEditClick(sender: Tobject);
@@ -115,22 +93,10 @@ end;
 procedure TfrmJournal.FormActivated;
 begin
   inherited;
-
   if getCompleted(Rank) then
-  begin
-   if Mode = mdRegular then
-    fImage.Url:= 'res\mtn128C.png'
-   else
-    fImage.Url:= 'res\mtn-winter128C.png'
-  end
+   fImage.Url:= 'res\mtn128C.png'
   else
-  begin
-   if Mode = mdRegular then
-    fImage.Url:= 'res\mtn128.png'
-   else
-    fImage.Url:= 'res\mtn-winter128.png';
-  end;
-
+   fImage.Url:= 'res\mtn128.png';
 
   fDiv.InnerHTML:=
   '<div>' +
@@ -170,7 +136,6 @@ begin
   fMtnLbl.AlignText:= taCenter;
   fMtnLbl.Height:= 32;
   fMtnLbl.Caption:= 'Unknown';
-  fMtnLbl.Handle.style.setProperty('font-size', 'x-large');
 
   fImage:= TW3Image.Create(self);
   fImage.Height:= 100; fImage.Width:= 100;
@@ -180,7 +145,6 @@ begin
   fRankLbl.AlignText:= taCenter;
   fRankLbl.Height:= 32;
   fRankLbl.Caption:= '0';
-  fRankLbl.Handle.style.setProperty('font-size', 'x-large');
 
   fDiv:= TW3DivHTMLElement.Create(self);
   fDiv.StyleClass:= 'TW3ControlBorder';

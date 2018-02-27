@@ -38,6 +38,9 @@ type
     fRank: String;
     fMountain: String;
     fElevation: String;
+    fProminence: String;
+    fRange: String;
+    fLatLon: String;
     fSource: String;
   protected
     procedure HandleMapClick(sender: TObject);
@@ -57,13 +60,17 @@ type
     property Rank: String read fRank write fRank;
     property Mountain: String read fMountain write fMountain;
     property Elevation: String read fElevation write fElevation;
+    property Prominence: String read fProminence write fProminence;
+    property MtnRange: String read fRange write fRange;
+    property LatLon: String read fLatLon write fLatLon;
   end;
 
 implementation
 
-uses Common, Mountains, Complete, Journal, Map;
+uses UntCommon, Mountains, Complete, Journal, Map;
 
 { TMountain }
+
 
 procedure TfrmMountain.HandleMapClick(sender: TObject);
 begin
@@ -112,30 +119,36 @@ begin
   if getCompleted(Rank) then
   begin
    fHeader.TextNode.style.setProperty('text-decoration', 'line-through');
-   if Mode = mdRegular then
-    fImage.Url:= 'res\mtn128C.png'
-   else
-    fImage.Url:= 'res\mtn-winter128C.png';
+   fImage.Url:= 'res\mtn128C.png';
   end
   else
   begin
    fHeader.TextNode.style.setProperty('text-decoration', 'none');
-   if Mode = mdRegular then
-    fImage.Url:= 'res\mtn128.png'
-   else
-    fImage.Url:= 'res\mtn-winter128.png'
+   fImage.Url:= 'res\mtn128.png';
   end;
   fDiv.InnerHTML:=
 
-  '<div>' +
+  '<div style="overflow: hidden; overflow-y: auto; height: 100%;">' +
   '<table style="width:100%; height:100%">' +
    '<tr>' +
      '<td><Strong>RANK:</Strong></td>' +
      '<td>' + Rank + '</td>' +
    '</tr>' +
    '<tr>' +
+     '<td><Strong>RANGE:</Strong></td>' +
+     '<td>' + MtnRange + '</td>' +
+   '</tr>' +
+   '<tr>' +
      '<td><Strong>ELEVATION:</Strong></td>' +
      '<td>' + Elevation + '</td>' +
+   '</tr>' +
+   '<tr>' +
+     '<td><Strong>PROMINENCE:</Strong></td>' +
+     '<td>' + Prominence + '</td>' +
+   '</tr>' +
+   '<tr>' +
+     '<td><Strong>LONG / LAT:</Strong></td>' +
+     '<td>' + LatLon + '</td>' +
    '</tr>' +
   '</table>' +
 '</div>';
@@ -172,10 +185,7 @@ begin
 
   fImage:= TW3Image.Create(self);
   fImage.Height:= 100; fImage.Width:= 100;
-  if Mode = mdRegular then
-   fImage.Url:= 'res\mtn128.png'
-  else
-   fImage.Url:= 'res\mtn-winter128.png';
+  fImage.Url:= 'res\mtn128.png';
 
   fBackBtn:= TW3Button.Create(self);
   fBackBtn.Height:= 32; fBackBtn.Width:= 125;

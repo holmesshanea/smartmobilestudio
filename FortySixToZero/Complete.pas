@@ -25,12 +25,11 @@ uses
   SmartCL.Controls.Memo,
   SmartCL.Controls.Button,
 
-  UntCommon, SmartCL.Controls.Panel, SmartCL.Controls.Image;
+  Common, SmartCL.Controls.Panel, SmartCL.Controls.Image;
 
 type
 
   TfrmComplete = class(TW3Form)
-    procedure W3Button1Click(Sender: TObject);
   private
     {$I 'Complete:intf'}
     fMountain: String;
@@ -43,6 +42,7 @@ type
     fOkBtn: TW3Button;
     fCancelBtn: TW3Button;
   protected
+    procedure HandleGotFocus(Sender: TObject);
     procedure HandleCancelClick(Sender: TObject);
     procedure HandleOkClick(Sender: TObject);
     procedure FormActivated;override;
@@ -66,9 +66,13 @@ uses Congrats;
 
 { TForm1 }
 
-procedure TfrmComplete.W3Button1Click(Sender: TObject);
+procedure TfrmComplete.HandleGotFocus(Sender: TObject);
 begin
-
+ Handle.ReadyExecute( procedure ()
+ begin
+    fMemo.handle.select();
+    fMemo.handle.focus();
+ end);
 end;
 
 procedure TfrmComplete.HandleCancelClick(Sender: TObject);
@@ -95,9 +99,8 @@ begin
    //edit CompArray item here with new changes
     EditRec(Rank, CompleteDate.Text, Notes.Text);
   end;
-  JSONStr:= JSON.Stringify(variant(CompArray));
-  WriteData;
-  if Rank <> '46' then
+
+  if CompArray.Length <> 46 then
    TCongrats(Application.FormByName('Congrats')).Image.Url:= 'res\patch' + rank + '.jpg'
   else
    TCongrats(Application.FormByName('Congrats')).Image.Url:= 'res\adk46erlogo.png';
@@ -115,6 +118,11 @@ procedure TfrmComplete.FormActivated;
 begin
   inherited;
   fHeader.Caption:=  'Complete' + ' -[' + Mountain + ']';
+  fMemo.Handle.ReadyExecute(procedure ()
+  begin
+  fMemo.handle.select();
+  fMemo.handle.focus();
+  end);
 end;
 
 procedure TfrmComplete.InitializeForm;
@@ -141,7 +149,9 @@ begin
   fCompleteDate.Text:= FormatDateTime('yyyy-mm-dd', Now);
 
   fMemo:= TW3Memo.Create(self);
+  fMemo.TagId:= 'memo';
   fMemo.Text:= '<None>';
+  fMemo.OnGotFocus:= HandleGotFocus;
 
   fOkBtn:= TW3Button.Create(self);
   fOkBtn.Width:= 125; fOkBtn.Height:= 32;

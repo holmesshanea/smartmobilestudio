@@ -49,7 +49,7 @@ type
 
 implementation
 
-uses UntXListBoxItem, Main, Mountain, Common;
+uses UntXListBoxItem, Main, Mountain, UntCommon;
 
 { TfrmMountains }
 
@@ -91,23 +91,13 @@ begin
 
    if TXListBoxItemData(Item).Completed then
    begin
-
-    if Mode = mdRegular then
-     TXListBoxItem(Item.ItemObject).MtnImg.Url:=  'res\mtn32C.png'
-    else
-     TXListBoxItem(Item.ItemObject).MtnImg.Url:=  'res\mtn-winter32C.png';
-
+    TXListBoxItem(Item.ItemObject).MtnImg.Url:=  'res\mtn32C.png';
     TXListBoxItem(Item.ItemObject).Label.TextNode.style.setProperty('text-decoration', 'line-through');
     TXListBoxItem(Item.ItemObject).Rank.TextNode.style.setProperty('text-decoration', 'line-through');
    end
   else
   begin
-
-   if Mode = mdRegular then
-    TXListBoxItem(Item.ItemObject).MtnImg.Url:=  'res\mtn32.png'
-   else
-    TXListBoxItem(Item.ItemObject).MtnImg.Url:=  'res\mtn-winter32.png';
-
+   TXListBoxItem(Item.ItemObject).MtnImg.Url:=  'res\mtn32.png';
    TXListBoxItem(Item.ItemObject).Label.TextNode.style.setProperty('text-decoration', 'none');
    TXListBoxItem(Item.ItemObject).Rank.TextNode.style.setProperty('text-decoration', 'none');
   end;
@@ -119,29 +109,21 @@ begin
  Idx:= ItemIndex;
  if getCompleted(IntToStr(ItemIndex+1)) then
  begin
-
-   if Mode = mdRegular then
-    TfrmMountain(Application.FormByName('Mountain')).Image.Url:= 'res\mtn128C.png'
-   else
-    TfrmMountain(Application.FormByName('Mountain')).Image.Url:= 'res\mtn-winter128C.png';
-
+   TfrmMountain(Application.FormByName('Mountain')).Image.Url:= 'res\mtn128C.png';
    TfrmMountain(Application.FormByName('Mountain')).Header.TextNode.style.setProperty('text-decoration', 'line-through');
  end
  else
  begin
-
-  if Mode = mdRegular then
-   TfrmMountain(Application.FormByName('Mountain')).Image.Url:= 'res\mtn128.png'
-  else
-   TfrmMountain(Application.FormByName('Mountain')).Image.Url:= 'res\mtn-winter128.png';
-
+  TfrmMountain(Application.FormByName('Mountain')).Image.Url:= 'res\mtn128.png';
   TfrmMountain(Application.FormByName('Mountain')).Header.TextNode.style.setProperty('text-decoration', 'none');
  end;
 
  TfrmMountain(Application.FormByName('Mountain')).Rank:= IntToStr(ItemIndex+1);
  TfrmMountain(Application.FormByName('Mountain')).Mountain:= MtnArray[ItemIndex+1];
-  TfrmMountain(Application.FormByName('Mountain')).Elevation:= ElevArray[ItemIndex+1];
-
+ TfrmMountain(Application.FormByName('Mountain')).MtnRange:= RangeArray[ItemIndex+1];
+ TfrmMountain(Application.FormByName('Mountain')).Elevation:= ElevArray[ItemIndex+1];
+ TfrmMountain(Application.FormByName('Mountain')).Prominence:= PromArray[ItemIndex+1];
+ TfrmMountain(Application.FormByName('Mountain')).LatLon:= LatLonArray[ItemIndex+1];
  TfrmMountain(Application.FormByName('Mountain')).Source:= 'Mountains';
  Application.GotoForm('Mountain', feFromRight);
 end;

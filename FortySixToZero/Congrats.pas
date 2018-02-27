@@ -25,13 +25,15 @@ uses
 
 type
   TCongrats = class(TW3Form)
-    procedure HandleBtnClick(Sender: TObject);
   private
     {$I 'Congrats:intf'}
     fLayout: TLayout;
     fLabel: TW3Label;
     fImage: Tw3Image;
-    fButton: TW3Button;
+    fOkBtn: TW3Button;
+    fSendBtn: TW3Button;
+    procedure HandleSendBtnClick(Sender: TObject);
+    procedure HandleOkBtnClick(Sender: TObject);
   protected
     procedure FormActivated;override;
     procedure FormDeactivated;override;
@@ -41,12 +43,12 @@ type
   public
     property Label: TW3Label read fLabel write fLabel;
     property Image: TW3Image read fImage write fImage;
-    property Button: TW3Button read fButton write fButton;
+    property OkBtn: TW3Button read fOkBtn write fOkBtn;
   end;
 
 implementation
 
-uses Mountain;
+uses Common, Mountain;
 
 { TCongrats }
 
@@ -59,12 +61,18 @@ end;
 procedure TCongrats.FormActivated;
 begin
   inherited;
-  //
+  if CompArray.Length = 46 then
+   fSendBtn.Enabled:= True;
 end;
 
-procedure TCongrats.HandleBtnClick(Sender: TObject);
+procedure TCongrats.HandleOkBtnClick(Sender: TObject);
 begin
   Application.GotoForm('Mountain', fetoLeft);
+end;
+
+procedure TCongrats.HandleSendBtnClick(Sender: TObject);
+begin
+  //
 end;
 
 procedure TCongrats.InitializeForm;
@@ -88,19 +96,18 @@ begin
   fImage:= Tw3Image.Create(self);
   fImage.Width:= 200; fImage.Height:= 200;
 
-  fButton:= TW3Button.Create(self);
-  fButton.Caption:= 'Ok';
-  fButton.Width:= 125;
-  fButton.Height:= 32;
-  fButton.OnClick:= HandleBtnClick;
+  fSendBtn:= TW3Button.Create(self);
+  fSendBtn.Enabled:= False;
+  fSendBtn.Caption:= 'Send';
+  fSendBtn.Width:= 125;
+  fSendBtn.Height:= 32;
+  fSendBtn.OnClick:= HandleSendBtnClick;
 
-   fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
-                          [
-                           Layout.Top(fLabel),
-                           Layout.Client(Layout.Center(fImage)),
-                           Layout.Bottom(Layout.Height(32), Layout.Center(fButton))
-                          ]
-                         );
+  fOkBtn:= TW3Button.Create(self);
+  fOkBtn.Caption:= 'Ok';
+  fOkBtn.Width:= 125;
+  fOkBtn.Height:= 32;
+  fOkBtn.OnClick:= HandleOkBtnClick;
 
 end;
  
@@ -114,7 +121,7 @@ begin
                           [
                            Layout.Top(fLabel),
                            Layout.Client(Layout.Center(fImage)),
-                           Layout.Bottom(Layout.Height(32), Layout.Center(fButton))
+                           Layout.Bottom(Layout.Height(32), Layout.Left(Layout.Spacing(5).Stretch, [fSendBtn, fOkBtn]))
                           ]
                          );
 

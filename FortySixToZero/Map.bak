@@ -33,10 +33,8 @@ type
     fLayout: TLayout;
     fHeader: TW3Label;
     fBackBtn: TW3Button;
-    fTrailBtn: TW3Button;
     fMap: TW3DivHtmlElement;
     procedure HandleBackClick(sender: TObject);
-    procedure HandleTrailClick(sender: TObject);
   protected
     procedure FormDeactivated;override;
     procedure InitializeForm; override;
@@ -57,11 +55,6 @@ uses GoogleMaps;
 procedure TfrmMap.HandleBackClick(sender: TObject);
 begin
  Application.GotoForm('Mountain', feToLeft);
-end;
-
-procedure TfrmMap.HandleTrailClick(sender: TObject);
-begin
- //
 end;
 
 procedure TfrmMap.FormDeactivated;
@@ -95,13 +88,15 @@ begin
   fBackBtn.Caption:= 'Back';
   fBackBtn.OnClick:= HandleBackClick;
 
-  fTrailBtn:= TW3Button.Create(self);
-  fTrailBtn.Height:= 32; fTrailBtn.Width:= 125;
-  fTrailBtn.Caption:= 'Trail';
-  fTrailBtn.OnClick:= HandleTrailClick;
-
   FMap := TW3DIVHtmlElement.Create(Self);
 
+  fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
+                          [
+                           Layout.Top(fHeader),
+                           Layout.Bottom(Layout.Height(32), Layout.Center(fBackBtn)),
+                           Layout.Client(fMap)
+                          ]
+                          );
 end;
  
 procedure TfrmMap.Resize;
@@ -113,7 +108,7 @@ begin
    fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
                           [
                            Layout.Top(fHeader),
-                           Layout.Bottom(Layout.Height(32), Layout.Left(Layout.Spacing(5).Stretch, [fBackBtn, fTrailBtn])),
+                           Layout.Bottom(Layout.Height(32), Layout.Center(fBackBtn)),
                            Layout.Client(fMap)
                           ]
                           );

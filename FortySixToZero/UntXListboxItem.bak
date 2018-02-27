@@ -40,48 +40,25 @@ type
 
 implementation
 
-uses Common;
-
 { TXListBoxItem }
 
 procedure TXListBoxItemData.RemoveSelectedStyle;
 begin
   TXListBoxItem(ItemObject).Label.StyleClass:= 'XListBoxItemStyle';
   if Completed then
-  begin
-   if Mode = mdRegular then
-    TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn32C.png'
-   else
-    TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn-winter32C.png';
-  end
+   TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn32C.png'
   else
-  begin
-   if Mode = mdRegular then
-    TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn32.png'
-   else
-    TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn32.png'
-  end;
+   TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn32.png';
   TXListBoxItem(ItemObject).Rank.StyleClass:= 'XListBoxItemStyle';
 end;
 
 procedure TXListBoxItemData.SetSelectedStyle;
 begin
   TXListBoxItem(ItemObject).Label.StyleClass:= 'XListBoxItemSelectedStyle';
-
   if Completed then
-  begin
-   if Mode = mdRegular then
-    TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn32SC.png'
-   else
-    TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn-winter32SC.png';
-  end
+   TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn32SC.png'
   else
-  begin
-   if Mode = mdRegular then
-    TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn32S.png'
-   else
-    TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn-Winter32S.png';
-  end;
+   TXListBoxItem(ItemObject).MtnImg.Url:= 'res\mtn32S.png';
   TXListBoxItem(ItemObject).Rank.StyleClass:= 'XListBoxItemSelectedStyle';
 end;
 
@@ -98,13 +75,13 @@ begin
   fMtnImg.Width:= 32;
   fLabel:= TW3Label.create(self);
   fLabel.AlignText:= taCenter;
-  fLabel.Handle.style.setProperty('font-size', 'x-large');
+  fLabel.Handle.style.setProperty('font-size', 'large');
 
   fRank:= TW3Label.create(self);
   fRank.Width:= 32;
   fRank.AlignText:= taCenter;
   fRank.Caption:= '0';
-  fRank.Handle.style.setProperty('font-size', 'x-large');
+  fRank.Handle.style.setProperty('font-size', 'large');
   FLayout:= Layout.Client([
                            Layout.Left(Layout.Width(32), fMtnImg),
                            Layout.Right(Layout.Width(32), fRank),

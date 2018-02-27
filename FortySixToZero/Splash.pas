@@ -73,7 +73,6 @@ begin
   handle.addEventListener('devicemotion', @Resize, false);
   fImage:= TW3Image.Create(self);
   fImage.OnClick:= HandleImageClick;
- // fImage.OnTouchBegin:= HandleImageClick;
   fTimer:= TW3Timer.Create(self);
   FTimer.Delay:= 3000;
   FTimer.OnTime:= HandleTimer;

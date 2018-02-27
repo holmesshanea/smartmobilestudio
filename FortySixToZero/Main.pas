@@ -47,7 +47,7 @@ type
 
 implementation
 
-uses UntCommon, Mountains;
+uses Common, Mountains;
 
 { TMain }
 
@@ -77,6 +77,7 @@ begin
   inherited;
   if CompArray.Length < 46 then
   begin
+   fSendBtn.Enabled:= False;
    fHeader.Caption:= 'Remaining';
    fRank.Caption:= intToStr(46 - CompArray.Length);
   end
@@ -84,7 +85,7 @@ begin
   begin
    fSendBtn.Enabled:= True;
    fHeader.Caption:= 'Congratulations!';
-   fRank.Caption:= intToStr(46 - CompArray.Length);
+   fRank.Caption:= '0';
   end;
 
    if Mode = mdRegular then
@@ -164,14 +165,6 @@ begin
   fContinueBtn.Caption:= 'Continue';
   fContinueBtn.OnClick:= HandleContinueClick;
 
-  fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
-                          [
-                           Layout.Top(fHeader),
-                           //Layout.Bottom(Layout.Height(32), Layout.Center(fContinueBtn)),
-                           Layout.Bottom(Layout.Height(32), Layout.Left(Layout.Spacing(5).Stretch, [fBackBtn, fSendBtn, fContinueBtn])),
-                           Layout.Client(Layout.Center(fRank))
-                          ]
-                          );
 end;
  
 procedure TfrmMain.Resize;
@@ -182,7 +175,6 @@ begin
    fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
                           [
                            Layout.Top(fHeader),
-                           //Layout.Bottom(Layout.Height(32), Layout.Center(fContinueBtn)),
                            Layout.Bottom(Layout.Height(32), Layout.Left(Layout.Spacing(5).Stretch, [fBackBtn, fSendBtn, fContinueBtn])),
                            Layout.Client(Layout.Center(fRank))
                           ]

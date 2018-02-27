@@ -1562,9 +1562,9 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 .regularrank {
   padding: 0px !important;
   background-color: white;
-  color: green;
+  color: #EFE70E;
   font-size: 500%;
-  text-shadow: 2px 2px 4px #FFFF00;
+  text-shadow: 2px 2px 4px #974E23;
   border-top:     3px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
   border-left:    3px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
   border-right:   3px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
@@ -1574,9 +1574,9 @@ TW3CustomScrollContainer, .TW3ScrollContainer {
 .winterrank {
   padding: 0px !important;
   background-color: white;
-  color: blue;
+  color: #46ADB9;
   font-size: 500%;
-  text-shadow: 2px 2px 4px #808080;
+  text-shadow: 2px 2px 4px #AAB8CD;
   border-top:     3px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
   border-left:    3px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;
   border-right:   3px solid <?pas=GetRGBA(clToolFlatBorderColor, 0.7)?>;

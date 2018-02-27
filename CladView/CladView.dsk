@@ -1,19 +1,20 @@
-<SMART>
+﻿<SMART>
   <state>
     <editor>
-      <tab filename="Form1" topline="1" col="65" row="34" splitview="0" designview="0" splitter="0.444219052791595" />
+      <tab filename="Form1" topline="396" col="65" row="442" splitview="0" designview="0" splitter="0.444219052791595" />
       <tab filename="Unit1" topline="1" col="1" row="1" />
       <tab filename="iOS.css" topline="619" col="99" row="629" />
       <activetab>Form1</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>3855</BackgroundCompilations>
-      <EditTime>01:06:37.037</EditTime>
-      <CompileTime>00:02:53.851</CompileTime>
-      <TotalTime>04:44:13.354</TotalTime>
-      <DesigningTime>00:01:06.996</DesigningTime>
-      <RunningTime>00:47:23.007</RunningTime>
+      <BackgroundCompilations>3856</BackgroundCompilations>
+      <EditTime>T01:06:37.037</EditTime>
+      <CompileTime>T00:02:53.851</CompileTime>
+      <TotalTime>T04:44:13.541</TotalTime>
+      <DesigningTime>T00:01:07.003</DesigningTime>
+      <RunningTime>T00:47:23.007</RunningTime>
+      <TotalLinesOfCode>471</TotalLinesOfCode>
     </Statistics>
   </state>
 </SMART>

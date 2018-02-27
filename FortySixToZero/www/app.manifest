@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # Offline cache version 0.0.1
-# id:35817
+# id:47032
 
 CACHE:
 index.html
@@ -62,5 +62,9 @@ res/menuitem1.png
 res/menuitem2.png
 res/about-horiz.png
 res/about-vert.png
+res/mtn-winter128.png
+res/mtn-winter128C.png
+res/mtn-winter32.png
+res/mtn-winter32C.png
 lib/require.js
 lib/polyfill.custom.events.js

@@ -1,4 +1,4 @@
-uses SmartCL.System, UntApp, Splash, Main, Mountain, Complete, Journal, Map, Congrats, Menu, About;
+uses SmartCL.System, App, Splash, Main, Mountain, Complete, Journal, Map, Congrats, Menu, About;
 
 {$IFDEF SMART_INTERNAL_HANDLE_EXCEPTIONS}
 try
