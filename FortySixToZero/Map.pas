@@ -43,6 +43,7 @@ type
     procedure InitializeObject; override;
     procedure Resize; override;
   public
+   property Header: TW3Label read fHeader write fHeader;
    property Mountain: String read fMountain write fMountain;
    property Latitude: Double read fLat write fLat;
    property Longitude: Double read fLong write fLong;
@@ -50,7 +51,7 @@ type
 
 implementation
 
-uses GoogleMaps;
+uses PhoneGapApi, GoogleMaps;
 
 { TMap }
 
@@ -75,6 +76,10 @@ begin
   inherited;
   // this is a good place to initialize components
   self.Color:= clWhite;
+  PhoneGap.OnReady(procedure
+    begin
+     //PhoneGap.Notification
+    end);
 end;
 
 procedure TfrmMap.InitializeObject;
@@ -120,7 +125,7 @@ begin
    if Assigned(fLayout) then
    begin
     fLayout.Resize(self);
-    InitMap('AIzaSyCU7roAAjLtFT2ItaMLcS6WNWeuFkG8LJQ', Mountain, Latitude, Longitude,  FMap);
+    InitMap('AIzaSyCU7roAAjLtFT2ItaMLcS6WNWeuFkG8LJQ', Mountain, TERRAIN, Latitude, Longitude,  FMap);
    end;
   end;
 end;

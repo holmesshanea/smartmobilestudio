@@ -67,6 +67,7 @@ uses Common, Mountains, Complete, Journal, Map;
 
 procedure TfrmMountain.HandleMapClick(sender: TObject);
 begin
+ TfrmMap(Application.FormByName('Map')).Header.Caption:= 'Map - [' + MtnArray[StrToInt(Rank)] + ']';
  TfrmMap(Application.FormByName('Map')).Mountain:= MtnArray[StrToInt(Rank)];
  TfrmMap(Application.FormByName('Map')).Latitude:= LatArray[StrToInt(Rank)];
  TfrmMap(Application.FormByName('Map')).Longitude:= LonArray[StrToInt(Rank)];
@@ -75,9 +76,10 @@ end;
 
 procedure TfrmMountain.HandleJournalClick(sender: TObject);
 begin
+ TfrmJournal(Application.FormByName('Journal')).Header.Caption:= 'Journal -[' + MtnArray[StrToInt(Rank)] + ']';
  TfrmJournal(Application.FormByName('Journal')).Rank:= Rank;
- TfrmJournal(Application.FormByName('Journal')).MtnLbl.Caption:= MtnArray[StrToInt(Rank)];
- TfrmJournal(Application.FormByName('Journal')).RankLbl.Caption:= Rank;
+ //TfrmJournal(Application.FormByName('Journal')).MtnLbl.Caption:= MtnArray[StrToInt(Rank)];
+ //TfrmJournal(Application.FormByName('Journal')).RankLbl.Caption:= Rank;
  Application.GotoForm('Journal', feFromRight);
 end;
 

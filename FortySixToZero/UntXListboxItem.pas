@@ -98,13 +98,13 @@ begin
   fMtnImg.Width:= 32;
   fLabel:= TW3Label.create(self);
   fLabel.AlignText:= taCenter;
-  fLabel.Handle.style.setProperty('font-size', 'x-large');
+  fLabel.Handle.style.setProperty('font-size', 'large');
 
   fRank:= TW3Label.create(self);
   fRank.Width:= 32;
   fRank.AlignText:= taCenter;
   fRank.Caption:= '0';
-  fRank.Handle.style.setProperty('font-size', 'x-large');
+  fRank.Handle.style.setProperty('font-size', 'large');
   FLayout:= Layout.Client([
                            Layout.Left(Layout.Width(32), fMtnImg),
                            Layout.Right(Layout.Width(32), fRank),

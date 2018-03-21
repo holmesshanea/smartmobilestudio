@@ -1,33 +1,35 @@
 ﻿<SMART>
   <state>
     <editor>
-      <tab filename="Mountains" fullname="Mountains.pas" topline="176" col="3" row="216" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Main" fullname="Main.pas" topline="1" col="1" row="1" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Mountain" fullname="Mountain.pas" topline="197" col="1" row="237" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Complete" fullname="Complete.pas" topline="159" col="1" row="199" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Journal" fullname="Journal.pas" topline="195" col="1" row="235" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Common" fullname="Common.pas" topline="320" col="16" row="339" />
-      <tab filename="App" fullname="App.pas" topline="1" col="23" row="6" />
+      <tab filename="Mountains" fullname="Mountains.pas" topline="92" col="71" row="110" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Main" fullname="Main.pas" topline="46" col="4" row="61" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Mountain" fullname="Mountain.pas" topline="117" col="13" row="141" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Complete" fullname="Complete.pas" topline="1" col="153" row="2" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Journal" fullname="Journal.pas" topline="197" col="81" row="233" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="Common" fullname="Common.pas" topline="1" col="14" row="15" />
+      <tab filename="App" fullname="App.pas" topline="11" col="29" row="57" />
       <tab filename="FortySixToZero" fullname="FortySixToZero.spr" topline="1" col="1" row="1" />
-      <tab filename="Map" fullname="Map.pas" topline="91" col="1" row="131" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="GoogleMaps" fullname="GoogleMaps.pas" topline="29" col="20" row="44" />
-      <tab filename="UntXListboxItem" fullname="UntXListboxItem.pas" topline="83" col="6" row="129" />
+      <tab filename="Map" fullname="Map.pas" topline="90" col="55" row="116" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="GoogleMaps" fullname="GoogleMaps.pas" topline="17" col="1" row="26" />
+      <tab filename="UntXListboxItem" fullname="UntXListboxItem.pas" topline="83" col="48" row="107" />
       <tab filename="Splash" fullname="Splash.pas" topline="58" col="3" row="98" splitview="0" designview="0" splitter="0.444444447755814" />
       <tab filename="default.css" fullname="default.css" topline="647" col="18" row="667" />
       <tab filename="Congrats" fullname="Congrats.pas" topline="98" col="1" row="138" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="Menu" fullname="Menu.pas" topline="193" col="1" row="233" splitview="0" designview="0" splitter="0.444444447755814" />
-      <tab filename="About" fullname="About.pas" topline="82" col="28" row="122" splitview="0" designview="0" splitter="0.444444447755814" />
-      <activetab>About</activetab>
+      <tab filename="Menu" fullname="Menu.pas" topline="57" col="6" row="65" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="About" fullname="About.pas" topline="17" col="19" row="20" splitview="0" designview="0" splitter="0.444444447755814" />
+      <tab filename="SmartCL.Application" fullname="..\..\..\..\..\..\..\ProgramData\The Smart Company\Smart Mobile Studio\RTL\SmartCL\SmartCL.Application.pas" topline="1" col="17" row="22" />
+      <tab filename="SmartCL.Effects" fullname="..\..\..\..\..\..\..\ProgramData\The Smart Company\Smart Mobile Studio\RTL\SmartCL\SmartCL.Effects.pas" topline="95" col="33" row="113" />
+      <activetab>Map</activetab>
       <breakpoints />
     </editor>
     <Statistics>
-      <BackgroundCompilations>22745</BackgroundCompilations>
-      <EditTime>T05:57:16.140</EditTime>
+      <BackgroundCompilations>23710</BackgroundCompilations>
+      <EditTime>T06:12:41.113</EditTime>
       <CompileTime>T00:00:00.000</CompileTime>
-      <TotalTime>1900-01-02T14:45:34.890</TotalTime>
-      <DesigningTime>T00:28:19.005</DesigningTime>
-      <RunningTime>T06:31:53.656</RunningTime>
-      <TotalLinesOfCode>2453</TotalLinesOfCode>
+      <TotalTime>1900-01-02T17:31:37.238</TotalTime>
+      <DesigningTime>T00:28:19.621</DesigningTime>
+      <RunningTime>T07:24:40.600</RunningTime>
+      <TotalLinesOfCode>2495</TotalLinesOfCode>
     </Statistics>
   </state>
 </SMART>

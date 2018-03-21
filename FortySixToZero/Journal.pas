@@ -8,6 +8,7 @@ uses
   System.Types.Convert,
   System.Objects,
   System.Time,
+  System.JSON,
   SmartCL.System,
   SmartCL.Time,
   SmartCL.Graphics,
@@ -32,9 +33,9 @@ type
     {$I 'Journal:intf'}
     fLayout: TLayout;
     fHeader: TW3Label;
-    fMtnLbl: TW3Label;
+    //fMtnLbl: TW3Label;
     fImage: TW3Image;
-    fRankLbl: TW3Label;
+    //fRankLbl: TW3Label;
     fDiv: TW3DivHTMLElement;
     fBackBtn: TW3Button;
     fEditBtn: TW3Button;
@@ -52,9 +53,10 @@ type
     procedure InitializeObject; override;
     procedure Resize; override;
   public
-    property MtnLbl: TW3Label read fMtnLbl write fMtnLbl;
+    property Header: TW3Label read fheader write fHeader;
+    //property MtnLbl: TW3Label read fMtnLbl write fMtnLbl;
     property Image: TW3Image read fImage write fImage;
-    property RankLbl: TW3Label read fRankLbl write fRankLbl;
+    //property RankLbl: TW3Label read fRankLbl write fRankLbl;
     property Rank: String read fRank write fRank;
     property Mountain: String read fMountain write fMountain;
     property Completed: String read fCompleted write fCompleted;
@@ -86,6 +88,11 @@ begin
        if DialogResult = roYes then
        begin
         RemoveRec(Rank);
+
+        //save current data to local storage
+         JSONStr:= JSON.Stringify(variant(CompArray));
+         WriteData(Mode);
+
         Application.GotoForm('Mountain', feToLeft);
        end;
       end);
@@ -136,6 +143,10 @@ begin
   '<div>' +
   '<table style="width:100%; height:100%">' +
    '<tr>' +
+     '<td><Strong>Rank:</Strong></td>' +
+     '<td>' +  Rank + '</td>' +
+   '</tr>' +
+   '<tr>' +
      '<td><Strong>Completed:</Strong></td>' +
      '<td>' +  getCompDate(Rank) + '</td>' +
    '</tr>' +
@@ -166,21 +177,21 @@ begin
   fHeader.Caption:= 'Journal';
   fHeader.AlignText:= taCenter;
 
-  fMtnLbl:= TW3Label.Create(self);
+  {fMtnLbl:= TW3Label.Create(self);
   fMtnLbl.AlignText:= taCenter;
   fMtnLbl.Height:= 32;
   fMtnLbl.Caption:= 'Unknown';
-  fMtnLbl.Handle.style.setProperty('font-size', 'x-large');
+  fMtnLbl.Handle.style.setProperty('font-size', 'x-large');}
 
   fImage:= TW3Image.Create(self);
   fImage.Height:= 100; fImage.Width:= 100;
   fImage.Url:= 'res\mtn128.png';
 
-  fRankLbl:= TW3Label.Create(self);
+  {fRankLbl:= TW3Label.Create(self);
   fRankLbl.AlignText:= taCenter;
   fRankLbl.Height:= 32;
   fRankLbl.Caption:= '0';
-  fRankLbl.Handle.style.setProperty('font-size', 'x-large');
+  fRankLbl.Handle.style.setProperty('font-size', 'x-large');}
 
   fDiv:= TW3DivHTMLElement.Create(self);
   fDiv.StyleClass:= 'TW3ControlBorder';
@@ -203,7 +214,8 @@ begin
    fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
                           [
                            Layout.Top(fHeader),
-                           Layout.Top(Layout.Height(100), Layout.Left(Layout.Spacing(5).Stretch, [fMtnLbl, fImage, fRankLbl])),
+                           //Layout.Top(Layout.Height(100), Layout.Left(Layout.Spacing(5).Stretch, [fMtnLbl, fImage, fRankLbl])),
+                           Layout.Top(Layout.Height(100), Layout.Center(fImage)),
                            Layout.Bottom(Layout.Height(32), Layout.Left(Layout.Spacing(5).Stretch, [fBackBtn, fEditBtn, fUndoBtn])),
                            Layout.Client(fDiv)]
                          );
@@ -217,7 +229,8 @@ begin
    fLayout:= Layout.Client(Layout.Margins(5).Spacing(5),
                           [
                           Layout.Top(fHeader),
-                          Layout.Top(Layout.Height(100), Layout.Left(Layout.Spacing(5).Stretch, [fMtnLbl, fImage, fRankLbl])),
+                          //Layout.Top(Layout.Height(100), Layout.Left(Layout.Spacing(5).Stretch, [fMtnLbl, fImage, fRankLbl])),
+                          Layout.Top(Layout.Height(100), Layout.Center(fImage)),
                           Layout.Bottom(Layout.Height(32), Layout.Left(Layout.Spacing(5).Stretch, [fBackBtn, fEditBtn, fUndoBtn])),
                           Layout.Client(fDiv)]
                          );

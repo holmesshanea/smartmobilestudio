@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget>
+
+  <name>Forty-Six-To-Zero</name>
+
+  <description>
+      Adirondack High Peaks tracking application for both regular and winter completions.
+  </description>
+
+  <author href="https://www.soldriverlabs.com" email="info@coldriverlabs.com">
+      Cold River Labs, LLC
+  </author>
+
+ <plugin name="cordova-plugin-googlemaps-master" spec="~ 1.3.9"  source="npm">
+  <variable name="API_KEY_FOR_ANDROID" value="AIzaSyCU7roAAjLtFT2ItaMLcS6WNWeuFkG8LJQ" />
+</plugin>
+
+<platform name="android">
+        
+ <icon density="ldpi" src="res/icon/android/ldpi.png"/>
+        
+ <icon density="mdpi" src="res/icon/android/mdpi.png"/>
+        
+ <icon density="hdpi" src="res/icon/android/hdpi.png"/>
+        
+ <icon density="xhdpi" src="res/icon/android/xhdpi.png"/>
+        
+ <icon density="xxhdpi" src="res/icon/android/xxhdpi.png"/>
+        
+ <icon density="xxxhdpi" src="res/icon/android/xxxhdpi.png"/>
+
+
+</platform>
+
+
+
+</widget>

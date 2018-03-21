@@ -58,6 +58,8 @@ end;
 
 procedure TfrmMain.HandleContinueClick(Sender: TObject);
 begin
+ //TfrmMountains(Application.FormByName('Mountains')).ListBox.SelectedIndex:= 0;
+ TfrmMountains(Application.FormByName('Mountains')).ListBox.ScrollController.ScrollTo(0,0);
  Application.GotoForm('Mountains', feFromRight);
 end;
 

@@ -12,7 +12,15 @@ uses
   W3C.HTML5,
   W3C.DOM;
 
+
+const
+  HYBRID = 'hybrid';
+  ROADMAP = 'roadmap';
+  SATELLITE = 'satellite';
+  TERRAIN = 'terrain';
+
 type
+
   JMap = partial Class external;
 
   JLatLngLiteral = record
@@ -23,6 +31,7 @@ type
   JMapOptions = record
     property Zoom : Integer;
     property Center : JLatLngLiteral;
+    property mapTypeId: String;
   end;
 
   JMarkerOptions = record
@@ -41,14 +50,14 @@ type
     Constructor Create(mapDiv:JElement; options : JMapOptions); external 'Map';
 	end;
 
-  procedure InitMap(AAPIKey, ATitle: String; ALat, ALong: Double; AControl: TW3CustomControl);
+  procedure InitMap(AAPIKey, ATitle: String; AMapType: String; ALat, ALong: Double; AControl: TW3CustomControl);
 
 var
  GMap : JMap;
 
 implementation
 
-procedure InitMap(AAPIKey, ATitle: String; ALat, ALong: Double; AControl: TW3CustomControl);
+procedure InitMap(AAPIKey, ATitle: String;  AMapType: String; ALat, ALong: Double; AControl: TW3CustomControl);
 var
   LUluru : JLatLngLiteral;
   LMapOptions : JMapOptions;
@@ -62,6 +71,8 @@ begin
   LUluru.lng := ALong;
   LMapOptions.Zoom := 10;
   LMapOptions.Center := LUluru;
+  //ShowMessage(JMapTypeArray[integer(AMapType)-1]);
+  LMapOptions.mapTypeId:= AMapType;
   LMapElement := Document.getElementById(AControl.Handle.id);
   GMap := JMap.Create(LMapElement,LMapOptions);
   LMarkerOptions.position := LUluru;

@@ -62,7 +62,7 @@ type
 
 implementation
 
-uses Congrats;
+uses Common, Congrats;
 
 { TForm1 }
 
@@ -104,7 +104,15 @@ begin
    TCongrats(Application.FormByName('Congrats')).Image.Url:= 'res\patch' + rank + '.jpg'
   else
    TCongrats(Application.FormByName('Congrats')).Image.Url:= 'res\adk46erlogo.png';
-  Application.GotoForm('Congrats', fetoLeft);
+
+  //save current data to local storage after any add, edit, or undo
+   JSONStr:= JSON.Stringify(variant(CompArray));
+   WriteData(Common.Mode);
+
+  if fMode = cmNone then
+   Application.GotoForm('Congrats', fetoLeft)
+  else
+   Application.GotoForm('Journal', fetoLeft);
  end;
 end;
 

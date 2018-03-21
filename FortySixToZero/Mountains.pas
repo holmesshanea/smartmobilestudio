@@ -45,6 +45,7 @@ type
   public
     procedure UpdateListBox;
     property Idx: integer read fIndex write fIndex;
+    property ListBox: TW3ListBox read fListbox write fListbox;
   end;
 
 implementation
